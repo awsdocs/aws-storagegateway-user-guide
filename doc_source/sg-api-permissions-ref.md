@@ -78,7 +78,5 @@ For a list of Storage Gateway resources with the ARN format, see [AWS Storage Ga
 |  [UpdateVTLDeviceType](http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_UpdateVTLDeviceType.html)  |  `storagegateway:UpdateVTLDeviceType`  | arn:aws:storagegateway:region:account\-id:gateway/gateway\-id/device/vtldevice | 
 
 Related Topics
-
 + [Access Control](UsingIAMWithStorageGateway.md#access-control)
-
 + [Customer Managed Policy Examples](using-identity-based-policies.md#customer-managed-policies)

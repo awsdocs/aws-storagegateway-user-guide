@@ -2,7 +2,7 @@
 
 In this topic, you can find information about file share, volume, tape, configuration, and performance limits for Storage Gateway\.
 
-
+**Topics**
 + [Limits For File Shares](#resource-file-limits)
 + [Limits for Volumes](#resource-volume-limits)
 + [Limits for Tapes](#resource-tape-limits)

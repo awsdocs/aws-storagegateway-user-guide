@@ -6,7 +6,7 @@ When you delete a gateway, it no longer appears on the AWS Storage Gateway Manag
 
 You can delete a gateway using the Storage Gateway console or programmatically\. You can find information following about how to delete a gateway using the Storage Gateway console\. If you want to programmatically delete your gateway, see *[AWS Storage Gateway API Reference](http://docs.aws.amazon.com/storagegateway/latest/APIReference/)\.* 
 
-
+**Topics**
 + [Deleting Your Gateway by Using the AWS Storage Gateway Console](#delete-gateway-procedure)
 + [Removing Resources from a Gateway Deployed On\-Premises](#remove-resources-onpremise)
 + [Removing Resources from a Gateway Deployed on an Amazon EC2 Instance](#EC2GatewayCleanup)
@@ -46,9 +46,7 @@ You can use the instructions following to remove resources from a gateway that i
 ### Removing Resources from a Volume Gateway Deployed on a VM<a name="MaintenanceDeleteGateway-common"></a>
 
 If the gateway you want to delete are deployed on a virtual machine \(VM\), we suggest that you take the following actions to clean up resources: 
-
 + Delete the gateway\. For instructions, see [Deleting Your Gateway by Using the AWS Storage Gateway Console](#delete-gateway-procedure)\.
-
 + Delete all Amazon EBS snapshots you don't need\. For instructions, see [Deleting an Amazon EBS Snapshot](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-snapshot.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 ### Removing Resources from a Tape Gateway Deployed on a VM<a name="MaintenanceDeleteGateway-vtl-common"></a>
@@ -62,13 +60,10 @@ Before you delete a tape gateway, you must cancel all tape retrieval operations 
 After you have deleted the tape gateway, you must remove any resources associated with the tape gateway that you don't need to avoid paying for those resources\.
 
 When you delete a tape gateway, you can encounter one of two scenarios\.
-
 + ****The tape gateway is connected to AWS** –** If the tape gateway is connected to AWS and you delete the gateway, the iSCSI targets associated with the gateway \(that is, the virtual tape drives and media changer\) will no longer be available\. 
-
 + ****The tape gateway is not connected to AWS** –** If the tape gateway is not connected to AWS, for example if the underlying VM is turned off or your network is down, then you cannot delete the gateway\. If you attempt to do so, after your environment is back up and running you might have a tape gateway running on\-premises with available iSCSI targets\. However, no tape gateway data will be uploaded to, or downloaded from, AWS\. 
 
 If the tape gateway you want to delete is not functioning, you must first disable it before you delete it, as described following: 
-
 + To delete tapes that have the RETRIEVED status from the library, eject the tape using your backup software\. For instructions, see [Archiving the Tape](backup_netbackup-vtl.md#GettingStarted-archiving-tapes-vtl)\.
 
 After disabling the tape gateway and deleting tapes, you can delete the tape gateway\. For instructions on how to delete a gateway, see [Deleting Your Gateway by Using the AWS Storage Gateway Console](#delete-gateway-procedure)\.

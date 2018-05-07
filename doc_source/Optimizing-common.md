@@ -11,29 +11,17 @@ CloudWatch metrics are not available for all gateways\. For information about ga
 **Add CPU resources to your gateway host**  
 The minimum requirement for a gateway host server is four virtual processors\. To optimize gateway performance, you should confirm that the four virtual processors that are assigned to the gateway VM are backed by four cores and that you are not oversubscribing the CPUs of the host server\. When you add additional CPUs to your gateway host server, you increase the processing capability of the gateway to deal with, in parallel, both storing data from your application to your local storage and uploading this data to Amazon S3\. Additional CPUs also help ensure that your gateway gets enough CPU resources when the host is shared with other VMs\. Providing enough CPU resources has the general effect of improving throughput\.  
 AWS Storage Gateway supports using 24 CPUs in your gateway host server\. You can use 24 CPUs to significantly improve the performance of your gateway\. We recommend the following gateway configuration for your gateway host server:  
-
 + 24 CPUs 
-
 + 16 GiB of reserved RAM
-
 + Disk 1 attached to paravirtual controller 1, to be used as the gateway cache as follows:
-
   + SSD using an NVMe controller 
-
 + Disk 2 attached to paravirtual controller 1, to be used as the gateway upload buffer as follows:
-
   + SSD using an NVMe controller
-
 + Disk 3 attached to paravirtual controller 2, to be used as the gateway upload buffer as follows:
-
   + SSD using an NVMe controller
-
 + Network adapter 1 configured on VM network 1:
-
   + Use VM network 1 and add VMXnet3 \(10 Gbps\) to be used for ingestion
-
 + Network adapter 2 configured on VM network 2:
-
   + Use VM network 2 and add a VMXnet3 \(10 Gbps\) to be used to connect to AWS
 
  **Back gateway virtual disks with separate physical disks**  

@@ -2,7 +2,7 @@
 
 The following table lists typical issues that you might encounter working with your gateway deployed on Amazon Elastic Compute Cloud \(Amazon EC2\)\. For more information about the difference between an on\-premises gateway and a gateway deployed in Amazon EC2, see [Deploying a Volume or Tape Gateway on an Amazon EC2 Host](ec2-gateway-common.md)\. 
 
-
+**Topics**
 + [Enabling AWS Support To Help Troubleshoot Your Gateway Hosted on an Amazon EC2 Instance](#EC2-EnableAWSSupportAccess)
 
 

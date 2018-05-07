@@ -6,7 +6,7 @@ The following screenshot shows the Arcserve menus\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/LoadTape-scan.png)
 
-
+**Topics**
 + [Configuring Arcserve to Work with VTL Devices](#archServe-configure-software)
 + [Loading Tapes into a Media Pool](#archServe-load-tapes)
 + [Backing Up Data to a Tape](#archServe-backup-data)

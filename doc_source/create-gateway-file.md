@@ -2,7 +2,7 @@
 
 In this section, you can find instructions about how to download, deploy, and activate your file gateway\. 
 
-
+**Topics**
 + [Choosing a Gateway Type](#GettingStartedSelectGatewayType-file)
 + [Choosing a Host Platform and Downloading the VM](#hosting-options-file)
 + [Connecting to Your Gateway](#GettingStartedBeginActivateGateway-file)
@@ -45,15 +45,11 @@ The \.zip file is over 500 MB in size and might take some time to download, depe
 1. Deploy the downloaded image to your hypervisor\. You need to add at least one local disk for your cache and one local disk for your upload buffer during the deployment\. A file gateway requires only one local disk for a cache\. For information about local disk requirements, see [Hardware and Storage Requirements](Requirements.md#requirements-hardware-storage)\.
 
    If you choose VMware, do the following:
-
    + Store your disk in **Thick provisioned format**\. When you use thick provisioning, the disk storage is allocated immediately, resulting in better performance\. In contrast, thin provisioning allocates storage on demand\. On\-demand allocation can affect the normal functioning of AWS Storage Gateway\. For Storage Gateway to function properly, the VM disks must be stored in thick\-provisioned format\.
-
    + Configure your gateway VM to use paravirtualized disk controllers\. For more information, see [Configuring the AWS Storage Gateway VM to Use Paravirtualized Disk Controllers](configure-vmware.md#SetParaVirtualization-common)\.
 
    If you choose Microsoft Hyper\-V, do the following: 
-
    + Configure the disk type as **Fixed size**\. When you use fixed\-size provisioning, the disk storage is allocated immediately, resulting in better performance\. If you don't use fixed\-size provisioning, the storage is allocated on demand\. On\-demand allocation can affect the functioning of AWS Storage Gateway\. For Storage Gateway to function properly, the VM disks must be stored in fixed\-size provisioned format\. 
-
    + When allocating disks, choose **virtual hard disk \(\.vhd\) file**\. Storage Gateway supports the \.vhdx file type\. By using this file type, you can create larger virtual disks than with other file types\. If you create a \.vhdx type virtual disk, make sure that the size of the virtual disks that you create doesn't exceed the recommended disk size for your gateway\.
 
    For both VMware and Microsoft Hyper\-V, synchronizing the VM time with the host time is required for successful gateway activation\. Make sure that your host clock is set to the correct time and synchronize it with a Network Time Protocol \(NTP\) server\. 
@@ -71,9 +67,7 @@ Make sure that you connect to the correct gateway type\. The \.ova files and AMI
 **To get the IP address for your gateway VM from the local console**
 
 1. Log on to your gateway VM local console\. For detailed instructions, see the following:
-
    + VMware ESXi—[Accessing the Gateway Local Console with VMware ESXi](manage-on-premises-vmware.md#MaintenanceConsoleWindowVMware-common)\.
-
    + Microsoft Hyper\-V—[Access the Gateway Local Console with Microsoft Hyper\-V](manage-on-premises-Hyperv.md#MaintenanceConsoleWindowHyperV-common)\.
 
 1. Get the IP address from the top of the menu page, and make note of it for later use\.
@@ -103,9 +97,7 @@ For detailed information about how to get a gateway IP address, see [Connecting 
 **To activate your gateway**
 
 1. To complete the activation process, provide information on the activation page to configure your gateway setting:
-
    + **Gateway Time Zone** specifies the time zone to use for your gateway\.
-
    + **Gateway Name** identifies your gateway\. You use this name to manage your gateway in the console; you can change it after the gateway is activated\. This name must be unique to your account\. 
 
      The following screenshot shows the activation page for a file gateway\.   

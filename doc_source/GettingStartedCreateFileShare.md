@@ -16,15 +16,17 @@ To create a file share, a file gateway requires you to activate AWS Security Tok
 
 1. For **Amazon S3 bucket name**, provide a name for the Amazon S3 bucket for your gateway to store your files in and retrieve your files to\. This name must be compliant with Domain Name Service \(DNS\)\. This bucket must also exist already; it isn't created for you\. For information on DNS\-compliant names for buckets, see [Rules for Bucket Naming](http://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules) in the *Amazon Simple Storage Service Developer Guide*\.
 
-1. For **Storage class for new objects**, choose a storage class to use for new objects created in your Amazon S3 bucket\.
+1. For **Storage class for new objects**, choose a storage class to use for new objects created in your Amazon S3 bucket:
+   + Choose **S3 Standard** to store your frequently accessed object data redundantly in multiple Availability Zones that are geographically separated\.
+   + Choose **S3 Standard\-IA** to store your infrequently accessed object data redundantly in multiple Availability Zones that are geographically separated\.
+   + Choose **S3 One Zone\-IA** to store your infrequently accessed object data in a single Availability Zone\.
 
-1. For **Object metadata**, choose the metadata you want to use\.
+   For more information, see [Storage Classes](http://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro) in the *Amazon Simple Storage Service Developer Guide*\.
 
-   Choose **Guess MIME type** to enable guessing of the MIME type for uploaded objects based on file extensions\.
-
-   Choose **Give bucket owner full control** to give full control to the owner of the S3 bucket that maps to the file NFS file share\. For more information on using your file share to access objects in a bucket owned by another account, see [Using a File Share for Cross\-Account Access](managing-gateway-file.md#cross-account-access)\.
-
-   Choose **Enable requester pays** if you are using this file share on a bucket that requires the requester or reader instead of bucket owner to pay for access charges\. For more information, see [Requester Pays Buckets](http://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html)\.
+1. For **Object metadata**, choose the metadata you want to use:
+   + Choose **Guess MIME type** to enable guessing of the MIME type for uploaded objects based on file extensions\.
+   + Choose **Give bucket owner full control** to give full control to the owner of the S3 bucket that maps to the file NFS file share\. For more information on using your file share to access objects in a bucket owned by another account, see [Using a File Share for Cross\-Account Access](managing-gateway-file.md#cross-account-access)\.
+   + Choose **Enable requester pays** if you are using this file share on a bucket that requires the requester or reader instead of bucket owner to pay for access charges\. For more information, see [Requester Pays Buckets](http://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html)\.
 
 1. For **Access to your bucket**, choose the AWS Identity and Access Management \(IAM\) role that you want your gateway to use to access your Amazon S3 bucket\. This role allows the gateway to access your S3 bucket\. A file gateway can create a new IAM role and access policy on your behalf\. Or, if you have an IAM role you want to use, you can specify it in the **IAM role** box and set up the access policy manually\. For more information, see [Granting Access to an Amazon S3 Bucket](managing-gateway-file.md#grant-access-s3)\. For information about IAM roles, see [IAM Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) in the *IAM User Guide*\. 
 

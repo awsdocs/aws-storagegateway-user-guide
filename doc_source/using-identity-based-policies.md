@@ -6,11 +6,8 @@ This topic provides examples of identity\-based policies in which an account adm
 We recommend that you first review the introductory topics that explain the basic concepts and options available for you to manage access to your AWS Storage Gateway resources\. For more information, see [Overview of Managing Access Permissions to Your AWS Storage Gateway](managing-access-overview.md)\. 
 
 The sections in this topic cover the following:
-
 + [Permissions Required to Use the Storage Gateway Console](#additional-console-required-permissions)
-
 + [AWS Managed Policies for AWS Storage Gateway](#access-policy-examples-aws-managed)
-
 + [Customer Managed Policy Examples](#customer-managed-policies)
 
 The following shows an example of a permissions policy\.
@@ -42,7 +39,6 @@ The following shows an example of a permissions policy\.
 ```
 
 The policy has two statements \(note the `Action` and `Resource` elements in both the statements\):
-
 + The first statement grants permissions for two Storage Gateway actions \(`storagegateway:ActivateGateway` and `storagegateway:ListGateways`\) on a gateway resource using the *Amazon Resource Name \(ARN\)* for the gateway\. The ARN specifies a wildcard character \(\*\) because you don't know the gateway ID until after you create a gateway\. 
 **Note**  
 ARNs uniquely identify AWS resources\. For more information, see [Amazon Resource Names \(ARNs\) and AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) in the *AWS General Reference*\.
@@ -52,7 +48,6 @@ ARNs uniquely identify AWS resources\. For more information, see [Amazon Resourc
   To limit permissions for a particular action to a specific gateway only, create a separate statement for that action in the policy and specify the gateway ID in that statement\. 
 
    
-
 + The second statement grants permissions for the `ec2:DescribeSnapshots` and `ec2:DeleteSnapshot` actions\. These Amazon Elastic Compute Cloud \(Amazon EC2\) actions require permissions because snapshots generated from AWS Storage Gateway are stored in Amazon Elastic Block Store \(Amazon EBS\) and managed as Amazon EC2 resources, and thus they require corresponding EC2 actions\. For more information, see [Actions](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Operations.html) in the *Amazon EC2 API Reference*\. Because these Amazon EC2 actions don't support resource\-level permissions, the policy specifies the wildcard character \(\*\) as the `Resource` value instead of specifying a gateway ARN\. 
 
 For a table showing all of the AWS Storage Gateway API actions and the resources that they apply to, see [AWS Storage Gateway API Permissions: Actions, Resources, and Conditions Reference](sg-api-permissions-ref.md)\. 
@@ -86,9 +81,7 @@ To set up the minimum permissions required to navigate the Storage Gateway conso
 AWS addresses many common use cases by providing standalone IAM policies that are created and administered by AWS\. Managed policies grant necessary permissions for common use cases so you can avoid having to investigate what permissions are needed\. For more information about AWS managed policies, see [AWS Managed Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) in the *IAM User Guide*\.
 
 The following AWS managed policies, which you can attach to users in your account, are specific to Storage Gateway:
-
 + **AWSStorageGatewayReadOnlyAccess** – Grants read\-only access to AWS Storage Gateway resources\. 
-
 + **AWSStorageGatewayFullAccess** – Grants full access to AWS Storage Gateway resources\. 
 
 **Note**  
@@ -103,7 +96,7 @@ In this section, you can find example user policies that grant permissions for v
 **Note**  
 All examples use the US West \(Oregon\) Region \(`us-west-2`\) and contain fictitious account IDs\.
 
-
+**Topics**
 + [Example 1: Allow Any AWS Storage Gateway Actions on All Gateways](#sg-example1)
 + [Example 2: Allow Read\-Only Access to a Gateway](#sg-example2)
 + [Example 3: Allow Access to a Specific Gateway](#sg-example3)

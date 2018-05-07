@@ -17,19 +17,13 @@ Previously, you allocated local disks that you added to the VM cache storage and
 1. For **Volume content**, your choices depend on the type of gateway you are creating the volume for\.
 
    For cached volumes, you have the following options: 
-
    + **Create a new empty volume**\.
-
    + **Create a volume based on an Amazon EBS snapshot**\. If you choose this option, provide a value for **EBS snapshot ID**\. 
-
    + **Clone from last volume recovery point**\. If you choose this option, choose a volume ID for **Source volume**\. If there are no volumes in the region, this option doesn't appear\.
 
    For stored volumes, you have the following options: 
-
    + **Create a new empty volume**\. 
-
    + **Create a volume based on a snapshot**\. If you choose this option, provide a value for **EBS snapshot ID**\.
-
    + **Preserve existing data on the disk**
 
 1. Type a name for **iSCSI target name**\.

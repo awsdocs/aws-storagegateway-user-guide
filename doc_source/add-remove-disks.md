@@ -5,7 +5,7 @@ You can add or remove underlying disks from your gateway as described following\
 **Important**  
 When adding cache or upload buffer to an existing gateway, it is important to create new disks in your host \(hypervisor or Amazon EC2 instance\)\. Don't change the size of existing disks if the disks have been previously allocated as either a cache or upload buffer\.
 
-
+**Topics**
 + [Remove a Disk from a Gateway Hosted on VMware ESXi](#add-disk-vmware)
 + [Remove a Disk from Gateway Hosted on Microsoft Hyper\-V](#remove-disk-hyperV)
 

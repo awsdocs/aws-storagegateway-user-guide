@@ -2,7 +2,7 @@
 
 For a gateway deployed on\-premises, you can perform the following maintenance tasks using the VM host's local console\. These tasks are common to VMware and Hyper\-V hosts\.
 
-
+**Topics**
 + [Logging in to the Local Console Using Default Credentials](#LocalConsole-login-common)
 + [Setting the Local Console Password from the Storage Gateway Console](#set-password)
 + [Routing Your On\-Premises Gateway Through a Proxy](#MaintenanceRoutingProxy-common)
@@ -20,7 +20,6 @@ When the VM is ready for you to log in, the login screen is displayed\. If this 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GatewayMaintenance_75.png)<a name="MaintenanceConsoleWindowMenu-common"></a>
 
 **To log in to the gateway's local console**
-
 + If this is your first time logging in to the local console, log in to the VM with the user name *sguser* and password *sgpassword*\. Otherwise, use your credentials to log in\.
 
 After you log in, you see the **Storage Gateway Configuration** main menu, as shown in the following screenshot\.
@@ -74,9 +73,7 @@ The following procedure shows you how to configure SOCKS proxy for volume gatewa
 **To configure a SOCKS5 proxy for volume and tape gateways**
 
 1. Log in to your gateway's local console\.
-
    + VMware ESXi—for more information, see [Accessing the Gateway Local Console with VMware ESXi](manage-on-premises-vmware.md#MaintenanceConsoleWindowVMware-common)\.
-
    + Microsoft Hyper\-V—for more information, see [Access the Gateway Local Console with Microsoft Hyper\-V](manage-on-premises-Hyperv.md#MaintenanceConsoleWindowHyperV-common)\.
 
 1. On the **AWS Storage Gateway Configuration** main menu, type **1** to begin configuring the SOCKS proxy\.  
@@ -91,9 +88,7 @@ The following procedure shows you how to configure an HTTP proxy for a file gate
 **To configure an HTTP proxy for a file gateway**
 
 1. Log in to your gateway's local console\.
-
    + VMware ESXi—for more information, see [Accessing the Gateway Local Console with VMware ESXi](manage-on-premises-vmware.md#MaintenanceConsoleWindowVMware-common)\.
-
    + Microsoft Hyper\-V—for more information, see [Access the Gateway Local Console with Microsoft Hyper\-V](manage-on-premises-Hyperv.md#MaintenanceConsoleWindowHyperV-common)\.
 
 1. On the **AWS Storage Gateway Configuration** main menu, type **1** to begin configuring the HTTP proxy\.  
@@ -112,9 +107,7 @@ The default network configuration for the gateway is Dynamic Host Configuration 
 **To configure your gateway to use static IP addresses**
 
 1. Log in to your gateway's local console\.
-
    + VMware ESXi—for more information, see [Accessing the Gateway Local Console with VMware ESXi](manage-on-premises-vmware.md#MaintenanceConsoleWindowVMware-common)\.
-
    + Microsoft Hyper\-V—for more information, see [Access the Gateway Local Console with Microsoft Hyper\-V](manage-on-premises-Hyperv.md#MaintenanceConsoleWindowHyperV-common)\.
 
 1. On the **AWS Storage Gateway Configuration** main menu, type option **2** to begin configuring a static IP address\.  
@@ -131,9 +124,7 @@ You can use your gateway's local console to test your Internet connection\. This
 **To test your gateway's connection to the Internet**
 
 1. Log in to your gateway's local console\.
-
    + VMware ESXi—for more information, see [Accessing the Gateway Local Console with VMware ESXi](manage-on-premises-vmware.md#MaintenanceConsoleWindowVMware-common)\.
-
    + Microsoft Hyper\-V—for more information, see [Access the Gateway Local Console with Microsoft Hyper\-V](manage-on-premises-Hyperv.md#MaintenanceConsoleWindowHyperV-common)\.
 
 1. On the **AWS Storage Gateway Configuration** main menu, type option **3** to begin testing network connectivity\.  
@@ -164,9 +155,7 @@ The AWS Storage Gateway console helps provide a secure environment for configuri
 **To run a configuration or diagnostic command**
 
 1. Log in to your gateway's local console\.
-
    + VMware ESXi—for more information, see [Accessing the Gateway Local Console with VMware ESXi](manage-on-premises-vmware.md#MaintenanceConsoleWindowVMware-common)\.
-
    + Microsoft Hyper\-V—for more information, see [Access the Gateway Local Console with Microsoft Hyper\-V](manage-on-premises-Hyperv.md#MaintenanceConsoleWindowHyperV-common)\.
 
 1. On the **AWS Storage Gateway Configuration** main menu, type option **5** for **Gateway Console**\.  
@@ -187,9 +176,7 @@ When your gateway starts, it checks its virtual CPU cores, root volume size, and
 **To view the status of a system resource check**
 
 1. Log in to your gateway's local console\.
-
    + VMware ESXi—for more information, see [Accessing the Gateway Local Console with VMware ESXi](manage-on-premises-vmware.md#MaintenanceConsoleWindowVMware-common)\.
-
    + Microsoft Hyper\-V—for more information, see [Access the Gateway Local Console with Microsoft Hyper\-V](manage-on-premises-Hyperv.md#MaintenanceConsoleWindowHyperV-common)\.
 
 1. In the **AWS Storage Gateway Configuration** main menu, type **6** to view the results of a system resource check\.  
@@ -207,7 +194,7 @@ When your gateway starts, it checks its virtual CPU cores, root volume size, and
 
 By default, AWS Storage Gateway is configured to use the E1000 network adapter type, but you can reconfigure your gateway to use the VMXNET3 \(10 GbE\) network adapter\. You can also configure Storage Gateway so it can be accessed by more than one IP address\. You do this by configuring your gateway to use more than one network adapter\.
 
-
+**Topics**
 + [Configuring Your Gateway to Use the VMXNET3 Network Adapter](#NICChanging-common)
 + [Configuring Your Gateway for Multiple NICs](#MaintenanceMultiNIC-common)
 
@@ -275,17 +262,12 @@ After your gateway restarts, reconfigure the adapter you just added to make sure
 ### Configuring Your Gateway for Multiple NICs<a name="MaintenanceMultiNIC-common"></a>
 
 If you configure your gateway to use multiple network adapters \(NICs\), it can be accessed by more than one IP address\. You might want to do this in the following situations:
-
 + ****Maximizing throughput**** – You might want to maximize throughput to a gateway when network adapters are a bottleneck\.
-
 + ****Application separation**** – You might need to separate how your applications write to a gateway's volumes\. For example, you might choose to have a critical storage application exclusively use one particular adapter defined for your gateway\.
-
 + ****Network constraints**** – Your application environment might require that you keep your iSCSI targets and the initiators that connect to them in an isolated network that is different from the network by which the gateway communicates with AWS\.
 
 In a typical multiple\-adapter use case, one adapter is configured as the route by which the gateway communicates with AWS \(that is, as the default gateway\)\. Except for this one adapter, initiators must be in the same subnet as the adapter that contains the iSCSI targets to which they connect\. Otherwise, communication with the intended targets might not be possible\. If a target is configured on the same adapter that is used for communication with AWS, then iSCSI traffic for that target and AWS traffic will flow through the same adapter\.
 
  When you configure one adapter to connect to the AWS Storage gateway console and then add a second adapter, storage gateway automatically configures the route table to use the second adapter as the preferred route\. For instructions on how to configure multiple\-adapters, see the following sections\. 
-
 + [Configuring Your Gateway for Multiple NICs in a VMware ESXi Host](manage-on-premises-vmware.md#MaintenanceMultiNIC-vmaware)
-
 + [Configuring Your Gateway for Multiple NICs in Microsoft Hyper\-V Host](manage-on-premises-Hyperv.md#MaintenanceMultiNIC-hyperv)

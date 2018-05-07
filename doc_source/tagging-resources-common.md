@@ -9,13 +9,9 @@ If you archive a virtual tape that is tagged, the tape maintains its tags in the
 Tags don’t have any semantic meaning but rather are interpreted as strings of characters\.
 
 The following restrictions apply to tags:
-
 + Tag keys and values are case\-sensitive\.
-
 + The maximum number of tags for each resource is 10\.
-
 + Tag keys cannot begin with `aws:`\. This prefix is reserved for AWS use\.
-
 + Valid characters for the key property are UTF\-8 letters and numbers, space, and special characters \+ \- = \. \_ : / and @\.
 
 ## Working with Tags<a name="working-with-tags-common"></a>

@@ -6,13 +6,9 @@ In addition to using the console, you can use the AWS Storage Gateway API to pro
 You can also use the AWS SDKs when developing applications with AWS Storage Gateway\. The AWS SDKs for Java, \.NET, and PHP wrap the underlying AWS Storage Gateway API, simplifying your programming tasks\. For information about downloading the SDK libraries, see [Sample Code Libraries](http://aws.amazon.com/code)\.
 
 **Topics**
-
 + [AWS Storage Gateway Required Request Headers](#AWSStorageGatewayHTTPRequestsHeaders)
-
 + [Signing Requests](#AWSStorageGatewaySigningRequests)
-
 + [Error Responses](#APIErrorResponses)
-
 + [Actions](http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_Operations.html)
 
 ## AWS Storage Gateway Required Request Headers<a name="AWSStorageGatewayHTTPRequestsHeaders"></a>
@@ -48,15 +44,12 @@ AWS Storage Gateway requires that you authenticate every request you send by sig
 After receiving your request, AWS Storage Gateway recalculates the signature using the same hash function and input that you used to sign the request\. If the resulting signature matches the signature in the request, AWS Storage Gateway processes the request\. Otherwise, the request is rejected\. 
 
 AWS Storage Gateway supports authentication using [AWS Signature Version 4](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html)\. The process for calculating a signature can be broken into three tasks:
-
 + <a name="SignatureCalculationTask1"></a><a name="SignatureCalculationTask1.title"></a>[Task 1: Create a Canonical Request](http://docs.aws.amazon.com/general/latest/gr/sigv4-create-canonical-request.html)
 
   Rearrange your HTTP request into a canonical format\. Using a canonical form is necessary because AWS Storage Gateway uses the same canonical form when it recalculates a signature to compare with the one you sent\. 
-
 + <a name="SignatureCalculationTask2"></a><a name="SignatureCalculationTask2.title"></a>[Task 2: Create a String to Sign](http://docs.aws.amazon.com/general/latest/gr/sigv4-create-string-to-sign.html)
 
   Create a string that you will use as one of the input values to your cryptographic hash function\. The string, called the *string to sign*, is a concatenation of the name of the hash algorithm, the request date, a *credential scope* string, and the canonicalized request from the previous task\. The *credential scope* string itself is a concatenation of date, region, and service information\.
-
 + <a name="SignatureCalculationTask3"></a><a name="SignatureCalculationTask3.title"></a>[Task 3: Create a Signature](http://docs.aws.amazon.com/general/latest/gr/sigv4-calculate-signature.html)
 
   Create a signature for your request by using a cryptographic hash function that accepts two input strings: your *string to sign* and a *derived key*\. The *derived key* is calculated by starting with your secret access key and using the *credential scope* string to create a series of Hash\-based Message Authentication Codes \(HMACs\)\.
@@ -66,9 +59,7 @@ AWS Storage Gateway supports authentication using [AWS Signature Version 4](http
 The following example walks you through the details of creating a signature for [ListGateways](http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_ListGateways.html)\. The example could be used as a reference to check your signature calculation method\. Other reference calculations are included in the [Signature Version 4 Test Suite](http://docs.aws.amazon.com/general/latest/gr/signature-v4-test-suite.html) of the Amazon Web Services Glossary\.
 
 The example assumes the following:
-
 + The time stamp of the request is "Mon, 10 Sep 2012 00:00:00" GMT\.
-
 + The endpoint is the US East \(Ohio\) region\.
 
 The general request syntax \(including the JSON body\) is:
@@ -133,7 +124,7 @@ Signature=6d4c40b8f2257534dbdca9f326f147a0a7a419b63aff349d9d9c737c9a0f4c81
 
 ## Error Responses<a name="APIErrorResponses"></a>
 
-
+**Topics**
 + [Exceptions](#APIGeneralExceptions)
 + [Operation Error Codes](#APIOperationErrorCodes)
 + [Error Responses](#RESTErrorResponses)
@@ -214,9 +205,7 @@ The following table shows the mapping between AWS Storage Gateway operation erro
 ### Error Responses<a name="RESTErrorResponses"></a>
 
 When there is an error, the response header information contains:
-
 + Content\-Type: application/x\-amz\-json\-1\.1 
-
 + An appropriate `4xx` or `5xx` HTTP status code
 
 The body of an error response contains information about the error that occurred\. The following sample error response shows the output syntax of response elements common to all error responses\. 

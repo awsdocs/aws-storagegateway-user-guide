@@ -2,7 +2,7 @@
 
 You can back up your data to virtual tapes, archive the tapes, and manage your virtual tape library \(VTL\) devices by using Commvault version 11\. In this topic, you can find basic documentation on how to configure the Commvault backup application for a tape gateway, perform a backup archive, and retrieve your data from archived tapes\. For detailed information about how to use Commvault, see the [Commvault documentation](http://documentation.commvault.com/commvault/v11/article?p=getting_started/c_quick_start_overview.htm) on the Commvault website\.
 
-
+**Topics**
 + [Configuring Commvault to Work with VTL Devices](#commvault-configure-software)
 + [Creating a Storage Policy and a Subclient](#commvault-prepare-tapes)
 + [Backing Up Data to a Tape in Commvault](#commvault-backup-data)
@@ -108,9 +108,7 @@ You start the archiving process by ejecting the tape\. When you archive a tape, 
 ## Restoring Data from a Tape<a name="commvault-restore-data"></a>
 
 You can restore data from a tape that has never been archived and retrieved, or from a tape that has been archived and retrieved\. For tapes that have never been archived and retrieved \(nonretrieved tapes\), you have two options to restore the data:
-
 + Restore by subclient
-
 + Restore by job ID
 
 **To restore data from a nonretrieved tape by subclient**

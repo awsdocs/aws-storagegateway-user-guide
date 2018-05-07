@@ -2,11 +2,11 @@
 
 In this section, you can find information about AWS and third\-party software, tools, and resources that can help you set up or manage your gateway, and also about AWS Storage Gateway limits\.
 
-
+**Topics**
 + [Host Setup](resource-vm-setup.md)
 + [Volume Gateway](resource-volume-gateway.md)
 + [Tape Gateway](resource-tapegateway.md)
-+ [Getting Activation Key](get-activation-key.md)
++ [Getting Activation Key For Your Gateway](get-activation-key.md)
 + [Connecting iSCSI Initiators](initiator-connection-common.md)
 + [Using AWS Direct Connect with AWS Storage Gateway](using-dx.md)
 + [Port Requirements](Resource_Ports.md)

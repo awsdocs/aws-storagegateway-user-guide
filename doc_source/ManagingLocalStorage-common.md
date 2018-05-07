@@ -5,7 +5,7 @@ The gateway virtual machine \(VM\) uses the local disks that you allocate on\-pr
 **Important**  
 When adding cache or upload buffer to an existing gateway, it is important to create new disks in your host \(hypervisor or Amazon EC2 instance\)\. Don't change the size of existing disks if the disks have been previously allocated as either a cache or upload buffer\. Do not remove cache disks that have been allocated as cache storage\.
 
-
+**Topics**
 + [Deciding the Amount of Local Disk Storage](#decide-local-disks-and-sizes)
 + [Configuring Local Storage for Your Gateway](#configuring-local-storage-common)
 + [Adding and Removing Upload Buffer](#GatewayCachedUploadBuffer)
@@ -14,15 +14,10 @@ When adding cache or upload buffer to an existing gateway, it is important to cr
 ## Deciding the Amount of Local Disk Storage<a name="decide-local-disks-and-sizes"></a>
 
 In this step, you decide the number and size of disks to allocate for your gateway\. Depending on the storage solution you deploy \(see [Plan Your Storage Gateway Deployment](WhatIsStorageGateway.md#planning-gateway-deployment)\), the gateway requires the following additional storage:
-
 + File gateways require at least one disk to use as a cache\.
-
 + Volume gateways:
-
   + Stored gateways require at least one disk to use as an upload buffer\.
-
   + Cached gateways require at least two disks\. One to use as a cache, and one to use as an upload buffer\.
-
 + Tape gateways require at least two disks\. One to use as a cache, and one to use as an upload buffer\.
 
 For information about recommended disk sizes, see [Recommended Local Disk Sizes For Your Gateway](resource-gateway-limits.md#disk-sizes)\. If you plan to deploy your gateway in production, you should consider your real workload in determining disk sizes\. For information about disk size guidelines, see [Adding and Removing Upload Buffer](#GatewayCachedUploadBuffer) and [Adding Cache Storage](#managing-cache-common)\.
@@ -80,7 +75,7 @@ For stored volumes, you configure one of the two disks for use by your applicati
 
 After you configure your initial gateway, you can allocate and configure additional upload buffer capacity or reduce the capacity as your application needs change\. To learn more about how to size your upload buffer based on your application needs, see [Sizing the Upload Buffer](#CachedLocalDiskUploadBufferSizing-common)\.
 
-
+**Topics**
 + [Adding Upload Buffer Capacity](#GatewayCachedUploadBufferAdding)
 + [Removing Upload Buffer Capacity](#GatewayCachedUploadBufferRemoving)
 + [Sizing the Upload Buffer](#CachedLocalDiskUploadBufferSizing-common)
@@ -88,9 +83,7 @@ After you configure your initial gateway, you can allocate and configure additio
 ### Adding Upload Buffer Capacity<a name="GatewayCachedUploadBufferAdding"></a>
 
 As your application needs change and you add more volume capacity, you might need to increase the gateway's upload buffer capacity as well\. You can add more buffer capacity to your gateway without interrupting existing gateway functions\. Note that when you add more upload buffer capacity, you do so with the gateway VM turned on\. However, when you reduce the amount of upload buffer capacity, you must first turn off the VM\. You can add more upload buffer capacity by using the Storage Gateway console or the Storage Gateway API: 
-
 + For information on adding buffer capacity with the console, see [To configure upload buffer or cache storage ](#GatewayWorkingStorageCachedTaskBuffer)\. This procedure assumes that your gateway has at least one local disk available on its VM that you can allocate as an upload buffer to the gateway\.
-
 + For information on adding buffer capacity with the API, see [AddUploadBuffer](http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_AddUploadBuffer.html)\. 
 
 ### Removing Upload Buffer Capacity<a name="GatewayCachedUploadBufferRemoving"></a>
@@ -122,7 +115,7 @@ Before you stop the gateway, ensure that no application is writing data to it an
 **Important**  
 After removing a disk used as an upload buffer, you must turn the gateway back on before adding new disks to the VM\. 
 
-   After a gateway restart, a storage volume might go through the [PASS THROUGH](managing-volumes.md#VolumeStatusPASSTHROUGH) and [BOOTSTRAPPING](managing-volumes.md#VolumeStatusBOOTSTRAPPING) states as the gateway adjusts to the upload buffer disk that you removed\. A volume that passes through these two states will eventually come to the ACTIVE state\. You can use a volume during the PASS THROUGH and BOOTSTRAPPING states\. However, you cannot take snapshots of the volume in these states\. You can monitor your volume status in the **Volumes** tab on the Storage Gateway console\.
+   After a gateway restart, a storage volume might go through the PASS THROUGH and BOOTSTRAPPING states as the gateway adjusts to the upload buffer disk that you removed\. A volume that passes through these two states will eventually come to the ACTIVE state\. You can use a volume during the PASS THROUGH and BOOTSTRAPPING states\. However, you cannot take snapshots of the volume in these states\. You can monitor your volume status in the **Volumes** tab on the Storage Gateway console\.
 
 ### Sizing the Upload Buffer<a name="CachedLocalDiskUploadBufferSizing-common"></a>
 
@@ -172,7 +165,7 @@ Gateways created with stored volumes don't require cache storage\.
 **Important**  
 When adding cache or upload buffer to an existing gateway, it is important to create new disks in your host \(hypervisor or Amazon EC2 instance\)\. Don't change the size of existing disks if the disks have been previously allocated as either a cache or upload buffer\. Do not remove cache disks that have been allocated as cache storage\.
 
-
+**Topics**
 + [Sizing Cache Storage](#CachedLocalDiskCacheSizing-common)
 + [Adding Cache Storage for Your Gateway](#GatewayCachedCacheStorage)
 
@@ -187,9 +180,7 @@ The following diagram highlights the cache storage in the larger picture of the 
 The amount of cache storage your gateway requires depends on how much of your application data you want to provide low\-latency access to\. The cache storage must be at least the size of the upload buffer\. This guideline helps ensure that the cache storage is large enough to persistently hold all data that has not yet been uploaded to Amazon S3\. When your cache storage has filled up with dirty data \(that is, data that has not been uploaded to AWS\), application write operations to your volumes or tapes are blocked until more cache storage becomes available\. However, application read operations from the volume or tapes are still allowed\.
 
 Here are some guidelines you can follow to help ensure you have adequate cache storage allocated for your gateway\. 
-
 + ****Use the sizing formula\.**** – As your application needs change, you should periodically review the recommended formula for sizing cache storage\. For more information, see [Sizing Cache Storage](#CachedLocalDiskCacheSizing-common)\.
-
 + ****Use Amazon CloudWatch metrics\.**** – You can proactively avoid filling up cache storage with dirty data by monitoring how cache storage is being used—particularly, by reviewing cache misses\. CloudWatch provides usage metrics such as the `CachePercentDirty` and `CacheHitPercent` metrics for monitoring how much of the gateway's cache storage has not been uploaded to Amazon S3\. You can set an alarm to trigger a notification to you when the percentage of the cache that is dirty exceeds a threshold or the cache hit percentage falls below a threshold\. Both of these can indicate that the cache storage size is not adequate for the gateway\. For a full list of Storage Gateway metrics, see [Monitoring Your Gateway and Resources](Main_monitoring-gateways-common.md)\.
 
 ### Sizing Cache Storage<a name="CachedLocalDiskCacheSizing-common"></a>
@@ -207,7 +198,5 @@ After you configure your initial gateway cache storage as described in [Configur
 You can add more cache storage to your gateway without interrupting existing gateway functions and with the gateway VM turned on\. 
 
 You can add more cache storage by using the Storage Gateway console or the Storage Gateway API: 
-
 + For information on adding cache storage using the console, [To configure upload buffer or cache storage ](#GatewayWorkingStorageCachedTaskBuffer)\. This procedure assumes that your activated gateway has at least one local disk available on its VM that you can allocate as cache storage for the gateway\. Don't remove cache disks that have been allocated as cache storage\.
-
 + For information on adding cache storage by using the API, see [AddCache](http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_AddCache.html)\. 

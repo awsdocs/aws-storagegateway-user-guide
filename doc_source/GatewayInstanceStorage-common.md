@@ -18,7 +18,7 @@ There are times you might find you don’t need the amount of storage you alloca
 
 **To remove an Amazon EBS volume**
 **Warning**  
-These steps apply only for Amazon EBS volumes allocated as upload buffer space\. If you remove an Amazon EBS volume that is allocated as cache storage from a gateway, virtual tapes on the gateway will have the IRRECOVERABLE status, and you risk data loss\. For more information on the IRRECOVERABLE status, see [Tape Status Information in a VTL](managing-gateway-vtl.md#tape-status)\.
+These steps apply only for Amazon EBS volumes allocated as upload buffer space\. If you remove an Amazon EBS volume that is allocated as cache storage from a gateway, virtual tapes on the gateway will have the IRRECOVERABLE status, and you risk data loss\. For more information on the IRRECOVERABLE status, see [Understanding Tape Status Information in a VTL](managing-gateway-vtl.md#tape-status)\.
 
 1. Shut down the gateway by following the approach described in the [Shutting Down Your Gateway VM](MaintenanceShutDown-common.md) section\.
 

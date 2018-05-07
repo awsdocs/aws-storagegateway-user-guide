@@ -2,7 +2,7 @@
 
 In this section, you can find instructions about how to download, deploy, and activate a volume gateway\. 
 
-
+**Topics**
 + [Choosing a Gateway Type](#GettingStartedSelectGatewayType-volume)
 + [Choosing a Host Platform and Downloading the VM](#hosting-options-volume)
 + [Connecting to Your Gateway](#GettingStartedBeginActivateGateway-volume)
@@ -12,9 +12,7 @@ In this section, you can find instructions about how to download, deploy, and ac
 ## Choosing a Gateway Type<a name="GettingStartedSelectGatewayType-volume"></a>
 
 With a volume gateway, you can create storage volumes in the AWS Cloud that your on\-premises applications can access as Internet Small Computer System Interface \(iSCSI\) targets\. There are two options:
-
 + [Cached volumes](StorageGatewayConcepts.md#storage-gateway-cached-concepts)—Store your data in AWS and retain a copy of frequently accessed data subsets locally\.
-
 + [Stored volumes ](StorageGatewayConcepts.md#storage-gateway-stored-volume-concepts)—Store all your data locally and asynchronously back up point\-in\-time snapshots to AWS\.
 
 **To choose a gateway type**
@@ -49,15 +47,11 @@ The \.zip file is over 500 MB in size and might take some time to download, depe
 1. Deploy the downloaded image to your hypervisor\. You need to add at least one local disk for your cache and one local disk for your upload buffer during the deployment\. A file gateway requires only one local disk for a cache\. For information about local disk requirements, see [Hardware and Storage Requirements](Requirements.md#requirements-hardware-storage)\.
 
    If you choose VMware, do the following:
-
    + Store your disk in **Thick provisioned format**\. When you use thick provisioning, the disk storage is allocated immediately, resulting in better performance\. In contrast, thin provisioning allocates storage on demand\. On\-demand allocation can affect the normal functioning of AWS Storage Gateway\. For Storage Gateway to function properly, the VM disks must be stored in thick\-provisioned format\.
-
    + Configure your gateway VM to use paravirtualized disk controllers\. For more information, see [Configuring the AWS Storage Gateway VM to Use Paravirtualized Disk Controllers](configure-vmware.md#SetParaVirtualization-common)\.
 
    If you choose Microsoft Hyper\-V, do the following: 
-
    + Configure the disk type as **Fixed size**\. When you use fixed\-size provisioning, the disk storage is allocated immediately, resulting in better performance\. If you don't use fixed\-size provisioning, the storage is allocated on demand\. On\-demand allocation can affect the functioning of AWS Storage Gateway\. For Storage Gateway to function properly, the VM disks must be stored in fixed\-size provisioned format\. 
-
    + When allocating disks, choose **virtual hard disk \(\.vhd\) file**\. Storage Gateway supports the \.vhdx file type\. By using this file type, you can create larger virtual disks than with other file types\. If you create a \.vhdx type virtual disk, make sure that the size of the virtual disks that you create doesn't exceed the recommended disk size for your gateway\.
 
    For both VMware and Microsoft Hyper\-V, synchronizing the VM time with the host time is required for successful gateway activation\. Make sure that your host clock is set to the correct time and synchronize it with a Network Time Protocol \(NTP\) server\. 
@@ -75,9 +69,7 @@ Make sure that you connect to the correct gateway type\. The \.ova files and AMI
 **To get the IP address for your gateway VM from the local console**
 
 1. Log on to your gateway VM local console\. For detailed instructions, see the following:
-
    + VMware ESXi—[Accessing the Gateway Local Console with VMware ESXi](manage-on-premises-vmware.md#MaintenanceConsoleWindowVMware-common)\.
-
    + Microsoft Hyper\-V—[Access the Gateway Local Console with Microsoft Hyper\-V](manage-on-premises-Hyperv.md#MaintenanceConsoleWindowHyperV-common)\.
 
 1. Get the IP address from the top of the menu page, and make note of it for later use\.
@@ -109,9 +101,7 @@ When your gateway VM is deployed and running, you configure your gateway setting
 **To activate your gateway**
 
 1. To complete the activation process, provide the information on the activation page to configure your gateway setting:
-
    + **Gateway Time Zone** specifies the time zone to use for your gateway\.
-
    + **Gateway Name** identifies your gateway\. You use this name to manage your gateway in the console; you can change it after the gateway is activated\. This name must be unique to your account\. 
 
      The following screenshot shows the activation page for a volume gateway\.   
@@ -130,9 +120,7 @@ When you deployed the VM, you allocated local disks for your gateway\. Now you c
 **Note**  
 If you allocate local disks on a VMware host, make sure to configure the disks to use paravirtualized disk controllers\.  
 When adding a cache or upload buffer to an existing gateway, make sure to create new disks in your host \(hypervisor or Amazon EC2 instance\)\. Don't change the size of existing disks if the disks have been previously allocated as either a cache or upload buffer\.
-
 + For a [cached volume](StorageGatewayConcepts.md#storage-gateway-cached-concepts), you configure at least one disk for an upload buffer and the other for cache storage\.
-
 + For a [stored volume](StorageGatewayConcepts.md#storage-gateway-stored-volume-concepts), you configure at least one disk for an upload buffer and allocate the rest of the storage for your application data\.<a name="local-storage-cached-volume"></a>
 
 **To configure local disks**

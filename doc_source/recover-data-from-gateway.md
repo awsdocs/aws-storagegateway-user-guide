@@ -5,7 +5,7 @@ Although it is rare, your gateway might encounter an unrecoverable failure\. Suc
 **Important**  
 AWS Storage Gateway doesn’t support recovering a gateway VM from a snapshot that is created by your hypervisor or from your Amazon EC2 ami\. If your gateway VM malfunctions, activate a new gateway and recover your data to that gateway using the instructions following\.
 
-
+**Topics**
 + [Recovering from an Unexpected Virtual Machine Shutdown](#recover-from-gateway-shutdown)
 + [Recovering Your Data from a Malfunctioning Gateway or VM](#recover-from-gateway)
 + [Retrieving Your Data from an Irrecoverable Volume](#recover-from-volume)
@@ -17,11 +17,8 @@ AWS Storage Gateway doesn’t support recovering a gateway VM from a snapshot th
 ## Recovering from an Unexpected Virtual Machine Shutdown<a name="recover-from-gateway-shutdown"></a>
 
 If your VM shuts down unexpectedly, for example during a power outage, your gateway becomes unreachable\. When power and network connectivity are restored, your gateway becomes reachable and starts to function normally\. Following are some steps you can take at that point to help recover your data:
-
 + If an outage causes network connectivity issues, you can troubleshoot the issue\. For information about how to test network connectivity, see [Testing Your Gateway Connection to the Internet](manage-on-premises-common.md#MaintenanceTestGatewayConnectivity-common)\.
-
 +  For cached volumes and tapes setups, when your gateway becomes reachable, your volumes or tapes go into BOOTSTRAPPING status\. This functionality ensures that your locally stored data continues to be synchronized with AWS\. For more information on this status, see [Understanding Volume Status](managing-volumes.md#StorageVolumeStatuses)\.
-
 + If your gateway malfunctions and issues occur with your volumes or tapes as a result of an unexpected shutdown, you can recover your data\. For information about how to recover your data, see the sections following that apply to your scenario\.
 
 ## Recovering Your Data from a Malfunctioning Gateway or VM<a name="recover-from-gateway"></a>
@@ -73,9 +70,7 @@ For detailed information about how to retrieve your data from an irrecoverable v
 ## Recovering Your Data from an Irrecoverable Tape<a name="recover-from-tape"></a>
 
 If your tape encounters a failure and the status of the tape is IRRECOVERABLE, we recommend you use one of the following options to recover your data or resolve the failure depending on your situation: 
-
 + If you need the data on the irrecoverable tape, you can recover the tape to a new gateway\.
-
 + If you don't need the data on the tape, and the tape has never been archived, you can simply delete the tape from your tape gateway\.
 
    For detailed information about how to recover your data or resolve the failure if your tape is IRRECOVERABLE, see [Troubleshooting Irrecoverable Tapes](Main_TapesIssues-vtl.md#IrrecoverableTapes)\.
@@ -83,9 +78,7 @@ If your tape encounters a failure and the status of the tape is IRRECOVERABLE, w
 ## Recovering Your Data from a Malfunctioning Cache Disk<a name="recover-from-cahe-disk"></a>
 
 If your cache disk encounters a failure, we recommend you use the following steps to recover your data depending on your situation:
-
 + If the malfunction occurred because a cache disk was removed from your host, shut down the gateway, re\-add the disk, and restart the gateway\.
-
 + If the cache disk is corrupted or not accessible, shut down the gateway, reset the cache disk, reconfigure the disk for cache storage, and restart the gateway\.
 
 For detailed information, see [You Need to Recover a Virtual Tape from a Malfunctioning Cache Disk](Main_TapesIssues-vtl.md#recover-from-failed-disk)\.

@@ -4,7 +4,7 @@ In this section, you can find information about how to monitor your tape gateway
 
 Storage Gateway provides CloudWatch metrics at no additional charge\. Storage Gateway metrics are recorded for a period of two weeks\. By using these metrics, you can access historical information and get a better perspective of how your tape gateway and virtual tapes are performing\. For detailed information about CloudWatch, see the *[Amazon CloudWatch User Guide](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/)*\. 
 
-
+**Topics**
 + [Using Amazon CloudWatch Metrics](#UsingCloudWatchConsole-vtl-common)
 + [Measuring Performance Between Your Tape Gateway and AWS](#PerfGatewayAWS-vtl-common)
 
@@ -13,9 +13,7 @@ Storage Gateway provides CloudWatch metrics at no additional charge\. Storage Ga
 You can get monitoring data for your tape gateway by using either the AWS Management Console or the CloudWatch API\. The console displays a series of graphs based on the raw data from the CloudWatch API\. The CloudWatch API can also be used through one of the [Amazon AWS Software Development Kits \(SDKs\)](http://aws.amazon.com/code) or the [Amazon CloudWatch API](http://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/) tools\. Depending on your needs, you might prefer to use either the graphs displayed in the console or retrieved from the API\.
 
 Regardless of which method you choose to use to work with metrics, you must specify the following information: 
-
 + The metric dimension to work with\. A *dimension* is a name\-value pair that helps you to uniquely identify a metric\. The dimensions for Storage Gateway are `GatewayId` and `GatewayName`\. In the CloudWatch console, you can use the `Gateway Metrics` view to easily select gateway\-specific and tape\-specific dimensions\. For more information about dimensions, see [Dimensions](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Dimension) in the *Amazon CloudWatch User Guide*\.
-
 + The metric name, such as `ReadBytes`\.
 
 The following table summarizes the types of Storage Gateway metric data that are available to you\. 
@@ -26,11 +24,8 @@ The following table summarizes the types of Storage Gateway metric data that are
 | AWS/StorageGateway |  GatewayId, GatewayName  |  These dimensions filter for metric data that describes aspects of the tape gateway\. You can identify a tape gateway to work with by specifying both the `GatewayId` and the `GatewayName` dimensions\.  Throughput and latency data of a tape gateway is based on all the virtual tapes in the tape gateway\. Data is available automatically in 5\-minute periods at no charge\.   | 
 
 Working with gateway and tape metrics is similar to working with other service metrics\. You can find a discussion of some of the most common metrics tasks in the CloudWatch documentation listed following:
-
 + [Viewing Available Metrics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/viewing_metrics_with_cloudwatch.html)
-
 + [Getting Statistics for a Metric](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/US_GetStatistics.html)
-
 + [Creating CloudWatch Alarms](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html)
 
 ## Measuring Performance Between Your Tape Gateway and AWS<a name="PerfGatewayAWS-vtl-common"></a>

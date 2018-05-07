@@ -2,7 +2,7 @@
 
 For a gateway deployed on\-premises, you can perform the following maintenance tasks using the VMware host local console\. 
 
-
+**Topics**
 + [Accessing the Gateway Local Console with VMware ESXi](#MaintenanceConsoleWindowVMware-common)
 + [Configuring Your Gateway for Multiple NICs in a VMware ESXi Host](#MaintenanceMultiNIC-vmaware)
 

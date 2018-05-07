@@ -6,7 +6,7 @@ For detailed information about how to install and use the Dell EMC NetWorker sof
 
 For more information about compatible backup applications, see [Supported Third\-Party Backup Applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
 
-
+**Topics**
 + [Configuring Dell EMC NetWorker to Work with VTL Devices](#emc-configure-software)
 + [Enabling Import of WORM Tapes into Dell EMC NetWorker](#emc-import-tapes)
 + [Backing Up Data to a Tape in Dell EMC NetWorker](#emc-write-data-to-tape)

@@ -2,7 +2,7 @@
 
 You can find information about the most typical issues you might encounter when working with volumes, and actions that we suggest that you take to fix them\.
 
-
+**Topics**
 + [The Console Says That Your Volume Is Not Configured](#troubleshoot-volume-issues.VolumeNotConfigured)
 + [The Console Says That Your Volume Is Irrecoverable](#troubleshoot-volume-issues.VolumeIrrecoverable)
 + [Your Cached Gateway is Unreachable And You Want to Recover Your Data](#RecoverySnapshotTroubleshooting)
@@ -65,19 +65,14 @@ If your scheduled snapshot of a volume did not occur, check whether your volume 
 ## You Need to Remove or Replace a Disk That Has Failed<a name="troubleshoot-volume-issues.RemoveVolume"></a>
 
 If you need to replace a volume disk that has failed or replace a volume because it isn't needed, you should remove the volume first using the AWS Storage Gateway console\. For more information, see [To remove a volume](managing-volumes.md#CachedRemovingAStorageVolume)\. You then use the hypervisor client to remove the backing storage:
-
 + For VMware ESXi, remove the backing storage as described in [Deleting a Volume](managing-volumes.md#ApplicationStorageVolumesCached-Removing)\.
-
 + For Microsoft Hyper\-V, remove the backing storage\.
 
 ## Throughput from Your Application to a Volume Has Dropped to Zero<a name="troubleshoot-volume-issues.ThroughputZero"></a>
 
 If throughput from your application to a volume has dropped to zero, try the following:
-
 + If you are using the VMware vSphere client, check that your volume's **Host IP** address matches one of the addresses that appears in the vSphere client on the **Summary** tab\. You can find the **Host IP** address for a storage volume in the AWS Storage Gateway console in the **Details** tab for the volume\. A discrepancy in the IP address can occur, for example, when you assign a new static IP address to your gateway\. If there is a discrepancy, restart your gateway from the AWS Storage Gateway console as shown in [Shutting Down Your Gateway VM](MaintenanceShutDown-common.md)\. After the restart, the **Host IP** address in the **ISCSI Target Info** tab for a storage volume should match an IP address shown in the vSphere client on the **Summary** tab for the gateway\. 
-
 + If there is no IP address in the **Host IP** box for the volume and the gateway is online\. For example, this could occur if you create a volume associated with an IP address of a network adapter of a gateway that has two or more network adapters\. When you remove or disable the network adapter that the volume is associated with, the IP address might not appear in the **Host IP** box\. To address this issue, delete the volume and then re\-create it preserving its existing data\.
-
 + Check that the iSCSI initiator your application uses is correctly mapped to the iSCSI target for the storage volume\. For more information about connecting to storage volumes, see [Connecting to Your Volumes to a Windows Client](initiator-connection-common.md#ConfiguringiSCSIClient)\.
 
 You can view the throughput for volumes and create alarms from the Amazon CloudWatch console\. For more information about measuring throughput from your application to a volume, see [Measuring Performance Between Your Application and Gateway](GatewayMetrics-common.md#PerfAppGateway-common)\.
@@ -85,9 +80,7 @@ You can view the throughput for volumes and create alarms from the Amazon CloudW
 ## A Cache Disk in Your Gateway Encounters a Failure<a name="troubleshoot-volume-issues.CacheDiskFail"></a>
 
 If one or more cache disks in your gateway encounters a failure, the gateway prevents read and write operations to your virtual tapes and volumes\. To resume normal functionality, reconfigure your gateway as described following:
-
 + If the cache disk is inaccessible or unusable, delete the disk from your gateway configuration\.
-
 + If the cache disk is still accessible and useable, reconnect it to your gateway\.
 
 **Note**  

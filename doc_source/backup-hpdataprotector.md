@@ -1,24 +1,24 @@
-# Testing Your Setup by Using HPE Data Protector<a name="backup-hpdataprotector"></a>
+# Testing Your Setup by Using Micro Focus \(HPE\) Data Protector<a name="backup-hpdataprotector"></a>
 
-You can back up your data to virtual tapes, archive the tapes, and manage your virtual tape library \(VTL\) devices by using HPE Data Protector v9\.x\. In this topic, you can find basic documentation on how to configure the HPE Data Protector software for a tape gateway and perform a backup and restore operation\. For detailed information about how to use the HPE Data Protector software, see the Hewlett Packard documentation\. For more information about compatible backup applications, see [Supported Third\-Party Backup Applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
+You can back up your data to virtual tapes, archive the tapes, and manage your virtual tape library \(VTL\) devices by using Micro Focus \(HPE\) Data Protector v9\.x\. In this topic, you can find basic documentation on how to configure the Micro Focus \(HPE\) Data Protector software for a tape gateway and perform a backup and restore operation\. For detailed information about how to use the Micro Focus \(HPE\) Data Protector software, see the Hewlett Packard documentation\. For more information about compatible backup applications, see [Supported Third\-Party Backup Applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
 
-
-+ [Configuring HPE Data Protector to Work with VTL Devices](#hpdataprotector-configure-software)
+**Topics**
++ [Configuring Micro Focus \(HPE\) Data Protector to Work with VTL Devices](#hpdataprotector-configure-software)
 + [Preparing Virtual Tapes for Use with HPE Data Protector](#hpdataprotector-prepare-tapes)
 + [Loading Tapes into a Media Pool](#hpdataprotector-load-tapes-into-media-pool)
 + [Backing Up Data to a Tape](#hpdataprotector-backup-to-tape)
 + [Archiving a Tape](#hpdataprotector-archive-tape)
 + [Restoring Data from a Tape](#hpdataprotector-restore-tape)
 
-## Configuring HPE Data Protector to Work with VTL Devices<a name="hpdataprotector-configure-software"></a>
+## Configuring Micro Focus \(HPE\) Data Protector to Work with VTL Devices<a name="hpdataprotector-configure-software"></a>
 
-After you have connected the virtual tape library \(VTL\) devices to the client, you configure HPE Data Protector to recognize your devices\. For information about how to connect VTL devices to the client, see [Connecting Your VTL Devices](GettingStarted-create-tape-gateway.md#GettingStartedAccessTapesVTL)\.
+After you have connected the virtual tape library \(VTL\) devices to the client, you configure Micro Focus \(HPE\) Data Protector to recognize your devices\. For information about how to connect VTL devices to the client, see [Connecting Your VTL Devices](GettingStarted-create-tape-gateway.md#GettingStartedAccessTapesVTL)\.
 
-The HPE Data Protector software doesn't automatically recognize tape gateway devices\. To have the software recognize these devices, manually add the devices and then discover the VTL devices, as described following\.
+The Micro Focus \(HPE\) Data Protector software doesn't automatically recognize tape gateway devices\. To have the software recognize these devices, manually add the devices and then discover the VTL devices, as described following\.
 
 **To add the VTL devices**
 
-1. In the HPE Data Protector main window, choose the **Devices & Media** shelf in the list at top left\. 
+1. In the Micro Focus \(HPE\) Data Protector main window, choose the **Devices & Media** shelf in the list at top left\. 
 
    Open the context \(right\-click\) menu for **Devices**, and choose **Add Device**\.   
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/HPDataProtector_DevicesAndMedia.png)
@@ -32,11 +32,8 @@ The HPE Data Protector software doesn't automatically recognize tape gateway dev
    1. For **Select what action Data Protector should take if the drive is busy**, choose "Abort" or your preferred action\. 
 
    1. Choose to enable these options:
-
       + **Barcode reader support**
-
       + **Automatically discover changed SCSI address**
-
       + **SCSI Reserve/Release \(robotic control\)**
 
    1. Leave **Use barcode as medium label on initialization** clear \(unchecked\), unless your system requires it\. 
@@ -52,13 +49,9 @@ Your tape library is now ready to use\. To load tapes into it, see the next sect
 ## Preparing Virtual Tapes for Use with HPE Data Protector<a name="hpdataprotector-prepare-tapes"></a>
 
 Before you can back up data to a virtual tape, you need to prepare the tape for use\. Doing this involves the following actions:
-
 + Load a virtual tape into a tape library
-
 + Load the virtual tape into a slot
-
 + Create a media pool
-
 + Load the virtual tape into media pool
 
 In the following sections, you can find steps to guide you through this process\. 
@@ -78,11 +71,8 @@ Your tape library should now be listed under **Devices**\. If you don't see it, 
 1. On the following screen, choose **Advanced**\. The **Advanced Options** pop\-up screen appears\.
 
    1. On the **Settings** tab, you should consider the following options:
-
       + **CRC Check** \(to detect accidental data changes\)
-
       + **Detect dirty drive** \(to ensure the drive is clean before backup\)
-
       + **SCSI Reserve/Release\(drive\)** \(to avoid tape contention\)
 
       For testing purposes, you can leave these options disabled \(unchecked\)\.
@@ -92,9 +82,7 @@ Your tape library should now be listed under **Devices**\. If you don't see it, 
    1. Choose **OK** to close the advanced options screen, and then choose **Next** to continue\.
 
 1. On the next screen, choose these options under **Device Policies**:
-
    + **Device may be used for restore** 
-
    + **Device may be used as source device for object copy** 
 
 1. Choose **Finish** to finish adding your tape drive to your tape library\.
@@ -106,11 +94,8 @@ Now that you have a tape drive in your tape library, you can load virtual tapes 
 **To load a tape into a slot**
 
 1. In the tape library tree node, open the node labeled **Slots**\. Each slot has a status represented by an icon:
-
    + A green tape means that a tape is already loaded into the slot\.
-
    + A gray slot means that the slot is empty\.
-
    + A cyan question mark means that the tape in that slot is not formatted\.
 
 1. For an empty slot, open the context \(right\-click\) menu, and then choose **Enter**\. If you have existing tapes, choose one to load into that slot\. 
@@ -152,7 +137,6 @@ You should now see your chosen slot change from a status of unassigned \(gray\) 
 At this point, you should have everything configured to begin using your virtual tape library with HPE Data Protector\. To double\-check that this is the case, use the following procedure\.
 
 **To verify that your tape library is configured for use**
-
 + Choose **Drives**, then open the context \(right\-click\) menu for your drive, and choose **Scan**\. 
 
 If your configuration is correct, a message confirms that your media was successfully scanned\.

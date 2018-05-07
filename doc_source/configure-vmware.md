@@ -2,7 +2,7 @@
 
 When configuring VMware for AWS Storage Gateway, make sure to synchronize your VM time with your host time, configure VM to use paravirtualized disk controllers when provisioning storage and provide protection from failures in the infrastructure layer supporting a gateway VM\.
 
-
+**Topics**
 + [Synchronizing VM Time with Host Time](#GettingStartedSyncVMTime-common)
 + [Configuring the AWS Storage Gateway VM to Use Paravirtualized Disk Controllers](#SetParaVirtualization-common)
 + [Using AWS Storage Gateway with VMware High Availability](#UsingWithVMwareHAVmware-common)
@@ -89,11 +89,7 @@ You must complete this step to avoid issues in identifying these disks when you 
 VMware High Availability \(HA\) is a component of vSphere that can provide protection from failures in the infrastructure layer supporting a gateway VM\. VMware HA does this by using multiple hosts configured as a cluster so that if a host running a gateway VM fails, the gateway VM can be restarted automatically on another host within the cluster\. For more information about VMware HA, see [VMware HA: Concepts and Best Practices](http://www.vmware.com/resources/techresources/402) on the VMware website\.
 
 To use AWS Storage Gateway with VMware HA, we recommend doing the following things:
-
 + Deploy the VMware ESX `.ova` downloadable package that contains the AWS Storage Gateway VM on only one host in a cluster\.
-
 + When deploying the `.ova` package, select a data store that is not local to one host\. Instead, use a data store that is accessible to all hosts in the cluster\. If you select a data store that is local to a host and the host fails, then the data source might not be accessible to other hosts in the cluster and failover to another host might not succeed\. 
-
 + To prevent your initiator from disconnecting from storage volume targets during failover, follow the recommended iSCSI settings for your operating system\. In a failover event, it can take from a few seconds to several minutes for a gateway VM to start in a new host in the failover cluster\. The recommended iSCSI timeouts for both Windows and Linux clients are greater than the typical time it takes for failover to occur\. For more information on customizing Windows clients' timeout settings, see [Customizing Your Windows iSCSI Settings](initiator-connection-common.md#CustomizeWindowsiSCSISettings)\. For more information on customizing Linux clients' timeout settings, see [Customizing Your Linux iSCSI Settings](initiator-connection-common.md#CustomizeLinuxiSCSISettings)\.
-
 + With clustering, if you deploy the `.ova` package to the cluster, select a host when you are prompted to do so\. Alternately, you can deploy directly to a host in a cluster\. 

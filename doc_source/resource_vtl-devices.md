@@ -2,14 +2,12 @@
 
 Your tape gateway setup provides the following SCSI devices, which you select when activating your gateway\.
 
-
+**Topics**
 + [Selecting a Medium Changer After Gateway Activation](#change-mediumchanger-vtl)
 + [Updating the Device Driver for Your Medium Changer](#update-vtl-device-driver)
 
 For medium changers, AWS Storage Gateway works with the following: 
-
 + AWS\-Gateway\-VTL—This device is provided with the gateway\.
-
 + STK\-L700—This device emulation is provided with the gateway\.
 
   When activating your tape gateway, you select your backup application from the list and storage gateway uses the appropriate medium changer\. If your backup application is not listed, you choose **Other** and then choose the medium changer that works with backup application\.
@@ -20,7 +18,6 @@ For medium changers, AWS Storage Gateway works with the following:
 We highly recommend that you choose the medium changer that's listed for your backup application\. Other medium changers might not function properly\. You can choose a different medium changer after the gateway is activated\. For more information, see [Selecting a Medium Changer After Gateway Activation](#change-mediumchanger-vtl)\.
 
 For tape drives, AWS Storage Gateway works with the following:
-
 + IBM\-ULT3580\-TD5—This device emulation is provided with the gateway\.
 
 ## Selecting a Medium Changer After Gateway Activation<a name="change-mediumchanger-vtl"></a>

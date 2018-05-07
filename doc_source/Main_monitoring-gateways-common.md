@@ -2,7 +2,7 @@
 
 In this section, you can find information about how to monitor a gateway, including monitoring resources associated with the gateway and monitoring the upload buffer and cache storage\. You use the AWS Management Console to view metrics for your gateway\. For example, you can view the number of bytes used in read and write operations, the time spent in read and write operations, and the time taken to retrieve data from the AWS cloud\. With metrics, you can track the health of your gateway and set up alarms to notify you when one or more metrics fall outside a defined threshold\. 
 
-
+**Topics**
 + [Understanding Gateway Metrics](#MonitoringGateways-common)
 + [Monitoring the Upload Buffer](#PerfUploadBuffer-common)
 + [Monitoring Cache Storage](#PerfCache-common)
@@ -19,7 +19,7 @@ For the discussion in this topic, we define *gateway* metrics as metrics that ar
 
 When working with gateway metric data, you specify the unique identification of the gateway that you are interested in viewing metrics for\. To do this, you specify both the `GatewayId` and the `GatewayName` values\. When you want to work with metric for a gateway, you specify the gateway *dimension* in the metrics namespace, which distinguishes a gateway\-specific metric from a volume\-specific metric\. For more information, see [Using Amazon CloudWatch Metrics](GatewayMetrics-common.md#UsingCloudWatchConsole-common)\. 
 
-
+**Topics**
 
 The following table describes the Storage Gateway metrics that you can use to get information about your gateway\. The entries in the table are grouped functionally by measure\. 
 

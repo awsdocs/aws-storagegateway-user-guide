@@ -2,7 +2,7 @@
 
 You can find information following about actions to take if you experience unexpected issues with your virtual tapes\.
 
-
+**Topics**
 + [Recovering a Virtual Tape From An Unrecoverable Gateway](#recovery-tapes)
 + [Troubleshooting Irrecoverable Tapes](#IrrecoverableTapes)
 
@@ -10,7 +10,7 @@ You can find information following about actions to take if you experience unexp
 
 Although it is rare, your tape gateway might encounter an unrecoverable failure\. Such a failure can occur in your hypervisor host, the gateway itself, or the cache disks\. If a failure occurs, you can recover your tapes by following the troubleshooting instructions in this section\.
 
-
+**Topics**
 + [You Need to Recover a Virtual Tape from a Malfunctioning Tape Gateway](#creating-recovery-tape-vtl)
 + [You Need to Recover a Virtual Tape from a Malfunctioning Cache Disk](#recover-from-failed-disk)
 
@@ -55,9 +55,7 @@ Storage Gateway moves the tape from the failed tape gateway to the tape gateway 
 If your cache disk encounters an error, the gateway prevents read and write operations on virtual tapes in the gateway\. For example, an error can occur when a disk is corrupted or removed from the gateway\. The AWS Storage Gateway console displays a message about the error\. 
 
 In the error message, Storage Gateway prompts you to take one of two actions that can recover your tapes:
-
 +  **Shut Down and Re\-Add Disks **– Take this approach if the disk has intact data and has been removed\. For example, if the error occurred because a disk was removed from your host by accident but the disk and the data is intact, you can re\-add the disk\. To do this, see the procedure later in this topic\.
-
 +  **Reset Cache Disk** – Take this approach if the cache disk is corrupted or not accessible\. If the disk error causes the cache disk to be inaccessible, unusable, or corrupted, you can reset the disk\. If you reset the cache disk, tapes that have clean data \(that is, tapes for which data in the cache disk and Amazon S3 are synchronized\) will continue to be available for you to use\. However, tapes that have data that is not synchronized with Amazon S3 are automatically recovered\. The status of these tapes is set to RECOVERED, but the tapes will be read\-only\. For information about how to remove a disk from your host, see [Adding and Removing Upload Buffer](ManagingLocalStorage-common.md#GatewayCachedUploadBuffer)\.
 **Important**  
 If the cache disk you are resetting contains data that has not been uploaded to Amazon S3 yet, that data can be lost\. After you reset cache disks, no configured cache disks will be left in the gateway, so you must configure at least one new cache disk for your gateway to function properly\.
@@ -73,11 +71,8 @@ If the cache disk you are resetting contains data that has not been uploaded to 
 1. Restart the gateway\. For information about how to restart a gateway, see [Shutting Down Your Gateway VM](MaintenanceShutDown-common.md)\.
 
 After the gateway restarts, you can verify the status of the cache disks\. The status of a disk can be one of the following:
-
 + **present** – The disk is available to use\.
-
 + **missing** – The disk is no longer connected to the gateway\.
-
 + **mismatch** – The disk node is occupied by a disk that has incorrect metadata, or the disk content is corrupted\.
 
 **To reset and reconfigure a cache disk**
@@ -110,9 +105,7 @@ If your virtual tape fails unexpectedly, AWS Storage Gateway sets the status of 
 ### You Need to Recover Data From an IRRECOVERABLE Tape<a name="IrrecoverableTapes.NeedTape"></a>
 
 If you have a virtual tape with the status IRRECOVERABLE, and you need to work with it, try one of the following: 
-
 + Activate a new tape gateway if you don't have one activated\. For more information, see [Choosing a Gateway Type](create-gateway-vtl.md#GettingStartedSelectGatewayType)\.
-
 + Disable the tape gateway that contains the irrecoverable tape, and recover the tape from a recovery point to the new tape gateway\. For more information, see [You Need to Recover a Virtual Tape from a Malfunctioning Tape Gateway](#creating-recovery-tape-vtl)\.
 **Note**  
 You have to reconfigure your iSCSI initiator and backup application to use the new tape gateway\. For more information, see [Connecting Your VTL Devices](GettingStarted-create-tape-gateway.md#GettingStartedAccessTapesVTL)\. 
@@ -124,9 +117,7 @@ If you have a virtual tape with the status IRRECOVERABLE, you don't need it, and
 ### A Cache Disk in Your Gateway Encounters a Failure<a name="IrrecoverableTapes.CacheFails"></a>
 
 If one or more cache disks in your gateway encounters a failure, the gateway prevents read and write operations to your virtual tapes and volumes\. To resume normal functionality, reconfigure your gateway as described following:
-
 + If the cache disk is inaccessible or unusable, delete the disk from your gateway configuration\.
-
 + If the cache disk is still accessible and useable, reconnect it to your gateway\.
 
 **Note**  

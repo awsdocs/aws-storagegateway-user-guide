@@ -2,7 +2,7 @@
 
 Following, you can find instructions about how to use your tape gateway\.
 
-
+**Topics**
 + [Connecting Your VTL Devices](#GettingStartedAccessTapesVTL)
 + [Testing Your Gateway Setup](GettingStartedTestGatewayVTL.md)
 + [Where Do I Go from Here?](GettingStartedWhatsNextStep3-vtl.md)
@@ -11,7 +11,7 @@ Following, you can find instructions about how to use your tape gateway\.
 
 Following, you can find instructions about how to connect your virtual tape library \(VTL\) devices to your Microsoft Windows or Red Hat Enterprise Linux \(RHEL\) client\.
 
-
+**Topics**
 + [Connecting to a Microsoft Windows Client](#iscsi-vtl-windows)
 + [Connecting to a Linux Client](#iscsi-vtl-linux)
 

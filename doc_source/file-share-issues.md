@@ -2,7 +2,7 @@
 
 You can find information following about actions to take if you experience unexpected issues with your file share\.
 
-
+**Topics**
 + [Your File Share Is Stuck in CREATING Status](#creating-state)
 + [You Can't Create a File Share](#create-file-trobleshoot)
 + [Multiple File Shares Can't Write to the Mapped Amazon S3 Bucket](#multiwrite)
@@ -17,6 +17,8 @@ When your file share is being created, the status is CREATING\. The status trans
 1. Make sure the Amazon S3 bucket that you mapped your file share to exists\. If the bucket doesn’t exist, create it\. After you create the bucket, the file share status transitions to AVAILABLE\. For information about how to create an Amazon S3 bucket, see [Create a Bucket](http://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html) in the *Amazon Simple Storage Service Console User Guide*\.
 
 1. Make sure your bucket name complies with the rules for bucket naming in Amazon S3\. For more information, see [Rules for Bucket Naming](http://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules) in the *Amazon Simple Storage Service Developer Guide*\.
+
+1. Make sure the IAM role you used to access the Amazon S3 bucket has the correct permissions and verify that the Amazon S3 bucket is listed as a resource in the IAM policy\. For more information, see [Granting Access to an Amazon S3 Bucket](managing-gateway-file.md#grant-access-s3)\.
 
 ## You Can't Create a File Share<a name="create-file-trobleshoot"></a>
 

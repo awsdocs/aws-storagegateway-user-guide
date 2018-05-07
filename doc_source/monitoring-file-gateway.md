@@ -2,16 +2,14 @@
 
 You can monitor your file share by using Amazon CloudWatch metrics and use Amazon CloudWatch Events to get notified when your file operations are done\. For information about file gateway type metrics, see [Monitoring Your Gateway and Resources](http://docs.aws.amazon.com/storagegateway/latest/userguide/Main_monitoring-gateways-common.html)\.
 
-
+**Topics**
 + [Getting Notification for File Operations](#get-notification)
 + [Understanding File Share Metrics](#monitoring-fileshare)
 
 ## Getting Notification for File Operations<a name="get-notification"></a>
 
 AWS Storage Gateway can send a notification through CloudWatch Events when your file operations are done\. 
-
 + You can get notified when the gateway finishes uploading your files to your file share\. You can use the [NotifyWhenUploaded](http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_NotifyWhenUploaded.html) API to request a file upload notification\.
-
 + You can get notified when the gateway finishes refreshing the cache for your S3 bucket\. You can use the [RefreshCache](http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_RefreshCache.html) API to request a cache refresh notification\.
 
 When the file operation your requested is done, AWS Storage Gateway sends you notification through CloudWatch Events\. You can configure CloudWatch Events to send the notification through event targets such as Amazon SNS, Amazon SQS or AWS Lambda function\. For example, you can configure an Amazon SNS target, to send the notification Amazon SNS consumers such as email and text message\. For information about CloudWatch Events, see [What is Amazon CloudWatch Events?](http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/WhatIsCloudWatchEvents.html)
@@ -121,6 +119,4 @@ The following table describes the Storage Gateway metrics that you can use to ge
 | CloudBytesUploaded |  The total number of bytes that the gateway uploaded to AWS during the reporting period\.  Use this metric with the `Sum` statistic to measure throughput and with the `Samples` statistic to measure IOPS\.  Units: Bytes  | 
 | CloudBytesDownloaded |  The total number of bytes that the gateway downloaded from AWS during the reporting period\.  Use this metric with the `Sum` statistic to measure throughput and with the `Samples` statistic to measure input/output operations per second \(IOPS\)\. Units: Bytes  | 
 | ReadBytes  |  The total number of bytes read from your on\-premises applications in the reporting period for a file share\. Use this metric with the `Sum` statistic to measure throughput and with the `Samples` statistic to measure IOPS\. Units: Bytes  | 
-| ReadTime |  The total number of milliseconds spent to do read operations from your on\-premises applications in the reporting period\. Use this metric with the `Average` statistic to measure latency\. Units: Milliseconds  | 
 | WriteBytes |  The total number of bytes written to your on\-premises applications in the reporting period\. Use this metric with the `Sum` statistic to measure throughput and with the `Samples` statistic to measure IOPS\. Units: Bytes  | 
-| WriteTime |  The total number of milliseconds spent to do write operations from your on\-premises applications in the reporting period\.  Use this metric with the `Average` statistic to measure latency\. Units: Milliseconds  | 

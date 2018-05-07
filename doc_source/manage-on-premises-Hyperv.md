@@ -2,7 +2,7 @@
 
 For a gateway deployed on\-premises, you can perform the following maintenance tasks using the Hyper V host local console\. 
 
-
+**Topics**
 + [Access the Gateway Local Console with Microsoft Hyper\-V](#MaintenanceConsoleWindowHyperV-common)
 + [Synchronizing Your Gateway VM Time](#MaintenanceTimeSync-hyperv)
 + [Configuring Your Gateway for Multiple NICs in Microsoft Hyper\-V Host](#MaintenanceMultiNIC-hyperv)
@@ -35,9 +35,7 @@ For a gateway deployed on VMware ESXi, setting the hypervisor host time and sync
 **To view and synchronize the time of a Hyper\-V gateway VM to an NTP server**
 
 1. Log in to your gateway's local console\.
-
    + VMware ESXi—for more information, see [Accessing the Gateway Local Console with VMware ESXi](manage-on-premises-vmware.md#MaintenanceConsoleWindowVMware-common)\.
-
    + Microsoft Hyper\-V—for more information, see [Access the Gateway Local Console with Microsoft Hyper\-V](#MaintenanceConsoleWindowHyperV-common)\.
 
 1. On the **AWS Storage Gateway Configuration** main menu, type **4** for **System Time Management**\.  

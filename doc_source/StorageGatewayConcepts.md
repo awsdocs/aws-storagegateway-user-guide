@@ -2,7 +2,7 @@
 
 Following, you can find an architectural overview of the available AWS Storage Gateway solutions\.
 
-
+**Topics**
 + [File Gateways](#file-gateway-concepts)
 + [Volume Gateways](#volume-gateway-concepts)
 + [Tape Gateways](#storage-gateway-vtl-concepts)
@@ -23,7 +23,7 @@ With file gateway storage, you can do such tasks as ingesting cloud workloads to
 
 For volume gateways, you can use either cached volumes or stored volumes\.
 
-
+**Topics**
 + [Cached Volumes Architecture](#storage-gateway-cached-concepts)
 + [Stored Volumes Architecture](#storage-gateway-stored-volume-concepts)
 
@@ -40,13 +40,11 @@ In the cached volumes solution, AWS Storage Gateway stores all your on\-premises
 After you install the Storage Gateway software appliance—the VM—on a host in your data center and activate it, you use the AWS Management Console to provision storage volumes backed by Amazon S3\. You can also provision storage volumes programmatically using the AWS Storage Gateway API or the AWS SDK libraries\. You then mount these storage volumes to your on\-premises application servers as iSCSI devices\. 
 
 You also allocate disks on\-premises for the VM\. These on\-premises disks serve the following purposes:
-
 + **Disks for use by the gateway as cache storage** – As your applications write data to the storage volumes in AWS, the gateway first stores the data on the on\-premises disks used for cache storage\. Then the gateway uploads the data to Amazon S3\. The cache storage acts as the on\-premises durable store for data that is waiting to upload to Amazon S3 from the upload buffer\. 
 
   The cache storage also lets the gateway store your application's recently accessed data on\-premises for low\-latency access\. If your application requests data, the gateway first checks the cache storage for the data before checking Amazon S3\. 
 
   You can use the following guidelines to determine the amount of disk space to allocate for cache storage\. Generally, you should allocate at least 20 percent of your existing file store size as cache storage\. Cache storage should also be larger than the upload buffer\. This guideline helps make sure that cache storage is large enough to persistently hold all data in the upload buffer that has not yet been uploaded to Amazon S3\. 
-
 + **Disks for use by the gateway as the upload buffer** – To prepare for upload to Amazon S3, your gateway also stores incoming data in a staging area, referred to as an *upload buffer\.* Your gateway uploads this buffer data over an encrypted Secure Sockets Layer \(SSL\) connection to AWS, where it is stored encrypted in Amazon S3\. 
 
 You can take incremental backups, called *snapshots*, of your storage volumes in Amazon S3\. These point\-in\-time snapshots are also stored in Amazon S3 as Amazon EBS snapshots\. When you take a new snapshot, only the data that has changed since your last snapshot is stored\. You can initiate snapshots on a scheduled or one\-time basis\. When you delete a snapshot, only the data not needed for any other snapshots is removed\. For information about Amazon EBS snapshots, see [Amazon EBS Snapshots](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html)\.
@@ -84,21 +82,14 @@ The following diagram provides an overview of tape gateway deployment\.
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/Gateway-VTL-Architecture2-diagram.png)
 
 The diagram identifies the following tape gateway components:
-
 + **Virtual tape** – A virtual tape is like a physical tape cartridge\. However, virtual tape data is stored in the AWS Cloud\. Like physical tapes, virtual tapes can be blank or can have data written on them\. You can create virtual tapes either by using the Storage Gateway console or programmatically by using the Storage Gateway API\. Each gateway can contain up to 1500 tapes or up to 1 PiB of total tape data at a time\. The size of each virtual tape, which you can configure when you create the tape, is between 100 GiB and 2\.5 TiB\. 
-
 + **Virtual tape library \(VTL\)** – A VTL is like a physical tape library available on\-premises with robotic arms and tape drives\. Your VTL includes the collection of stored virtual tapes\. Each tape gateway comes with one VTL\.
 
   The virtual tapes that you create appear in your gateway's VTL\. Tapes in the VTL are backed up by Amazon S3\. As your backup software writes data to the gateway, the gateway stores data locally and then asynchronously uploads it to virtual tapes in your VTL—that is, Amazon S3\.
-
   + **Tape drive** – A VTL tape drive is analogous to a physical tape drive that can perform I/O and seek operations on a tape\. Each VTL comes with a set of 10 tape drives, which are available to your backup application as iSCSI devices\. 
-
   + **Media changer** – A VTL media changer is analogous to a robot that moves tapes around in a physical tape library's storage slots and tape drives\. Each VTL comes with one media changer, which is available to your backup application as an iSCSI device\.
-
 + **Archive** – Archive is analogous to an offsite tape holding facility\. You can archive tapes from your gateway's VTL to the archive\. If needed, you can retrieve tapes from the archive back to your gateway's VTL\.
-
   + **Archiving tapes** – When your backup software ejects a tape, your gateway moves the tape to the archive for long\-term storage\. The archive is located in the AWS Region in which you activated the gateway\. Tapes in the archive are stored in Amazon Glacier, an extremely low\-cost storage service for data archiving and backup\. For more information, see [Amazon Glacier](http://docs.aws.amazon.com/amazonglacier/latest/dev/introduction.html)\.
-
   + **Retrieving tapes** – You can't read archived tapes directly\. To read an archived tape, you must first retrieve it to your tape gateway either by using the Storage Gateway console or by using the Storage Gateway API\. A retrieved tape is available in your VTL in about three to five hours after you start retrieval\. 
 
 After you deploy and activate a tape gateway, you mount the virtual tape drives and media changer on your on\-premises application servers as iSCSI devices\. You create virtual tapes as needed\. Then you use your existing backup software application to write data to the virtual tapes\. The media changer loads and unloads the virtual tapes into the virtual tape drives for read and write operations\.
@@ -106,11 +97,9 @@ After you deploy and activate a tape gateway, you mount the virtual tape drives 
 ### Allocating Local Disks for the Gateway VM<a name="local-disks-vtl-gateway-architecture"></a>
 
 Your gateway VM needs local disks, which you allocate for the following purposes:
-
 + **Cache storage** – The cache storage acts as the durable store for data that is waiting to upload to Amazon S3 from the upload buffer\. 
 
   If your application reads data from a virtual tape, the gateway saves the data to the cache storage\. The gateway stores recently accessed data in the cache storage for low\-latency access\. If your application requests tape data, the gateway first checks the cache storage for the data before downloading the data from AWS\.
-
 + **Upload buffer** – The upload buffer provides a staging area for the gateway before it uploads the data to a virtual tape\. The upload buffer is also critical for creating recovery points that you can use to recover tapes from unexpected failures\. For more information, see [You Need to Recover a Virtual Tape from a Malfunctioning Tape Gateway](Main_TapesIssues-vtl.md#creating-recovery-tape-vtl)\.
 
 As your backup application writes data to your gateway, the gateway copies data to both the cache storage and the upload buffer\. It then acknowledges completion of the write operation to your backup application\. 

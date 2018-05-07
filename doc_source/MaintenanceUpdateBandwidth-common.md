@@ -4,7 +4,7 @@ You can limit \(or throttle\) the upload throughput from the gateway to AWS or t
 
 You can specify the rate limit by using the AWS Management Console, or programmatically by using either the AWS Storage Gateway API \(see [UpdateBandwidthRateLimit](http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_UpdateBandwidthRateLimit.html)\) or an AWS Software Development Kit \(SDK\)\. By throttling bandwidth programmatically, you can change limits automatically throughout the day**—**for example, by scheduling tasks to change the bandwidth\. As described directly following, you can change these limits by using the AWS Storage Gateway console\. Or, for information about changing bandwidth rate limits programmatically, see the following topics\.
 
-
+**Topics**
 + [Updating Gateway Bandwidth Rate Limits Using the AWS SDK for Java](#MaintenanceUpdateBandwidthJava-common)
 + [Updating Gateway Bandwidth Rate Limits Using the AWS SDK for \.NET](#MaintenanceUpdateBandwidthDotNet-common)
 + [Updating Gateway Bandwidth Rate Limits Using the AWS Tools for Windows PowerShell](#MaintenanceUpdateBandwidthPowerShell-common)

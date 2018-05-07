@@ -2,7 +2,7 @@
 
 The following table lists typical issues that you might encounter working with your on\-premises gateways\. 
 
-
+**Topics**
 + [Enabling AWS Support To Help Troubleshoot Your Gateway Hosted On\-Premises](#enable-support-access-on-premises)
 
 
@@ -15,6 +15,7 @@ The following table lists typical issues that you might encounter working with y
 | You need to improve bandwidth between your gateway and AWS\.  |  You can improve the bandwidth from your gateway to AWS by setting up your Internet connection to AWS on a network adapter \(NIC\) separate from that connecting your applications and the gateway VM\. Taking this approach is useful if you have a high\-bandwidth connection to AWS and you want to avoid bandwidth contention, especially during a snapshot restore\. For high\-throughput workload needs, you can use [AWS Direct Connect](http://aws.amazon.com/directconnect/) to establish a dedicated network connection between your on\-premises gateway and AWS\. To measure the bandwidth of the connection from your gateway to AWS, use the `CloudBytesDownloaded` and `CloudBytesUploaded` metrics of the gateway\. For more on this subject, see [Measuring Performance Between Your Gateway and AWS](GatewayMetrics-common.md#PerfGatewayAWS-common)\. Improving your Internet connectivity helps to ensure that your upload buffer does not fill up\.  | 
 | Throughput to or from your gateway drops to zero\.  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/GatewayTroubleshooting.html) You can view the throughput to and from your gateway from the Amazon CloudWatch console\. For more information about measuring throughput to and from your gateway to AWS, see [Measuring Performance Between Your Gateway and AWS](GatewayMetrics-common.md#PerfGatewayAWS-common)\.  | 
 | You are having trouble importing \(deploying\) AWS Storage Gateway on Microsoft Hyper\-V\.  |  See [Troubleshooting Your Microsoft Hyper\-V Setup](ResourceConfigureHostHyperV-troubleshooting.md), which discusses some of the common issues of deploying a gateway on Microsoft Hyper\-V\.  | 
+|  You receive a message that says: "The data that has been written to the volume in your gateway isn't securely stored at AWS"\.  |  You receive this message if your gateway VM was created from a clone or snapshot of another gateway VM\. If this isn’t the case, contact AWS Support\.  | 
 
 ## Enabling AWS Support To Help Troubleshoot Your Gateway Hosted On\-Premises<a name="enable-support-access-on-premises"></a>
 
@@ -23,9 +24,7 @@ AWS Storage Gateway provides a local console you can use to perform several main
 **To enable AWS Support access to your gateway**
 
 1. Log in to your host's local console\.
-
    + VMware ESXi—for more information, see [Accessing the Gateway Local Console with VMware ESXi](manage-on-premises-vmware.md#MaintenanceConsoleWindowVMware-common)\.
-
    + Microsoft Hyper\-V—for more information, see [Access the Gateway Local Console with Microsoft Hyper\-V](manage-on-premises-Hyperv.md#MaintenanceConsoleWindowHyperV-common)\.
 
    The local console looks like the following\.  

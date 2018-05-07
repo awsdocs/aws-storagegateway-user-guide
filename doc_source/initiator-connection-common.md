@@ -2,7 +2,7 @@
 
 When managing your gateway, you work with file shares, volumes or virtual tape library \(VTL\) devices that are exposed as Internet Small Computer System Interface \(iSCSI\) targets\. For file gateways the iSCSI targets are file share, For volume gateways, the iSCSI targets are volumes\. For tape gateways, the targets are VTL devices\. As part of this work, you do such tasks as connecting to those targets, customizing iSCSI settings, connecting from a Red Hat Linux client, and configuring Challenge\-Handshake Authentication Protocol \(CHAP\)\. 
 
-
+**Topics**
 + [Connecting to Your Volumes to a Windows Client](#ConfiguringiSCSIClient)
 + [Connecting Your VTL Devices to a Windows client](#ConfiguringiSCSIClient-vtl)
 + [Connecting Your Volumes or VTL Devices to a Linux Client](#ConfiguringiSCSIClientInitiatorRedHatClient)
@@ -153,7 +153,7 @@ You must have administrator rights on the client computer to run the iSCSI initi
 
 ## Connecting Your Volumes or VTL Devices to a Linux Client<a name="ConfiguringiSCSIClientInitiatorRedHatClient"></a>
 
-
+**Topics**
 
 When using Red Hat Enterprise Linux \(RHEL\), you use the iscsi\-initiator\-utils RPM package to connect to your gateway iSCSI targets \(volumes or VTL devices\)\. 
 
@@ -244,7 +244,7 @@ By increasing the iSCSI timeout values as shown in the following steps, you make
 **Note**  
 Before making changes to the registry, you should make a backup copy of the registry\. For information on making a backup copy and other best practices to follow when working with the registry, see [Registry best practices](http://technet.microsoft.com/en-us/library/cc780921(WS.10).aspx) in the *Microsoft TechNet Library*\.
 
-
+**Topics**
 + [Customizing Your Windows iSCSI Settings](#CustomizeWindowsiSCSISettings)
 + [Customizing Your Linux iSCSI Settings](#CustomizeLinuxiSCSISettings)
 
@@ -394,9 +394,7 @@ To set up CHAP, you must configure it both on the AWS Storage Gateway console an
 1. Configure CHAP on the AWS Storage Gateway console, as discussed in [To configure CHAP for a volume target on the AWS Storage Gateway console](#ConfiguringiSCSIClientInitiatorCHAPConsole)\.
 
 1. In your client initiator software, complete the CHAP configuration:
-
    + To configure mutual CHAP on a Windows client, see [To configure mutual CHAP on a Windows client](#ConfiguringiSCSIClientInitiatorCHAPWindows)\.
-
    + To configure mutual CHAP on a Red Hat Linux client, see [To configure mutual CHAP on a Red Hat Linux client](#ConfiguringiSCSIClientInitiatorCHAPLinux)\.<a name="ConfiguringiSCSIClientInitiatorCHAPConsole"></a>
 
 **To configure CHAP for a volume target on the AWS Storage Gateway console**

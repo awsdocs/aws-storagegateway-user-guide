@@ -4,7 +4,7 @@ You can back up your data to virtual tapes, archive the tapes, and manage your v
 
 For detailed information about how to use DPM, see the [DPM documentation](http://technet.microsoft.com/en-us/library/hh758173.aspx) on the Microsoft System Center website\. For more information about compatible backup applications, see [Supported Third\-Party Backup Applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
 
-
+**Topics**
 + [Configuring DPM to Recognize VTL Devices](#dpm-configure-software)
 + [Importing a Tape into DPM](#dpm-Import-tapes)
 + [Writing Data to a Tape in DPM](#dpm-write-data-to-tape)
@@ -22,7 +22,6 @@ By default, the DPM server does not recognize tape gateway devices\. To configur
 1. Manually map the VTL devices to the DPM tape library\.
 
 **To update the VTL device drivers**
-
 + In Device Manager, update the driver for the medium changer\. For instructions, see [Updating the Device Driver for Your Medium Changer](resource_vtl-devices.md#update-vtl-device-driver)\.
 
 You use the DPMDriveMappingTool to map your tape drives to the DPM tape library\.

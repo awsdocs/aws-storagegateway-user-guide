@@ -4,7 +4,7 @@ You can back up your data to virtual tapes, archive the tapes, and manage your v
 
 For more information about compatible backup applications, see [Supported Third\-Party Backup Applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
 
-
+**Topics**
 + [Configuring NetBackup Storage Devices](#configure-netback-storage-devices)
 + [Backing Up Data to a Tape](#GettingStarted-backup-data-VTL)
 + [Archiving the Tape](#GettingStarted-archiving-tapes-vtl)

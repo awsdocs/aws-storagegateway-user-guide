@@ -2,7 +2,7 @@
 
 Some maintenance tasks require that you log in to the local console when running a gateway deployed on an Amazon EC2 instance\. In this section, you can find information about how to log in to the local console and perform maintenance tasks\.
 
-
+**Topics**
 + [Logging In to Your Amazon EC2 Gateway Local Console](#EC2_MaintenanceConsoleWindow-common)
 + [Routing Your Gateway Deployed on Amazon EC2 Through a Proxy](#EC2_MaintenanceRoutingProxy-common)
 + [Testing Your Gateway Connectivity to the Internet](#EC2_MaintenanceTestGatewayConnectivity-common)

@@ -16,7 +16,7 @@ AWS Storage Gateway stores volume, snapshot, tape, and file data in the AWS Regi
 | EU \(Paris\) | eu\-west\-3 | yes | yes | yes | 
 | Asia Pacific \(Tokyo\) | ap\-northeast\-1 | yes | yes | yes | 
 | Asia Pacific \(Seoul\) | ap\-northeast\-2 | yes | yes | yes | 
-| Asia Pacific \(Singapore\) | ap\-southeast\-1 | yes | yes | no | 
+| Asia Pacific \(Singapore\) | ap\-southeast\-1 | yes | yes | yes | 
 | Asia Pacific \(Sydney\) | ap\-southeast\-2 | yes | yes | yes | 
 | Asia Pacific \(Mumbai\) | ap\-south\-1 | yes | yes | yes | 
 | South America \(São Paulo\) | sa\-east\-1 | yes | yes | no | 
