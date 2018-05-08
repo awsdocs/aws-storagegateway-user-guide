@@ -26,9 +26,7 @@ For more information, see [Optimizing Gateway Performance](Optimizing-common.md)
 
 ### Amazon EC2 Instance Type Requirements<a name="requirements-hardware-ec2"></a>
 
-When deploying your gateway on Amazon EC2, the instance size must be at least **xlarge** for your gateway to function\. However, for the compute\-optimized instance family the size must be at least
-
-**2xlarge**\. Use one of the following instance types recommended for your gateway type\.
+When deploying your gateway on Amazon EC2, the instance size must be at least **xlarge** for your gateway to function\. However, for the compute\-optimized instance family the size must be at least **2xlarge**\. Use one of the following instance types recommended for your gateway type\.
 
 **Recommended for file gateway types**
 + General\-purpose instance family— m4 or m5 instance type\.
