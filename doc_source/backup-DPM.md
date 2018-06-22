@@ -108,7 +108,7 @@ Restoring your archived data is a two\-step process\.
 
 **To restore data from an archived tape**
 
-1. Retrieve the archived tape from archive to a tape gateway\. For instructions, see [Retrieving Archived Tapes ](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
+1. Retrieve the archived tape from archive to a tape gateway\. For instructions, see [Retrieving Archived Tapes](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
 
 1. Use the DPM backup application to restore the data\. You do this by creating a recovery point, as you do when restoring data from physical tapes\. For instructions, see [Recovering Client Computer Data](http://technet.microsoft.com/en-us/library/hh757887.aspx) on the DPM website\.
 

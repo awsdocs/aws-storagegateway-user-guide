@@ -10,6 +10,7 @@ Cached volumes are volumes in Amazon Simple Storage Service \(Amazon S3\) that a
 + [Cloning a Volume](#clone-volume)
 + [Viewing Volume Usage](#volume-usage)
 + [Deleting a Volume](#ApplicationStorageVolumesCached-Removing)
++ [Reducing the Amount of Billed Storage on a Volume](#reduce-bill-volume)
 + [Creating a One\-Time Snapshot](#CreatingSnapshot)
 + [Editing a Snapshot Schedule](#SchedulingSnapshot)
 + [Deleting a Snapshot](#DeletingASnapshot)
@@ -134,6 +135,13 @@ Before you delete a volume, back up your data or take a snapshot of your critica
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/delete-volume.png)
 
 1. Choose **Delete** to delete the volume\.
+
+## Reducing the Amount of Billed Storage on a Volume<a name="reduce-bill-volume"></a>
+
+Deleting files from your file system doesn't necessarily delete data from the underlying block device or reduce the amount of data stored on your volume\. If you want to reduce the amount of billed storage on your volume, we recommend overwriting your files with zeros to compress the storage to a negligible amount of actual storage\. AWS Storage Gateway charges for volume usage based on compressed storage\. 
+
+**Note**  
+If you use a delete tool that overwrites the data on your volume with random data, your usage will not be reduced\. This is because the random data is not compressible\.
 
 ## Creating a One\-Time Snapshot<a name="CreatingSnapshot"></a>
 

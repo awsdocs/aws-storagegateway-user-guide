@@ -103,7 +103,13 @@ You start the archiving process by ejecting the tape\. When you archive a tape, 
 
 1. In the CommCell browser, choose **Storage Resources**, **Libraries**, and then choose **Your library**\. Choose **Media By Location**, and then choose **Media In Library**\.
 
-1. Right\-click the tape you want to archive, choose **All Tasks**, choose **Export**, and then choose **OK**\.
+1. Open the context \(right\-click\) menu for the tape you want to archive, choose **All Tasks**, choose **Export**, and then choose **OK**\.
+
+The archiving process can take some time to complete\. The initial status of the tape appears as **IN TRANSIT TO VTS**\. When archiving starts, the status changes to **ARCHIVING**\. When archiving is completed, the tape is no longer listed in the VTL\.
+
+In the Commvault software, verify that the tape is no longer in the storage slot\.
+
+In the navigation pane of the Storage Gateway console, choose **Tapes**\. Verify that your archived tape's status is **ARCHIVED**\. 
 
 ## Restoring Data from a Tape<a name="commvault-restore-data"></a>
 

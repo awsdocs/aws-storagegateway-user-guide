@@ -4,10 +4,11 @@ AWS Storage Gateway connects an on\-premises software appliance with cloud\-base
 
 AWS Storage Gateway offers file\-based, volume\-based, and tape\-based storage solutions:
 
-**File Gateway** – A file gateway supports a file interface into Amazon Simple Storage Service \(Amazon S3\) and combines a service and a virtual software appliance\. By using this combination, you can store and retrieve objects in Amazon S3 using industry\-standard file protocols such as Network File System \(NFS\)\. The software appliance, or gateway, is deployed into your on\-premises environment as a virtual machine \(VM\) running on VMware ESXi or Microsoft Hyper\-V hypervisor\. The gateway provides access to objects in S3 as files on an NFS mount point\. With a file gateway, you can do the following: 
+**File Gateway** – A file gateway supports a file interface into Amazon Simple Storage Service \(Amazon S3\) and combines a service and a virtual software appliance\. By using this combination, you can store and retrieve objects in Amazon S3 using industry\-standard file protocols such as Network File System \(NFS\) and Server Message Block \(SMB\)\. The software appliance, or gateway, is deployed into your on\-premises environment as a virtual machine \(VM\) running on VMware ESXi or Microsoft Hyper\-V hypervisor\. The gateway provides access to objects in S3 as files or file share mount points\. With a file gateway, you can do the following: 
 + You can store and retrieve files directly using the NFS version 3 or 4\.1 protocol\.
++ You can store and retrieve files directly using the SMB file system version, 2 and 3 protocol\.
 + You can access your data directly in Amazon S3 from any AWS Cloud application or service\.
-+ You can manage your Amazon S3 data using lifecycle policies, cross\-region replication, and versioning\. You can think of a file gateway as an NFS mount on S3\.
++ You can manage your Amazon S3 data using lifecycle policies, cross\-region replication, and versioning\. You can think of a file gateway as a file system mount on S3\.
 
 A file gateway simplifies file storage in Amazon S3, integrates to existing applications through industry\-standard file system protocols, and provides a cost\-effective alternative to on\-premises storage\. It also provides low\-latency access to data through transparent local caching\. A file gateway manages data transfer to and from AWS, buffers applications from network congestion, optimizes and streams data in parallel, and manages bandwidth consumption\. File gateways integrate with AWS services, for example with the following:
 + Common access management using AWS Identity and Access Management \(IAM\) 

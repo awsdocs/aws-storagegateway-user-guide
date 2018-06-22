@@ -7,6 +7,7 @@ Unless otherwise noted, the following requirements are common to all gateway con
 + [Network and Firewall Requirements](#networks)
 + [Supported Hypervisors and Host Requirements](#requirements-host)
 + [Supported NFS Clients for a File Gateway](#requirements-nfs-clients)
++ [Supported SMB Clients for a File Gateway](#requirements-smb-versions)
 + [Supported File System Operations for a File Gateway](#requirements-file-operations)
 + [Supported iSCSI Initiators](#requirements-iscsi-initiators)
 + [Supported Third\-Party Backup Applications for a Tape Gateway](#requirements-backup-sw-for-vtl)
@@ -42,7 +43,7 @@ When deploying your gateway on Amazon EC2, the instance size must be at least **
 
 **Note**  
 When deploying your gateway on an Amazon EC2 instance, you must make sure that you allocate the following minimum resources:  
-If you have more than 5 million objects in your S3 bucket and you are using a General Purposes SSD volume, a minimum root EBS volume of 350 GiB is needed for acceptable performance of your gateway during start up\. For information about how to increase your volume size, see [Modifying an EBS Volume from the Console](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/console-modify.html)\.
+If you have more than 5 million objects in your Amazon S3 bucket and you are using a General Purposes SSD volume, a minimum root EBS volume of 350 GiB is needed for acceptable performance of your gateway during start up\. For information about how to increase your volume size, see [Modifying an EBS Volume from the Console](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/console-modify.html)\.
 
 ### Storage Requirements<a name="requirements-storage"></a>
 
@@ -66,7 +67,7 @@ For information about gateway limits, see [AWS Storage Gateway Limits](resource-
 
 ## Network and Firewall Requirements<a name="networks"></a>
 
-Your locally deployed gateway requires access to the internet, local networks, Domain Name Service \(DNS\) servers, firewalls, routers, and so on\. Following, you can find information about required ports and how to allow access through firewalls and routers\.
+Your gateway requires access to the internet, local networks, Domain Name Service \(DNS\) servers, firewalls, routers, and so on\. Following, you can find information about required ports and how to allow access through firewalls and routers\.
 
 **Topics**
 + [Port Requirements](#requirements-network)
@@ -77,13 +78,15 @@ Your locally deployed gateway requires access to the internet, local networks, D
 
 AWS Storage Gateway requires certain ports to be allowed for its operation\. The following illustrations show the required ports that you must allow for each type of gateway\. Some ports are required by all gateway types, and others are required by specific gateway types\. For more information about port requirements, see [Port Requirements](Resource_Ports.md)\.
 
-**File Gateway**
+**File gateways**
 
 The following illustration shows the ports to open for a file gateway\.
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/SGWNetworkPorts16-file2.png)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/File-Gateway-Port-Diagram.png)
 
-**Volume Gateway and Tape Gateway**
+Active Directory is only required when you want to allow domain users to access an SMB file share\. Your file gateway may be joined to any valid Windows domain \(resolvable by DNS\)\. You can also use the AWS Directory Service to create an [AWS Managed Microsoft AD](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_microsoft_ad.html) in the AWS Cloud\. For most AWS Managed AD deployments you will need to configure the DHCP service for your VPC\. Instructions on how to create a DHCP options set may be found [here](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/dhcp_options_set.html)\.
+
+**Volume gateways and tape Gateways**
 
 The following illustration shows the ports to open for volume and tape gateways\.
 
@@ -91,7 +94,7 @@ The following illustration shows the ports to open for volume and tape gateways\
 
 ### Allowing AWS Storage Gateway Access Through Firewalls and Routers<a name="allow-firewall-gateway-access"></a>
 
-Your locally deployed gateway requires access to the following endpoints to communicate with AWS\. If you use a firewall or router to filter or limit network traffic, you must configure your firewall and router to allow these service endpoints for outbound communication to AWS\.
+Your gateway requires access to the following endpoints to communicate with AWS\. If you use a firewall or router to filter or limit network traffic, you must configure your firewall and router to allow these service endpoints for outbound communication to AWS\.
 
 The following service endpoints are required by all gateways for control path \(anon\-cp, client\-cp, proxy\-app\) and data path \(dp\-1\) operations\.
 
@@ -108,9 +111,9 @@ The following service endpoint is required to make API calls\.
 storagegateway.region.amazonaws.com:443
 ```
 
-The Amazon S3 service endpoint, shown following, is used by file gateway only\. A file gateway requires this endpoint to access the S3 bucket that a file share maps to\.
+The Amazon S3 service endpoint, shown following, is used by file gateways only\. A file gateway requires this endpoint to access the S3 bucket that a file share maps to\.
 
-If the gateway is not able to determine the AWS Region where your S3 bucket is located, this endpoint defaults to us\-east\-1\.s3\.amazonaws\.com\. We recommend you that whitelist the us\-east\-1 region in addition to AWS Regions where your gateway is activated, and where your S3 bucket is located\.
+If your gateway can't determine the AWS Region where your S3 bucket is located, this endpoint defaults to us\-east\-1\.s3\.amazonaws\.com\. We recommend that you whitelist the us\-east\-1 region in addition to AWS Regions where your gateway is activated, and where your S3 bucket is located\.
 
 ```
 region.s3.amazonaws.com
@@ -122,7 +125,7 @@ The Amazon CloudFront endpoint following is required for Storage Gateway to get 
 https://d4kdq0yaxexbo.cloudfront.net/
 ```
 
-The Storage Gateway VM is configured to use the following ntp servers:
+A Storage Gateway VM is configured to use the following NTP servers\.
 
 ```
 0.amazon.pool.ntp.org
@@ -163,7 +166,7 @@ You can also launch an instance by using the **Manual Launch** feature in AWS Ma
 Regardless of the security group that you use, we recommend the following:
 + The security group should not allow incoming connections from the outside internet\. It should allow only instances within the gateway security group to communicate with the gateway\. If you need to allow instances to connect to the gateway from outside its security group, we recommend that you allow connections only on ports 3260 \(for iSCSI connections\) and 80 \(for activation\)\.
 + If you want to activate your gateway from an EC2 host outside the gateway security group, allow incoming connections on port 80 from the IP address of that host\. If you cannot determine the activating host's IP address, you can open port 80, activate your gateway, and then close access on port 80 after completing activation\. 
-+ Allow port 22 access only if you are using AWS Support for troubleshooting purposes\. For more information, see [Enabling AWS Support To Help Troubleshoot Your Gateway Hosted on an Amazon EC2 Instance](EC2GatewayTroubleshooting.md#EC2-EnableAWSSupportAccess)\.
++ Allow port 22 access only if you are using AWS Support for troubleshooting purposes\. For more information, see [You Want AWS Support to Help Troubleshoot Your EC2 Gateway](EC2GatewayTroubleshooting.md#EC2-EnableAWSSupportAccess)\.
 
 In some cases, you might use an Amazon EC2 instance as an initiator \(that is, to connect to iSCSI targets on a gateway that you deployed on Amazon EC2\)\. In such a case, we recommend a two\-step approach: 
 
@@ -187,7 +190,7 @@ AWS Storage Gateway doesn’t support recovering a gateway from a VM that was cr
 
 ## Supported NFS Clients for a File Gateway<a name="requirements-nfs-clients"></a>
 
-File gateways support the following NFS clients:
+File gateways support the following Network File System \(NFS\) clients:
 + Amazon Linux 
 + Mac OS X
 + RHEL 7
@@ -198,11 +201,20 @@ File gateways support the following NFS clients:
 
   Native clients only support NFS v3\. The maximum supported NFS I/O size is 32 KB, so you might experience degraded performance on these versions of Windows\.
 
+## Supported SMB Clients for a File Gateway<a name="requirements-smb-versions"></a>
+
+File gatewayssupport the following Service Message Block \(SMB\) clients:
++ Microsoft Windows Server 2003 and later
++ Windows desktop versions: 10, 8, 7, Vista, and XP
++  Windows Terminal Server running on Windows Server 2003 and later
+
 ## Supported File System Operations for a File Gateway<a name="requirements-file-operations"></a>
 
-Your NFS client can write, read, delete, and truncate files\. Writes are sent to Amazon S3 through optimized multipart uploads by using a write\-back cache\. Reads are first served through the local cache\. If data is not available, it's fetched through S3 as a read\-through cache\. 
+Your NFS or SMB client can write, read, delete, and truncate files\. Clients send writes to Amazon S3 through optimized multipart uploads by using a write\-back cache\. Reads are first served through the local cache\. If data is not available, it's fetched through Amazon S3 as a read\-through cache\. 
 
 Writes and reads are optimized in that only the parts that are changed or requested are transferred through your gateway\. Deletes remove objects from S3\. Directories are managed as folder objects in S3, using the same syntax as in the Amazon S3 Management Console\. 
+
+ HTTP operations such as `GET`, `PUT`, `UPDATE`, and `DELETE` can modify files in a file share\. These operations conform to the atomic create, read, update, and delete \(CRUD\) functions\.
 
 ## Supported iSCSI Initiators<a name="requirements-iscsi-initiators"></a>
 
@@ -236,10 +248,11 @@ The type of medium changer you choose depends on the backup application you plan
 | Backup Exec 15 | AWS\-Gateway\-VTL | 
 | Backup Exec 16 | AWS\-Gateway\-VTL | 
 | Commvault V11 | STK\-L700 | 
-| Quest NetVault Backup 10\.0 | STK\-L700 | 
 | Dell EMC NetWorker V8\.x or V9\.x | AWS\-Gateway\-VTL | 
 | Micro Focus \(HPE\) Data Protector 9\.x | AWS\-Gateway\-VTL | 
 | Microsoft System Center 2012 R2 Data Protection Manager Data Protection Manager doesn't display barcodes for virtual tapes created in AWS Storage Gateway\.  | STK\-L700 | 
+| NovaStor DataCenter/Network 6\.4 or 7\.1 | STK\-L700 | 
+| Quest NetVault Backup 10\.0 | STK\-L700 | 
 | Symantec NetBackup Version 7\.x | AWS\-Gateway\-VTL | 
 | Veeam Backup & Replication V7 | STK\-L700 | 
 | Veeam Backup & Replication V8 | STK\-L700 | 

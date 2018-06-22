@@ -14,15 +14,18 @@ To improve I/O performance, we recommend setting the block size of the tape driv
 
 1. Restore data from the tape\. 
 
-To test your setup, use a compatible backup application, as described following:
-+ [Testing Your Setup by Using Arcserve Backup r17\.0](backup-arcserve.md)
+To test your setup, use a compatible backup application, as described following\.
+
+**Topics**
 + [Testing Your Setup by Using Backup Exec](backup-BackupExec.md)
-+ [Testing Your Setup by Using Commvault ](backup-commvault.md)
-+ [Testing Your Setup by Using Quest NetVault Backup](backup-netvault.md)
++ [Testing Your Setup by Using Arcserve Backup r17\.0](backup-arcserve.md)
++ [Testing Your Setup by Using Commvault](backup-commvault.md)
 + [Testing Your Setup by Using Dell EMC NetWorker](backup-emc.md)
 + [Testing Your Setup by Using Micro Focus \(HPE\) Data Protector](backup-hpdataprotector.md)
 + [Testing Your Setup by Using Microsoft System Center 2012 R2 Data Protection Manager](backup-DPM.md)
 + [Testing Your Setup by Using Symantec NetBackup Version 7\.x](backup_netbackup-vtl.md)
++ [Testing Your Setup by Using NovaStor DataCenter/Network](backup-novastor.md)
++ [Testing Your Setup by Using Quest NetVault Backup](backup-netvault.md)
 + [Testing Your Setup by Using Veeam Backup & Replication](backup-Veeam.md)
 
 For more information about compatible backup applications, see [Supported Third\-Party Backup Applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.

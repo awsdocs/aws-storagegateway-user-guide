@@ -66,13 +66,19 @@ When you archive a tape, a tape gateway ejects the tape from the tape drive to t
 1. In the slots, locate the tape you want to archive, choose it, and then choose **Export**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/NetVault-ImportTapes.png)
 
+The archiving process can take some time to complete\. The initial status of the tape appears as **IN TRANSIT TO VTS**\. When archiving starts, the status changes to **ARCHIVING**\. When archiving is completed, the tape is no longer listed in the VTL\.
+
+In the Quest NetVault Backup software, verify that the tape is no longer in the storage slot\.
+
+In the navigation pane of the Storage Gateway console, choose **Tapes**\. Verify that your archived tape's status is **ARCHIVED**\. 
+
 ## Restoring Data from a Tape Archived in Quest NetVault Backup<a name="netvault-restore-tape"></a>
 
 Restoring your archived data is a two\-step process\.
 
 **To restore data from an archived tape**
 
-1. Retrieve the archived tape from archive to a tape gateway\. For instructions, see [Retrieving Archived Tapes ](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
+1. Retrieve the archived tape from archive to a tape gateway\. For instructions, see [Retrieving Archived Tapes](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
 
 1. Use the Quest NetVault Backup application to restore the data\. You do this by creating a restoring a folder file, as you do when restoring data from physical tapes\. For instructions, see [Quest NetVault Backup 10\.0\.1 – Administration Guide \(Creating a restore job\)](http://support-public.cfm.quest.com/4b094d45-9eab-4ba5-8a57-09ed5f8e6840:1785915.pdf) in the Quest NetVault Backup documentation\.
 

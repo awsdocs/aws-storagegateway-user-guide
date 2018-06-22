@@ -7,6 +7,7 @@ You can find information following about actions to take if you experience unexp
 + [You Can't Create a File Share](#create-file-trobleshoot)
 + [Multiple File Shares Can't Write to the Mapped Amazon S3 Bucket](#multiwrite)
 + [You Can't Upload Files into Your S3 Bucket](#access-s3bucket)
++ [Object Versioning May Impact What You See in Your File System](#swg-object-versioning)
 
 ## Your File Share Is Stuck in CREATING Status<a name="creating-state"></a>
 
@@ -39,3 +40,21 @@ If you can't upload files into your Amazon S3 bucket, do the following:
 1. Make sure you have granted the required access for the file gateway to upload files into your S3 bucket\. For more information, see [Granting Access to an Amazon S3 Bucket](managing-gateway-file.md#grant-access-s3)\.
 
 1. Make sure the role that created the bucket has permission to write to the S3 bucket\. For more information, see [File Share Best Practices](managing-gateway-file.md#fileshare-best-practices)\.
+
+## Object Versioning May Impact What You See in Your File System<a name="swg-object-versioning"></a>
+
+If your Amazon S3 bucket has objects written to it by another client, your view of the S3 bucket might not be up\-to\-date as a result of S3 bucket object versioning\.You should always refresh your cache before examining files of interest\.
+
+*Object versioning *is an optional S3 bucket feature that helps protect data by storing multiple copies of the same\-named object\. Each copy has a separate ID value, for example `file1.jpg`: `ID="xxx"` and `file1.jpg`: `ID="yyy"`\. The number of identically named objects and their lifetimes is controlled by S3 lifecycle policies\. For more details on these S3 concepts, see [Using Versioning](url-s3-dev;Versioning.html) and [Object Lifecycle Management](url-s3-dev;object-lifecycle-mgmt.html) in the *Amazon S3 Developer Guide\. * 
+
+When you delete a versioned object, that object is flagged with a delete marker but retained\. Only an S3 bucket owner can permanently delete an object with versioning turned on\.
+
+In your file gateway, files shown are the most recent versions of objects in an S3 bucket at the time the object was fetched or the cache was refreshed\. File gateway ignore any older versions or any objects marked for deletion\. When reading a file, you read data from the latest version\. When you write a file in your file share, your file gateway creates a new version of a named object with your changes, and that version becomes the latest version\.
+
+Your file gateway continues to read from the earlier version, and updates that you make are based on the earlier version should a new version be added to the S3 bucket outside of your application\. To read the latest version of an object, use the [RefreshCache](http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_RefreshCache.html) API action or refresh from the console as described in [Refreshing Objects in Your Amazon S3 Bucket](managing-gateway-file.md#refresh-cache)\. We don't recommend that objects or files be written to your file gateway S3 bucket from outside of the file share\.
+
+Use of versioned S3 buckets can greatly increase the amount of storage in S3 because each modification to a file creates a new version\. By default, S3 continues to store all of these versions unless you specifically create a policy to override this behavior and limit the number of versions that are kept\. If you notice unusually large storage usage with object versioning enabled, check that you have your storage policies set appropriately\. An increase in the number of `HTTP 503-slow down` responses for browser requests can also be the result of problems with object versioning\.
+
+If you enable object versioning after installing a file gateway, all unique objects are retained \(`ID=”NULL”`\) and you can see them all in the file system\. New versions of objects are assigned a unique ID \(older versions are retained\)\. Based on the object's timestamp only the newest versioned object is viewable in the NFS file system\.
+
+After you enable object versioning, your S3 bucket can't be returned to a nonversioned state\. You can, however, suspend versioning\. When you suspend versioning, a new object is assigned an ID\. If the same named object exists with an `ID=”NULL”` value, the older version is overwritten\. However, any version that contains a non\-`NULL` ID is retained\. Timestamps identify the new object as the current one, and that is the one that appears in the NFS file system\.

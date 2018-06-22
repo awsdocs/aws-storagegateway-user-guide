@@ -105,17 +105,15 @@ You must have administrator rights on the client computer to run the iSCSI initi
 1. If prompted, choose **Yes** to start the Microsoft iSCSI initiator service\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GSClientConfigure_09.png)
 
-1. In the **iSCSI Initiator Properties** dialog box, choose the **Discovery** tab, and then choose the **Discover Portal** button\.  
+1. In the **iSCSI Initiator Properties** dialog box, choose the **Discovery** tab, and then choose **Discover Portal**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GSClientConfigure_10.png)
 
 1. In the **Discover Target Portal** dialog box, type the IP address of your tape gateway for **IP address or DNS name**, and then choose **OK**\. To get the IP address of your gateway, check the **Gateway** tab on the AWS Storage Gateway console\. If you deployed your gateway on an Amazon EC2 instance, you can find the public IP or DNS address in the **Description** tab on the Amazon EC2 console\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GSClientConfigure_20.png)
 
-1. Choose the **Targets** tab, and then choose **Refresh**\. All ten tape drives and the medium changer appear in the **Discovered targets** box\. The status for the targets is **Inactive**\.
+1. Choose the **Targets** tab, and then choose **Refresh**\. All 10 tape drives and the medium changer appear in the **Discovered targets** box\. The status for the targets is **Inactive**\.
 
-   The following screenshot shows the discovered targets\.
-
-       
+   The following screenshot shows the discovered targets\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/iscsciInitiatorDiscoveryVTL.png)
 
 1. Select the first device and choose **Connect**\. You connect the devices one at a time\. 
@@ -124,32 +122,34 @@ You must have administrator rights on the client computer to run the iSCSI initi
 
 1. Repeat steps 6 and 7 for each of the devices to connect all of them, and then choose **OK** in the **iSCSI Initiator Properties** dialog box\.
 
-1. On a Windows client, the driver provider for the tape drive must be Microsoft\. Use the following procedure to verify the driver provider, and update the driver and provider if necessary\. 
+On a Windows client, the driver provider for the tape drive must be Microsoft\. Use the following procedure to verify the driver provider, and update the driver and provider if necessary\. 
 
-   1. On your Windows client, start Device Manager\.
+**To verify the driver provider and if necessary update the provider and driver on a Windows client**
 
-   1. Expand **Tape drives**, choose the context \(right\-click\) menu for a tape drive, and choose **Properties**\.  
+1. On your Windows client, start Device Manager\.
+
+1. Expand **Tape drives**, choose the context \(right\-click\) menu for a tape drive, and choose **Properties**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/TapeDriveDriverProvider10.png)
 
-   1. In the **Driver** tab of the **Device Properties** dialog box, verify **Driver Provider** is Microsoft\.  
+1. In the **Driver** tab of the **Device Properties** dialog box, verify **Driver Provider** is Microsoft\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/TapeDriveDriverProvider20.png)
 
-   1. If **Driver Provider** is not Microsoft, set the value as follows:
+1. If **Driver Provider** is not Microsoft, set the value as follows:
 
-      1. Choose **Update Driver**\.
+   1. Choose **Update Driver**\.
 
-      1. In the **Update Driver Software** dialog box, choose **Browse my computer for driver software**\.  
+   1. In the **Update Driver Software** dialog box, choose **Browse my computer for driver software**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/TapeDriveDriverProvider30.png)
 
-      1. In the **Update Driver Software** dialog box, choose **Let me pick from a list of device drivers on my computer**\.  
+   1. In the **Update Driver Software** dialog box, choose **Let me pick from a list of device drivers on my computer**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/TapeDriveDriverProvider40.png)
 
-      1. Select **LTO Tape drive** and choose **Next**\.   
+   1. Select **LTO Tape drive** and choose **Next**\.   
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/TapeDriveDriverProvider50.png)
 
    1. Choose **Close** to close the **Update Driver Software** window, and verify that the **Driver Provider** value is now set to Microsoft\.
 
-   1.  Repeat steps 9\.2 through 9\.5 to update all the tape drives\.
+1.  Repeat steps 4\.1 through 4\.5 to update all the tape drives\.
 
 ## Connecting Your Volumes or VTL Devices to a Linux Client<a name="ConfiguringiSCSIClientInitiatorRedHatClient"></a>
 
@@ -194,7 +194,7 @@ When using Red Hat Enterprise Linux \(RHEL\), you use the iscsi\-initiator\-util
       For RHEL 7, use the following command\. For RHEL 7, you usually don't need to explicitly start the iscsid service\.
 
       ```
-      sudo /etc/init.d/iscsi start
+      sudo service iscsid start
       ```
 
 1. To discover the volume or VTL device targets defined for a gateway, use the following discovery command\.
@@ -349,11 +349,16 @@ The `iscsid.conf` settings must be made before discovering the gateway\. If you 
    1. If you are using the RHEL 5 initiator, open the `/etc/udev/rules.d/50-udev.rules` file and find the following line\.
 
       ```
-      ACTION=="add", SUBSYSTEM=="scsi" , SYSFS{type}=="0|7|14", \         
+      ACTION=="add", SUBSYSTEM=="scsi" , SYSFS{type}=="0|7|14", \ 
       RUN+="/bin/sh -c 'echo [timeout] > /sys$$DEVPATH/timeout'"
       ```
-**Note**  
-This rules file does not exist in RHEL 6 or 7 initiators, so you must create it\.
+
+      This rules file does not exist in RHEL 6 or 7 initiators, so you must create it using the following rule\.
+
+      ```
+      ACTION=="add", SUBSYSTEMS=="scsi" , ATTRS{model}=="Storage Gateway", 
+      RUN+="/bin/sh -c 'echo [timeout] > /sys$$DEVPATH/timeout'"
+      ```
 
       To modify the timeout value in RHEL 6, use the following command and then add the lines of code shown preceding\. 
 

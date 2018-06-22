@@ -73,7 +73,7 @@ When you archive a tape, tape gateway moves the tape from the Veeam tape library
 
 1. On the AWS Storage Gateway console, choose your gateway, and then choose **VTL Tape Cartridges** and verify the status of the virtual tape you are archiving\. 
 
-   The archiving process can take some time to complete\. The initial status of the tape is shown as **IN TRANSIT TO VTS**\. When archiving starts, the status changes to ARCHIVING\. When archiving is completed, the tape is no longer listed in the VTL\.
+   The archiving process can take some time to complete\. The initial status of the tape appears as **IN TRANSIT TO VTS**\. When archiving starts, the status changes to **ARCHIVING**\. When archiving is completed, the tape is no longer listed in the VTL\.
 
 ## Restoring Data from a Tape Archived in Veeam<a name="veeam-restore-tape"></a>
 
@@ -81,7 +81,7 @@ Restoring your archived data is a two\-step process\.
 
 **To restore data from an archived tape**
 
-1. Retrieve the archived tape from archive to a tape gateway\. For instructions, see [Retrieving Archived Tapes ](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
+1. Retrieve the archived tape from archive to a tape gateway\. For instructions, see [Retrieving Archived Tapes](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
 
 1. Use the Veeam software to restore the data\. You do this by creating a restoring a folder file, as you do when restoring data from physical tapes\. For instructions, see [Restoring Data from Tape](http://helpcenter.veeam.com/backup/70/hyperv/restoring_data_from_tape.html) in the Veeam Help Center\.
 

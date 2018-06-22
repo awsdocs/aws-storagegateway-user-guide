@@ -85,13 +85,15 @@ When you archive a tape, your tape gateway moves the tape from the tape library 
 
 1. Assign a mail slot to load the tape\. The status in the Storage Gateway console changes to **Archive**\. The archive process might take some time\.
 
+The archiving process can take some time to complete\. The initial status of the tape appears as **IN TRANSIT TO VTS**\. When archiving starts, the status changes to **ARCHIVING**\. When archiving is completed, the tape is no longer listed in the VTL\.
+
 ## Restoring Data from a Tape<a name="archServe-restore-tape"></a>
 
 Restoring your archived data is a two\-step process\.
 
 **To restore data from an archived tape**
 
-1. Retrieve the archived tape to a tape gateway\. For instructions, see [Retrieving Archived Tapes ](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
+1. Retrieve the archived tape to a tape gateway\. For instructions, see [Retrieving Archived Tapes](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
 
 1. Use Arcserve to restore the data\. This process is the same as restoring data from physical tapes\. For instructions, see the [Arcserve Backup r17 documentation](https://documentation.arcserve.com/Arcserve-Backup/Available/R17/ENU/Bookshelf_Files/HTML/admingde/index.htm)\. 
 

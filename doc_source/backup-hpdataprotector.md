@@ -194,7 +194,7 @@ Restoring your archived data is a two\-step process\.
 
 **To restore data from an archived tape**
 
-1. Retrieve the archived tape to a tape gateway\. For instructions, see [Retrieving Archived Tapes ](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
+1. Retrieve the archived tape to a tape gateway\. For instructions, see [Retrieving Archived Tapes](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
 
 1. Use HPE Data Protector to restore the data\. This process is the same as restoring data from physical tapes\. 
 

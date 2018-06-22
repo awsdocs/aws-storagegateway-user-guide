@@ -45,7 +45,12 @@ To exit the configuration session, type **x** to exit the menu\.
 
 ## Setting the Local Console Password from the Storage Gateway Console<a name="set-password"></a>
 
-When you log in to the local console for the first time, you log in to the VM with the default credentials—the user name *sguser* and the password *sgpassword*\. We recommend that you set a new password\. You can set this password from the AWS Storage Gateway console rather than the local console if you want\. You don't need to know the default password to set a new password\.
+When you log in to the local console for the first time, you log in to the VM with the default credentials—the user name `admin` and the password `password`\. We recommend that you set a new password\. You can set this password from the AWS Storage Gateway console rather than the local console if you want\. You don't need to know the default password to set a new password\.
+
+**Note**  
+If you created your gateway before June 20th, 2018 the default credentials are – user name `sguser` and password `sgpassword`
+
+We recommend that you set a new password\. You can set this password from the AWS Storage Gateway console rather than the local console, if you want\. You don't need to know the default password to set a new password\.
 
 **To set the local console password on the Storage Gateway console**
 

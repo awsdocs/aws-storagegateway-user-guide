@@ -33,7 +33,7 @@ To archive a tape, you use your backup software\. Tape archival process consists
 **Note**  
 The steps for archiving a tape depend on your backup application\. For detailed instructions, see the documentation for your backup application\.
 +  After the data upload to AWS completes, the tape status changes to **ARCHIVING** and AWS Storage Gateway begins moving the tape to the archive\. You cannot cancel the archival process at this point\. 
-+ After the tape is moved to the archive, its status changes to **ARCHIVED** and you can retrieve the tape to any of your gateways\. For more information about tape retrieval, see [Retrieving Archived Tapes ](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\. 
++ After the tape is moved to the archive, its status changes to **ARCHIVED** and you can retrieve the tape to any of your gateways\. For more information about tape retrieval, see [Retrieving Archived Tapes](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\. 
 
 The steps involved in archiving a tape depend on your backup software\. For instructions on how to archive a tape by using Symantec NetBackup software, see [Archiving the Tape](backup_netbackup-vtl.md#GettingStarted-archiving-tapes-vtl)\.
 

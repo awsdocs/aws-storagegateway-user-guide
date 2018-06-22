@@ -1,15 +1,17 @@
-# Getting Activation Key For Your Gateway<a name="get-activation-key"></a>
+# Getting an Activation Key for Your Gateway<a name="get-activation-key"></a>
 
-To get the activation key for your gateway, you make a web request to the gateway VM and it returns a redirect that contains the activation key\. This activation key is passed as one of the parameters to the ActivateGateway API to specify the configuration of your gateway\. The request you make to the gateway VM contains the activation region, and the url returned by the redirect in the response contains a query string parameter called `activationkey`\. This query string parameter is your activation key\. The format of the query string looks like: ` http://gateway_ip_address/?activationRegion=activation_region`\.
+To get an activation key for your gateway, you make a web request to the gateway VM and it returns a redirect that contains the activation key\. This activation key is passed as one of the parameters to the `ActivateGateway` API action to specify the configuration of your gateway\. The request you make to the gateway VM contains the AWS Region in which activation occurs\. 
+
+The URL returned by the redirect in the response contains a query string parameter called `activationkey`\. This query string parameter is your activation key\. The format of the query string looks like the following: ` http://gateway_ip_address/?activationRegion=activation_region`\.
 
 **Topics**
-+ [An AWS Command Line Interface \(CLI\) Example](#get-activation-key-cli)
-+ [A Linux \(bash/zsh\) Example](#get-activation-key-linux)
-+ [A Windows \(PowerShell\) Example](#get-activation-key-powershell)
++ [AWS CLI](#get-activation-key-cli)
++ [Linux \(bash/zsh\)](#get-activation-key-linux)
++ [Microsoft Windows PowerShell](#get-activation-key-powershell)
 
-## An AWS Command Line Interface \(CLI\) Example<a name="get-activation-key-cli"></a>
+## AWS CLI<a name="get-activation-key-cli"></a>
 
-If you haven't already done so, you must install and configure the AWS CLI\. To do this, go to the AWS Command Line Interface User Guide and follow these instructions:
+If you haven't already done so, you must install and configure the AWS CLI\. To do this, follow these instructions in the *AWS Command Line Interface User Guide:*
 + [ Installing the AWS Command Line Interface](https://docs.aws.amazon.com/cli/latest/userguide/installing.html)
 + [ Configuring the AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
 
@@ -23,9 +25,9 @@ cut -d'=' -f2 |\
 cut -d'&' -f1
 ```
 
-## A Linux \(bash/zsh\) Example<a name="get-activation-key-linux"></a>
+## Linux \(bash/zsh\)<a name="get-activation-key-linux"></a>
 
-The following example shows you how to use Linux \(bash/zsh\) to fetch the HTTP response, parse HTTP headers and get the activation key\.
+The following example shows you how to use Linux \(bash/zsh\) to fetch the HTTP response, parse HTTP headers, and get the activation key\.
 
 ```
 function get-activation-key() {
@@ -44,9 +46,9 @@ function get-activation-key() {
 }
 ```
 
-## A Windows \(PowerShell\) Example<a name="get-activation-key-powershell"></a>
+## Microsoft Windows PowerShell<a name="get-activation-key-powershell"></a>
 
-The following example shows you how to use WindowsPoweShell to fetch the HTTP response, parse HTTP headers and get the activation key\.
+The following example shows you how to use Microsoft Windows PowerShell to fetch the HTTP response, parse HTTP headers, and get the activation key\.
 
 ```
 function Get-ActivationKey {

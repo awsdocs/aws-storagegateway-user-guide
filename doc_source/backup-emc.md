@@ -93,13 +93,17 @@ When you archive a tape, tape gateway moves the tape from the Dell EMC NetWorker
 
 1. In the confirmation box that appears, choose **OK**\.
 
-The archiving process can take some time to complete\. The initial status of the tape is shown as **IN TRANSIT TO VTS**\. When archiving starts, the status changes to **ARCHIVING**\. When archiving is completed, the tape is no longer listed in the VTL\.
+The archiving process can take some time to complete\. The initial status of the tape appears as **IN TRANSIT TO VTS**\. When archiving starts, the status changes to **ARCHIVING**\. When archiving is completed, the tape is no longer listed in the VTL\.
+
+In the Dell EMC NetWorker software, verify that the tape is no longer in the storage slot\.
+
+In the navigation pane of the Storage Gateway console, choose **Tapes**\. Verify that your archived tape's status is **ARCHIVED**\. 
 
 ## Restoring Data from an Archived Tape in Dell EMC NetWorker<a name="emc-restore-tape"></a>
 
 Restoring your archived data is a two\-step process:
 
-1. Retrieve the archived tape a tape gateway\. For instructions, see [Retrieving Archived Tapes ](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
+1. Retrieve the archived tape a tape gateway\. For instructions, see [Retrieving Archived Tapes](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
 
 1. Use the Dell EMC NetWorker software to restore the data\. You do this by creating a restoring a folder file, as you do when restoring data from physical tapes\. For instructions, see the [ Using the NetWorker User program](http://www.emc.com/collateral/TechnicalDocument/docu53903.pdf) section of the *EMC NetWorker Administration Guide\.*
 

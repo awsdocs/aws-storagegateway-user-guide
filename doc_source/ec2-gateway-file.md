@@ -7,7 +7,7 @@ You can deploy and activate a file gateway on an Amazon EC2 instance\. The file 
 1. On the **Choose host platform** page, choose **Amazon EC2**\.
 
 1. Choose **Launch instance** to launch a storage gateway EC2 AMI\. You are redirected to the EC2 community AMI page where you can choose an instance type\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/host-ec2.png)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/host-ec2-file.png)
 
 1. On the **Choose an Instance Type** page, choose the hardware configuration of your instance\. AWS Storage Gateway is supported on instance types that meet certain minimum requirements\. We recommend starting with the m4xlarge instance type, which meets the minimum requirements for your gateway to function properly\. For more information, see [Hardware Requirements](Requirements.md#requirements-hardware)\. 
 

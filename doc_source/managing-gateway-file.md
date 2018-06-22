@@ -5,7 +5,10 @@ Following, you can find information about how to manage your file gateway resour
 **Topics**
 + [Adding a File Share](#add-file-share)
 + [Deleting a File Share](#remove-file-share)
-+ [Updating a File Share](#update-file-share)
++ [Editing Storage Settings for Your File Share](#edit-storage-class)
++ [Editing Metadata Defaults for Your NFS File Share](#edit-metadata-defaults)
++ [Editing Access Settings for Your NFS File Share](#edit-nfs-client)
++ [Editing Access Settings for Your SMB File Share](#enable-ad-settings)
 + [Refreshing Objects in Your Amazon S3 Bucket](#refresh-cache)
 + [Understanding File Share Status](#understand-file-share)
 + [File Share Best Practices](#fileshare-best-practices)
@@ -95,7 +98,7 @@ The following example policy allows your file gateway to perform all the Amazon 
 
 1. Open the AWS Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
 
-1. Choose **Give bucket owner full control** in the **Object metadata** settings in the **Configure file share setting** dialog box\. For more information on creating or updating a file share, see [Creating a File Share](GettingStartedCreateFileShare.md) or [Updating a File Share](#update-file-share)\.
+1. Choose **Give bucket owner full control** in the **Object metadata** settings in the **Configure file share setting** dialog box\. 
 
 When you have created or updated your file share for cross\-account access and mounted the file share on\-premises, we highly recommend that you test your setup\. You can do this by listing directory contents or writing test files and making sure the files show up as objects in the S3 bucket\.
 
@@ -122,7 +125,7 @@ If you want your data to be completely uploaded, use the **To delete a file shar
 
 1. Open the AWS Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
 
-1. Choose **File shares**, and choose the file share you want to delete\. 
+1. Choose **File shares**, and choose the file share that you want to delete\. 
 
 1. For **Actions**, choose **Delete file share**\. The following confirmation dialog box appears\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/delete-fileshare.png)
@@ -137,20 +140,16 @@ In these cases, you can forcibly delete the file share by using the AWS Manageme
 
 1. Open the AWS Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
 
-1. Choose **File shares**, and choose the file share you want to forcibly delete and wait for a few seconds\. A delete message is displayed in the **Details** tab\.  
+1. Choose **File shares**, and choose the file share that you want to forcibly delete and wait for a few seconds\. A delete message is displayed in the **Details** tab\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/force-delete3.png)
 **Note**  
 You cannot undo the force delete operation\.
 
-1. In the message that appears in **Details** tab, verify the ID of the file share you want to forcibly delete, select the confirmation box, and choose **Force delete now**\.
+1. In the message that appears in the **Details** tab, verify the ID of the file share that you want to forcibly delete, select the confirmation box, and choose **Force delete now**\.
 
 You can also use the [DeleteFileShare](http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_DeleteFileShare.html) API operation to forcibly delete the file share\.
 
-## Updating a File Share<a name="update-file-share"></a>
-
-You can update the default file share settings, the clients allowed to connect to your file share, and the metadata defaults for your file share\. 
-
-### Editing the File Share Settings<a name="edit-storage-class"></a>
+## Editing Storage Settings for Your File Share<a name="edit-storage-class"></a>
 
 You can edit the default storage class for your Amazon S3 bucket, the squash level setting, and the **Export as** option for your file share\. Possible **Export as** options include, for example, **Read\-write**\.
 
@@ -160,7 +159,7 @@ You can edit the default storage class for your Amazon S3 bucket, the squash lev
 
 1. Choose **File shares**, and then choose the file share that you want to update\. 
 
-1. For **Actions**, choose **Edit file share settings**\.
+1. For **Actions**, choose **Edit storage settings**\.
 
 1. Do one or more of the following:
    + For **Storage class for new objects**, choose a default storage class for your S3 bucket, and choose **Save**\.
@@ -171,11 +170,15 @@ You can edit the default storage class for your Amazon S3 bucket, the squash lev
      + **S3 One Zone\_IA** – Store your infrequently accessed object data a single Availability Zone\.
 
        For more information, see [Storage Classes](http://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro) in the *Amazon Simple Storage Service Developer Guide*\.
-   + For **Object metadata**, choose the metadata you want to use:
+   + For **Object metadata**, choose the metadata that you want to use:
      + Choose **Guess MIME type** to enable guessing of the MIME type for uploaded objects based on file extensions\.
-     + Choose **Give bucket owner full control** to give full control to the owner of the S3 bucket that maps to the file NFS file share\. For more information on using your file share to access objects in a bucket owned by another account, see [Using a File Share for Cross\-Account Access](#cross-account-access)\.
+     + Choose **Give bucket owner full control** to give full control to the owner of the S3 bucket that maps to the file NFS/SMB file share\. For more information on using your file share to access objects in a bucket owned by another account, see [Using a File Share for Cross\-Account Access](#cross-account-access)\.
      + Choose **Enable requester pays** if you are using this file share on a bucket that requires the requester or reader instead of bucket owner to pay for access charges\. For more information, see [Requester Pays Buckets](http://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html)\.
-   + For **Squash level**, choose the squash level setting you want for your file share, and then choose **Save**\. Possible values are the following:
+   + For **Squash level**, choose the squash level setting that you want for your NFS file share, and then choose **Save**\. 
+**Note**  
+You can choose a squash level setting for NFS file shares only\. SMB file shares don't use squash settings\.
+
+     Possible values are the following:
      + **Root squash \(default\)** – Access for the remote superuser \(root\) is mapped to UID \(65534\) and GID \(65534\)\.
      + **No root squash** – The remote superuser \(root\) receives access as root\.
      + **All squash – **All user access is mapped to UID \(65534\) and GID \(65534\)\.
@@ -185,7 +188,7 @@ You can edit the default storage class for your Amazon S3 bucket, the squash lev
 **Note**  
 For file shares mounted on a Microsoft Windows client, if you select **Read\-only** for **Export as**, you might see an error message about an unexpected error keeping you from creating the folder\. This error message is a known issue with NFS version 3\. You can ignore the message\.
 
-### Editing Metadata Defaults<a name="edit-metadata-defaults"></a>
+## Editing Metadata Defaults for Your NFS File Share<a name="edit-metadata-defaults"></a>
 
 If you don't set metadata values for your files or directories in your bucket, your file gateway sets default metadata values\. These values include Unix permissions for files and folders\. You can edit the metadata defaults on the AWS Storage Gateway Management Console\. 
 
@@ -203,30 +206,88 @@ When your file gateway stores files and folders in Amazon S3, the Unix file perm
 
 1. Open the AWS Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
 
-1. Choose **File shares**, and then choose the file share you want to update\. 
+1. Choose **File shares**, and then choose the file share that you want to update\. 
 
 1. For **Actions**, choose **Edit file metadata defaults**\.
 
 1. In the **Edit file metadata defaults** dialog box, provide the metadata information and choose **Save**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/edit-metadata-defaults.png)
 
-### Editing Allowed NFS Clients<a name="edit-nfs-client"></a>
+## Editing Access Settings for Your NFS File Share<a name="edit-nfs-client"></a>
 
-We recommend changing the allowed NFS client settings for your file share\. If you don't, any client on your network can mount to your file share\.
+We recommend changing the allowed NFS client settings for your NFS file share\. If you don't, any client on your network can mount to your file share\.
 
-**To edit allowed NFS clients**
+**To edit NFS access settings**
 
 1. Open the AWS Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
 
-1. Choose **File shares**, and then choose the file share you want to update\. 
+1. Choose **File shares**, and then choose the NFS file share that you want to edit\.
 
-1. For **Actions**, choose **Edit allowed clients**\.
+1. For **Actions**, choose **Edit share access settings**\.
 
-1. In the **Edit allowed clients** dialog box, choose **Add entry**, provide the IP address or CIDR for the client, and then choose **Save**\.
+1. In the **Edit allowed clients** dialog box, choose **Add entry**, provide the IP address or CIDR notation for the client that you want to allow, and then choose **Save**\.
+
+## Editing Access Settings for Your SMB File Share<a name="enable-ad-settings"></a>
+
+A file gateway provides Microsoft Active Directory \(AD\) access or guest access \(also known as anonymous access\) authentication modes for accessing an SMB file share\. You can provide unlimited access to the SMB file share for all Microsoft AD users or limit access to specific users and groups\. 
+
+To use your corporate Active Directory for user authenticated access to your SMB file share, edit the SMB settings for your gateway with your Microsoft AD domain credentials\. Doing this allows your gateway to join your Active Directory domain and allows members of the domain to access the SMB file share\.
+
+**Note**  
+Using AWS Directory Service, you can create a hosted Active Directory domain service in the AWS Cloud\.
+
+Anyone who can provide the correct password gets guest access to the SMB file share\.
+
+**To enable Active Directory authentication**
+
+1. Open the AWS Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
+
+1. Choose the gateway that you want to use to join the domain\.
+
+1. For **Actions**, choose **Edit SMB settings** to open the **Edit SMB settings** dialog box\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/smb-join-domain.png)
+
+1. In the **Active Directory settings** section, choose **Join domain**\.
+
+1. For **Domain name**, provide the domain that you want the gateway to join\.
+
+1. Provide the domain user and the domain password, and then choose **Save**\. 
+
+   A message at the top of the **Gateways** section of your console indicates that your gateway successfully joined your AD domain\.
+
+**To limit file share access to specific AD users and groups**
+
+1. Choose the file share that you want to limit access to\.
+
+1. For **Actions**, choose **Edit SMB settings** to open the **Edit Valid/invalid users and groups** dialog box\.
+
+1. For **Valid users**, choose **Add entry** and provide the list of AD users that you want to allow file share access\.
+
+1. For **Valid groups**, choose **Add entry** and provide the list of AD groups that you want to allow file share access\.
+
+1. For **Invalid users**, choose **Add entry** and provide the list of AD users that you want to deny file share access\.
+
+1. For **Invalid groups**, choose **Add entry** and provide the list of AD users that you want to deny file share access\.
+
+1. When you finish adding your entries, choose **Save**\.
+
+If you don't specify valid or invalid users or groups, any authenticated Active Directory user can export the file share\.
+
+If you want to provide only guest access, your file gateway doesn't have to be part of a Microsoft AD domain\. You can also use a file gateway that is a member of your AD domain to create file shares with guest access\. Before you create a file share using guest access, you are required to change the default password\. 
+
+**To change the guest access password**
+
+1. Open the AWS Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
+
+1. Choose the gateway that you want to use to join the domain\.
+
+1. For **Actions**, choose **Edit SMB settings**\.
+
+1. In the **Guest access settings** section, choose **Set guest password**, provide the password, and then choose **Save**\.
 
 ## Refreshing Objects in Your Amazon S3 Bucket<a name="refresh-cache"></a>
 
-As your NFS client performs file system operations, your gateway maintains an inventory of the objects in the Amazon S3 bucket associated with your file share\. Your gateway uses this cached inventory to reduce the latency and frequency of S3 requests\. 
+As your NFS/SMB client performs file system operations, your gateway maintains an inventory of the objects in the Amazon S3 bucket associated with your file share\. Your gateway uses this cached inventory to reduce the latency and frequency of S3 requests\. 
 
 To refresh the S3 bucket for your file share, you can use the AWS Storage Gateway console or the [RefreshCache](http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_RefreshCache.html) operation in the AWS Storage Gateway API\.
 
@@ -254,7 +315,7 @@ In the following table, you can find a description of each file share status, an
 | UPDATING |  The file share configuration is being updated\. If a file share is stuck in this status, it's probably because the gateway VM lost connection to AWS\.  | 
 | DELETING |  The file share is being deleted\. The file share is not deleted until all data is uploaded to AWS\. The DELETING status is transitional, and no action is required\.  | 
 | FORCE\_DELETING |  The file share is being deleted forcibly\. The file share is deleted immediately and uploading to AWS is aborted\. The FORCE\_DELETING status is transitional, and no action is required\.  | 
-| UNAVAILABLE |  The file share is in an unhealthy state\. Certain issues can cause the file share to go into an unhealthy state\. For example, role policy errors can cause this, or if the file share maps to a Amazon S3 bucket that doesn't exist\. When the issue that caused the unhealthy state is resolved, the file returns to AVAILABLE state\.  | 
+| UNAVAILABLE |  The file share is in an unhealthy state\. Certain issues can cause the file share to go into an unhealthy state\. For example, role policy errors can cause this, or if the file share maps to an Amazon S3 bucket that doesn't exist\. When the issue that caused the unhealthy state is resolved, the file returns to AVAILABLE state\.  | 
 
 ## File Share Best Practices<a name="fileshare-best-practices"></a>
 
@@ -295,4 +356,4 @@ The following example policy denies all roles except the role that created the b
 
 ### Allowing Specific NFS Clients to Mount Your File Share<a name="nfs-client-mount"></a>
 
-We recommend that you change the allowed NFS client settings for your file share\. If you don't, any client on your network can mount your file share\. For information about how to edit your NFS client settings, see [Editing Allowed NFS Clients](#edit-nfs-client)\.
+We recommend that you change the allowed NFS client settings for your file share\. If you don't, any client on your network can mount your file share\. For information about how to edit your NFS client settings, see [Editing Access Settings for Your NFS File Share](#edit-nfs-client)\.

@@ -1,25 +1,79 @@
 # Troubleshooting Amazon EC2 Gateway Issues<a name="EC2GatewayTroubleshooting"></a>
 
-The following table lists typical issues that you might encounter working with your gateway deployed on Amazon Elastic Compute Cloud \(Amazon EC2\)\. For more information about the difference between an on\-premises gateway and a gateway deployed in Amazon EC2, see [Deploying a Volume or Tape Gateway on an Amazon EC2 Host](ec2-gateway-common.md)\. 
+In the following sections, you can find typical issues that you might encounter working with your gateway deployed on Amazon EC2\. For more information about the difference between an on\-premises gateway and a gateway deployed in Amazon EC2, see [Deploying a Volume or Tape Gateway on an Amazon EC2 Host](ec2-gateway-common.md)\. 
 
 **Topics**
-+ [Enabling AWS Support To Help Troubleshoot Your Gateway Hosted on an Amazon EC2 Instance](#EC2-EnableAWSSupportAccess)
++ [Your Gateway Activation Hasn't Occurred After a Few Moments](#activation-issues)
++ [You Can't Find Your EC2 Gateway Instance in the Instance List](#find-instance)
++ [You Created an Amazon EBS Volume But Can't Attach it to Your EC2 Gateway Instance](#ebs-volume-issue)
++ [You Can't Attach an Initiator to a Volume Target of Your EC2 Gateway](#initiator-issue)
++ [You Get a Message That You Have No Disks Available When You Try to Add Storage Volumes](#no-disk)
++ [You Want to Remove a Disk Allocated as Upload Buffer Space to Reduce Upload Buffer Space](#uploadbuffer-issue)
++ [Throughput to or from Your EC2 Gateway Drops to Zero](#gateway-throughput-issue)
++ [You Want Your File Gateway to Use a C5 or M5 EC2 Instance Type Instead of C4 or M4](#ami-upgrade)
++ [You Want AWS Support to Help Troubleshoot Your EC2 Gateway](#EC2-EnableAWSSupportAccess)
 
+## Your Gateway Activation Hasn't Occurred After a Few Moments<a name="activation-issues"></a>
 
-| Issue | Action to Take | 
-| --- | --- | 
-| Your Amazon EC2 gateway activation fails when you click the Proceed to Activation button in the AWS Storage Gateway console\.  |  If activation has not occurred in a few moments, check the following in the Amazon EC2 console: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/EC2GatewayTroubleshooting.html) After correcting the problem, try activating the gateway again by going to the AWS Storage Gateway console, clicking **Deploy a new Gateway on Amazon EC2**, and re\-entering the IP address of the instance\.  | 
-| You can't find your Amazon EC2 gateway instance in the list of instances\. |  If you did not give your instance a resource tag and you have many instances running, it can be hard to tell which instance you deployed the gateway in\. In this case, you can take the following actions to find the gateway instance: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/EC2GatewayTroubleshooting.html)  | 
-| You created an Amazon EBS volume but can't attach it to your Amazon EC2 gateway instance\. |  Check that the Amazon EBS volume in question is in the same Availability Zone as the gateway instance\. If there is a discrepancy in Availability Zones, create a new Amazon EBS volume in the same Availability Zone as your instance\.  | 
-| You can't attach an initiator to a volume target of your Amazon EC2 gateway\. |  Check that the security group you launched the instance with includes a rule allowing the port that you are using for iSCSI access\. The port is usually set as 3260\. For more information on connecting to volumes, see [Connecting to Your Volumes to a Windows Client](initiator-connection-common.md#ConfiguringiSCSIClient)\.  | 
-| You activated your Amazon EC2 gateway, but when you try to add storage volumes, you receive an error message indicating you have no disks available\. |  For a newly activated gateway, no volume storage is defined\. Before you can define volume storage, you must allocate local disks to the gateway to use as an upload buffer and cache storage\. For a gateway deployed to Amazon EC2, the local disks are Amazon EBS volumes attached to the instance\. This error message likely occurs because no Amazon EBS volumes are defined for the instance\.  Check block devices defined for the instance that is running the gateway\. If there are only two block devices \(the default devices that come with the AMI\), then you should add storage\. For more information on doing so, see [Deploying a Volume or Tape Gateway on an Amazon EC2 Host](ec2-gateway-common.md)\. After attaching two or more Amazon EBS volumes, try creating volume storage on the gateway\.  | 
-| You need to remove a disk allocated as upload buffer space because you want to reduce the amount of upload buffer space\. |  Follow the steps in [Adding and Removing Upload Buffer](ManagingLocalStorage-common.md#GatewayCachedUploadBuffer)\.  | 
-| Throughput to or from your Amazon EC2 gateway drops to zero\.  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/EC2GatewayTroubleshooting.html) You can view the throughput to and from your gateway from the Amazon CloudWatch console\. For more information about measuring throughput to and from your gateway to AWS, see [Measuring Performance Between Your Gateway and AWS](GatewayMetrics-common.md#PerfGatewayAWS-common)\.  | 
+Check the following in the Amazon EC2 console:
++ Port 80 is enabled in the security group you associated with the instance\. For more information about adding a security group rule, see [Adding a Security Group Rule](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#adding-security-group-rule) in the *Amazon EC2 User Guide for Linux Instances*\.
++ The gateway instance is marked as running\. In the Amazon EC2 console, the **State** value for the instance should be RUNNING\.
++ Make sure that your Amazon EC2 instance type meets the minimum requirements, as described in [Storage Requirements](Requirements.md#requirements-storage)\.
+
+After correcting the problem, try activating the gateway again by going to the AWS Storage Gateway console, choosing **Deploy a new Gateway on Amazon EC2**, and re\-entering the IP address of the instance\.
+
+## You Can't Find Your EC2 Gateway Instance in the Instance List<a name="find-instance"></a>
+
+If you didn't give your instance a resource tag and you have many instances running, it can be hard to tell which instance you launched\. In this case, you can take the following actions to find the gateway instance:
++ Check the name of the Amazon Machine Image \(AMI\) on the **Description** tab of the instance\. An instance based on the AWS Storage Gateway AMI should start with the text **aws\-storage\-gateway\-ami**\.
++ If you have several instances based on the AWS Storage Gateway AMI, check the instance launch time to find the correct instance\. 
+
+## You Created an Amazon EBS Volume But Can't Attach it to Your EC2 Gateway Instance<a name="ebs-volume-issue"></a>
+
+Check that the Amazon EBS volume in question is in the same Availability Zone as the gateway instance\. If there is a discrepancy in Availability Zones, create a new Amazon EBS volume in the same Availability Zone as your instance\.
+
+## You Can't Attach an Initiator to a Volume Target of Your EC2 Gateway<a name="initiator-issue"></a>
+
+Check that the security group that you launched the instance with includes a rule that allows the port that you are using for iSCSI access\. The port is usually set as 3260\. For more information on connecting to volumes, see [Connecting to Your Volumes to a Windows Client](initiator-connection-common.md#ConfiguringiSCSIClient)\.
+
+## You Get a Message That You Have No Disks Available When You Try to Add Storage Volumes<a name="no-disk"></a>
+
+For a newly activated gateway, no volume storage is defined\. Before you can define volume storage, you must allocate local disks to the gateway to use as an upload buffer and cache storage\. For a gateway deployed to Amazon EC2, the local disks are Amazon EBS volumes attached to the instance\. This error message likely occurs because no Amazon EBS volumes are defined for the instance\. 
+
+Check block devices defined for the instance that is running the gateway\. If there are only two block devices \(the default devices that come with the AMI\), then you should add storage\. For more information on doing so, see [Deploying a Volume or Tape Gateway on an Amazon EC2 Host](ec2-gateway-common.md)\. After attaching two or more Amazon EBS volumes, try creating volume storage on the gateway\.
+
+## You Want to Remove a Disk Allocated as Upload Buffer Space to Reduce Upload Buffer Space<a name="uploadbuffer-issue"></a>
+
+Follow the steps in [Adding and Removing Upload Buffer](ManagingLocalStorage-common.md#GatewayCachedUploadBuffer)\.
+
+## Throughput to or from Your EC2 Gateway Drops to Zero<a name="gateway-throughput-issue"></a>
+
+Verify that the gateway instance is running\. If the instance is starting due to a reboot, for example, wait for the instance to restart\.
+
+Also, verify that the gateway IP has not changed\. If the instance was stopped and then restarted, the IP address of the instance might have changed\. In this case, you need to activate a new gateway\.
+
+You can view the throughput to and from your gateway from the Amazon CloudWatch console\. For more information about measuring throughput to and from your gateway to AWS, see [Measuring Performance Between Your Gateway and AWS](GatewayMetrics-common.md#PerfGatewayAWS-common)\.
+
+## You Want Your File Gateway to Use a C5 or M5 EC2 Instance Type Instead of C4 or M4<a name="ami-upgrade"></a>
+
+Do the following:
+
+1. Create a new file gateway using the c5 or m5 Amazon EC2 AMI\.
+
+1. Create a new file share on the new gateway and configure it to point to your Amazon S3 bucket\.
+
+1. Mount your new file share to your client\.
+
+1. Make sure that your file gateway that is using a c4 or m4 EC2 AMI has finished uploading all data to S3 \(that is, the `CachePercentDirty` value is 0\)\.
+
+1. Shut down the file gateway that is using a c4 or m4 AMI and delete the gateway if you no longer need it\.
+
+For information about instance type requirements, see [Hardware and Storage Requirements](Requirements.md#requirements-hardware-storage)\.
 
 **Warning**  
-The elastic IP address of the Amazon EC2 instance cannot be used as the target address\. 
+You can't use the elastic IP address of the Amazon EC2 instance used as the target address\. 
 
-## Enabling AWS Support To Help Troubleshoot Your Gateway Hosted on an Amazon EC2 Instance<a name="EC2-EnableAWSSupportAccess"></a>
+## You Want AWS Support to Help Troubleshoot Your EC2 Gateway<a name="EC2-EnableAWSSupportAccess"></a>
 
 AWS Storage Gateway provides a local console you can use to perform several maintenance tasks, including enabling AWS Support to access your gateway to assist you with troubleshooting gateway issues\. By default, AWS Support access to your gateway is disabled\. You enable this access through the Amazon EC2 local console\. You log in to the Amazon EC2 local console through a Secure Shell \(SSH\)\. To successfully log in through SSH, your instance's security group must have a rule that opens TCP port 22\.
 
