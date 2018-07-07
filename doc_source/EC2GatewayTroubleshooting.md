@@ -92,6 +92,11 @@ To let AWS Support connect to your gateway, you first log in to the local consol
    ssh –i PRIVATE-KEY admin@INSTANCE-PUBLIC-DNS-NAME
    ```
 **Note**  
+If you created your gateway before June 20th, 2018, please SSH in with:
+```
+ssh –i PRIVATE-KEY sguser@INSTANCE-PUBLIC-DNS-NAME
+```
+
 The *PRIVATE\-KEY* is the `.pem` file containing the private certificate of the EC2 key pair that you used to launch the Amazon EC2 instance\. For more information, see [Retrieving the Public Key for Your Key Pair](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#retriving-the-public-key) in the *Amazon EC2 User Guide*\.  
 The *INSTANCE\-PUBLIC\-DNS\-NAME* is the public Domain Name System \(DNS\) name of your Amazon EC2 instance that your gateway is running on\. You obtain this public DNS name by selecting the Amazon EC2 instance in the EC2 console and clicking the **Description** tab\.
 
