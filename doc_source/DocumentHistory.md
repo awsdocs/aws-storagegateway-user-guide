@@ -1,15 +1,23 @@
 # Document History for AWS Storage Gateway<a name="DocumentHistory"></a>
-
-The following table describes important changes to the documentation since the last release of the *AWS Storage Gateway User Guide*\.
 + **API version**: 2013\-06\-30
-+ **Latest documentation update**: June 20, 2018
++ **Latest documentation update**: July 18, 2018
+
+The following table describes important changes in each release of the *AWS Storage Gateway User Guide* after April 2018\. For notification about updates to this documentation, you can subscribe to an RSS feed\.
+
+| Change | Description | Date | 
+| --- |--- |--- |
+| Compatibility with Microsoft System Center 2016 Data Protection Manager \(DPM\) | Tape gateway is now compatible with Microsoft System Center 2016 Data Protection Manager \(DPM\)\. You can now use Microsoft DPM to back up your data to Amazon S3 and archive directly to Amazon Glacier\. For more information, see [http://docs.aws.amazon.com/storagegateway/latest/userguide/backup-DPM.html](http://docs.aws.amazon.com/storagegateway/latest/userguide/backup-DPM.html)\. | July 18, 2018 | 
+| Support for Server Message Block \(SMB\) protocol | File gateway added support for the Server Message Block \(SMB\) protocol to file shares\. For more information, see [http://docs.aws.amazon.com/storagegateway/latest/userguide/GettingStartedCreateFileShare.html](http://docs.aws.amazon.com/storagegateway/latest/userguide/GettingStartedCreateFileShare.html)\. | June 20, 2018 | 
+| Support for file share, cached volumes, and virtual tape encryption | You can now use AWS Key Management Service \(AWS KMS\) to encrypt data written to a file share, cached volume or a virtual tape\. Currently, you can do this by using the AWS Storage Gateway API Reference\. For more information, see [http://docs.aws.amazon.com/storagegateway/latest/userguide/encryption.html](http://docs.aws.amazon.com/storagegateway/latest/userguide/encryption.html)\. | June 12, 2018 | 
+| Support for NovaStor DataCenter/Network | Tape gateways now support NovaStor DataCenter/Network\. You can now use NovaStor DataCenter/Network version 6\.4 or 7\.1 to back up your data to Amazon S3 and archive directly to Amazon Glacier\. For more information, see [http://docs.aws.amazon.com/storagegateway/latest/userguide/backup-novastor.html](http://docs.aws.amazon.com/storagegateway/latest/userguide/backup-novastor.html)\. | May 24, 2018 | 
+
+## Earlier Updates<a name="doc-history-earlier-updates"></a>
+
+The following table describes important changes in each release of the *AWS Storage Gateway User Guide* before May 2018\.
 
 
 | Change | Description | Date Changed | 
 | --- | --- | --- | 
-|  Support for Server Message Block \(SMB\) protocol  |  File gateway added support for the Server Message Block \(SMB\) protocol to file shares\. For more information, see [Creating an SMB File Share](CreatingAnSMBFileShare.md)\.  |  In this release   | 
-|  Support for file share, cached volumes, and virtual tape encryption  |  You can now use AWS Key Management Service \(AWS KMS\) to encrypt data written to a file share, cached volume or a virtual tape\. Currently, you can do this by using the AWS Storage Gateway API Reference\. For more information, see [Encrypting Your Data Using AWS Key Management System](encryption.md)\.  |  June 12, 2018  | 
-|  Support for NovaStor DataCenter/Network  |  Tape gateways now support NovaStor DataCenter/Network\. You can now use NovaStor DataCenter/Network version 6\.4 or 7\.1 to back up your data to Amazon S3 and archive directly to Amazon Glacier\. For more information, see [Testing Your Setup by Using NovaStor DataCenter/Network](backup-novastor.md)\.  |  May 24, 2018  | 
 | Support for S3 One Zone\_IA storage class | For file gateways, you can now choose S3 One Zone\_IA as the default storage class for your file shares\. Using this storage class, you can store your object data in a single Availability Zone in Amazon S3\. For more information, see [Creating a File Share](GettingStartedCreateFileShare.md)\. | April 4, 2018 | 
 |  New region  |  Tape Gateway is now available in the Asia Pacific \(Singapore\) region\. For detailed information, see [Regions](available-regions-intro.md)\.  |  April 3, 2018  | 
 |  Support for refresh cache notification, requester pays, and canned ACLs for Amazon S3 buckets\.  | With file gateways, you can now be notified when the gateway finishes refreshing the cache for your Amazon S3 bucket\. For more information, see [RefreshCache\.html](http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_RefreshCache.html) in the *AWS Storage Gateway API Reference*\. File gateways now enable the requester or reader instead of the bucket owner to pay for access charges\. File gateways now enable you to give full control to the owner of the S3 bucket that maps to the NFS file share\. For more information, see [Creating a File Share](GettingStartedCreateFileShare.md)\.  | March 1, 2018 | 

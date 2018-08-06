@@ -2,11 +2,11 @@
 
 When you initially configured your gateway to run as an Amazon EC2 instance, you allocated Amazon EBS volumes for use as an upload buffer and cache storage\. Over time, as your applications needs change, you can allocate additional Amazon EBS volumes for this use\. You can also reduce the storage you allocated by removing previously allocated Amazon EBS volumes\. For more information about Amazon EBS, see [Amazon Elastic Block Store \(Amazon EBS\)](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
-Before you add more storage to the gateway, you should review how to size your upload buffer and cache storage based on your application needs for a gateway\. To do so, see [Sizing the Upload Buffer](ManagingLocalStorage-common.md#CachedLocalDiskUploadBufferSizing-common) and [Adding and Removing Upload Buffer](ManagingLocalStorage-common.md#GatewayCachedUploadBuffer)\.
+Before you add more storage to the gateway, you should review how to size your upload buffer and cache storage based on your application needs for a gateway\. To do so, see [Determining the Size of Upload Buffer to Allocate](ManagingLocalStorage-common.md#CachedLocalDiskUploadBufferSizing-common) and [Determining the Size of Cache Storage to Allocate](ManagingLocalStorage-common.md#CachedLocalDiskCacheSizing-common)\.
 
 There are limits to the maximum storage you can allocate as an upload buffer and cache storage\. You can attach as many Amazon EBS volumes to your instance as you want, but you can only configure these volumes as upload buffer and cache storage space up to these storage limits\. For more information, see [AWS Storage Gateway Limits](resource-gateway-limits.md)\.<a name="EC2GatewayAddBlockStorage-common"></a>
 
-**To create an Amazon EBS volume, attach it, and configure it for your gateway**
+**To add an Amazon EBS volume and configure it for your gateway**
 
 1. Create an Amazon EBS volume\. For instructions, see [Creating or Restoring an Amazon EBS Volume](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 

@@ -56,7 +56,7 @@ If your cache disk encounters an error, the gateway prevents read and write oper
 
 In the error message, Storage Gateway prompts you to take one of two actions that can recover your tapes:
 +  **Shut Down and Re\-Add Disks **– Take this approach if the disk has intact data and has been removed\. For example, if the error occurred because a disk was removed from your host by accident but the disk and the data is intact, you can re\-add the disk\. To do this, see the procedure later in this topic\.
-+  **Reset Cache Disk** – Take this approach if the cache disk is corrupted or not accessible\. If the disk error causes the cache disk to be inaccessible, unusable, or corrupted, you can reset the disk\. If you reset the cache disk, tapes that have clean data \(that is, tapes for which data in the cache disk and Amazon S3 are synchronized\) will continue to be available for you to use\. However, tapes that have data that is not synchronized with Amazon S3 are automatically recovered\. The status of these tapes is set to RECOVERED, but the tapes will be read\-only\. For information about how to remove a disk from your host, see [Adding and Removing Upload Buffer](ManagingLocalStorage-common.md#GatewayCachedUploadBuffer)\.
++  **Reset Cache Disk** – Take this approach if the cache disk is corrupted or not accessible\. If the disk error causes the cache disk to be inaccessible, unusable, or corrupted, you can reset the disk\. If you reset the cache disk, tapes that have clean data \(that is, tapes for which data in the cache disk and Amazon S3 are synchronized\) will continue to be available for you to use\. However, tapes that have data that is not synchronized with Amazon S3 are automatically recovered\. The status of these tapes is set to RECOVERED, but the tapes will be read\-only\. For information about how to remove a disk from your host, see [Determining the Size of Upload Buffer to Allocate](ManagingLocalStorage-common.md#CachedLocalDiskUploadBufferSizing-common)\.
 **Important**  
 If the cache disk you are resetting contains data that has not been uploaded to Amazon S3 yet, that data can be lost\. After you reset cache disks, no configured cache disks will be left in the gateway, so you must configure at least one new cache disk for your gateway to function properly\.
 
@@ -66,7 +66,7 @@ If the cache disk you are resetting contains data that has not been uploaded to 
 
 1. Shut down the gateway\. For information about how to shut down a gateway, see [Shutting Down Your Gateway VM](MaintenanceShutDown-common.md)\.
 
-1. Add the disk back to your host, and make sure the disk node number of the disk has not changed\. For information about how to add a disk, see [Adding and Removing Upload Buffer](ManagingLocalStorage-common.md#GatewayCachedUploadBuffer)\.
+1. Add the disk back to your host, and make sure the disk node number of the disk has not changed\. For information about how to add a disk, see [Determining the Size of Upload Buffer to Allocate](ManagingLocalStorage-common.md#CachedLocalDiskUploadBufferSizing-common)\.
 
 1. Restart the gateway\. For information about how to restart a gateway, see [Shutting Down Your Gateway VM](MaintenanceShutDown-common.md)\.
 

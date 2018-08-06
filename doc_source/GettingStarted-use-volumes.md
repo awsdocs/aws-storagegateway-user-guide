@@ -238,12 +238,12 @@ By this point, you have a simple, working gateway\. However, the assumptions use
 Following, you can find how to do both of these tasks\. If you activated a gateway for cached volumes, you also need to size your cache storage for real\-world workloads\.
 
 **To size your upload buffer and cache storage for a gateway\-cached setup**
-+ Use the formula shown in [Adding and Removing Upload Buffer](ManagingLocalStorage-common.md#GatewayCachedUploadBuffer) for sizing the upload buffer\. We strongly recommend that you allocate at least 150 GiB for the upload buffer\. If the upload buffer formula yields a value less than 150 GiB, use 150 GiB as your allocated upload buffer\.
++ Use the formula shown in [Determining the Size of Upload Buffer to Allocate](ManagingLocalStorage-common.md#CachedLocalDiskUploadBufferSizing-common) for sizing the upload buffer\. We strongly recommend that you allocate at least 150 GiB for the upload buffer\. If the upload buffer formula yields a value less than 150 GiB, use 150 GiB as your allocated upload buffer\.
 
   The upload buffer formula takes into account the difference between throughput from your application to your gateway and throughput from your gateway to AWS, multiplied by how long you expect to write data\. For example, assume that your applications write text data to your gateway at a rate of 40 MB per second for 12 hours a day and your network throughput is 12 MB per second\. Assuming a compression factor of 2:1 for the text data, the formula specifies that you need to allocate approximately 675 GiB of upload buffer space\.
 
 **To size your upload buffer for a stored setup**
-+ Use the formula discussed in [Adding and Removing Upload Buffer](ManagingLocalStorage-common.md#GatewayCachedUploadBuffer)\. We strongly recommend that you allocate at least 150 GiB for your upload buffer\. If the upload buffer formula yields a value less than 150 GiB, use 150 GiB as your allocated upload buffer\.
++ Use the formula discussed in [Determining the Size of Upload Buffer to Allocate](ManagingLocalStorage-common.md#CachedLocalDiskUploadBufferSizing-common)\. We strongly recommend that you allocate at least 150 GiB for your upload buffer\. If the upload buffer formula yields a value less than 150 GiB, use 150 GiB as your allocated upload buffer\.
 
   The upload buffer formula takes into account the difference between throughput from your application to your gateway and throughput from your gateway to AWS, multiplied by how long you expect to write data\. For example, assume that your applications write text data to your gateway at a rate of 40 MB per second for 12 hours a day and your network throughput is 12 MB per second\. Assuming a compression factor of 2:1 for the text data, the formula specifies that you need to allocate approximately 675 GiB of upload buffer space\.
 

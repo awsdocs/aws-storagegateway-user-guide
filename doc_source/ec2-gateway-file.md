@@ -12,6 +12,8 @@ You can deploy and activate a file gateway on an Amazon EC2 instance\. The file 
 1. On the **Choose an Instance Type** page, choose the hardware configuration of your instance\. AWS Storage Gateway is supported on instance types that meet certain minimum requirements\. We recommend starting with the m4xlarge instance type, which meets the minimum requirements for your gateway to function properly\. For more information, see [Hardware Requirements](Requirements.md#requirements-hardware)\. 
 
    You can resize your instance after you launch, if necessary\. For more information, see [Resizing Your Instance](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-resize.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+**Note**  
+Certain instance types, particularly i3 EC2, use NVMe SSD disk\. These can cause problems when you start/stop File Gateway you can lose data from the cache\. Monitor the `CachePercentDirty` Amazon CloudWatch metric, and only start/stop your system when that paramater is `0`\. To learn more about monitoring metrics for your gateway, go to [storage gateway metrics and dimensions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/awssg-metricscollected.html)\. Refer to [Amazon EC2 Instance Type Requirements](Requirements.md#requirements-hardware-ec2) for more information on this topic\.
 
 1. Choose **Next: Configure Instance Details**\.
 
@@ -51,18 +53,18 @@ The following table lists the available Storage Gateway AMIs by region\.
 
 | Region | AMI Name | AMI ID | EC2 Console Link | 
 | --- | --- | --- | --- | 
-| ap\-northeast\-1 | aws\-storage\-gateway\-file\-2018\-03\-01 | ami\-946d2cf2 | [Launch instance](https://ap-northeast-1.console.aws.amazon.com/ec2/v2/home?region=ap-northeast-1#LaunchInstanceWizard:ami=ami-946d2cf2) | 
-| ap\-northeast\-2 | aws\-storage\-gateway\-file\-2018\-03\-01 | ami\-5974d937 | [Launch instance](https://ap-northeast-2.console.aws.amazon.com/ec2/v2/home?region=ap-northeast-2#LaunchInstanceWizard:ami=ami-5974d937) | 
-| ap\-south\-1 | aws\-storage\-gateway\-file\-2018\-03\-01 | ami\-4e9fc021 | [Launch instance](https://ap-south-1.console.aws.amazon.com/ec2/v2/home?region=ap-south-1#LaunchInstanceWizard:ami=ami-4e9fc021) | 
-| ap\-southeast\-1 | aws\-storage\-gateway\-file\-2018\-03\-01 | ami\-ae94dfd2 | [Launch instance](https://ap-southeast-1.console.aws.amazon.com/ec2/v2/home?region=ap-southeast-1#LaunchInstanceWizard:ami=ami-ae94dfd2) | 
-| ap\-southeast\-2 | aws\-storage\-gateway\-file\-2018\-03\-01 | ami\-7118de13 | [Launch instance](https://ap-southeast-2.console.aws.amazon.com/ec2/v2/home?region=ap-southeast-2#LaunchInstanceWizard:ami=ami-7118de13) | 
-| ca\-central\-1 | aws\-storage\-gateway\-file\-2018\-03\-01 | ami\-17961173 | [Launch instance](https://ca-central-1.console.aws.amazon.com/ec2/v2/home?region=ca-central-1#LaunchInstanceWizard:ami=ami-17961173) | 
-| eu\-central\-1 | aws\-storage\-gateway\-file\-2018\-03\-01 | ami\-010f636e | [Launch instance](https://eu-central-1.console.aws.amazon.com/ec2/v2/home?region=eu-central-1#LaunchInstanceWizard:ami-010f636e) | 
-| eu\-west\-1 | aws\-storage\-gateway\-file\-2018\-03\-01 | ami\-e19dd998 | [Launch instance](https://eu-west-1.console.aws.amazon.com/ec2/v2/home?region=eu-west-1#LaunchInstanceWizard:ami=ami-e2de5b9b) | 
-| eu\-west\-2 | aws\-storage\-gateway\-file\-2018\-03\-01 | ami\-07779360 | [Launch instance](https://eu-west-2.console.aws.amazon.com/ec2/v2/home?region=eu-west-2#LaunchInstanceWizard:ami=ami-07779360) | 
-| eu\-west\-3 | aws\-storage\-gateway\-file\-2018\-03\-01 | ami\-3e79cf43 | [Launch instance](https://eu-west-2.console.aws.amazon.com/ec2/v2/home?region=eu-west-3#LaunchInstanceWizard:ami=ami-3e79cf43) | 
-| sa\-east\-1 | aws\-storage\-gateway\-file\-2018\-03\-01 | ami\-a34a01cf | [Launch instance](https://sa-east-1.console.aws.amazon.com/ec2/v2/home?region=sa-east-1#LaunchInstanceWizard:ami=ami-a34a01cf) | 
-| us\-east\-1 | aws\-storage\-gateway\-file\-2018\-03\-01 | ami\-edd92c90 | [Launch instance](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#LaunchInstanceWizard:ami=ami-edd92c90) | 
-| us\-east\-2 | aws\-storage\-gateway\-file\-2018\-03\-01 | ami\-1ce9de79 | [Launch instance](https://us-east-2.console.aws.amazon.com/ec2/v2/home?region=us-east-2#LaunchInstanceWizard:ami=ami-1ce9de79) | 
-| us\-west\-1 | aws\-storage\-gateway\-file\-2018\-03\-01 | ami\-5a969d3a | [Launch instance](https://us-west-1.console.aws.amazon.com/ec2/v2/home?region=us-west-1#LaunchInstanceWizard:ami=ami-5a969d3a) | 
-| us\-west\-2 | aws\-storage\-gateway\-file\-2018\-03\-01 | ami\-5c3fb724 | [Launch instance](https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#LaunchInstanceWizard:ami=ami-5c3fb724) | 
+| ap\-northeast\-1 | aws\-thinstaller\-1528922603 | ami\-051e18ad5594f1c5f | [Launch instance](https://ap-northeast-1.console.aws.amazon.com/ec2/v2/home?region=ap-northeast-1#LaunchInstanceWizard:ami=ami-051e18ad5594f1c5f) | 
+| ap\-northeast\-2 | aws\-thinstaller\-1528922603 | ami\-0a158a5923ea5a36f | [Launch instance](https://ap-northeast-2.console.aws.amazon.com/ec2/v2/home?region=ap-northeast-2#LaunchInstanceWizard:ami=ami-0a158a5923ea5a36f) | 
+| ap\-south\-1 | aws\-thinstaller\-1528922603 | ami\-05d89895df5cb8f59 | [Launch instance](https://ap-south-1.console.aws.amazon.com/ec2/v2/home?region=ap-south-1#LaunchInstanceWizard:ami=ami-05d89895df5cb8f59) | 
+| ap\-southeast\-1 | aws\-thinstaller\-1528922603 | ami\-040c173f770d8948f | [Launch instance](https://ap-southeast-1.console.aws.amazon.com/ec2/v2/home?region=ap-southeast-1#LaunchInstanceWizard:ami=ami-040c173f770d8948f) | 
+| ap\-southeast\-2 | aws\-thinstaller\-1528922603 | ami\-0ecd0f79f8787984b | [Launch instance](https://ap-southeast-2.console.aws.amazon.com/ec2/v2/home?region=ap-southeast-2#LaunchInstanceWizard:ami=ami-0ecd0f79f8787984b) | 
+| ca\-central\-1 | aws\-thinstaller\-1528922603 | ami\-043653222cb9932ff | [Launch instance](https://ca-central-1.console.aws.amazon.com/ec2/v2/home?region=ca-central-1#LaunchInstanceWizard:ami=ami-043653222cb9932ff) | 
+| eu\-central\-1 | aws\-thinstaller\-1528922603 | ami\-4c300da7 | [Launch instance](https://eu-central-1.console.aws.amazon.com/ec2/v2/home?region=eu-central-1#LaunchInstanceWizard:ami-4c300da7) | 
+| eu\-west\-1 | aws\-thinstaller\-1528922603 | ami\-0861a6fe494ab6a0f | [Launch instance](https://eu-west-1.console.aws.amazon.com/ec2/v2/home?region=eu-west-1#LaunchInstanceWizard:ami=ami-0861a6fe494ab6a0f) | 
+| eu\-west\-2 | aws\-thinstaller\-1528922603 | ami\-0de87dd1829f3d12e | [Launch instance](https://eu-west-2.console.aws.amazon.com/ec2/v2/home?region=eu-west-2#LaunchInstanceWizard:ami=ami-0de87dd1829f3d12e) | 
+| eu\-west\-3 | aws\-thinstaller\-1528922603 | ami\-05ff6e12a9ce871af | [Launch instance](https://eu-west-2.console.aws.amazon.com/ec2/v2/home?region=eu-west-3#LaunchInstanceWizard:ami=ami-05ff6e12a9ce871af) | 
+| sa\-east\-1 | aws\-thinstaller\-1528922603 | ami\-046c7a869e99b6648 | [Launch instance](https://sa-east-1.console.aws.amazon.com/ec2/v2/home?region=sa-east-1#LaunchInstanceWizard:ami=ami-046c7a869e99b6648) | 
+| us\-east\-1 | aws\-thinstaller\-1528922603 | ami\-0ec0b5f31f5fb358c | [Launch instance](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#LaunchInstanceWizard:ami=ami-0ec0b5f31f5fb358c) | 
+| us\-east\-2 | aws\-thinstaller\-1528922603 | ami\-072b86d4df1352083 | [Launch instance](https://us-east-2.console.aws.amazon.com/ec2/v2/home?region=us-east-2#LaunchInstanceWizard:ami=ami-072b86d4df1352083) | 
+| us\-west\-1 | aws\-thinstaller\-1528922603 | ami\-0e508076fcdaa8f24 | [Launch instance](https://us-west-1.console.aws.amazon.com/ec2/v2/home?region=us-west-1#LaunchInstanceWizard:ami=ami-0e508076fcdaa8f24) | 
+| us\-west\-2 | aws\-thinstaller\-1528922603 | ami\-0a158a5923ea5a36f | [Launch instance](https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#LaunchInstanceWizard:ami=ami-0a158a5923ea5a36f) | 

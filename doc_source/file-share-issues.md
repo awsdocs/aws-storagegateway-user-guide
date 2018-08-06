@@ -7,7 +7,8 @@ You can find information following about actions to take if you experience unexp
 + [You Can't Create a File Share](#create-file-trobleshoot)
 + [Multiple File Shares Can't Write to the Mapped Amazon S3 Bucket](#multiwrite)
 + [You Can't Upload Files into Your S3 Bucket](#access-s3bucket)
-+ [Object Versioning May Impact What You See in Your File System](#swg-object-versioning)
++ [Objects That My File Share Stores in My Amazon S3 Bucket Aren't Encrypted with SSE\-KMS](#encryption-issues)
++ [Object Versioning Might Affect What You See in Your File System](#swg-object-versioning)
 
 ## Your File Share Is Stuck in CREATING Status<a name="creating-state"></a>
 
@@ -41,9 +42,15 @@ If you can't upload files into your Amazon S3 bucket, do the following:
 
 1. Make sure the role that created the bucket has permission to write to the S3 bucket\. For more information, see [File Share Best Practices](managing-gateway-file.md#fileshare-best-practices)\.
 
-## Object Versioning May Impact What You See in Your File System<a name="swg-object-versioning"></a>
+## Objects That My File Share Stores in My Amazon S3 Bucket Aren't Encrypted with SSE\-KMS<a name="encryption-issues"></a>
 
-If your Amazon S3 bucket has objects written to it by another client, your view of the S3 bucket might not be up\-to\-date as a result of S3 bucket object versioning\.You should always refresh your cache before examining files of interest\.
+By default, a file gateway uses server\-side encryption managed with Amazon S3 \(SSE\-S3\) when it writes data to an Amazon S3 bucket\. If you make SSE\-KMS \(server\-side encryption with AWS KMS–managed keys\) the default encryption for your S3 bucket, objects that a file gateway stores there are encrypted using SSE\-S3\. 
+
+To encrypt using SSE\-KMS with your own AWS KMS key, you must enable SSE\-KMS encryption\. To do so, you provide the Amazon Resource Name \(ARN\) of the KMS key when you create your file share\. You can also update KMS settings for your file share by using the `UpdateNFSFileShare` or `UpdateSMBFileShare` API operation\. This update applies to objects stored in the Amazon S3 buckets after the update\. For more information, see [Encrypting Your Data Using AWS Key Management System](encryption.md)\.
+
+## Object Versioning Might Affect What You See in Your File System<a name="swg-object-versioning"></a>
+
+If your Amazon S3 bucket has objects written to it by another client, your view of the S3 bucket might not be up\-to\-date as a result of S3 bucket object versioning\. You should always refresh your cache before examining files of interest\.
 
 *Object versioning *is an optional S3 bucket feature that helps protect data by storing multiple copies of the same\-named object\. Each copy has a separate ID value, for example `file1.jpg`: `ID="xxx"` and `file1.jpg`: `ID="yyy"`\. The number of identically named objects and their lifetimes is controlled by S3 lifecycle policies\. For more details on these S3 concepts, see [Using Versioning](url-s3-dev;Versioning.html) and [Object Lifecycle Management](url-s3-dev;object-lifecycle-mgmt.html) in the *Amazon S3 Developer Guide\. * 
 

@@ -2,13 +2,13 @@
 
 AWS Storage Gateway requires the following ports for its operation\. Some ports are common to all gateway types and are required by all gateway types\. Other ports are required by specific gateway types\. In this section, you can find an illustration of the required ports and a list of the ports required by each gateway type\.
 
-**File Gateway**s
+**File Gateways**
 
 The following illustration shows the ports to open for file gateways' operation\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/File-Gateway-Port-Diagram.png)
 
-**Volume Gateways and Tape Gateway**s
+**Volume Gateways and Tape Gateways**
 
 The following illustration shows the ports to open for volume gateways' and tape gateways' operation\.
 

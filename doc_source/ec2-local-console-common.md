@@ -15,7 +15,7 @@ You can connect to your Amazon EC2 instance by using a Secure Shell \(SSH\) clie
 
 **To log in to the gateway local console**
 
-1. Log in to your local console\. If you are connecting to your EC2 instance from a Windows computer, log in as *sguser*\.
+1. Log in to your local console\. If you are connecting to your EC2 instance from a Windows computer, log in as *admin*\.
 
 1. After you log in, you see the **AWS Storage Gateway Configuration** main menu, as shown in the following screenshot\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/EC2_LocalConsole-StartPage.png)    

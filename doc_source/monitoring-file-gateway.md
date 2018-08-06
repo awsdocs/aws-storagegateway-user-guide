@@ -84,23 +84,22 @@ The following example shows a refresh cache notification that is sent to you thr
 
 ```
 {
-    "id" : "2649b160-d59d-c97f-3f64-8aaa9ea6aed3",
     "version" : "0",
-    "account" : "209870788375",
+    "id" : "2649b160-d59d-c97f-3f64-8aaa9ea6aed3",
+    "detail-type" : "Storage Gateway Refresh Cache Event",
     "source" : "aws.storagegateway",
+    "account" : "209870788375",
+    "time" : "2017-11-06T21:34:42Z",
+    "region" : "us-east-2",
     "resources" : [
-       "arn:aws:storagegateway:us-east-2:123456789011:share/share-F123D451",
-       "arn:aws:storagegateway:us-east-2:346332347513:gateway/sgw-712345DA"
+        "arn:aws:storagegateway:us-east-2:123456789011:share/share-F123D451",
+        "arn:aws:storagegateway:us-east-2:346332347513:gateway/sgw-712345DA"
     ],
     "detail" : {
-       "event-type" :"refresh-cache-complete",
-       "notification-id" : "da8db69f-6351-4205-829b-4e82607a00fe",
-       "completed" : "2018-02-06T21:34:53Z",
-       "request-received" : "2018-02-06T21:34:42Z"
-    },
-    "detail-type" : "Storage Gateway Refresh Cache Event",
-    "region" : "us-east-2",
-   "time" : "2017-11-06T21:34:42Z"
+    "event-type" :"refresh-complete",
+    "started" : "2018-02-06T21:34:42Z",
+    "completed" : "2018-02-06T21:34:53Z"
+    }
 }
 ```
 

@@ -18,7 +18,7 @@ You can find information about the most typical issues you might encounter when 
 
 ## The Console Says That Your Volume Is Not Configured<a name="troubleshoot-volume-issues.VolumeNotConfigured"></a>
 
-If the AWS Storage Gateway console indicates that your volume has a status of UPLOAD BUFFER NOT CONFIGURED, add upload buffer capacity to your gateway\. You cannot use a gateway to store your application data if the upload buffer for the gateway is not configured\. For more information, see [To configure upload buffer or cache storage ](ManagingLocalStorage-common.md#GatewayWorkingStorageCachedTaskBuffer)\.
+If the AWS Storage Gateway console indicates that your volume has a status of UPLOAD BUFFER NOT CONFIGURED, add upload buffer capacity to your gateway\. You cannot use a gateway to store your application data if the upload buffer for the gateway is not configured\. For more information, see [To add and configure upload buffer or cache storage ](ManagingLocalStorage-common.md#GatewayWorkingStorageCachedTaskBuffer)\.
 
 ## The Console Says That Your Volume Is Irrecoverable<a name="troubleshoot-volume-issues.VolumeIrrecoverable"></a>
 
@@ -38,13 +38,13 @@ AWS Storage Gateway provides recovery points for each volume in a cached volume 
 
 In some cases, the AWS Storage Gateway console might indicate that your volume has a status of PASSTHROUGH\. A volume can have PASSTHROUGH status for several reasons\. Some reasons require action, and some do not\. 
 
-An example of when you should take action if your volume has the PASS THROUGH status is when your gateway has run out of upload buffer space\. To verify if your upload buffer was exceeded in the past, you can view the `UploadBufferPercentUsed` metric in the Amazon CloudWatch console; for more information, see [Monitoring the Upload Buffer](Main_monitoring-gateways-common.md#PerfUploadBuffer-common)\. If your gateway has the PASS THROUGH status because it has run out of upload buffer space, you should allocate more upload buffer space to your gateway\. Adding more buffer space will cause your volume to transition from PASS THROUGH to BOOTSTRAPPING to AVAILABLE automatically\. While the volume has the BOOTSTRAPPING status, the gateway reads data off the volume's disk, uploads this data to Amazon S3, and catches up as needed\. When the gateway has caught up and saved the volume data to Amazon S3, the volume status becomes AVAILABLE and snapshots can be started again\. Note that when your volume has the PASS THROUGH or BOOTSTRAPPING status, you can continue to read and write data from the volume disk\. For more information about adding more upload buffer space, see [Adding and Removing Upload Buffer](ManagingLocalStorage-common.md#GatewayCachedUploadBuffer)\.
+An example of when you should take action if your volume has the PASS THROUGH status is when your gateway has run out of upload buffer space\. To verify if your upload buffer was exceeded in the past, you can view the `UploadBufferPercentUsed` metric in the Amazon CloudWatch console; for more information, see [Monitoring the Upload Buffer](Main_monitoring-gateways-common.md#PerfUploadBuffer-common)\. If your gateway has the PASS THROUGH status because it has run out of upload buffer space, you should allocate more upload buffer space to your gateway\. Adding more buffer space will cause your volume to transition from PASS THROUGH to BOOTSTRAPPING to AVAILABLE automatically\. While the volume has the BOOTSTRAPPING status, the gateway reads data off the volume's disk, uploads this data to Amazon S3, and catches up as needed\. When the gateway has caught up and saved the volume data to Amazon S3, the volume status becomes AVAILABLE and snapshots can be started again\. Note that when your volume has the PASS THROUGH or BOOTSTRAPPING status, you can continue to read and write data from the volume disk\. For more information about adding more upload buffer space, see [Determining the Size of Upload Buffer to Allocate](ManagingLocalStorage-common.md#CachedLocalDiskUploadBufferSizing-common)\.
 
 To take action before the upload buffer is exceeded, you can set a threshold alarm on a gateway's upload buffer\. For more information, see [To set an upper threshold alarm for a gateway's upload buffer](Main_monitoring-gateways-common.md#GatewayAlarm1-common)\. 
 
 In contrast, an example of not needing to take action when a volume has the PASS THROUGH status is when the volume is waiting to be bootstrapped because another volume is currently being bootstrapped\. The gateway bootstraps volumes one at a time\.
 
-Infrequently, the PASS THROUGH status can indicate that a disk allocated for an upload buffer has failed\. In this is the case, you should remove the disk\. For more information, see [Removing Upload Buffer Capacity](ManagingLocalStorage-common.md#GatewayCachedUploadBufferRemoving)\. For information about volume status, see [Understanding Volume Status](managing-volumes.md#StorageVolumeStatuses)\. 
+Infrequently, the PASS THROUGH status can indicate that a disk allocated for an upload buffer has failed\. In this is the case, you should remove the disk\. For more information, see [Volume Gateway](resource-volume-gateway.md)\. For information about volume status, see [Understanding Volume Status](managing-volumes.md#StorageVolumeStatuses)\. 
 
 ## You Want to Verify Volume Integrity and Fix Possible Errors<a name="troubleshoot-volume-issues.VerifyIntegrity"></a>
 
@@ -52,7 +52,7 @@ If you want to verify volume integrity and fix possible errors, and your gateway
 
 ## Your Volume's iSCSI Target Doesn’t Appear in Windows Disk Management Console<a name="troubleshoot-volume-issues.DoesNotAppear"></a>
 
-If your volume's iSCSI target does not show up in the Disk Management Console in Windows, check that you have configured the upload buffer for the gateway\. For more information, see [To configure upload buffer or cache storage ](ManagingLocalStorage-common.md#GatewayWorkingStorageCachedTaskBuffer)\.
+If your volume's iSCSI target does not show up in the Disk Management Console in Windows, check that you have configured the upload buffer for the gateway\. For more information, see [To add and configure upload buffer or cache storage ](ManagingLocalStorage-common.md#GatewayWorkingStorageCachedTaskBuffer)\.
 
 ## You Want to Change Your Volume's iSCSI Target Name<a name="troubleshoot-volume-issues.ChangeISCSI"></a>
 

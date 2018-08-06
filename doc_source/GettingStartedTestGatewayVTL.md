@@ -22,7 +22,7 @@ To test your setup, use a compatible backup application, as described following\
 + [Testing Your Setup by Using Commvault](backup-commvault.md)
 + [Testing Your Setup by Using Dell EMC NetWorker](backup-emc.md)
 + [Testing Your Setup by Using Micro Focus \(HPE\) Data Protector](backup-hpdataprotector.md)
-+ [Testing Your Setup by Using Microsoft System Center 2012 R2 Data Protection Manager](backup-DPM.md)
++ [Testing Your Setup by Using Microsoft System Center Data Protection Manager](backup-DPM.md)
 + [Testing Your Setup by Using Symantec NetBackup Version 7\.x](backup_netbackup-vtl.md)
 + [Testing Your Setup by Using NovaStor DataCenter/Network](backup-novastor.md)
 + [Testing Your Setup by Using Quest NetVault Backup](backup-netvault.md)

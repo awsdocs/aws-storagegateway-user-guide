@@ -1,6 +1,6 @@
-# Testing Your Setup by Using Microsoft System Center 2012 R2 Data Protection Manager<a name="backup-DPM"></a>
+# Testing Your Setup by Using Microsoft System Center Data Protection Manager<a name="backup-DPM"></a>
 
-You can back up your data to virtual tapes, archive the tapes, and manage your virtual tape library \(VTL\) devices by using Microsoft System Center 2012 R2 Data Protection Manager \(DPM\)\. In this topic, you can find basic documentation on how to configure the DPM backup application for a tape gateway and perform a backup and restore operation\. 
+You can back up your data to virtual tapes, archive the tapes, and manage your virtual tape library \(VTL\) devices by using Microsoft System Center 2012 R2 or 2016 Data Protection Manager \(DPM\)\. In this topic, you can find basic documentation on how to configure the DPM backup application for a tape gateway and perform a backup and restore operation\. 
 
 For detailed information about how to use DPM, see the [DPM documentation](http://technet.microsoft.com/en-us/library/hh758173.aspx) on the Microsoft System Center website\. For more information about compatible backup applications, see [Supported Third\-Party Backup Applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
 
@@ -36,15 +36,15 @@ You use the DPMDriveMappingTool to map your tape drives to the DPM tape library\
 
    **net stop DPMLA**
 
-1. Locate the following file on the DPM server: `%ProgramFiles%\System Center 2012 R2\DPM\DPM\Config\DPMLA.xml`\.
+1. Locate the following file on the DPM server: `%ProgramFiles%\System Center 2016 R2\DPM\DPM\Config\DPMLA.xml`\.
 **Note**  
 If this file exists, the DPMDriveMappingTool overwrites it\. If you want to preserve your original file, create a backup copy\.
 
-1. Open a command terminal, change the directory to `%ProgramFiles%\System Center 2012 R2\DPM\DPM\Bin`, and run the following command\.
+1. Open a command terminal, change the directory to `%ProgramFiles%\System Center 2016 R2\DPM\DPM\Bin`, and run the following command\.
 
    ```
                            
-   C:\Microsoft System Center 2012 R2\DPM\DPM\bin>DPMDriveMappingTool.exe
+   C:\Microsoft System Center 2016 R2\DPM\DPM\bin>DPMDriveMappingTool.exe
    ```
 
     The output for the command looks like the following\.
@@ -76,7 +76,7 @@ The process of adding tapes can take several minutes to complete\.
 1. Open the context \(right\-click\) menu for the tape you want to identify, and then choose **Identify unknown tape**\. 
 **Note**  
 The process of identifying tapes can take a few seconds or a few minutes\.  
-Microsoft System Center 2012 R2 Data Protection Manager doesn't display barcodes for virtual tapes created in AWS Storage Gateway\. 
+Microsoft System Center Data Protection Manager doesn't display barcodes for virtual tapes created in AWS Storage Gateway\. 
 
    When identification is complete, the tape label changes to **Free**\. That is, the tape is free for data to be written to it\. 
 
@@ -86,6 +86,8 @@ Microsoft System Center 2012 R2 Data Protection Manager doesn't display barcodes
 ## Writing Data to a Tape in DPM<a name="dpm-write-data-to-tape"></a>
 
 You write data to a tape gateway virtual tape by using the same protection procedures and policies you do with physical tapes\. You create a protection group and add the data you want to back up, and then back up the data by creating a recovery point\. For detailed information about how to use DPM, see the [DPM documentation](http://technet.microsoft.com/en-us/library/jj628070.aspx) on the Microsoft System Center website\.
+
+By default, the capacity of a tape is 30GB\. When you backup data that is larger than a tape's capacity, a device I/O error occurs\. If the position where the error occurred is larger than the size of the tape, Microsoft DPM treats the error as an indication of end of tape\. If the position where the error occurred is less than the size of the tape, the backup job fails\. To resolve the issue, change the `TapeSize` value in the registry entry to match the size of your tape\. For information about how to do this, see [Error ID: 30101](https://technet.microsoft.com/en-us/library/ff634181.aspx) at the Microsoft System Center\.
 
 ## Archiving a Tape by Using DPM<a name="dpm-archive-tape"></a>
 

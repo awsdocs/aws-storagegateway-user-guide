@@ -44,7 +44,7 @@ Check block devices defined for the instance that is running the gateway\. If th
 
 ## You Want to Remove a Disk Allocated as Upload Buffer Space to Reduce Upload Buffer Space<a name="uploadbuffer-issue"></a>
 
-Follow the steps in [Adding and Removing Upload Buffer](ManagingLocalStorage-common.md#GatewayCachedUploadBuffer)\.
+Follow the steps in [Determining the Size of Upload Buffer to Allocate](ManagingLocalStorage-common.md#CachedLocalDiskUploadBufferSizing-common)\.
 
 ## Throughput to or from Your EC2 Gateway Drops to Zero<a name="gateway-throughput-issue"></a>
 

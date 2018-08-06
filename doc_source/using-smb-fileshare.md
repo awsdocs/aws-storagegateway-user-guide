@@ -1,9 +1,9 @@
 # Mounting Your SMB File Share on Your Client<a name="using-smb-fileshare"></a>
 
-Now you mount your SMB file share and map to a drive accessible to your client\. The file gateway console show the supported mount commands that you can use for SMB clients\. This section offers some additional options for you to try\.
+Now you mount your SMB file share and map to a drive accessible to your client\. The console's file gateway section shows the supported mount commands that you can use for SMB clients\. Following, you can find some additional options to try\.
 
 You can use several different methods for mounting SMB file shares, including the following:
-+ The `net use` command – Doesn't persist across system reboots\. The specific command that you use depends on whether you plan to use your file share for Microsoft Active Directory \(AD\) access or guest access\.
++ The `net use` command – Doesn't persist across system reboots, unless you use the `/persistent:(yes:no)` switch\. The specific command that you use depends on whether you plan to use your file share for Microsoft Active Directory \(AD\) access or guest access\.
 + The `CmdKey` command line utility – Creates a persistent connection to a mounted SMB file share that remains after a reboot\.
 + A network drive mapped in File Explorer – Configures the mounted file share to reconnect at sign\-in and to require that you enter your network credentials\.
 + PowerShell script – Can be persistent, and can be either visible or invisible to the operating system while mounted\.
@@ -16,31 +16,17 @@ If you are a guest user, make sure that you have the guest user account password
 
 1. Make sure that you have access to the SMB file share before mounting the file share to your local system\.
 
-1. Mount your SMB file share:
-   + For Windows clients, type the following command at the command prompt\.
+1. For Microsoft AD clients, type the following command at the command prompt:
 
-     **net use *\[WindowsDriveLetter\]*: \\\\*\[Gateway IP Address\]*\\*\[File share name\]***
-   + For Linux clients, type the following command at the command prompt\.
-
-     **sudo mount \-t smbfs //*\[Gateway IP address\]*/*\[File Share name\]* *\[MountPath\]***
-   + For MacOS clients, type the following command at the command prompt\.
-
-     **sudo mount\_smbfs //*\[Gateway IP address\]*:/*\[File Share name\]* *\[MountPath\]***
+   **net use *\[WindowsDriveLetter\]*: \\\\*\[Gateway IP Address\]*\\*\[File share name\]***
 
 **To mount your SMB file share for guest users using the net use command**
 
 1. Make sure that you have the guest user account password before mounting the file share\.
 
-1. Mount your SMB file share:
-   + For Windows clients, type the following command at the command prompt\.
+1. For Windows guest clients, type the following command at the command prompt\.
 
-     **net use *\[WindowsDriveLetter\]*: \\\\$*\[Gateway IP Address\]*\\$*\[path\]* /user:$*\[Gateway ID\]*\\smbguest**
-   + For Linux clients, type the following command at the command prompt\.
-
-     **sudo mount \-t smbfs //*\[Gateway IP address\]*/*\[File Share name\]* *\[MountPath\]***
-   + For MacOS clients, type the following command at the command prompt\.
-
-     **sudo mount\_smbfs //$*\[Gateway ID\]*\];smbguest@*\[File Gateway IP\]*$*\[path\]* *\[MountPath\]***
+   **net use *\[WindowsDriveLetter\]*: \\\\$*\[Gateway IP Address\]*\\$*\[path\]* /user:$*\[Gateway ID\]*\\smbguest**
 
 **To mount an SMB file share on Windows using CmdKey:**
 
@@ -72,14 +58,11 @@ You might need to remount your file share after a reboot of your client\.
 
 1. \(Optional\) Select **Reconnect at sign\-up** if you want your mount point to persist after reboots\.
 
-1. \(Optional\) Select **Connect using different credentials** if you want a user to enter the Active Directory logon or guest account user password\.
+1. \(Optional\) Select **Connect using different credentials** if you want a user to enter the Microsoft AD logon or guest account user password\.
 
 1. Choose **Finish** to complete your mount point\.
 
 You can edit file share settings, edit allowed and denied users and groups, and change the guest access password from the Storage Gateway Management Console\. You can also refresh the data in the file share's cache and delete a file share from the console\.
-
-**Note**  
-It is important to understand that gateway level settings that you enter in the **Edit SMB Settings** for AD and guest access are different than the share level settings that you apply to a specific SMB file share from the file shares page\. Do not mix up the general settings for those that apply to specific SMB file shares or you may provide access to file shares to people you don't intend to have that access\.
 
 **To modify your SMB file share's properties**
 

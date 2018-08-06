@@ -96,6 +96,8 @@ The following example policy allows your file gateway to perform all the Amazon 
 
 1. Make sure that the IAM role that your file share uses to access the S3 bucket includes permissions for operations such as `s3:GetObjectAcl` and `s3:PutObjectAcl`\. In addition, make sure that the IAM role includes a trust policy that allows your account to assume that IAM role\. For an example of such a trust policy, see [Granting Access to an Amazon S3 Bucket](#grant-access-s3)\.
 
+   If your file share uses an existing role to access the S3 bucket, you should include permissions for `s3:GetObjectAc`l and `s3:PutObjectAcl` operations\. The role also needs a trust policy that allows your account to assume this role\. For an example of such a trust policy, see [Granting Access to an Amazon S3 Bucket](#grant-access-s3)\.
+
 1. Open the AWS Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
 
 1. Choose **Give bucket owner full control** in the **Object metadata** settings in the **Configure file share setting** dialog box\. 
@@ -169,7 +171,7 @@ You can edit the default storage class for your Amazon S3 bucket, the squash lev
      + **S3 Standard\_IA **– Store your infrequently accessed object data redundantly in multiple Availability Zones that are geographically separated\.
      + **S3 One Zone\_IA** – Store your infrequently accessed object data a single Availability Zone\.
 
-       For more information, see [Storage Classes](http://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro) in the *Amazon Simple Storage Service Developer Guide*\.
+       For more information, see [Storage Classes](http://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html) in the *Amazon Simple Storage Service Developer Guide*\.
    + For **Object metadata**, choose the metadata that you want to use:
      + Choose **Guess MIME type** to enable guessing of the MIME type for uploaded objects based on file extensions\.
      + Choose **Give bucket owner full control** to give full control to the owner of the S3 bucket that maps to the file NFS/SMB file share\. For more information on using your file share to access objects in a bucket owned by another account, see [Using a File Share for Cross\-Account Access](#cross-account-access)\.
@@ -259,15 +261,15 @@ Anyone who can provide the correct password gets guest access to the SMB file sh
 
 1. Choose the file share that you want to limit access to\.
 
-1. For **Actions**, choose **Edit SMB settings** to open the **Edit Valid/invalid users and groups** dialog box\.
+1. For **Actions**, choose **Edit SMB settings** to open the **Edit Allowed/Denied users and groups** dialog box\.
 
-1. For **Valid users**, choose **Add entry** and provide the list of AD users that you want to allow file share access\.
+1. For **Allowed users**, choose **Add entry** and provide the list of AD users that you want to allow file share access\.
 
-1. For **Valid groups**, choose **Add entry** and provide the list of AD groups that you want to allow file share access\.
+1. For **Allowed groups**, choose **Add entry** and provide the list of AD groups that you want to allow file share access\.
 
-1. For **Invalid users**, choose **Add entry** and provide the list of AD users that you want to deny file share access\.
+1. For **Denied users**, choose **Add entry** and provide the list of AD users that you want to deny file share access\.
 
-1. For **Invalid groups**, choose **Add entry** and provide the list of AD users that you want to deny file share access\.
+1. For **Denied groups**, choose **Add entry** and provide the list of AD users that you want to deny file share access\.
 
 1. When you finish adding your entries, choose **Save**\.
 
@@ -329,7 +331,7 @@ In this section, you can find information about best practices for creating file
 
 When you create a file share, we recommend that you configure your Amazon S3 bucket so that only one file share can write to it\. If you configure your S3 bucket to be written to by multiple file shares, unpredictable results can occur\. To prevent this, create an S3 bucket policy that denies all roles except the role used for the file share to put or delete objects in the bucket\. Then attach this policy to the S3 bucket\.
 
-The following example policy denies all roles except the role that created the bucket to write to the S3 bucket\. The `s3:DeleteObject` and `s3:PutObject` actions are denied for all roles except `"TestUser"`\. The policy applies to all objects in the `"arn:aws:s3:::test-bucket/*"` bucket\.
+The following example policy denies all roles except the role that created the bucket to write to the S3 bucket\. The `s3:DeleteObject` and `s3:PutObject` actions are denied for all roles except `"TestUser"`\. The policy applies to all objects in the `"arn:aws:s3:::TestBucket/*"` bucket\.
 
 ```
 {

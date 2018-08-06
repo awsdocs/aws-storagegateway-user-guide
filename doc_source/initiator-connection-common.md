@@ -30,7 +30,7 @@ Each type of gateway can connect to iSCSI devices, and you can customize those c
 A volume gateway exposes volumes you have created for the gateway as iSCSI targets\. For more information, see [Connecting Your Volumes to Your Client](GettingStarted-use-volumes.md#GettingStartedAccessVolumes)\.
 
 **Note**  
-To connect to your volume target, your gateway must have an upload buffer configured\. If an upload buffer is not configured for your gateway, then the status of your volumes is displayed as UPLOAD BUFFER NOT CONFIGURED\. To configure an upload buffer for a gateway in a stored volumes setup, see [To configure upload buffer or cache storage ](ManagingLocalStorage-common.md#GatewayWorkingStorageCachedTaskBuffer)\. To configure an upload buffer for a gateway in a cached volumes setup, see [To configure upload buffer or cache storage ](ManagingLocalStorage-common.md#GatewayWorkingStorageCachedTaskBuffer)\. 
+To connect to your volume target, your gateway must have an upload buffer configured\. If an upload buffer is not configured for your gateway, then the status of your volumes is displayed as UPLOAD BUFFER NOT CONFIGURED\. To configure an upload buffer for a gateway in a stored volumes setup, see [To add and configure upload buffer or cache storage ](ManagingLocalStorage-common.md#GatewayWorkingStorageCachedTaskBuffer)\. To configure an upload buffer for a gateway in a cached volumes setup, see [To add and configure upload buffer or cache storage ](ManagingLocalStorage-common.md#GatewayWorkingStorageCachedTaskBuffer)\. 
 
 The following diagram highlights the iSCSI target in the larger picture of the AWS Storage Gateway architecture\. For more information, see [How AWS Storage Gateway Works \(Architecture\)](StorageGatewayConcepts.md)\.
 
@@ -69,7 +69,7 @@ You must have administrator rights on the client computer to run the iSCSI initi
 
    1. Choose the **Targets** tab\.
 
-      The new target portal is shown with an inactive status\. Note that the target name shown should be the same as the name you specified for your storage volume in step 1\.  
+      The new target portal is shown with an inactive status\. The target name shown should be the same as the name that you specified for your storage volume in step 1\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GSClientConfigure_33.png)
 
    1. Select the target, and then choose **Connect**\. 

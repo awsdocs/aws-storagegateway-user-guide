@@ -59,7 +59,7 @@ Depending on the backup software you use on your Windows server, you might need 
 
 1. Choose **Let me pick from a list of device drivers on my computer**\. 
 **Note**  
-We recommend using the Sony TSL\-A500C Autoloader driver with the Veeam Backup & Replication V7, Veeam Backup & Replication V8, and Microsoft System Center 2012 R2 Data Protection Manager backup software\. This Sony driver has been tested with these types of backup software\.
+We recommend using the Sony TSL\-A500C Autoloader driver with the Veeam Backup & Replication V7, Veeam Backup & Replication V8, and Microsoft System Center Data Protection Manager backup software\. This Sony driver has been tested with these types of backup software\.
 
 1. In the **Select the device driver you want to install for this hardware** section, clear the **Show compatible hardware** check box, choose **Sony** in the **Manufacturer** list, choose **Sony \- TSL\-A500C Autoloader** in the **Model** list, and then choose **Next**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/select-driver.png)

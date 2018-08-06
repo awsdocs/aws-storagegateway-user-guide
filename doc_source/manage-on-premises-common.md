@@ -20,7 +20,11 @@ When the VM is ready for you to log in, the login screen is displayed\. If this 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GatewayMaintenance_75.png)<a name="MaintenanceConsoleWindowMenu-common"></a>
 
 **To log in to the gateway's local console**
-+ If this is your first time logging in to the local console, log in to the VM with the user name *sguser* and password *sgpassword*\. Otherwise, use your credentials to log in\.
++ If this is your first time logging in to the local console, log in to the VM with the default credentials\.
+
+  For File Gateway before June 20, 2018, Volume Gateway, and Tape Gateway the default user is *sguser* and the default password is *sgpassword*\. For File Gateway after June 20, 2018, the default user is *admin* and the default password is *password*\. 
+
+  Otherwise, use your credentials to log in\.
 
 After you log in, you see the **Storage Gateway Configuration** main menu, as shown in the following screenshot\.
 
@@ -45,10 +49,7 @@ To exit the configuration session, type **x** to exit the menu\.
 
 ## Setting the Local Console Password from the Storage Gateway Console<a name="set-password"></a>
 
-When you log in to the local console for the first time, you log in to the VM with the default credentials—the user name `admin` and the password `password`\. We recommend that you set a new password\. You can set this password from the AWS Storage Gateway console rather than the local console if you want\. You don't need to know the default password to set a new password\.
-
-**Note**  
-If you created your gateway before June 20th, 2018 the default credentials are – user name `sguser` and password `sgpassword`
+When you log in to the local console for the first time, you log in to the VM with the default credentials—the user name `sguser` and the password `sgpassword` are used for volume and tape gateways, and for file gateways that were created before June 20, 2018\. For a new file gateway use the default credentials—the user name `admin` and the password `password` We recommend that you always set a new password directly after you create your new gateway\. You can set this password from the AWS Storage Gateway console rather than the local console if you want\. You don't need to know the default password to set a new password\.
 
 We recommend that you set a new password\. You can set this password from the AWS Storage Gateway console rather than the local console, if you want\. You don't need to know the default password to set a new password\.
 
