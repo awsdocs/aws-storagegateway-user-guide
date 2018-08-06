@@ -3,7 +3,7 @@
 Creating an SMB accessible file share is a *two\-step process*\. Before you create an SMB file share you need to configure your file gateway **SMB Settings** for either Active Directory or Guest access\. A file share can provide one type of SMB access only\. After setting the authentication methods you create your file share\.
 
 **Note**  
-An SMB file share will not operate correctly without the requisite ports open in you security group\. For more information, see [Port Requirements](Resource_Ports.md)\.
+An SMB file share will not operate correctly without the requisite ports open in your security group\. For more information, see [Port Requirements](Resource_Ports.md)\.
 
 **To configure your SMB file share for Active Directory access**
 
