@@ -9,6 +9,7 @@ AWS Storage Gateway stores volume, snapshot, tape, and file data in the AWS Regi
 | US East \(N\. Virginia\) | us\-east\-1 | yes | yes | yes | 
 | US West \(N\. California\) | us\-west\-1 | yes | yes | yes | 
 | US West \(Oregon\) | us\-west\-2 | yes | yes | yes | 
+| US GovCloud \(West\) | us-gov-west-1 | yes | yes | yes | 
 | Canada \(Central\) | ca\-central\-1 | yes | yes | yes | 
 | EU \(Ireland\) | eu\-west\-1 | yes | yes | yes | 
 | EU \(Frankfurt\) | eu\-central\-1 | yes | yes | yes | 
