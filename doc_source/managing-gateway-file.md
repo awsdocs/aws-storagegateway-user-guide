@@ -92,7 +92,7 @@ The following example policy allows your file gateway to perform all the Amazon 
 
 **To use a file share owned by one AWS account to access an S3 bucket in a different AWS account**
 
-1. Make sure that the S3 bucket owner has granted your AWS account access to the S3 bucket that you need to access and the objects in that bucket\. For information about how to grant this access, see [Example 2: Bucket Owner Granting Cross\-Account Bucket Permissions](http://docs.aws.amazon.com/AmazonS3/latest/dev/example-walkthroughs-managing-access-example2.htm) in the *Amazon Simple Storage Service Developer Guide*\. For a list of the required permissions, see [Granting Access to an Amazon S3 Bucket](#grant-access-s3)\.
+1. Make sure that the S3 bucket owner has granted your AWS account access to the S3 bucket that you need to access and the objects in that bucket\. For information about how to grant this access, see [Example 2: Bucket Owner Granting Cross\-Account Bucket Permissions](http://docs.aws.amazon.com/AmazonS3/latest/dev/example-walkthroughs-managing-access-example2.html) in the *Amazon Simple Storage Service Developer Guide*\. For a list of the required permissions, see [Granting Access to an Amazon S3 Bucket](#grant-access-s3)\.
 
 1. Make sure that the IAM role that your file share uses to access the S3 bucket includes permissions for operations such as `s3:GetObjectAcl` and `s3:PutObjectAcl`\. In addition, make sure that the IAM role includes a trust policy that allows your account to assume that IAM role\. For an example of such a trust policy, see [Granting Access to an Amazon S3 Bucket](#grant-access-s3)\.
 

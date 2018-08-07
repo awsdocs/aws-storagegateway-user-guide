@@ -48,7 +48,7 @@ For information about how to create a CloudWatch Events see [Getting Started wit
 For file notification use case, you could have two file gateways that mapped to the same Amazon S3 bucket and the NFS client for Gateway1 uploads new files to S3\. The files will upload to S3 but they will not appear in Gateway2 because it uses a locally cached version of files in S3\. To make the files visible in gateway2, you can use the [NotifyWhenUploaded](http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_NotifyWhenUploaded.html) API to request file upload notification from Gateway1 to notify you when the upload is done\. You can then use the CloudWatch Events to automatically issue [RefreshCache](http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_RefreshCache.html) request for the file share on Gateway2\. When the [RefreshCache](http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_RefreshCache.html) request completes the new files will be visible in Gateway2\.
 
 **Example Example—File Upload Notification**  
-The following example shows a file upload notification that is sent to you through when the event matches the rule you created\. This notification is in JSON format\. You can configure this notification to be delivered to the target message\.  
+The following example shows a file upload notification that is sent to you through when the event matches the rule you created\. This notification is in JSON format\. You can configure this notification to be delivered to the target as a text message\.  
 
 ```
 {
@@ -80,7 +80,7 @@ For refresh cache notification use case, you could have two file gateways that m
 For information about how to create a CloudWatch Events see [Getting Started with Amazon CloudWatch Events](http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CWE_GettingStarted.html)\.
 
 **Example Example—Refresh Cache Notification**  
-The following example shows a refresh cache notification that is sent to you through when the event matches the rule you created\. This notification is in JSON format\. You can configure this notification to be delivered to the target message\.  
+The following example shows a refresh cache notification that is sent to you through when the event matches the rule you created\. This notification is in JSON format\. You can configure this notification to be delivered to the target as a text message\.  
 
 ```
 {
