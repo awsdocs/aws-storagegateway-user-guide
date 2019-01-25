@@ -8,11 +8,13 @@ For SMB, you can have one of three different modes of authentication:
 + A file share with Microsoft Active Directory \(AD\) access\. Any authenticated Microsoft AD user gets access to this file share type\.
 + An SMB file share with limited access\. Only certain domain users and groups that you specify are allowed access \(white listed\)\. Users and groups can also be denied access \(black listed\)\.
 + An SMB file share with guest access\. Any users who can provide the guest password get access to this file share\.
+**Note**  
+File shares exported through the gateway for both SMB and NFS file shares support POSIX permissions\. This is a compatible subset of [NTFS permissions](http://www.ntfs.com/ntfs-permissions-file-folder.htm)\.
 
 A file gateway can host one or more file shares of different types\. You can have multiple NFS and SMB file shares on a file gateway\.
 
 **Important**  
-To create a file share, a file gateway requires you to activate AWS Security Token Service \(AWS STS\)\. Make sure that AWS STS is activated in the AWS Region that you are creating your file gateway in\. If AWS STS is not activated in that AWS Region, activate it\. For information about how to activate AWS STS, see [Activating and Deactivating AWS STS in an AWS Region](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html) in the *IAM User Guide*\.
+To create a file share, a file gateway requires you to activate AWS Security Token Service \(AWS STS\)\. Make sure that AWS STS is activated in the AWS Region that you are creating your file gateway in\. If AWS STS is not activated in that AWS Region, activate it\. For information about how to activate AWS STS, see [Activating and Deactivating AWS STS in an AWS Region](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html) in the *IAM User Guide*\.
 
 **Note**  
 You can use AWS Key Management Service \(AWS KMS\) to encrypt objects that your file gateway stores in Amazon S3\. Currently, you can do this by using the Storage Gateway API\. For instructions, see the [Storage Gateway API Reference](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_Operations.html)\.   

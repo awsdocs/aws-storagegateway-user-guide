@@ -78,7 +78,7 @@ You can edit file share settings, edit allowed and denied users and groups, and 
 
 1. When you're finished, choose **Save**\.
 
-   When you enter allowed users and groups you are creating a whitelist\. Without a whitelist all authenticated AD users can acces the SMB file share\. Any users and groups that are marked as denied are added to a blacklist and can't acess the SMB file share\. In instances where a user or group is on the blacklist and whitelist, the blacklist always takes precedence\.
+   When you enter allowed users and groups, you are creating a whitelist\. Without a whitelist, all authenticated Microsoft AD users can access the SMB file share\. Any users and groups that are marked as denied are added to a blacklist and can't access the SMB file share\. In instances where a user or group is on both the blacklist and whitelist, the blacklist takes precedence\.
 
 **Next Step**
 

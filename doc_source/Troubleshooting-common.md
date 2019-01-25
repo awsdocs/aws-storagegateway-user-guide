@@ -6,6 +6,7 @@ Following, you can find information about troubleshooting issues related to gate
 + [Troubleshooting On\-Premises Gateway Issues](GatewayTroubleshooting.md)
 + [Troubleshooting Your Microsoft Hyper\-V Setup](ResourceConfigureHostHyperV-troubleshooting.md)
 + [Troubleshooting Amazon EC2 Gateway Issues](EC2GatewayTroubleshooting.md)
++ [Troubleshooting Hardware Appliance Issues](hardware-appliance-issues.md)
 + [Troubleshooting File Share Issues](file-share-issues.md)
 + [Troubleshooting Volume Issues](troubleshoot-volume-issues.md)
 + [Troubleshooting Virtual Tape Issues](Main_TapesIssues-vtl.md)

@@ -4,5 +4,5 @@ In this section, you can find information about AWS and CHAPS configuration, enc
 
 **Topics**
 + [Configuring CHAP Authentication for Your Volumes](GettingStartedConfigureChap.md)
-+ [Encrypting Your Data Using AWS Key Management System](encryption.md)
++ [Encrypting Your Data Using AWS Key Management Service](encryption.md)
 + [Authentication and Access Control for AWS Storage Gateway](UsingIAMWithStorageGateway.md)

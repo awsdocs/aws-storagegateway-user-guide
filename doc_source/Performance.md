@@ -1,8 +1,48 @@
-# Optimizing Gateway Performance<a name="Optimizing-common"></a>
+# Performance<a name="Performance"></a>
+
+In this section, you can find information about AWS Storage Gateway performance\.
+
+**Topics**
++ [Performance Guidance for File Gateways](#performance-fgw)
++ [Performance Guidance for Tape Gateways](#performance-tgw)
++ [Optimizing Gateway Performance](#Optimizing-common)
+
+## Performance Guidance for File Gateways<a name="performance-fgw"></a>
+
+In this section, you can find configuration guidance for provisioning hardware for your file gateway VM\. The Amazon EC2 instance sizes and types that are listed in the table are examples, and are provided for reference\.
+
+**Cache Disk Configuration**  
+For best performance, the cache disk size must be tuned to the size of the active working set\. Using multiple local disks for the cache increases write performance by parallelizing access to data and leads to higher IOPS\.
+
+Following are recommended configurations for your file gateway\. 
+
+
+| Recommended Configuration  | Write Throughput \(File Sizes > 6 MB\) | 
+| --- | --- | 
+|  Root disk: 80 GB io1, 4,000 IOPS Cache disk: 512 GiB EBS cache, io1, 1,500 provisioned IOPS  Minimum network performance: 1 Gbps Amazon EC2 instance: c5\.4xlarge  | 125 MiB/s \(0\.9 Gbps\) | 
+| [Storage Gateway Hardware Appliance](https://www.amazon.com/dp/B079RBVX3M) Minimum network performance: 5 Gbps  | 300 MiB/s \(2\.3 Gbps\) | 
+|  Root disk: 80 GB io1, 4,000 IOPS Cache disk: Two 1\.9 TiB NVME caches \(ephemeral\) Minimum network performance: 5 Gbps Amazon EC2 instance: i3\.4xlarge \([Using Ephemeral Storage With EC2 Gateways](ManagingLocalStorage-common.md#ephemral-disk-cache)\)   | 500 MiB/s \(3\.9 Gbps\) | 
+
+## Performance Guidance for Tape Gateways<a name="performance-tgw"></a>
+
+In this section, you can find configuration guidance for provisioning hardware for your tape gateway VM\. The Amazon EC2 instance sizes and types that are listed in the table are examples, and are provided for reference\.
+
+
+| Configuration | Read/Write from/to cache | Read/Write from/to Cloud | 
+| --- | --- | --- | 
+|  | Write Gbps  | Read Gbps  | Write Gbps  | Read Gbps  | 
+|  Host Platform: Amazon EC2 instance—c5\.4xlarge  Cache disk: 150 GB Upload buffer: 150 GB CPU: 16vCPU \| RAM: 32 GB Minimum network performance: 10 Gbps  | 2\.3  | 3\.2  | 1\.2  | 0\.6  | 
+|  Host Platform: [Storage Gateway Hardware Appliance](https://www.amazon.com/dp/B079RBVX3M) Cache disk: 2\.5 TB Upload buffer: 2 TB CPU: 20 cores \| RAM: 128 GB Minimum network performance: 10 Gbps  | 1\.4  | 4\.3  | 1\.4  | 0\.5  | 
+|  Host Platform: Amazon EC2instance—c5d\.9xlarge Cache disk: 450 GB NVMe Upload buffer: 450 GB NVMe CPU: 36 vCPU \| RAM: 72 GB Minimum network performance: 10Gbps  | 2\.7  | 3\.9  | 1\.3  | 0\.7  | 
+
+**Note**  
+This performance was achieved by using1 MB block size and 4 tape drives simultaneously\. 
+
+## Optimizing Gateway Performance<a name="Optimizing-common"></a>
 
 You can find information following about how to optimize the performance of your gateway\. The guidance is based on adding resources to your gateway and adding resources to your application server\. 
 
-## Add Resources to Your Gateway<a name="Optimizing-vtl-add-resources-common"></a>
+### Add Resources to Your Gateway<a name="Optimizing-vtl-add-resources-common"></a>
 
 **Use higher\-performance disks**  
 To optimize gateway performance, you can add high performance disks such as solid\-state drives \(SSDs\) and a NVMe controller\. You can also attach virtual disks to your VM directly from a storage area network \(SAN\) instead of the Microsoft Hyper\-V NTFS\. Improved disk performance generally results in better throughput and more input/output operations per second \(IOPS\)\. To measure throughput, use the `ReadBytes` and `WriteBytes` metrics with the `Samples` Amazon CloudWatch statistic\. For example, the `Samples` statistic of the `ReadBytes` metric over a sample period of 5 minutes divided by 300 seconds gives you the IOPS\. As a general rule, when you review these metrics for a gateway, look for low throughput and low IOPS trends to indicate disk\-related bottlenecks\. For more information about gateway metrics, see [Measuring Performance Between Your Tape Gateway and AWS](GatewayMetrics-vtl-common.md#PerfGatewayAWS-vtl-common)\.   
@@ -30,11 +70,13 @@ When you provision disks in a gateway setup, we strongly recommend that you do n
 **Change the volumes configuration**  
 For volumes gateways, if you find that adding more volumes to a gateway reduces the throughput to the gateway, consider adding the volumes to a separate gateway\. In particular, if a volume is used for a high\-throughput application, consider creating a separate gateway for the high\-throughput application\. However, as a general rule, you should not use one gateway for all of your high\-throughput applications and another gateway for all of your low\-throughput applications\. To measure your volume throughput, use the `ReadBytes` and `WriteBytes` metrics\. For more information on these metrics, see [Measuring Performance Between Your Application and Gateway](GatewayMetrics-common.md#PerfAppGateway-common)\.
 
-## Use a Larger Block Size for Tape Drives<a name="block-size"></a>
+### Use a Larger Block Size for Tape Drives<a name="block-size"></a>
 
-For tape gateway, the default block size for a tape drive is 64 KB but you can increase the block size to improve I/O performance\. We recommend setting the block size of the tape drives in the your backup software to either 128 KB or 256 KB or 512 KB\. The size you choose depends on the block size limitations of your backup software\. For more information, see the documentation for your backup software\.
+For tape gateway, the default block size for a tape drive is 64 KB but you can increase the block size up to 1 MB to improve I/O performance\. The size you choose depends on the block size limitations of your backup software\. We recommend setting the block size of the tape drives in the your backup software to either 128 KB or 256 KB or 512 KB or 1 MB\. For more information, see the documentation for your backup software\.
 
-## Add Resources to Your Application Environment<a name="Optimizing-vtl-add-resources-app-common"></a>
+For more information about specific gateway performance guidance, see [Performance](#Performance)\.
+
+### Add Resources to Your Application Environment<a name="Optimizing-vtl-add-resources-app-common"></a>
 
 **Increase the bandwidth between your application server and your gateway**  
 To optimize gateway performance, ensure that the network bandwidth between your application and the gateway can sustain your application needs\. You can use the `ReadBytes` and `WriteBytes` metrics of the gateway to measure the total data throughput \(for more information on these metrics, see [Measuring Performance Between Your Tape Gateway and AWS](GatewayMetrics-vtl-common.md#PerfGatewayAWS-vtl-common)\)\. For your application, compare the measured throughput with the desired throughput\. If the measured throughput is less than the desired throughput, then increasing the bandwidth between your application and gateway can improve performance if the network is the bottleneck\. Similarly, you can increase the bandwidth between your VM and your local disks, if they're not direct\-attached\.

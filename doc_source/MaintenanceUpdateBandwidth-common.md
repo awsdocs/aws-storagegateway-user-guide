@@ -2,15 +2,20 @@
 
 You can limit \(or throttle\) the upload throughput from the gateway to AWS or the download throughput from your AWS to your gateway\. Using bandwidth throttling helps you to control the amount of network bandwidth used by your gateway\. By default, an activated gateway has no rate limits on upload or download\.
 
-You can specify the rate limit by using the AWS Management Console, or programmatically by using either the AWS Storage Gateway API \(see [UpdateBandwidthRateLimit](http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_UpdateBandwidthRateLimit.html)\) or an AWS Software Development Kit \(SDK\)\. By throttling bandwidth programmatically, you can change limits automatically throughout the day**—**for example, by scheduling tasks to change the bandwidth\. As described directly following, you can change these limits by using the AWS Storage Gateway console\. Or, for information about changing bandwidth rate limits programmatically, see the following topics\.
+You can specify the rate limit by using the AWS Management Console, or programmatically by using either the AWS Storage Gateway API \(see [UpdateBandwidthRateLimit](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_UpdateBandwidthRateLimit.html)\) or an AWS Software Development Kit \(SDK\)\. By throttling bandwidth programmatically, you can change limits automatically throughout the day**—**for example, by scheduling tasks to change the bandwidth\.
 
 **Topics**
++ [Changing Bandwidth Throttling Using the Storage Gateway Console](#MaintenanceUpdateBandwidthConsole-common)
 + [Updating Gateway Bandwidth Rate Limits Using the AWS SDK for Java](#MaintenanceUpdateBandwidthJava-common)
 + [Updating Gateway Bandwidth Rate Limits Using the AWS SDK for \.NET](#MaintenanceUpdateBandwidthDotNet-common)
 + [Updating Gateway Bandwidth Rate Limits Using the AWS Tools for Windows PowerShell](#MaintenanceUpdateBandwidthPowerShell-common)
 
 **Note**  
 Configuring bandwidth rate limit is currently not supported in the file gateway type\.
+
+## Changing Bandwidth Throttling Using the Storage Gateway Console<a name="MaintenanceUpdateBandwidthConsole-common"></a>
+
+The following procedure shows you how to change a gateway's bandwidth throttling from the AWS Storage Gateway console\.
 
 **To change a gateway's bandwidth throttling using the console**
 
@@ -24,10 +29,10 @@ Configuring bandwidth rate limit is currently not supported in the file gateway 
 
 ## Updating Gateway Bandwidth Rate Limits Using the AWS SDK for Java<a name="MaintenanceUpdateBandwidthJava-common"></a>
 
-By updating bandwidth rate limits programmatically, you can adjust limits automatically over a period of time—for example, by using scheduled tasks\. The following example demonstrates how to update a gateway's bandwidth rate limits using the AWS SDK for Java\. To use the example code, you should be familiar with running a Java console application\. For more information, see [Getting Started](http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/java-dg-setup.html) in the *AWS SDK for Java Developer Guide*\. 
+By updating bandwidth rate limits programmatically, you can adjust limits automatically over a period of time—for example, by using scheduled tasks\. The following example demonstrates how to update a gateway's bandwidth rate limits using the AWS SDK for Java\. To use the example code, you should be familiar with running a Java console application\. For more information, see [Getting Started](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/java-dg-setup.html) in the *AWS SDK for Java Developer Guide*\. 
 
 **Example : Updating Gateway Bandwidth Limits Using the AWS SDK for Java**  
-The following Java code example updates a gateway's bandwidth rate limits\. You need to update the code and provide the service endpoint, your gateway Amazon Resource Name \(ARN\), and the upload and download limits\. For a list of AWS service endpoints you can use with AWS Storage Gateway, see [Regions and Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region) in the *AWS General Reference*\.  
+The following Java code example updates a gateway's bandwidth rate limits\. You need to update the code and provide the service endpoint, your gateway Amazon Resource Name \(ARN\), and the upload and download limits\. For a list of AWS service endpoints you can use with AWS Storage Gateway, see [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region) in the *AWS General Reference*\.  
 
 ```
 import java.io.IOException;
@@ -90,10 +95,10 @@ public class UpdateBandwidthExample {
 
 ## Updating Gateway Bandwidth Rate Limits Using the AWS SDK for \.NET<a name="MaintenanceUpdateBandwidthDotNet-common"></a>
 
-By updating bandwidth rate limits programmatically, you can adjust limits automatically over a period of time—for example, by using scheduled tasks\. The following example demonstrates how to update a gateway's bandwidth rate limits by using the AWS Software Development Kit \(SDK\) for \.NET\. To use the example code, you should be familiar with running a \.NET console application\. For more information, see [Getting Started](http://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/net-dg-setup.html) in the *AWS SDK for \.NET Developer Guide*\. 
+By updating bandwidth rate limits programmatically, you can adjust limits automatically over a period of time—for example, by using scheduled tasks\. The following example demonstrates how to update a gateway's bandwidth rate limits by using the AWS Software Development Kit \(SDK\) for \.NET\. To use the example code, you should be familiar with running a \.NET console application\. For more information, see [Getting Started](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/net-dg-setup.html) in the *AWS SDK for \.NET Developer Guide*\. 
 
 **Example : Updating Gateway Bandwidth Limits by Using the AWS SDK for \.NET**  
-The following C\# code example updates a gateway's bandwidth rate limits\. You need to update the code and provide the service endpoint, your gateway Amazon Resource Name \(ARN\), and the upload and download limits\. For a list of AWS service endpoints you can use with AWS Storage Gateway, see [Regions and Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region) in the *AWS General Reference*\.  
+The following C\# code example updates a gateway's bandwidth rate limits\. You need to update the code and provide the service endpoint, your gateway Amazon Resource Name \(ARN\), and the upload and download limits\. For a list of AWS service endpoints you can use with AWS Storage Gateway, see [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region) in the *AWS General Reference*\.  
 
 ```
 using System;
@@ -160,7 +165,7 @@ namespace AWSStorageGateway
 
 ## Updating Gateway Bandwidth Rate Limits Using the AWS Tools for Windows PowerShell<a name="MaintenanceUpdateBandwidthPowerShell-common"></a>
 
-By updating bandwidth rate limits programmatically, you can adjust limits automatically over a period of time—for example, by using scheduled tasks\. The following example demonstrates how to update a gateway's bandwidth rate limits using the AWS Tools for Windows PowerShell\. To use the example code, you should be familiar with running a PowerShell script\. For more information, see [Getting Started](http://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-started.html) in the *AWS Tools for Windows PowerShell User Guide*\. 
+By updating bandwidth rate limits programmatically, you can adjust limits automatically over a period of time—for example, by using scheduled tasks\. The following example demonstrates how to update a gateway's bandwidth rate limits using the AWS Tools for Windows PowerShell\. To use the example code, you should be familiar with running a PowerShell script\. For more information, see [Getting Started](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-started.html) in the *AWS Tools for Windows PowerShell User Guide*\. 
 
 **Example : Updating Gateway Bandwidth Limits by Using the AWS Tools for Windows PowerShell**  
 The following PowerShell script example updates a gateway's bandwidth rate limits\. You need to update the script and provide your gateway Amazon Resource Name \(ARN\), and the upload and download limits\.   

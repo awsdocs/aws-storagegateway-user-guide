@@ -76,7 +76,7 @@ The process of adding tapes can take several minutes to complete\.
 1. Open the context \(right\-click\) menu for the tape you want to identify, and then choose **Identify unknown tape**\. 
 **Note**  
 The process of identifying tapes can take a few seconds or a few minutes\.  
-Microsoft System Center Data Protection Manager doesn't display barcodes for virtual tapes created in AWS Storage Gateway\. 
+If the tapes don’t display barcodes correctly, you need to change the media changer driver to Sun/StorageTek Library\. For more information, see [Displaying Barcodes for Tapes in Microsoft System Center DPM](resource_vtl-devices.md#enable-barcode)\.
 
    When identification is complete, the tape label changes to **Free**\. That is, the tape is free for data to be written to it\. 
 

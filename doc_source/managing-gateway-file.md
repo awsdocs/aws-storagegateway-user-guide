@@ -27,7 +27,7 @@ When you create a file share, your file gateway requires access to upload files 
 
 The role requires this IAM policy and a security token service trust \(STS\) relationship for it\. The policy determines which actions the role can perform\. In addition, your S3 bucket must have an access policy that allows the IAM role to access the S3 bucket\. 
 
-You can create the role and access policy yourself, or your file gateway can create them for you\. If your file gateway creates the policy for you, the policy contains a list of S3 actions\. For information about roles and permissions, see [Creating a Role to Delegate Permissions to an AWS Service](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-service.html) in the *IAM User Guide*\.
+You can create the role and access policy yourself, or your file gateway can create them for you\. If your file gateway creates the policy for you, the policy contains a list of S3 actions\. For information about roles and permissions, see [Creating a Role to Delegate Permissions to an AWS Service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-service.html) in the *IAM User Guide*\.
 
 The following example is a trust policy that allows your file gateway to assume an IAM role\.
 
@@ -92,7 +92,7 @@ The following example policy allows your file gateway to perform all the Amazon 
 
 **To use a file share owned by one AWS account to access an S3 bucket in a different AWS account**
 
-1. Make sure that the S3 bucket owner has granted your AWS account access to the S3 bucket that you need to access and the objects in that bucket\. For information about how to grant this access, see [Example 2: Bucket Owner Granting Cross\-Account Bucket Permissions](http://docs.aws.amazon.com/AmazonS3/latest/dev/example-walkthroughs-managing-access-example2.html) in the *Amazon Simple Storage Service Developer Guide*\. For a list of the required permissions, see [Granting Access to an Amazon S3 Bucket](#grant-access-s3)\.
+1. Make sure that the S3 bucket owner has granted your AWS account access to the S3 bucket that you need to access and the objects in that bucket\. For information about how to grant this access, see [Example 2: Bucket Owner Granting Cross\-Account Bucket Permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-walkthroughs-managing-access-example2.html) in the *Amazon Simple Storage Service Developer Guide*\. For a list of the required permissions, see [Granting Access to an Amazon S3 Bucket](#grant-access-s3)\.
 
 1. Make sure that the IAM role that your file share uses to access the S3 bucket includes permissions for operations such as `s3:GetObjectAcl` and `s3:PutObjectAcl`\. In addition, make sure that the IAM role includes a trust policy that allows your account to assume that IAM role\. For an example of such a trust policy, see [Granting Access to an Amazon S3 Bucket](#grant-access-s3)\.
 
@@ -111,9 +111,9 @@ Make sure to set up the policies correctly to grant cross\-account access to the
 
 For additional information about access policies and access control lists, see the following:
 
-[Guidelines for Using the Available Access Policy Options](http://docs.aws.amazon.com/AmazonS3/latest/dev/access-policy-alternatives-guidelines.html) in the *Amazon Simple Storage Service Developer Guide*
+[Guidelines for Using the Available Access Policy Options](https://docs.aws.amazon.com/AmazonS3/latest/dev/access-policy-alternatives-guidelines.html) in the *Amazon Simple Storage Service Developer Guide*
 
-[Access Control List \(ACL\) Overview](http://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html) in the *Amazon Simple Storage Service Developer Guide*
+[Access Control List \(ACL\) Overview](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html) in the *Amazon Simple Storage Service Developer Guide*
 
 ## Deleting a File Share<a name="remove-file-share"></a>
 
@@ -149,7 +149,7 @@ You cannot undo the force delete operation\.
 
 1. In the message that appears in the **Details** tab, verify the ID of the file share that you want to forcibly delete, select the confirmation box, and choose **Force delete now**\.
 
-You can also use the [DeleteFileShare](http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_DeleteFileShare.html) API operation to forcibly delete the file share\.
+You can also use the [DeleteFileShare](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_DeleteFileShare.html) API operation to forcibly delete the file share\.
 
 ## Editing Storage Settings for Your File Share<a name="edit-storage-class"></a>
 
@@ -171,11 +171,11 @@ You can edit the default storage class for your Amazon S3 bucket, the squash lev
      + **S3 Standard\_IA **– Store your infrequently accessed object data redundantly in multiple Availability Zones that are geographically separated\.
      + **S3 One Zone\_IA** – Store your infrequently accessed object data a single Availability Zone\.
 
-       For more information, see [Storage Classes](http://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html) in the *Amazon Simple Storage Service Developer Guide*\.
+       For more information, see [Storage Classes](https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html) in the *Amazon Simple Storage Service Developer Guide*\.
    + For **Object metadata**, choose the metadata that you want to use:
      + Choose **Guess MIME type** to enable guessing of the MIME type for uploaded objects based on file extensions\.
      + Choose **Give bucket owner full control** to give full control to the owner of the S3 bucket that maps to the file NFS/SMB file share\. For more information on using your file share to access objects in a bucket owned by another account, see [Using a File Share for Cross\-Account Access](#cross-account-access)\.
-     + Choose **Enable requester pays** if you are using this file share on a bucket that requires the requester or reader instead of bucket owner to pay for access charges\. For more information, see [Requester Pays Buckets](http://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html)\.
+     + Choose **Enable requester pays** if you are using this file share on a bucket that requires the requester or reader instead of bucket owner to pay for access charges\. For more information, see [Requester Pays Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html)\.
    + For **Squash level**, choose the squash level setting that you want for your NFS file share, and then choose **Save**\. 
 **Note**  
 You can choose a squash level setting for NFS file shares only\. SMB file shares don't use squash settings\.
@@ -272,6 +272,8 @@ Anyone who can provide the correct password gets guest access to the SMB file sh
 1. For **Denied groups**, choose **Add entry** and provide the list of AD users that you want to deny file share access\.
 
 1. When you finish adding your entries, choose **Save**\.
+**Note**  
+Enter the AD user and/or group name alone\. The Domain name is implied by the membership of the gateway into the specfic AD the gateway is joined to\.
 
 If you don't specify valid or invalid users or groups, any authenticated Active Directory user can export the file share\.
 
@@ -291,7 +293,7 @@ If you want to provide only guest access, your file gateway doesn't have to be p
 
 As your NFS/SMB client performs file system operations, your gateway maintains an inventory of the objects in the Amazon S3 bucket associated with your file share\. Your gateway uses this cached inventory to reduce the latency and frequency of S3 requests\. 
 
-To refresh the S3 bucket for your file share, you can use the AWS Storage Gateway console or the [RefreshCache](http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_RefreshCache.html) operation in the AWS Storage Gateway API\.
+To refresh the S3 bucket for your file share, you can use the AWS Storage Gateway console or the [RefreshCache](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_RefreshCache.html) operation in the AWS Storage Gateway API\.
 
 **To refresh objects in a S3 bucket from the console**
 
@@ -300,6 +302,8 @@ To refresh the S3 bucket for your file share, you can use the AWS Storage Gatewa
 1. Choose **File shares**, and then choose the file share associated with the S3 bucket that you want to refresh\. 
 
 1. For **Actions**, choose **Refresh cache**\. The time that it takes to refresh depends on the number of objects that the S3 bucket contains\.
+
+   You can subscribe to be notified through an Amazon CloudWatch event when your [RefreshCache](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_RefreshCache.html) operation completes\. For more information, see [Getting Notified About File Operations](monitoring-file-gateway.md#get-notification)\.
 
 ## Understanding File Share Status<a name="understand-file-share"></a>
 

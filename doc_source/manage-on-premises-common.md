@@ -1,4 +1,4 @@
-# Performing Common Maintenance Tasks on the VM Local Console<a name="manage-on-premises-common"></a>
+# Performing Tasks on the VM Local Console \(Volume and Tape Gateways\)<a name="manage-on-premises-common"></a>
 
 For a gateway deployed on\-premises, you can perform the following maintenance tasks using the VM host's local console\. These tasks are common to VMware and Hyper\-V hosts\.
 
@@ -20,9 +20,7 @@ When the VM is ready for you to log in, the login screen is displayed\. If this 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GatewayMaintenance_75.png)<a name="MaintenanceConsoleWindowMenu-common"></a>
 
 **To log in to the gateway's local console**
-+ If this is your first time logging in to the local console, log in to the VM with the default credentials\.
-
-  For File Gateway before June 20, 2018, Volume Gateway, and Tape Gateway the default user is *sguser* and the default password is *sgpassword*\. For File Gateway after June 20, 2018, the default user is *admin* and the default password is *password*\. 
++ If this is your first time logging in to the local console, log in to the VM with the default credentials\. For volume and tape gateways the default user name is `sguser` and the password is `sgpassword`\. For file gateways the default user name is `admin` and the password is `password`
 
   Otherwise, use your credentials to log in\.
 
@@ -31,7 +29,7 @@ After you log in, you see the **Storage Gateway Configuration** main menu, as sh
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/LocalConsoleLogin.png)
 
 **Note**  
-We recommend changing the default password\. You do this by running the `passwd` command from the Gateway Console menu \(item 5 on the main menu\)\. For information about how to run the command, see [Running Storage Gateway Commands on the Local Console](#MaintenanceGatewayConsole-common)\. You can also set your own password from the AWS Storage Gateway console\. For more information, see [Setting the Local Console Password from the Storage Gateway Console](#set-password)\.
+We recommend changing the default password\. You do this by running the `passwd` command from the local console menu \(item 5 on the main menu\)\. For information about how to run the command, see [Running Storage Gateway Commands on the Local Console](#MaintenanceGatewayConsole-common)\. You can also set your own password from the AWS Storage Gateway console\. For more information, see [Setting the Local Console Password from the Storage Gateway Console](#set-password)\.
 
 
 | To | See | 
@@ -49,9 +47,7 @@ To exit the configuration session, type **x** to exit the menu\.
 
 ## Setting the Local Console Password from the Storage Gateway Console<a name="set-password"></a>
 
-When you log in to the local console for the first time, you log in to the VM with the default credentials—the user name `sguser` and the password `sgpassword` are used for volume and tape gateways, and for file gateways that were created before June 20, 2018\. For a new file gateway use the default credentials—the user name `admin` and the password `password` We recommend that you always set a new password directly after you create your new gateway\. You can set this password from the AWS Storage Gateway console rather than the local console if you want\. You don't need to know the default password to set a new password\.
-
-We recommend that you set a new password\. You can set this password from the AWS Storage Gateway console rather than the local console, if you want\. You don't need to know the default password to set a new password\.
+When you log in to the local console for the first time, you log in to the VM with the default credentials— Volume and tape gateways use default credentials, the user name is `sguser` and the password is `sgpassword`\. File gateways use the default credentials—the user name is `admin` and the password is `password`\. We recommend that you always set a new password immediately after you create your new gateway\. You can set this password from the AWS Storage Gateway console rather than the local console if you want\. You don't need to know the default password to set a new password\.
 
 **To set the local console password on the Storage Gateway console**
 
@@ -79,8 +75,8 @@ The following procedure shows you how to configure SOCKS proxy for volume gatewa
 **To configure a SOCKS5 proxy for volume and tape gateways**
 
 1. Log in to your gateway's local console\.
-   + VMware ESXi—for more information, see [Accessing the Gateway Local Console with VMware ESXi](manage-on-premises-vmware.md#MaintenanceConsoleWindowVMware-common)\.
-   + Microsoft Hyper\-V—for more information, see [Access the Gateway Local Console with Microsoft Hyper\-V](manage-on-premises-Hyperv.md#MaintenanceConsoleWindowHyperV-common)\.
+   + VMware ESXi—for more information, see [Accessing the Gateway Local Console with VMware ESXi](accessing-local-console.md#MaintenanceConsoleWindowVMware-common)\.
+   + Microsoft Hyper\-V—for more information, see [Access the Gateway Local Console with Microsoft Hyper\-V](accessing-local-console.md#MaintenanceConsoleWindowHyperV-common)\.
 
 1. On the **AWS Storage Gateway Configuration** main menu, type **1** to begin configuring the SOCKS proxy\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/LocalConsoleLogin.png)
@@ -94,8 +90,8 @@ The following procedure shows you how to configure an HTTP proxy for a file gate
 **To configure an HTTP proxy for a file gateway**
 
 1. Log in to your gateway's local console\.
-   + VMware ESXi—for more information, see [Accessing the Gateway Local Console with VMware ESXi](manage-on-premises-vmware.md#MaintenanceConsoleWindowVMware-common)\.
-   + Microsoft Hyper\-V—for more information, see [Access the Gateway Local Console with Microsoft Hyper\-V](manage-on-premises-Hyperv.md#MaintenanceConsoleWindowHyperV-common)\.
+   + VMware ESXi—for more information, see [Accessing the Gateway Local Console with VMware ESXi](accessing-local-console.md#MaintenanceConsoleWindowVMware-common)\.
+   + Microsoft Hyper\-V—for more information, see [Access the Gateway Local Console with Microsoft Hyper\-V](accessing-local-console.md#MaintenanceConsoleWindowHyperV-common)\.
 
 1. On the **AWS Storage Gateway Configuration** main menu, type **1** to begin configuring the HTTP proxy\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/LocalConsoleLogin-file.png)
@@ -113,8 +109,8 @@ The default network configuration for the gateway is Dynamic Host Configuration 
 **To configure your gateway to use static IP addresses**
 
 1. Log in to your gateway's local console\.
-   + VMware ESXi—for more information, see [Accessing the Gateway Local Console with VMware ESXi](manage-on-premises-vmware.md#MaintenanceConsoleWindowVMware-common)\.
-   + Microsoft Hyper\-V—for more information, see [Access the Gateway Local Console with Microsoft Hyper\-V](manage-on-premises-Hyperv.md#MaintenanceConsoleWindowHyperV-common)\.
+   + VMware ESXi—for more information, see [Accessing the Gateway Local Console with VMware ESXi](accessing-local-console.md#MaintenanceConsoleWindowVMware-common)\.
+   + Microsoft Hyper\-V—for more information, see [Access the Gateway Local Console with Microsoft Hyper\-V](accessing-local-console.md#MaintenanceConsoleWindowHyperV-common)\.
 
 1. On the **AWS Storage Gateway Configuration** main menu, type option **2** to begin configuring a static IP address\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/LocalConsoleLogin.png)
@@ -130,8 +126,8 @@ You can use your gateway's local console to test your Internet connection\. This
 **To test your gateway's connection to the Internet**
 
 1. Log in to your gateway's local console\.
-   + VMware ESXi—for more information, see [Accessing the Gateway Local Console with VMware ESXi](manage-on-premises-vmware.md#MaintenanceConsoleWindowVMware-common)\.
-   + Microsoft Hyper\-V—for more information, see [Access the Gateway Local Console with Microsoft Hyper\-V](manage-on-premises-Hyperv.md#MaintenanceConsoleWindowHyperV-common)\.
+   + VMware ESXi—for more information, see [Accessing the Gateway Local Console with VMware ESXi](accessing-local-console.md#MaintenanceConsoleWindowVMware-common)\.
+   + Microsoft Hyper\-V—for more information, see [Access the Gateway Local Console with Microsoft Hyper\-V](accessing-local-console.md#MaintenanceConsoleWindowHyperV-common)\.
 
 1. On the **AWS Storage Gateway Configuration** main menu, type option **3** to begin testing network connectivity\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/LocalConsoleLogin.png)
@@ -152,7 +148,7 @@ After your gateway is deployed and running, in some scenarios the gateway VM's t
 
 For a gateway deployed on VMware ESXi, setting the hypervisor host time and synchronizing the VM time to the host is sufficient to avoid time drift\. For more information, see [Synchronizing VM Time with Host Time](configure-vmware.md#GettingStartedSyncVMTime-common)\. 
 
-For a gateway deployed on Microsoft Hyper\-V, you should periodically check your VM's time\. For more information, see [Synchronizing Your Gateway VM Time](manage-on-premises-Hyperv.md#MaintenanceTimeSync-hyperv)\.
+For a gateway deployed on Microsoft Hyper\-V, you should periodically check your VM's time\. For more information, see [Synchronizing Your Gateway VM Time](MaintenanceTimeSync-hyperv.md)\.
 
 ## Running Storage Gateway Commands on the Local Console<a name="MaintenanceGatewayConsole-common"></a>
 
@@ -161,8 +157,8 @@ The AWS Storage Gateway console helps provide a secure environment for configuri
 **To run a configuration or diagnostic command**
 
 1. Log in to your gateway's local console\.
-   + VMware ESXi—for more information, see [Accessing the Gateway Local Console with VMware ESXi](manage-on-premises-vmware.md#MaintenanceConsoleWindowVMware-common)\.
-   + Microsoft Hyper\-V—for more information, see [Access the Gateway Local Console with Microsoft Hyper\-V](manage-on-premises-Hyperv.md#MaintenanceConsoleWindowHyperV-common)\.
+   + VMware ESXi—for more information, see [Accessing the Gateway Local Console with VMware ESXi](accessing-local-console.md#MaintenanceConsoleWindowVMware-common)\.
+   + Microsoft Hyper\-V—for more information, see [Access the Gateway Local Console with Microsoft Hyper\-V](accessing-local-console.md#MaintenanceConsoleWindowHyperV-common)\.
 
 1. On the **AWS Storage Gateway Configuration** main menu, type option **5** for **Gateway Console**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/LocalConsoleLogin.png)
@@ -182,8 +178,8 @@ When your gateway starts, it checks its virtual CPU cores, root volume size, and
 **To view the status of a system resource check**
 
 1. Log in to your gateway's local console\.
-   + VMware ESXi—for more information, see [Accessing the Gateway Local Console with VMware ESXi](manage-on-premises-vmware.md#MaintenanceConsoleWindowVMware-common)\.
-   + Microsoft Hyper\-V—for more information, see [Access the Gateway Local Console with Microsoft Hyper\-V](manage-on-premises-Hyperv.md#MaintenanceConsoleWindowHyperV-common)\.
+   + VMware ESXi—for more information, see [Accessing the Gateway Local Console with VMware ESXi](accessing-local-console.md#MaintenanceConsoleWindowVMware-common)\.
+   + Microsoft Hyper\-V—for more information, see [Access the Gateway Local Console with Microsoft Hyper\-V](accessing-local-console.md#MaintenanceConsoleWindowHyperV-common)\.
 
 1. In the **AWS Storage Gateway Configuration** main menu, type **6** to view the results of a system resource check\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/LocalConsoleLogin.png)
@@ -275,5 +271,5 @@ If you configure your gateway to use multiple network adapters \(NICs\), it can 
 In a typical multiple\-adapter use case, one adapter is configured as the route by which the gateway communicates with AWS \(that is, as the default gateway\)\. Except for this one adapter, initiators must be in the same subnet as the adapter that contains the iSCSI targets to which they connect\. Otherwise, communication with the intended targets might not be possible\. If a target is configured on the same adapter that is used for communication with AWS, then iSCSI traffic for that target and AWS traffic will flow through the same adapter\.
 
  When you configure one adapter to connect to the AWS Storage gateway console and then add a second adapter, storage gateway automatically configures the route table to use the second adapter as the preferred route\. For instructions on how to configure multiple\-adapters, see the following sections\. 
-+ [Configuring Your Gateway for Multiple NICs in a VMware ESXi Host](manage-on-premises-vmware.md#MaintenanceMultiNIC-vmaware)
-+ [Configuring Your Gateway for Multiple NICs in Microsoft Hyper\-V Host](manage-on-premises-Hyperv.md#MaintenanceMultiNIC-hyperv)
++ [Configuring Your Gateway for Multiple NICs in a VMware ESXi Host](configure-multi-nic.md#MaintenanceMultiNIC-vmaware)
++ [Configuring Your Gateway for Multiple NICs in Microsoft Hyper\-V Host](configure-multi-nic.md#MaintenanceMultiNIC-hyperv)

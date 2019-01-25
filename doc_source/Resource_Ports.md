@@ -24,6 +24,7 @@ The following ports are common to all gateway types and are required by all gate
 |  Storage Gateway VM  |  Domain Name Service \(DNS\) server  |  User Datagram Protocol \(UDP\)/UDP  |  53 \(DNS\)  |  For communication between a Storage Gateway VM and the DNS server\.  | 
 |  Storage Gateway VM  |  AWS  |  TCP  |  22 \(Support channel\)  |  Allows AWS Support to access your gateway to help you with troubleshooting gateway issues\. You don't need this port open for the normal operation of your gateway, but it is required for troubleshooting\.  | 
 |  Storage Gateway VM  |  Network Time Protocol \(NTP\) server  |  UDP  |  123 \(NTP\)  |  Used by local systems to synchronize VM time to the host time\. A Storage Gateway VM is configured to use the following NTP servers: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/Resource_Ports.html)  | 
+|  AWS Storage Gateway Hardware Appliance  |  Hypertext Transfer Protocol \(HTTP\) proxy  |  TCP  |  8080 \(HTTP\)  | Required briefly for activation\. | 
 
 The following table lists the required ports that must be opened for a file gateway using either the Network File System \(NFS\) or Server Message Block \(SMB\) protocol\. These port rules are part of your security group definition\.
 

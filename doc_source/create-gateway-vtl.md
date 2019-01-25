@@ -26,7 +26,7 @@ For a [tape gateway](StorageGatewayConcepts.md#storage-gateway-vtl-concepts), yo
 
 ## Choosing a Host Platform and Downloading the VM<a name="hosting-options-vtl"></a>
 
-If you create your gateway on\-premises, you download and deploy the gateway VM and then activate the gateway\. If you create your gateway on an Amazon EC2 instance, you launch an Amazon Machine Image \(AMI\) that contains the gateway VM image and then activate the gateway\. For information about supported host platforms, see [Supported Hypervisors and Host Requirements](Requirements.md#requirements-host)\.
+If you create your gateway on\-premises, you deploy the Hardware Appliance; or download and deploy a gateway VM, and then activate the gateway\. If you create your gateway on an Amazon EC2 instance, you launch an Amazon Machine Image \(AMI\) that contains the gateway VM image and then activate the gateway\. For information about supported host platforms, see [Supported Hypervisors and Host Requirements](Requirements.md#requirements-host)\.
 
 **Note**  
 You can run only file, cached volume, and tape gateways on an Amazon EC2 instance\.
@@ -34,7 +34,9 @@ You can run only file, cached volume, and tape gateways on an Amazon EC2 instanc
 **To select a host platform and download the VM**
 
 1. On the **Select host platform** page, choose the virtualization platform that you want to run your gateway on\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/HostPlatform.png)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/ApplianceSelectHostPlatform.png)  
+  
+
 
 1. Choose **Download image** next to your virtualization platform to download a \.zip file that contains the \.ova file for your virtualization platform\.
 **Note**  
@@ -54,6 +56,12 @@ The \.zip file is over 500 MB in size and might take some time to download, depe
 
    For both VMware and Microsoft Hyper\-V, synchronizing the VM time with the host time is required for successful gateway activation\. Make sure that your host clock is set to the correct time and synchronize it with a Network Time Protocol \(NTP\) server\. 
 
+   If you choose EC2, do the following:
+
+   Launch an Amazon Machine Image \(AMI\) that contains the gateway VM image, and then activate the gateway\. For information about deploying your gateway to an Amazon EC2 host, see: [Deploying a Volume or Tape Gateway on an Amazon EC2 Host](ec2-gateway-common.md) 
+
+   If you choose the Hardware Appliance, do the following:
+
 For information about deploying your gateway to an Amazon EC2 host, see [Deploy your gateway to an Amazon EC2 host](ec2-gateway-common.md)\.
 
 ## Connecting to Your Gateway<a name="GettingStartedBeginActivateGateway-vtl"></a>
@@ -67,8 +75,8 @@ Make sure that you connect to the correct gateway type\. The \.ova files and AMI
 **To get the IP address for your gateway VM from the local console**
 
 1. Log on to your gateway VM local console\. For detailed instructions, see the following:
-   + VMware ESXi—[Accessing the Gateway Local Console with VMware ESXi](manage-on-premises-vmware.md#MaintenanceConsoleWindowVMware-common)\.
-   + Microsoft Hyper\-V—[Access the Gateway Local Console with Microsoft Hyper\-V](manage-on-premises-Hyperv.md#MaintenanceConsoleWindowHyperV-common)\.
+   + VMware ESXi—[Accessing the Gateway Local Console with VMware ESXi](accessing-local-console.md#MaintenanceConsoleWindowVMware-common)\.
+   + Microsoft Hyper\-V—[Access the Gateway Local Console with Microsoft Hyper\-V](accessing-local-console.md#MaintenanceConsoleWindowHyperV-common)\.
 
 1. Get the IP address from the top of the menu page, and make note of it for later use\.
 
@@ -132,7 +140,7 @@ When adding a cache or upload buffer to an existing gateway, make sure to create
 
 **To configure local disks**
 
-1. On the **Configure local disks** page, identify the disks you allocated and decide which ones you want to use for an upload buffer and cached storage\. For information about disk size limits, see [Configuration and Performance Limits](resource-gateway-limits.md#performance-limits)\.  
+1. On the **Configure local disks** page, identify the disks you allocated and decide which ones you want to use for an upload buffer and cached storage\. For information about disk size limits, see [Recommended Local Disk Sizes For Your Gateway](resource-gateway-limits.md#disk-sizes)\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/configure-local-storage.png)
 
 1. In the **Allocation** column next to your upload buffer disk, choose **Upload Buffer**\.

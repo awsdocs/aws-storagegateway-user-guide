@@ -3,7 +3,7 @@
 Previously, you allocated local disks that you added to the VM cache storage and upload buffer\. Now you create a storage volume to which your applications read and write data\. The gateway maintains the volume's recently accessed data locally in cache storage, and asynchronously transferred data to Amazon S3\. For stored volumes, you allocated local disks that you added to the VM upload buffer and your application's data\.
 
 **Note**  
-You can use AWS Key Management Service \(AWS KMS\) to encrypt data written to a cached volume that is stored in Amazon S3\. Currently, you can do this by using the AWS Storage Gateway API Reference\. For more information, see [CreateCachediSCSIVolume](http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_CreateCachediSCSIVolume.html) or [create\-cached\-iscsi\-volume](http://docs.aws.amazon.com/cli/latest/reference/storagegateway/create-cached-iscsi-volume.html)\.
+You can use AWS Key Management Service \(AWS KMS\) to encrypt data written to a cached volume that is stored in Amazon S3\. Currently, you can do this by using the AWS Storage Gateway API Reference\. For more information, see [CreateCachediSCSIVolume](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_CreateCachediSCSIVolume.html) or [create\-cached\-iscsi\-volume](https://docs.aws.amazon.com/cli/latest/reference/storagegateway/create-cached-iscsi-volume.html)\.
 
 **To create a volume**
 

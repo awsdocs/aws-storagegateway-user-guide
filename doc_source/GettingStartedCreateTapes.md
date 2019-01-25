@@ -2,7 +2,7 @@
 
 **Note**  
 You are charged only for the amount of data you write to the tape, not the tape capacity\.  
-You can use AWS Key Management Service \(AWS KMS\) to encrypt data written to a virtual tape that is stored Amazon S3\. Currently, you can do this by using the AWS Storage Gateway API Reference\. For more information, see [CreateTapes](http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_CreateTapes.html) or [create\-tapes](http://docs.aws.amazon.com/cli/latest/reference/storagegateway/create-tapes.html)\.
+You can use AWS Key Management Service \(AWS KMS\) to encrypt data written to a virtual tape that is stored Amazon S3\. Currently, you can do this by using the AWS Storage Gateway API Reference\. For more information, see [CreateTapes](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_CreateTapes.html) or [create\-tapes](https://docs.aws.amazon.com/cli/latest/reference/storagegateway/create-tapes.html)\.
 
 **To create virtual tapes**
 

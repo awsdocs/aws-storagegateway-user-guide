@@ -22,7 +22,7 @@ A file gateway simplifies file storage in Amazon S3, integrates to existing appl
 + **Cached volumes** – You store your data in Amazon Simple Storage Service \(Amazon S3\) and retain a copy of frequently accessed data subsets locally\. Cached volumes offer a substantial cost savings on primary storage and minimize the need to scale your storage on\-premises\. You also retain low\-latency access to your frequently accessed data\.
 + **Stored volumes** – If you need low\-latency access to your entire dataset, first configure your on\-premises gateway to store all your data locally\. Then asynchronously back up point\-in\-time snapshots of this data to Amazon S3\. This configuration provides durable and inexpensive offsite backups that you can recover to your local data center or Amazon EC2\. For example, if you need replacement capacity for disaster recovery, you can recover the backups to Amazon EC2\. 
 
-**Tape Gateway** – With a tape gateway, you can cost\-effectively and durably archive backup data in Amazon Glacier\. A tape gateway provides a virtual tape infrastructure that scales seamlessly with your business needs and eliminates the operational burden of provisioning, scaling, and maintaining a physical tape infrastructure\. 
+**Tape Gateway** – With a tape gateway, you can cost\-effectively and durably archive backup data in Glacier\. A tape gateway provides a virtual tape infrastructure that scales seamlessly with your business needs and eliminates the operational burden of provisioning, scaling, and maintaining a physical tape infrastructure\. 
 
 You can run AWS Storage Gateway either on\-premises as a VM appliance, or in AWS as an Amazon Elastic Compute Cloud \(Amazon EC2\) instance\. You deploy your gateway on an EC2 instance to provision iSCSI storage volumes in AWS\. Gateways hosted on EC2 instances can be used for disaster recovery, data mirroring, and providing storage for applications hosted on Amazon EC2\.
 
@@ -44,7 +44,7 @@ In the following documentation, you can find a Getting Started section that cove
 + [Creating a Tape Gateway](create-tape-gateway.md) provides instructions on how to create and use a tape gateway\. It shows you how to back up data to virtual tapes and archive the tapes\.
 + [Managing Your Gateway](managing-gateway-common.md) describes how to perform management tasks for all gateway types and resources\.
 
-In this guide, you can primarily find how to work with gateway operations by using the AWS Management Console\. If you want to perform these operations programmatically, see the *[AWS Storage Gateway API Reference](http://docs.aws.amazon.com/storagegateway/latest/APIReference/)\.* 
+In this guide, you can primarily find how to work with gateway operations by using the AWS Management Console\. If you want to perform these operations programmatically, see the *[AWS Storage Gateway API Reference](https://docs.aws.amazon.com/storagegateway/latest/APIReference/)\.* 
 
 ## AWS Storage Gateway Pricing<a name="Pricing"></a>
 

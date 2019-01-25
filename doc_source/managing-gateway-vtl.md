@@ -42,7 +42,7 @@ The status of the virtual tape that you want to retrieve must be ARCHIVED\.
 
 1. For **Gateway**, choose the gateway that you want to retrieve the archived tape to, and then choose **Retrieve tape**\.
 
-The status of the tape changes from ARCHIVED to RETRIEVING\. At this point, your data is being moved from the virtual tape shelf \(backed by Amazon Glacier\) to the virtual tape library \(backed by Amazon S3\)\. After all the data is moved, the status of the virtual tape in the archive changes to RETRIEVED\. 
+The status of the tape changes from ARCHIVED to RETRIEVING\. At this point, your data is being moved from the virtual tape shelf \(backed by Glacier\) to the virtual tape library \(backed by Amazon S3\)\. After all the data is moved, the status of the virtual tape in the archive changes to RETRIEVED\. 
 
 **Note**  
 Retrieved virtual tapes are read\-only\.
@@ -129,10 +129,10 @@ A tape's status must be AVAILABLE for you to read or write to the tape\. The fol
 | CREATING | The virtual tape is being created\. The tape can't be loaded into a tape drive, because the tape is being created\. | — | 
 | AVAILABLE | The virtual tape is created and ready to be loaded into a tape drive\. | Amazon S3 | 
 | IN TRANSIT TO VTS | The virtual tape has been ejected and is being uploaded for archive\. At this point, your tape gateway is uploading data to AWS\. If the amount of data being uploaded is small, this status might not appear\. When the upload is completed, the status changes to ARCHIVING\.  |  Amazon S3  | 
-| ARCHIVING | The virtual tape is being moved by your tape gateway to the archive, which is backed by Amazon Glacier\. This process happens after the data upload to AWS is completed\.  | Data is being moved from Amazon S3 to Amazon Glacier | 
+| ARCHIVING | The virtual tape is being moved by your tape gateway to the archive, which is backed by Glacier\. This process happens after the data upload to AWS is completed\.  | Data is being moved from Amazon S3 to Glacier | 
 | DELETING | The virtual tape is being deleted\. | Data is being deleted from Amazon S3 | 
 | DELETED | The virtual tape has been successfully deleted\. | — | 
-| RETRIEVING | The virtual tape is being retrieved from the archive to your tape gateway\.  The virtual tape can be retrieved only to a tape gateway\.   | Data is being moved from Amazon Glacier to Amazon S3 | 
+| RETRIEVING | The virtual tape is being retrieved from the archive to your tape gateway\.  The virtual tape can be retrieved only to a tape gateway\.   | Data is being moved from Glacier to Amazon S3 | 
 | RETRIEVED | The virtual tape is retrieved from the archive\. The retrieved tape is write\-protected\. | Amazon S3 | 
 | RECOVERED |  The virtual tape is recovered and is read\-only\.  When your tape gateway is not accessible for any reason, you can recover virtual tapes associated with that tape gateway to another tape gateway\. To recover the virtual tapes, first disable the inaccessible tape gateway\.   | Amazon S3 | 
 | IRRECOVERABLE | The virtual tape can't be read from or written to\. This status indicates an error in your tape gateway\. | Amazon S3 | 

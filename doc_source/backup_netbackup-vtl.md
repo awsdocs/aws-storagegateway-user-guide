@@ -1,6 +1,10 @@
-# Testing Your Setup by Using Symantec NetBackup Version 7\.x<a name="backup_netbackup-vtl"></a>
+# Testing Your Setup by Using Veritas NetBackup<a name="backup_netbackup-vtl"></a>
 
-You can back up your data to virtual tapes, archive the tapes, and manage your virtual tape library \(VTL\) devices by using Symantec NetBackup version 7\.x\. In this topic, you can find basic documentation on how to configure the NetBackup application for a tape gateway and perform a backup and restore operation\. For detailed information about how to use NetBackup, see the [Veritas Services and Operations Readiness Tools \(SORT\)](https://sort.veritas.com/documents) on the Veritas website\. For Symantec support information on hardware compatibility, see the [NetBackup 7\.0 \- 7\.6\.x Hardware Compatibility List](https://www.veritas.com/support/en_US/article.000040791) on the Veritas website\.
+You can back up your data to virtual tapes, archive the tapes, and manage your virtual tape library \(VTL\) devices by using Veritas NetBackup\. In this topic, you can find basic documentation on how to configure the NetBackup application for a tape gateway and perform a backup and restore operation\. To do so, you can use the following versions of NetBackup: 
++ Veritas NetBackup 7\.x
++ Veritas NetBackup 8\.x
+
+The procedure for using these versions of Backup Exec with a tape gateway is similar\. For detailed information about how to use NetBackup, see the [Veritas Services and Operations Readiness Tools \(SORT\)](https://sort.veritas.com/documents) on the Veritas website\. For Veritas support information on hardware compatibility, see the [NetBackup 7\.0 \- 7\.6\.x Hardware Compatibility List](https://www.veritas.com/support/en_US/article.000040791) on the Veritas website\.
 
 For more information about compatible backup applications, see [Supported Third\-Party Backup Applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
 
@@ -12,7 +16,7 @@ For more information about compatible backup applications, see [Supported Third\
 
 ## Configuring NetBackup Storage Devices<a name="configure-netback-storage-devices"></a>
 
-After you have connected the virtual tape library \(VTL\) devices to the Windows client, you configure Symantec NetBackup version 7\.x storage to recognize your devices\. For information about how to connect VTL devices to the Windows client, see [Connecting Your VTL Devices](GettingStarted-create-tape-gateway.md#GettingStartedAccessTapesVTL)\.
+After you have connected the virtual tape library \(VTL\) devices to the Windows client, you configure Veritas NetBackup storage to recognize your devices\. For information about how to connect VTL devices to the Windows client, see [Connecting Your VTL Devices](GettingStarted-create-tape-gateway.md#GettingStartedAccessTapesVTL)\.
 
 **To configure NetBackup to use storage devices on your tape gateway**
 
@@ -114,7 +118,7 @@ A *volume pool* is a collection of virtual tapes to use for a backup\.
 
 The backup policy specifies what data to back up, when to back it up, and which volume pool to use\.
 
-1. Choose your **Master Server** to return to the Symantec NetBackup console\.
+1. Choose your **Master Server** to return to the Veritas NetBackup console\.
 
    The following screenshot shows the NetBackup console with **Create a Policy** selected\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/NetBackupCreatePolicy.png)
@@ -125,7 +129,7 @@ The backup policy specifies what data to back up, when to back it up, and which 
 
 1. For **Policy Name**, type a name for your policy and verify that **MS\-Windows** is selected from the **Select the policy type** list, and then choose **Next**\.
 
-1. In the **Client List** window, choose **Add**, type the host name of your computer in the **Name** column, and then choose **Next**\. This step applies the policy you are defining to localhost \(your client computer\)\.  
+1. In the **Client List** window, choose **Add**, type the host name of your computer in the **Name** column, and then choose **Next**\. This step applies the policy you are defining to `localhost` \(your client computer\)\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/NetBackupLocalhost-VTL.png)
 
 1. In the **Files** window, choose **Add**, and then choose the folder icon\.  
@@ -215,7 +219,7 @@ Restoring your archived data is a two\-step process\.
 
 1. Retrieve the archived tape to a tape gateway\. For instructions, see [Retrieving Archived Tapes](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
 
-1. Use the Backup, Archive, and Restore software installed with the Symantec NetBackup application\. This process is the same as restoring data from physical tapes\. For instructions, see [Veritas Services and Operations Readiness Tools \(SORT\)](https://sort.veritas.com/documents) on the Veritas website\.
+1. Use the Backup, Archive, and Restore software installed with the Veritas NetBackup application\. This process is the same as restoring data from physical tapes\. For instructions, see [Veritas Services and Operations Readiness Tools \(SORT\)](https://sort.veritas.com/documents) on the Veritas website\.
 
 **Next Step**
 

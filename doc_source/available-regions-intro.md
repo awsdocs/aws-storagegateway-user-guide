@@ -2,8 +2,10 @@
 
 AWS Storage Gateway stores volume, snapshot, tape, and file data in the AWS Region in which your gateway is activated\. File data is stored in the AWS Region where your Amazon S3 bucket is located\. You select an AWS Region at the upper right of the AWS Storage Gateway Management Console before you start deploying your gateway\. The following are the available AWS Regions for AWS Storage Gateway\.
 
+For a list of AWS service endpoints you can use with AWS Storage Gateway, see [Regions and Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region) in the *AWS General Reference*\. AWS Storage Gateway Hardware Appliance is only available in the US Regions\.
 
-| Region Name | Region String | File Gateway | Volume Gateway | Tape Gateway | 
+
+| AWS Region Name | AWS Region String | File Gateway | Volume Gateway | Tape Gateway | 
 | --- | --- | --- | --- | --- | 
 | US East \(Ohio\) | us\-east\-2 | yes | yes | yes | 
 | US East \(N\. Virginia\) | us\-east\-1 | yes | yes | yes | 
@@ -14,9 +16,11 @@ AWS Storage Gateway stores volume, snapshot, tape, and file data in the AWS Regi
 | EU \(Frankfurt\) | eu\-central\-1 | yes | yes | yes | 
 | EU \(London\) | eu\-west\-2 | yes | yes | yes | 
 | EU \(Paris\) | eu\-west\-3 | yes | yes | yes | 
+| EU \(Stockholm\) | eu\-north\-1 | yes | yes | yes | 
 | Asia Pacific \(Tokyo\) | ap\-northeast\-1 | yes | yes | yes | 
 | Asia Pacific \(Seoul\) | ap\-northeast\-2 | yes | yes | yes | 
 | Asia Pacific \(Singapore\) | ap\-southeast\-1 | yes | yes | yes | 
 | Asia Pacific \(Sydney\) | ap\-southeast\-2 | yes | yes | yes | 
 | Asia Pacific \(Mumbai\) | ap\-south\-1 | yes | yes | yes | 
 | South America \(São Paulo\) | sa\-east\-1 | yes | yes | no | 
+| AWS GovCloud \(US\) | us\-gov\-west\-1 | yes | yes | yes | 

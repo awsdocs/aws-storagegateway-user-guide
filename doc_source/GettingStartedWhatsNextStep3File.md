@@ -4,7 +4,7 @@ In the preceding sections, you created and started using a file gateway, includi
 
 Other sections of this guide include information about how to do the following:
 + To manage your file gateway, see [Managing Your File Gateway](managing-gateway-file.md)\.
-+ To optimize your file gateway, see [Optimizing Gateway Performance](Optimizing-common.md)\.
++ To optimize your file gateway, see [Optimizing Gateway Performance](Performance.md#Optimizing-common)\.
 + To troubleshoot gateway problems, see [Troubleshooting Your Gateway](Troubleshooting-common.md)\.
 + To learn about Storage Gateway metrics and how you can monitor how your gateway performs, see [Monitoring Your Gateway and Resources](Main_monitoring-gateways-common.md)\.
 

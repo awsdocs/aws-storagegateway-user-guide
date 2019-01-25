@@ -8,14 +8,14 @@ In this section, you can find information about how to monitor a gateway in a ca
 + [Measuring Performance Between Your Gateway and AWS](#PerfGatewayAWS-common)
 + [Understanding Volume Metrics](#MonitoringVolumes-common)
 
-Storage Gateway provides CloudWatch metrics at no additional charge\. Storage Gateway metrics are recorded for a period of two weeks\. By using these metrics, you can access historical information and get a better perspective on how your gateway and volumes are performing\. For detailed information about CloudWatch, see the *[Amazon CloudWatch User Guide](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/)\.*
+Storage Gateway provides CloudWatch metrics at no additional charge\. Storage Gateway metrics are recorded for a period of two weeks\. By using these metrics, you can access historical information and get a better perspective on how your gateway and volumes are performing\. For detailed information about CloudWatch, see the *[Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/)\.*
 
 ## Using Amazon CloudWatch Metrics<a name="UsingCloudWatchConsole-common"></a>
 
 You can get monitoring data for your gateway using either the AWS Management Console or the CloudWatch API\. The console displays a series of graphs based on the raw data from the CloudWatch API\. You can also use the CloudWatch API through one of the [Amazon AWS Software Development Kits \(SDKs\)](http://aws.amazon.com/code) or the [Amazon CloudWatch API](http://aws.amazon.com/developertools/2534) tools\. Depending on your needs, you might prefer to use either the graphs displayed in the console or retrieved from the API\. 
 
 Regardless of which method you choose to use to work with metrics, you must specify the following information: 
-+ The metric dimension to work with\. A *dimension* is a name\-value pair that helps you to uniquely identify a metric\. The dimensions for Storage Gateway are `GatewayId`, `GatewayName`, and `VolumeId`\. In the CloudWatch console, you can use the `Gateway Metrics` and `Volume Metrics` views to easily select gateway\-specific and volume\-specific dimensions\. For more information about dimensions, see [Dimensions](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Dimension) in the *Amazon CloudWatch User Guide*>\.
++ The metric dimension to work with\. A *dimension* is a name\-value pair that helps you to uniquely identify a metric\. The dimensions for Storage Gateway are `GatewayId`, `GatewayName`, and `VolumeId`\. In the CloudWatch console, you can use the `Gateway Metrics` and `Volume Metrics` views to easily select gateway\-specific and volume\-specific dimensions\. For more information about dimensions, see [Dimensions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Dimension) in the *Amazon CloudWatch User Guide*>\.
 + The metric name, such as `ReadBytes`\.
 
 The following table summarizes the types of Storage Gateway metric data that you can use\. 
@@ -23,15 +23,15 @@ The following table summarizes the types of Storage Gateway metric data that you
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/GatewayMetrics-common.html)
 
 Working with gateway and volume metrics is similar to working with other service metrics\. You can find a discussion of some of the most common metrics tasks in the CloudWatch documentation listed following: 
-+ [Viewing Available Metrics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/viewing_metrics_with_cloudwatch.html)
-+ [Getting Statistics for a Metric](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/US_GetStatistics.html)
-+ [Creating CloudWatch Alarms](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html)
++ [Viewing Available Metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/viewing_metrics_with_cloudwatch.html)
++ [Getting Statistics for a Metric](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/US_GetStatistics.html)
++ [Creating CloudWatch Alarms](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html)
 
 ## Measuring Performance Between Your Application and Gateway<a name="PerfAppGateway-common"></a>
 
 Data throughput, data latency, and operations per second are three measures that you can use to understand how your application storage that is using your gateway is performing\. When you use the correct aggregation statistic, you can use Storage Gateway metrics to measure these values\. 
 
-A *statistic* is an aggregation of a metric over a specified period of time\. When you view the values of a metric in CloudWatch, use the `Average` statistic for data latency \(milliseconds\), use the `Sum` statistic for data throughput \(bytes per second\), and use the `Samples` statistic for input/output operations per second \(IOPS\)\. For more information, see [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Statistics) in the *Amazon CloudWatch User Guide*\. 
+A *statistic* is an aggregation of a metric over a specified period of time\. When you view the values of a metric in CloudWatch, use the `Average` statistic for data latency \(milliseconds\), use the `Sum` statistic for data throughput \(bytes per second\), and use the `Samples` statistic for input/output operations per second \(IOPS\)\. For more information, see [Statistics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Statistics) in the *Amazon CloudWatch User Guide*\. 
 
 The following table summarizes the metrics and corresponding statistic you can use to measure the throughput, latency, and IOPS between your applications and gateways\. 
 

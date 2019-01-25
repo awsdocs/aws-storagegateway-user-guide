@@ -1,11 +1,12 @@
-# Testing Your Setup by Using Backup Exec<a name="backup-BackupExec"></a>
+# Testing Your Setup by Using Veritas Backup Exec<a name="backup-BackupExec"></a>
 
-You can back up your data to virtual tapes, archive the tapes, and manage your virtual tape library \(VTL\) devices by using Symantec Backup Exec\. In this topic, you can find basic documentation needed to perform backup and restore operations using the following versions of Backup Exec: 
-+ Backup Exec 2014
-+ Backup Exec 15
-+ Backup Exec 16
+You can back up your data to virtual tapes, archive the tapes, and manage your virtual tape library \(VTL\) devices by using Veritas Backup Exec\. In this topic, you can find basic documentation needed to perform backup and restore operations using the following versions of Backup Exec: 
++ Veritas Backup Exec 2014
++ Veritas Backup Exec 15
++ Veritas Backup Exec 16
++ Veritas Backup Exec 20\.x
 
-The procedure for using these versions of Backup Exec with a tape gateway is the same\. For detailed information about how to use Backup Exec, see the [How to Create Secure Backups with Backup Exec](http://www.symantec.com/tv/products/details.jsp?vid=3517643941001&subcategory=backupexec&pid=1) video on the Backup Exec website\. For Backup Exec support information on hardware compatibility, see the [ Software Compatibility Lists \(SCL\), Hardware Compatibility Lists \(HCL\), and Administrator Guides for Backup Exec \(all versions\) ](http://www.symantec.com/business/support/index?page=content&id=TECH205797) on the Backup Exec website\. For information about best practices, see [ Best Practices for using Symantec Backup products \(NetBackup, Backup Exec\) with the Amazon Web Services \(Tape Gateway\)](https://support.symantec.com/en_US/article.TECH227133.html) on the Symantec website\. 
+The procedure for using these versions of Backup Exec with a tape gateway is the same\. For detailed information about how to use Backup Exec, see the [How to Create Secure Backups with Backup Exec](http://www.symantec.com/tv/products/details.jsp?vid=3517643941001&subcategory=backupexec&pid=1) video on the Backup Exec website\. For Backup Exec support information on hardware compatibility, see the [ Software Compatibility Lists \(SCL\), Hardware Compatibility Lists \(HCL\), and Administrator Guides for Backup Exec \(all versions\) ](http://www.symantec.com/business/support/index?page=content&id=TECH205797) on the Backup Exec website\. For information about best practices, see [ Best Practices for using Symantec Backup products \(NetBackup, Backup Exec\) with the Amazon Web Services \(Tape Gateway\)](https://support.symantec.com/en_US/article.TECH227133.html) on the Veritas website\. 
 
 For more information about supported backup applications, see [Supported Third\-Party Backup Applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
 
@@ -41,7 +42,7 @@ You are now ready to import a tape from your gateway into a slot\.
 
 1. Choose the **Storage** tab, and then expand the **Robotic library** tree to display the VTL devices\. 
 **Important**  
-Symantec Backup Exec software requires the Tape Gateway medium changer type\. If the medium changer type listed under **Robotic library** is not Tape Gateway, you must change it before you configure storage in the backup application\. For information about how to select a different medium changer type, see [Selecting a Medium Changer After Gateway Activation](resource_vtl-devices.md#change-mediumchanger-vtl)\.  
+Veritas Backup Exec software requires the Tape Gateway medium changer type\. If the medium changer type listed under **Robotic library** is not Tape Gateway, you must change it before you configure storage in the backup application\. For information about how to select a different medium changer type, see [Selecting a Medium Changer After Gateway Activation](resource_vtl-devices.md#change-mediumchanger-vtl)\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/BE14ShowVTLDevices2.png)
 
 1. Choose the **Slots** icon to display all slots\. 

@@ -4,7 +4,7 @@ If you don't plan to continue using your gateway, consider deleting the gateway 
 
 When you delete a gateway, it no longer appears on the AWS Storage Gateway Management Console and its iSCSI connection to the initiator is closed\. The procedure for deleting a gateway is the same for all gateway types; however, depending on the type of gateway you want to delete and the host it is deployed on, you follow specific instructions to remove associated resources\. 
 
-You can delete a gateway using the Storage Gateway console or programmatically\. You can find information following about how to delete a gateway using the Storage Gateway console\. If you want to programmatically delete your gateway, see *[AWS Storage Gateway API Reference](http://docs.aws.amazon.com/storagegateway/latest/APIReference/)\.* 
+You can delete a gateway using the Storage Gateway console or programmatically\. You can find information following about how to delete a gateway using the Storage Gateway console\. If you want to programmatically delete your gateway, see *[AWS Storage Gateway API Reference](https://docs.aws.amazon.com/storagegateway/latest/APIReference/)\.* 
 
 **Topics**
 + [Deleting Your Gateway by Using the AWS Storage Gateway Console](#delete-gateway-procedure)
@@ -47,7 +47,7 @@ You can use the instructions following to remove resources from a gateway that i
 
 If the gateway you want to delete are deployed on a virtual machine \(VM\), we suggest that you take the following actions to clean up resources: 
 + Delete the gateway\. For instructions, see [Deleting Your Gateway by Using the AWS Storage Gateway Console](#delete-gateway-procedure)\.
-+ Delete all Amazon EBS snapshots you don't need\. For instructions, see [Deleting an Amazon EBS Snapshot](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-snapshot.html) in the *Amazon EC2 User Guide for Linux Instances*\.
++ Delete all Amazon EBS snapshots you don't need\. For instructions, see [Deleting an Amazon EBS Snapshot](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-snapshot.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 ### Removing Resources from a Tape Gateway Deployed on a VM<a name="MaintenanceDeleteGateway-vtl-common"></a>
 
@@ -85,7 +85,7 @@ If you deployed a gateway with cached volumes on EC2, we suggest that you take t
 
 1. In the Amazon EC2 console, stop your EC2 instance if you plan on using the instance again\. Otherwise, terminate the instance\. If you plan on deleting volumes, make note of the block devices that are attached to the instance and the devices' identifiers before terminating the instance\. You will need these to identify the volumes you want to delete\. 
 
-1. In the Amazon EC2 console, remove all Amazon EBS volumes that are attached to the instance if you don't plan on using them again\. For more information, see [Clean Up Your Instance and Volume](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-clean-up-your-instance.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+1. In the Amazon EC2 console, remove all Amazon EBS volumes that are attached to the instance if you don't plan on using them again\. For more information, see [Clean Up Your Instance and Volume](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-clean-up-your-instance.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 ### Removing Resources from Your Tape Gateway Deployed on Amazon EC2<a name="ec2-delete-vtl"></a>
 
@@ -97,7 +97,7 @@ If you deployed a tape gateway, we suggest that you take the following actions t
 
 1. Delete the tape gateway\. For more information, see [Deleting Your Gateway by Using the AWS Storage Gateway Console](#delete-gateway-procedure)\.
 
-1. Terminate all Amazon EC2 instances, and delete all Amazon EBS volumes\. For more information, see [Clean Up Your Instance and Volume](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-clean-up-your-instance.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+1. Terminate all Amazon EC2 instances, and delete all Amazon EBS volumes\. For more information, see [Clean Up Your Instance and Volume](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-clean-up-your-instance.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 1. Delete all archived virtual tapes\. For more information, see [Deleting Tapes](managing-gateway-vtl.md#deleting-tapes-vtl)\.
 **Important**  

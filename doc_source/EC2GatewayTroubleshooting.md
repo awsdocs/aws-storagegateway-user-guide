@@ -16,7 +16,7 @@ In the following sections, you can find typical issues that you might encounter 
 ## Your Gateway Activation Hasn't Occurred After a Few Moments<a name="activation-issues"></a>
 
 Check the following in the Amazon EC2 console:
-+ Port 80 is enabled in the security group you associated with the instance\. For more information about adding a security group rule, see [Adding a Security Group Rule](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#adding-security-group-rule) in the *Amazon EC2 User Guide for Linux Instances*\.
++ Port 80 is enabled in the security group you associated with the instance\. For more information about adding a security group rule, see [Adding a Security Group Rule](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#adding-security-group-rule) in the *Amazon EC2 User Guide for Linux Instances*\.
 + The gateway instance is marked as running\. In the Amazon EC2 console, the **State** value for the instance should be RUNNING\.
 + Make sure that your Amazon EC2 instance type meets the minimum requirements, as described in [Storage Requirements](Requirements.md#requirements-storage)\.
 

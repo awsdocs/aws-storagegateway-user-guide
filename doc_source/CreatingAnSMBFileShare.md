@@ -27,7 +27,13 @@ You can use the [AWS Directory Service](https://aws.amazon.com/directoryservice/
 
 1. Choose **Save** to complete the authentication\.
 
-   A message at the top of the **Gateways** section of your console indicates that your gateway successfully joined your AD domain\.
+   A message at the top of the **Gateways** section of your console indicates that your gateway "`Successfully joined domain`\."
+
+   If the banner displays the message `Invalid domain name/DNS name cannot be resolved`, this indicates the the specific endpoint was not found\. You might also see the error `Invalid users/Invalid password`, an authentication failure that you logon was not recognized by the domain service\.
+
+   The error message `The gateway cannot connect to the specified domain` may incidate that the user quota is exhausted\. The default limit allows each user to join up to ten \(10\) systems to a domain\. Another possible cause of this error is that the user did not have administrator privileges\.
+
+   Finally, an error that states `The specified request timed out` might indicate that there is a problem with your firewall rules not allowing access to the domain\.
 
 **To configure your SMB file share for guest access**
 
@@ -74,14 +80,14 @@ In the next procedure, you create an SMB file share with either Microsoft Active
    + Choose **S3 Standard\-IA** to store your infrequently accessed object data redundantly in multiple Availability Zones that are geographically separated\.
    + Choose **S3 One Zone\-IA** to store your infrequently accessed object data in a single Availability Zone\.
 
-   For more information, see [Storage Classes](http://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html) in the *Amazon Simple Storage Service Developer Guide*\.
+   For more information, see [Storage Classes](https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html) in the *Amazon Simple Storage Service Developer Guide*\.
 
 1. For **Object metadata**, choose the metadata you want to use:
    + Choose **Guess MIME type** to enable guessing of the MIME type for uploaded objects based on file extensions\.
    + Choose **Give bucket owner full control** to give full control to the owner of the S3 bucket that maps to the file SMB file share\. For more information on using your file share to access objects in a bucket owned by another account, see [Using a File Share for Cross\-Account Access](managing-gateway-file.md#cross-account-access)\.
-   + Choose **Enable requester pays** if you are using this file share on a bucket that requires the requester or reader instead of bucket owner to pay for access charges\. For more information, see [Requester Pays Buckets](http://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html)\.
+   + Choose **Enable requester pays** if you are using this file share on a bucket that requires the requester or reader instead of bucket owner to pay for access charges\. For more information, see [Requester Pays Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html)\.
 
-1. For **Access to your bucket**, choose the AWS Identity and Access Management \(IAM\) role that you want your gateway to use to access your Amazon S3 bucket\. This role allows the gateway to access your S3 bucket\. A file gateway can create a new IAM role and access policy on your behalf\. Or, if you have an IAM role you want to use, you can specify it in the **IAM role** box and set up the access policy manually\. For more information, see [Granting Access to an Amazon S3 Bucket](managing-gateway-file.md#grant-access-s3)\. For information about IAM roles, see [IAM Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) in the *IAM User Guide*\.
+1. For **Access to your bucket**, choose the AWS Identity and Access Management \(IAM\) role that you want your gateway to use to access your Amazon S3 bucket\. This role allows the gateway to access your S3 bucket\. A file gateway can create a new IAM role and access policy on your behalf\. Or, if you have an IAM role you want to use, you can specify it in the **IAM role** box and set up the access policy manually\. For more information, see [Granting Access to an Amazon S3 Bucket](managing-gateway-file.md#grant-access-s3)\. For information about IAM roles, see [IAM Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) in the *IAM User Guide*\.
 
 1. Choose **Next** to review configuration settings for your SMB file share, as shown in the figure following\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/Create-file-share-review-db.png)  

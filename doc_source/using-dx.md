@@ -12,10 +12,10 @@ The following procedure assumes that you have created a functioning gateway\.
 
 **To use AWS Direct Connect with Storage Gateway**
 
-1. Create and establish an AWS Direct Connect connection between your on\-premises data center and your Storage Gateway endpoint\. For more information about how to create a connection, see [Getting Started with AWS Direct Connect](http://docs.aws.amazon.com/directconnect/latest/UserGuide/getting_started.html) in the *AWS Direct Connect User Guide\.*
+1. Create and establish an AWS Direct Connect connection between your on\-premises data center and your Storage Gateway endpoint\. For more information about how to create a connection, see [Getting Started with AWS Direct Connect](https://docs.aws.amazon.com/directconnect/latest/UserGuide/getting_started.html) in the *AWS Direct Connect User Guide\.*
 
 1. Connect your on\-premises Storage Gateway appliance to the AWS Direct Connect router\. 
 
-1. Create a public virtual interface, and configure your on\-premises router accordingly\. For more information, see [Creating a Virtual Interface](http://docs.aws.amazon.com/directconnect/latest/UserGuide/create-vif.html) in the *AWS Direct Connect User Guide\.*
+1. Create a public virtual interface, and configure your on\-premises router accordingly\. For more information, see [Creating a Virtual Interface](https://docs.aws.amazon.com/directconnect/latest/UserGuide/create-vif.html) in the *AWS Direct Connect User Guide\.*
 
-For details about AWS Direct Connect, see [What is AWS Direct Connect?](http://docs.aws.amazon.com/directconnect/latest/UserGuide/Welcome.html) in the *AWS Direct Connect User Guide*\.
+For details about AWS Direct Connect, see [What is AWS Direct Connect?](https://docs.aws.amazon.com/directconnect/latest/UserGuide/Welcome.html) in the *AWS Direct Connect User Guide*\.

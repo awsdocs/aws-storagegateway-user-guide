@@ -1,31 +1,10 @@
-# Performing Maintenance Tasks on the VMware Local Console<a name="manage-on-premises-vmware"></a>
+# Configuring Network Adapters for Your Gateway<a name="configure-multi-nic"></a>
 
-For a gateway deployed on\-premises, you can perform the following maintenance tasks using the VMware host local console\. 
+In this section you can find information about how configure multiple network adapters for your gateway\.
 
 **Topics**
-+ [Accessing the Gateway Local Console with VMware ESXi](#MaintenanceConsoleWindowVMware-common)
 + [Configuring Your Gateway for Multiple NICs in a VMware ESXi Host](#MaintenanceMultiNIC-vmaware)
-
-## Accessing the Gateway Local Console with VMware ESXi<a name="MaintenanceConsoleWindowVMware-common"></a>
-
-**To access your gateway's local console with VMware ESXi**
-
-1. In the VMware vSphere client, select your gateway VM\.
-
-1. Ensure that the gateway is turned on\.
-**Note**  
-If your gateway VM is turned on, a green arrow icon appears with the VM icon, as shown in the following screenshot\. If your gateway VM is not turned on, you can turn it on by choosing the green **Power On** icon on the **Toolbar** menu\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GatewayMaintenance_65.png)
-
-1. Choose the **Console** tab\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GatewayMaintenance_70.png)
-
-1. After a few moments, the VM is ready for you to log in\.
-**Note**  
-To release the cursor from the console window, press **Ctrl\+Alt**\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GatewayMaintenance_75.png)
-
-1. To log in using the default credentials, continue to the procedure [Logging in to the Local Console Using Default Credentials](manage-on-premises-common.md#LocalConsole-login-common)\.
++ [Configuring Your Gateway for Multiple NICs in Microsoft Hyper\-V Host](#MaintenanceMultiNIC-hyperv)
 
 ## Configuring Your Gateway for Multiple NICs in a VMware ESXi Host<a name="MaintenanceMultiNIC-vmaware"></a>
 
@@ -69,4 +48,37 @@ It might take several moments for the adapter changes to take effect and the VM 
 
 1. In the **Navigation** pane of the Storage Gateway console, choose **Gateways** and choose the gateway to which you added the adapter\. Confirm that the second IP address is listed in the **Details** tab\.
 
-For information about local console tasks common to VMware and Hyper\-V host, see [Performing Common Maintenance Tasks on the VM Local Console](manage-on-premises-common.md)
+For information about local console tasks common to VMware and Hyper\-V host, see [Performing Tasks on the VM Local Console \(Volume and Tape Gateways\)](manage-on-premises-common.md)
+
+## Configuring Your Gateway for Multiple NICs in Microsoft Hyper\-V Host<a name="MaintenanceMultiNIC-hyperv"></a>
+
+The following procedure assumes that your gateway VM already has one network adapter defined and that you are adding a second adapter\. This procedure shows how to add an adapter for a Microsoft Hyper\-V host\.
+
+**To configure your gateway to use an additional network adapter in a Microsoft Hyper\-V Host**
+
+1. On the Storage Gateway console, turn off the gateway\. For instructions, see [To stop a volume or tape gateway](MaintenanceShutDown-common.md#PoweringOffGatewayConsole-common)\.
+
+1. In the Microsoft Hyper\-V Manager, select your gateway VM\.
+
+1. If the VM isn't turned off already, open the context \(right\-click\) menu for your gateway and choose **Turn Off**\.
+
+1. In the client, open the context menu for your gateway VM and choose **Settings**\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/hyperv-manager10.png)
+
+1. In the **Settings** dialog box for the VM, for **Hardware**, choose **Add Hardware**\.
+
+1. In the **Add Hardware** pane, choose **Network Adapter**, and then choose **Add** to add a device\.   
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/hyperv-vm-settings15.png)
+
+1. Configure the network adapter, and then choose **Apply** to apply settings\.
+
+   In the following example, **Virtual Network 2** is selected for the new adapter\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/hyperv-vm-settings16.png)
+
+1. In the **Settings** dialog box, for **Hardware**, confirm that the second adapter was added, and then choose **OK**\.
+
+1. On the Storage Gateway console, turn on the gateway\. For instructions, see [To start a volume or tape gateway](MaintenanceShutDown-common.md#PoweringOnGatewayConsole-common)\.
+
+1. In the **Navigation** pane choose **Gateways**, then select the gateway to which you added the adapter\. Confirm that the second IP address is listed in the **Details** tab\.
+
+For information about local console tasks common to VMware and Hyper\-V host, see [Performing Tasks on the VM Local Console \(Volume and Tape Gateways\)](manage-on-premises-common.md)

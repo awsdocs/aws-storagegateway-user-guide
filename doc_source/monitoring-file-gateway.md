@@ -1,18 +1,18 @@
 # Monitoring Your File Share<a name="monitoring-file-gateway"></a>
 
-You can monitor your file share by using Amazon CloudWatch metrics and use Amazon CloudWatch Events to get notified when your file operations are done\. For information about file gateway type metrics, see [Monitoring Your Gateway and Resources](http://docs.aws.amazon.com/storagegateway/latest/userguide/Main_monitoring-gateways-common.html)\.
+You can monitor your file share by using Amazon CloudWatch metrics and use Amazon CloudWatch Events to get notified when your file operations are done\. For information about file gateway type metrics, see [Monitoring Your Gateway and Resources](https://docs.aws.amazon.com/storagegateway/latest/userguide/Main_monitoring-gateways-common.html)\.
 
 **Topics**
-+ [Getting Notification for File Operations](#get-notification)
++ [Getting Notified About File Operations](#get-notification)
 + [Understanding File Share Metrics](#monitoring-fileshare)
 
-## Getting Notification for File Operations<a name="get-notification"></a>
+## Getting Notified About File Operations<a name="get-notification"></a>
 
-AWS Storage Gateway can send a notification through CloudWatch Events when your file operations are done\. 
-+ You can get notified when the gateway finishes uploading your files to your file share\. You can use the [NotifyWhenUploaded](http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_NotifyWhenUploaded.html) API to request a file upload notification\.
-+ You can get notified when the gateway finishes refreshing the cache for your S3 bucket\. You can use the [RefreshCache](http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_RefreshCache.html) API to request a cache refresh notification\.
+AWS Storage Gateway can trigger Amazon CloudWatch Events when your file operations are done: 
++ You can get notified when the gateway finishes uploading your files to your file share\. You can use the [NotifyWhenUploaded](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_NotifyWhenUploaded.html) API to request a file upload notification\.
++ You can get notified when the gateway finishes refreshing the cache for your S3 bucket\. You can use the [RefreshCache](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_RefreshCache.html) API to request a cache refresh notification\.
 
-When the file operation your requested is done, AWS Storage Gateway sends you notification through CloudWatch Events\. You can configure CloudWatch Events to send the notification through event targets such as Amazon SNS, Amazon SQS or AWS Lambda function\. For example, you can configure an Amazon SNS target, to send the notification Amazon SNS consumers such as email and text message\. For information about CloudWatch Events, see [What is Amazon CloudWatch Events?](http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/WhatIsCloudWatchEvents.html)
+When the file operation your requested is done, AWS Storage Gateway sends you notification through CloudWatch Events\. You can configure CloudWatch Events to send the notification through event targets such as Amazon SNS, Amazon SQS or AWS Lambda function\. For example, you can configure an Amazon SNS target, to send the notification Amazon SNS consumers such as email and text message\. For information about CloudWatch Events, see [What is Amazon CloudWatch Events?](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/WhatIsCloudWatchEvents.html)
 
 **To set up CloudWatch Events notification**
 
@@ -45,31 +45,28 @@ For information about how to create a CloudWatch Events see [Getting Started wit
 
 ### Getting File Upload Notification<a name="get-upload-notification"></a>
 
-For file notification use case, you could have two file gateways that mapped to the same Amazon S3 bucket and the NFS client for Gateway1 uploads new files to S3\. The files will upload to S3 but they will not appear in Gateway2 because it uses a locally cached version of files in S3\. To make the files visible in gateway2, you can use the [NotifyWhenUploaded](http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_NotifyWhenUploaded.html) API to request file upload notification from Gateway1 to notify you when the upload is done\. You can then use the CloudWatch Events to automatically issue [RefreshCache](http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_RefreshCache.html) request for the file share on Gateway2\. When the [RefreshCache](http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_RefreshCache.html) request completes the new files will be visible in Gateway2\.
+For file notification use case, you could have two file gateways that mapped to the same Amazon S3 bucket and the NFS client for Gateway1 uploads new files to S3\. The files will upload to S3 but they will not appear in Gateway2 because it uses a locally cached version of files in S3\. To make the files visible in gateway2, you can use the [NotifyWhenUploaded](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_NotifyWhenUploaded.html) API to request file upload notification from Gateway1 to notify you when the upload is done\. You can then use the CloudWatch Events to automatically issue [RefreshCache](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_RefreshCache.html) request for the file share on Gateway2\. When the [RefreshCache](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_RefreshCache.html) request completes the new files will be visible in Gateway2\.
 
 **Example Example—File Upload Notification**  
 The following example shows a file upload notification that is sent to you through when the event matches the rule you created\. This notification is in JSON format\. You can configure this notification to be delivered to the target as a text message\.  
 
 ```
 {
-    "id" : "2649b160-d59d-c97f-3f64-8aaa9ea6aed3",
     "version" : "0",
-    "account" : "209870788375",
+    "id" : "2649b160-d59d-c97f-3f64-8aaa9ea6aed3",
+    "detail-type" : "Storage Gateway Upload Notification Event",
     "source" : "aws.storagegateway",
+    "account" : "209870788375",
+    "time" : "2017-11-06T21:34:42Z",
+    "region" : "us-east-2",
     "resources" : [
-       "arn:aws:storagegateway:us-east-1:123456789011:share/share-F123D451",
-       "arn:aws:storagegateway:us-east-1:346332347513:gateway/sgw-712345DA",
-       "arn:aws:s3:::mybucket-sgw-aabbcc"
-    ],
+        "arn:aws:storagegateway:us-east-2:123456789011:share/share-F123D451",
+        "arn:aws:storagegateway:us-east-2:346332347513:gateway/sgw-712345DA"
+        ],
     "detail" : {
-       "event-type" : "upload-complete",
-       "notification-id" : "da8db69f-6351-4205-829b-4e82607a00fe",
-       "completed" : "2017-11-06T21:34:53Z",
-       "request-received" : "2017-11-06T21:34:42Z"
-    },
-    "detail-type" : "Storage Gateway File Upload Event",
-    "region" : "us-east-1",
-   "time" : "2017-11-06T21:34:42Z"
+                "event-type" :"upload-complete",
+                "request-received" : "2018-02-06T21:34:42Z",
+                "completed" : "2018-02-06T21:34:53Z"}
 }
 ```
 
@@ -96,12 +93,18 @@ The following example shows a refresh cache notification that is sent to you thr
         "arn:aws:storagegateway:us-east-2:346332347513:gateway/sgw-712345DA"
     ],
     "detail" : {
-    "event-type" :"refresh-complete",
-    "started" : "2018-02-06T21:34:42Z",
-    "completed" : "2018-02-06T21:34:53Z"
-    }
+                "event-type" :"refresh-complete",
+                "request-received" : "2018-02-06T21:34:42Z",
+                "completed" : "2018-02-06T21:34:53Z"}
 }
 ```
+
+
+| Timestamps | Description | 
+| --- | --- | 
+| time | When all the files in the working\-set were uploaded to Amazon S3\. | 
+| request\-received | when the gateway received the NotfyWhenUploaded request\. | 
+| completed | When all the files in the working\-set were uploaded to Amazon S3\. | 
 
 ## Understanding File Share Metrics<a name="monitoring-fileshare"></a>
 

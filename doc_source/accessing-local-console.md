@@ -1,0 +1,49 @@
+# Accessing the Gateway Local Console<a name="accessing-local-console"></a>
+
+How you access your VM's local console depends on the type of the Hypervisor you deployed your gateway VM on\. In this section, you can find information on how to access the VM local console using VMware ESXi and Microsoft Hyper\-V Manager\.
+
+**Topics**
++ [Accessing the Gateway Local Console with VMware ESXi](#MaintenanceConsoleWindowVMware-common)
++ [Access the Gateway Local Console with Microsoft Hyper\-V](#MaintenanceConsoleWindowHyperV-common)
+
+## Accessing the Gateway Local Console with VMware ESXi<a name="MaintenanceConsoleWindowVMware-common"></a>
+
+**To access your gateway's local console with VMware ESXi**
+
+1. In the VMware vSphere client, select your gateway VM\.
+
+1. Ensure that the gateway is turned on\.
+**Note**  
+If your gateway VM is turned on, a green arrow icon appears with the VM icon, as shown in the following screenshot\. If your gateway VM is not turned on, you can turn it on by choosing the green **Power On** icon on the **Toolbar** menu\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GatewayMaintenance_65.png)
+
+1. Choose the **Console** tab\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GatewayMaintenance_70.png)
+
+1. After a few moments, the VM is ready for you to log in\.
+**Note**  
+To release the cursor from the console window, press **Ctrl\+Alt**\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GatewayMaintenance_75.png)
+
+1. To log in using the default credentials, continue to the procedure [Logging in to the Local Console Using Default Credentials](manage-on-premises-common.md#LocalConsole-login-common)\.
+
+## Access the Gateway Local Console with Microsoft Hyper\-V<a name="MaintenanceConsoleWindowHyperV-common"></a>
+
+**To access your gateway's local console \(Microsoft Hyper\-V\)**
+
+1. In the **Virtual Machines** list of the Microsoft Hyper\-V Manager, select your gateway VM\.
+
+1. Ensure the gateway is turned on\.
+**Note**  
+If your gateway VM is turned on, `Running` is displayed as the **State** of the VM, as shown in the following screenshot\. If your gateway VM is not turned on, you can turn it on by choosing **Start** in the **Actions** pane\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/hyperv-manager09.png)
+
+1. In the **Actions** pane, choose **Connect**\.
+
+   The **Virtual Machine Connection** window appears\. If an authentication window appears, type the user name and password provided to you by the hypervisor administrator\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/hyperv-vm-connect01.png)
+
+1.  After a few moments, the VM is ready for you to log in\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GatewayMaintenance_75.png)
+
+1. To log in default credentials, continue to the procedure [Logging in to the Local Console Using Default Credentials](manage-on-premises-common.md#LocalConsole-login-common)\.

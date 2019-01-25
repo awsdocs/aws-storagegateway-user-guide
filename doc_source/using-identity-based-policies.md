@@ -41,14 +41,14 @@ The following shows an example of a permissions policy\.
 The policy has two statements \(note the `Action` and `Resource` elements in both the statements\):
 + The first statement grants permissions for two Storage Gateway actions \(`storagegateway:ActivateGateway` and `storagegateway:ListGateways`\) on a gateway resource using the *Amazon Resource Name \(ARN\)* for the gateway\. The ARN specifies a wildcard character \(\*\) because you don't know the gateway ID until after you create a gateway\. 
 **Note**  
-ARNs uniquely identify AWS resources\. For more information, see [Amazon Resource Names \(ARNs\) and AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) in the *AWS General Reference*\.
+ARNs uniquely identify AWS resources\. For more information, see [Amazon Resource Names \(ARNs\) and AWS Service Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) in the *AWS General Reference*\.
 
   The wildcard character \(\*\) at the end of the gateway ARN means that this statement can match any gateway ID\. In this case, the statement allows the `storagegateway:ActivateGateway` and `storagegateway:ListGateways` actions on any gateway in the specified region, `us-west-2`, and the specified ID identifies the account that is owner of the gateway resource\. For information about how to use a wildcard character \(\*\) in a policy, see [Example 2: Allow Read\-Only Access to a Gateway](#sg-example2)\.
 
   To limit permissions for a particular action to a specific gateway only, create a separate statement for that action in the policy and specify the gateway ID in that statement\. 
 
    
-+ The second statement grants permissions for the `ec2:DescribeSnapshots` and `ec2:DeleteSnapshot` actions\. These Amazon Elastic Compute Cloud \(Amazon EC2\) actions require permissions because snapshots generated from AWS Storage Gateway are stored in Amazon Elastic Block Store \(Amazon EBS\) and managed as Amazon EC2 resources, and thus they require corresponding EC2 actions\. For more information, see [Actions](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Operations.html) in the *Amazon EC2 API Reference*\. Because these Amazon EC2 actions don't support resource\-level permissions, the policy specifies the wildcard character \(\*\) as the `Resource` value instead of specifying a gateway ARN\. 
++ The second statement grants permissions for the `ec2:DescribeSnapshots` and `ec2:DeleteSnapshot` actions\. These Amazon Elastic Compute Cloud \(Amazon EC2\) actions require permissions because snapshots generated from AWS Storage Gateway are stored in Amazon Elastic Block Store \(Amazon EBS\) and managed as Amazon EC2 resources, and thus they require corresponding EC2 actions\. For more information, see [Actions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Operations.html) in the *Amazon EC2 API Reference*\. Because these Amazon EC2 actions don't support resource\-level permissions, the policy specifies the wildcard character \(\*\) as the `Resource` value instead of specifying a gateway ARN\. 
 
 For a table showing all of the AWS Storage Gateway API actions and the resources that they apply to, see [AWS Storage Gateway API Permissions: Actions, Resources, and Conditions Reference](sg-api-permissions-ref.md)\. 
 
@@ -78,7 +78,7 @@ To set up the minimum permissions required to navigate the Storage Gateway conso
 
 ## AWS Managed Policies for AWS Storage Gateway<a name="access-policy-examples-aws-managed"></a>
 
-AWS addresses many common use cases by providing standalone IAM policies that are created and administered by AWS\. Managed policies grant necessary permissions for common use cases so you can avoid having to investigate what permissions are needed\. For more information about AWS managed policies, see [AWS Managed Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) in the *IAM User Guide*\.
+AWS addresses many common use cases by providing standalone IAM policies that are created and administered by AWS\. Managed policies grant necessary permissions for common use cases so you can avoid having to investigate what permissions are needed\. For more information about AWS managed policies, see [AWS Managed Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) in the *IAM User Guide*\.
 
 The following AWS managed policies, which you can attach to users in your account, are specific to Storage Gateway:
 + **AWSStorageGatewayReadOnlyAccess** – Grants read\-only access to AWS Storage Gateway resources\. 
@@ -105,7 +105,7 @@ All examples use the US West \(Oregon\) Region \(`us-west-2`\) and contain ficti
 
 ### Example 1: Allow Any AWS Storage Gateway Actions on All Gateways<a name="sg-example1"></a>
 
-The following policy allows a user to perform all the AWS Storage Gateway actions\. The policy also allows the user to perform Amazon EC2 actions \([DescribeSnapshots](http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_DescribeSnapshots.html) and [DeleteSnapshot](http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_DeleteSnapshot.html)\) on the Amazon EBS snapshots generated from AWS Storage Gateway\. 
+The following policy allows a user to perform all the AWS Storage Gateway actions\. The policy also allows the user to perform Amazon EC2 actions \([DescribeSnapshots](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_DescribeSnapshots.html) and [DeleteSnapshot](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_DeleteSnapshot.html)\) on the Amazon EBS snapshots generated from AWS Storage Gateway\. 
 
 ```
 {
@@ -136,7 +136,7 @@ The following policy allows a user to perform all the AWS Storage Gateway action
 
 The following policy allows all `List*` and `Describe*` actions on all resources\. Note that these actions are read\-only actions\. Thus, the policy doesn't allow the user to change the state of any resources—that is, the policy doesn't allow the user to perform actions such as `DeleteGateway`, `ActivateGateway`, and `ShutdownGateway`\.
 
-The policy also allows the `DescribeSnapshots` Amazon EC2 action\. For more information, see [DescribeSnapshots](http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_DescribeSnapshots.html) in the *Amazon EC2 API Reference*\.
+The policy also allows the `DescribeSnapshots` Amazon EC2 action\. For more information, see [DescribeSnapshots](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_DescribeSnapshots.html) in the *Amazon EC2 API Reference*\.
 
 ```
 {

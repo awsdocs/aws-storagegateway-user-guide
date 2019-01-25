@@ -7,6 +7,7 @@ The gateway virtual machine \(VM\) uses the local disks that you allocate on\-pr
 + [Determining the Size of Upload Buffer to Allocate](#CachedLocalDiskUploadBufferSizing-common)
 + [Determining the Size of Cache Storage to Allocate](#CachedLocalDiskCacheSizing-common)
 + [Adding an Upload Buffer or Cache Storage](#ConfiguringLocalDiskStorage)
++ [Using Ephemeral Storage With EC2 Gateways](#ephemral-disk-cache)
 
 ## Deciding the Amount of Local Disk Storage<a name="decide-local-disks-and-sizes"></a>
 
@@ -97,3 +98,29 @@ For stored volumes, only the upload buffer is displayed because stored volumes h
    If you don't see your disks, choose the **Refresh** button\.
 
 1. Choose **Save** to save your configuration settings\.
+
+## Using Ephemeral Storage With EC2 Gateways<a name="ephemral-disk-cache"></a>
+
+This section describes steps you need to take to prevent data loss when you select an ephemeral disk as storage for your gateway's cache\.
+
+Ephemeral disks provide temporary block\-level storage for your Amazon EC2 instance\. Ephemeral disks are ideal for temporary storage of data that changes frequently, such as data in a gateway's upload buffer or cache storage\. When you launch your gateway with an Amazon EC2 Amazon Machine Image, and the instance type you select supports ephemeral storage, the disks are listed automatically and you can select one of the disks to store data in your gateway's cache\. For more information, see [Amazon EC2 Instance Store](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+
+Application writes to the disks are stored in the cache synchronously, and asynchronously uploaded to durable storage in Amazon S3\. If the data stored in the ephemeral storage is lost because an Amazon EC2 instance stopped before data upload was completed, the data that is still in the cache and has not been uploaded to Amazon S3 can be lost\. You can prevent such data loss by following the steps before you restart or stop the EC2 instance that hosts your gateway\.
+
+These steps in this following procedure are specific for file gateways\.
+
+**To prevent data loss in file gateways that use ephemeral disks**
+
+1. Stop all the processes that are writing to the file share\.
+
+1. Subscribe to receive notification from CloudWatch Events\. For information, see [Getting File Upload Notification](monitoring-file-gateway.md#get-upload-notification)\.
+
+1. Call the [NotifyWhenUploaded API](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_NotifyWhenUploaded.html) to get notified when data that is written, up until the ephemeral storage was lost, has been durably stored in Amazon S3\.
+
+1. Wait for the API to complete and you receive a notification id\.
+
+   You receive a CloudWatch event with the same notification id\.
+
+1. Verify that the `CachePercentDirty` metric for your file share is 0\. This confirms that all your data has been written to Amazon S3\. For information about file share metrics, see [Understanding File Share Metrics](monitoring-file-gateway.md#monitoring-fileshare)\.
+
+1. You can now restart or stop the file gateway without risk of losing any data\.

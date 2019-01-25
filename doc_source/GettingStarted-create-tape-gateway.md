@@ -4,7 +4,7 @@ Following, you can find instructions about how to use your tape gateway\.
 
 **Topics**
 + [Connecting Your VTL Devices](#GettingStartedAccessTapesVTL)
-+ [Testing Your Gateway Setup](GettingStartedTestGatewayVTL.md)
++ [Using Your Backup Software to Test Your Gateway Setup](GettingStartedTestGatewayVTL.md)
 + [Where Do I Go from Here?](GettingStartedWhatsNextStep3-vtl.md)
 
 ## Connecting Your VTL Devices<a name="GettingStartedAccessTapesVTL"></a>
@@ -125,4 +125,4 @@ The following procedure shows a summary of the steps that you follow to connect 
 
 **Next Step**
 
-[Testing Your Gateway Setup](GettingStartedTestGatewayVTL.md)
+[Using Your Backup Software to Test Your Gateway Setup](GettingStartedTestGatewayVTL.md)

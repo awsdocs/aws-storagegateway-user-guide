@@ -14,18 +14,18 @@ Unless otherwise noted, the following requirements are common to all gateway con
 
 ## Hardware and Storage Requirements<a name="requirements-hardware-storage"></a>
 
-In this section, you can find information about the minimum hardware and settings for your gateway and the minimum amount of disk space to allocate for the required storage\.
+In this section, you can find information about the minimum hardware and settings for your gateway and the minimum amount of disk space to allocate for the required storage\. For information about best practices for file gateway performance, see [Performance Guidance for File Gateways](Performance.md#performance-fgw)\.
 
-### Hardware Requirements<a name="requirements-hardware"></a>
+### Hardware Requirements for On\-Premises VMs<a name="requirements-hardware"></a>
 
 When deploying your gateway on\-premises, you must make sure that the underlying hardware on which you deploy the gateway VM can dedicate the following minimum resources:
 + Four virtual processors assigned to the VM\. 
 + 16 GiB of reserved RAM assigned to the VM\. 
 + 80 GiB of disk space for installation of VM image and system data\. 
 
-For more information, see [Optimizing Gateway Performance](Optimizing-common.md)\. For information about how your hardware affects the performance of the gateway VM, see [AWS Storage Gateway Limits](resource-gateway-limits.md)\. 
+For more information, see [Optimizing Gateway Performance](Performance.md#Optimizing-common)\. For information about how your hardware affects the performance of the gateway VM, see [AWS Storage Gateway Limits](resource-gateway-limits.md)\. 
 
-### Amazon EC2 Instance Type Requirements<a name="requirements-hardware-ec2"></a>
+### Requirements for Amazon EC2 Instance Types<a name="requirements-hardware-ec2"></a>
 
 When deploying your gateway on Amazon EC2, the instance size must be at least **xlarge** for your gateway to function\. However, for the compute\-optimized instance family the size must be at least **2xlarge**\. Use one of the following instance types recommended for your gateway type\.
 
@@ -35,19 +35,18 @@ When deploying your gateway on Amazon EC2, the instance size must be at least **
 + Memory\-optimized instance family—r3 instance types\.
 + Storage\-optimized instance family— i3 instance types\.
 **Note**  
-When you launch your gateway in EC2, and the instance type you’ve selected supports ephemeral storage, the disks will be listed automatically\. To learn more about Amazon EC2 instance storage, see [here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html)\. Note that application writes are stored in the cache synchronously, and then asynchronously uploaded to durable storage in Amazon S3\. If the ephemeral storage is lost because an instance stops before the upload is complete, then the data that still resides in cache and has not yet written to S3 can be lost\. Before you stop the instance that hosts the gateway make sure the CachePercentDirty CloudWatch metric is `0`\. For more information about monitoring metrics for your storage gateway, see [storage gateway metrics and dimensions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/awssg-metricscollected.html)\.
-
-**Note**  
-When you create a gateway using the c4 or m4 instance type, it can't be changed to the c5 or m5 instance type\. For information about how to upgrade your instance to the c5 or m5 instance type, see [You Want Your File Gateway to Use a C5 or M5 EC2 Instance Type Instead of C4 or M4](EC2GatewayTroubleshooting.md#ami-upgrade)\.
+When you launch your gateway in EC2, and the instance type you’ve selected supports ephemeral storage, the disks will be listed automatically\. To learn more about Amazon EC2 instance storage, see [here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html)\. Note that application writes are stored in the cache synchronously, and then asynchronously uploaded to durable storage in Amazon S3\. If the ephemeral storage is lost because an instance stops before the upload is complete, then the data that still resides in cache and has not yet written to S3 can be lost\. Before you stop the instance that hosts the gateway make sure the CachePercentDirty CloudWatch metric is `0`\. For more information about monitoring metrics for your storage gateway, see [storage gateway metrics and dimensions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/awssg-metricscollected.html)\.  
+If you have more than 5 million objects in your Amazon S3 bucket and you are using a General Purposes SSD volume, a minimum root EBS volume of 350 GiB is needed for acceptable performance of your gateway during start up\. For information about how to increase your volume size, see [Modifying an EBS Volume from the Console](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/console-modify.html)\.
 
 **Recommended for cached volumes and tape gateway types**
-+ General\-purpose instance family—m4 instance types\. We don't recommend using the **m4\.16xlarge** instance type\.
-+ Compute\-optimized instance family—c4 instance types\. Select the **2xlarge** instance size or higher to meet the required RAM requirements\.
++ General\-purpose instance family—m4 or m5 instance types\. We don't recommend using the **m4\.16xlarge** instance type\.
++ Compute\-optimized instance family—c4 or c5 instance types\. Select the **2xlarge** instance size or higher to meet the required RAM requirements\.
 + Storage\-optimized instance family—d2, i2, or i3 instance types
 
 **Note**  
-When deploying your gateway on an Amazon EC2 instance, you must make sure that you allocate the following minimum resources:  
-If you have more than 5 million objects in your Amazon S3 bucket and you are using a General Purposes SSD volume, a minimum root EBS volume of 350 GiB is needed for acceptable performance of your gateway during start up\. For information about how to increase your volume size, see [Modifying an EBS Volume from the Console](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/console-modify.html)\.
+When you create any gateway type using the c4 or m4 instance type, it can't be changed to the c5 or m5 instance type\. For information about how to upgrade your instance to the c5 or m5 instance type, see [You Want Your File Gateway to Use a C5 or M5 EC2 Instance Type Instead of C4 or M4](EC2GatewayTroubleshooting.md#ami-upgrade)\.
+
+### <a name="appliance-hardware-requirements"></a>
 
 ### Storage Requirements<a name="requirements-storage"></a>
 
@@ -74,33 +73,22 @@ For information about gateway limits, see [AWS Storage Gateway Limits](resource-
 Your gateway requires access to the internet, local networks, Domain Name Service \(DNS\) servers, firewalls, routers, and so on\. Following, you can find information about required ports and how to allow access through firewalls and routers\.
 
 **Note**  
-When you deploy AWS Storage Gateway on EC2 with restrictive IP range\-based network security policies the gateway may experience service connectivity issues when the AWS IP range changes\. Refer to [AWS IP Address Range](https://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html) for the current IP range values in use\.
+In some cases, you might deploy AWS Storage Gateway on Amazon EC2 or use other types of deployment \(including on\-premises\) with network security policies that restrict AWS IP address ranges\. In these cases, your gateway might experience service connectivity issues when the AWS IP range values changes\. The AWS IP address range values that you need to use are in the Amazon service subset for the AWS Region that you activate your gateway in\. For the current IP range values, see [AWS IP Address Ranges](https://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html) in the *AWS General Reference\.*
+
+**Topics**
++ [Port Requirements](#requirements-network)
++ [Networking and Firewall Requirements for the Hardware Appliance](#appliance-network-requirements)
++ [Allowing AWS Storage Gateway Access Through Firewalls and Routers](#allow-firewall-gateway-access)
++ [Configuring Security Groups for Your Amazon EC2 Gateway Instance](#EC2GatewayCustomSecurityGroup-common)
 
 ### Port Requirements<a name="requirements-network"></a>
 
 AWS Storage Gateway requires certain ports to be allowed for its operation\. The following illustrations show the required ports that you must allow for each type of gateway\. Some ports are required by all gateway types, and others are required by specific gateway types\. For more information about port requirements, see [Port Requirements](Resource_Ports.md)\.
 
-**File gateways**
-
-The following illustration shows the ports to open for a file gateway\.
-
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/File-Gateway-Port-Diagram.png)
-
-**Note**  
-For specific port requirements, go to: [Port Requirements](Resource_Ports.md)
-
-Active Directory is only required when you want to allow domain users to access an SMB file share\. Your file gateway may be joined to any valid Windows domain \(resolvable by DNS\)\. You can also use the AWS Directory Service to create an [AWS Managed Microsoft AD](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_microsoft_ad.html) in the AWS Cloud\. For most AWS Managed AD deployments you will need to configure the DHCP service for your VPC\. Instructions on how to create a DHCP options set may be found [here](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/dhcp_options_set.html)\.
-
-**Volume gateways and tape gateways**
-
-The following illustration shows the ports to open for volume and tape gateways\.
-
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/SGWNetworkPorts16-volume-tape2.png)
+**Common ports for all gateway types**
 
 The following ports are common to all gateway types and are required by all gateway types\.
 
-
-**Ports required by all gateway types**  
 
 |  Protocol  |  Port  |  Direction  |  Source  |  Destination  |  How Used  | 
 | --- | --- | --- | --- | --- | --- | 
@@ -110,16 +98,33 @@ The following ports are common to all gateway types and are required by all gate
 |  TCP  |  22 \(Support channel\)  |  Outbound  |  Storage Gateway  |  AWS Support  |  Allows AWS Support to access your gateway to help you with troubleshooting gateway issues\. You don't need this port open for the normal operation of your gateway, but it is required for troubleshooting\.  | 
 |  UDP  |  123 \(NTP\)  |  Outbound  |  NTP client  |  NTP server  |  Used by local systems to synchronize VM time to the host time\.   | 
 
-In addition to the common ports, file gateway requires the following ports\. 
+**Ports for file gateways**
 
+The following illustration shows the ports to open for a file gateway\.
 
-**Ports required by file gateway only**  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/File-Gateway-Port-Diagram.png)
+
+**Note**  
+For specific port requirements \(including NFS and SMB port requirements\), see [Port Requirements](Resource_Ports.md)\.
+
+You only need to use Microsoft Active Directory when you want to allow domain users to access an Server Message Block \(SMB\) file share\. You can join your file gateway to any valid Microsoft Windows domain \(resolvable by DNS\)\. 
+
+You can also use the AWS Directory Service to create an [AWS\-managed Microsoft Active Directory](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_microsoft_ad.html) in the AWS Cloud\. For most AWS\-managed Active Directory deployments, you need to configure the Dynamic Host Configuration Protocol \(DHCP\) service for your VPC\. For more information about how to create a DHCP options set, see [here](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/dhcp_options_set.html)\.
+
+In addition to the common ports, file gateways require the following ports\. 
+
 
 |  Protocol  |  Port  |  Direction  |  Source  |  Destination  |  How Used  | 
 | --- | --- | --- | --- | --- | --- | 
-|  TCP/UDP  |  2049 \(NFS\)  |  Inbound  |  NFS Clients  |  Storage Gateway  |  For local systems to connect to NFS shares your gateway exposes\.  | 
-|  TCP/UDP  |  111 \(NFSv3\)  |  Inbound  |  NFSv3 client  |  Storage Gateway  |  For local systems to connect to the portmapper your gateway exposes\.  Only needed for NFSv3\.  | 
-|  TCP/UDP  |  20048 \(NFSv3\)  |  Inbound  |  NFSv3 client  |  Storage Gateway  |  For local systems to connect to mountd your gateway exposes\.  Only needed for NFSv3\.  | 
+|  TCP/UDP  |  2049 \(NFS\)  |  Inbound  |  NFS Clients  |  Storage Gateway  |  For local systems to connect to NFS shares that your gateway exposes\.  | 
+|  TCP/UDP  |  111 \(NFSv3\)  |  Inbound  |  NFSv3 client  |  Storage Gateway  |  For local systems to connect to the port mapper that your gateway exposes\.  This port is needed only for NFSv3\.  | 
+|  TCP/UDP  |  20048 \(NFSv3\)  |  Inbound  |  NFSv3 client  |  Storage Gateway  |  For local systems to connect to mounts that your gateway exposes\.  This port is needed only for NFSv3\.  | 
+
+**Ports for volume and tape gateways**
+
+The following illustration shows the ports to open for volume and tape gateways\.
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/SGWNetworkPorts16-volume-tape2.png)
 
 In addition to the common ports, volume and tape gateways require the following port\.
 
@@ -127,6 +132,56 @@ In addition to the common ports, volume and tape gateways require the following 
 |  Protocol  |  Port  |  Direction  |  Source  |  Destination  |  How Used  | 
 | --- | --- | --- | --- | --- | --- | 
 |  TCP  |  3260 \(iSCSI\)  |  Inbound  |  iSCSI Initiators  |  Storage Gateway  |  By local systems to connect to iSCSI targets exposed by the gateway\.   | 
+
+### Networking and Firewall Requirements for the Hardware Appliance<a name="appliance-network-requirements"></a>
+
+Each AWS Storage Gateway Hardware Appliance requires the following network services:
++ **Internet access** – an always\-on network connection to the internet through any network interface on the server\.
++ **DNS services** – DNS services for communication between the hardware appliance and DNS server\.
++ **Time synchronization** – an automatically configured Amazon NTP time service must be reachable\.
++ **IP address** – A DHCP or static IPv4 address assigned\. You cannot assign an IPv6 address\.
+
+There are five physical network ports at the rear of the Dell PowerEdge R640 server\. From left to right \(facing the back of the server\) these ports are as follows:
+
+1. iDRAC
+
+1. `em1`
+
+1. `em2`
+
+1. `em3`
+
+1. `em4`
+
+You can use the iDRAC port for remote server management\.
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/ApplianceFirewallRules.png)
+
+A hardware appliance requires the following ports to operate\.
+
+
+|  Protocol  |  Port  |  Direction  |  Source  |  Destination  |  How Used  | 
+| --- | --- | --- | --- | --- | --- | 
+| SSH |  22  |  Outbound  | Hardware Appliance |  `54.201.223.107`  | Support channel | 
+| DNS | 53 | Outbound | Hardware Appliance | DNS server\(s\) | Name resolution | 
+| UDP/NTP | 123 | Outbound | Hardware Appliance | \*\.amazon\.pool\.ntp\.org | Time synchronization | 
+| HTTPS |  443  |  Outbound  | Hardware Appliance |  `*.amazonaws.com`  |  Data transfer  | 
+| HTTP | 8080 | Inbound | AWS | Hardware Appliance | Activation \(only briefly\) | 
+
+To perform as designed, a hardware appliance requires network and firewall settings as follows:
++ Configure all connected network interfaces in the hardware console\.
++ Make sure that each network interface is on a unique subnet\.
++ Provide all connected network interfaces with outbound access to the endpoints listed in the diagram preceding\.
++ Configure at least one network interface to support the hardware appliance\. For more information, see [Configure Network Parameters](appliance-configure-network.md)\.
+
+**Note**  
+To see an illustration showing the back of the server with its ports, see [Rack\-Mount Your Hardware Appliance and Connect It to Power](appliance-rack-mount.md)
+
+All IP addresses on the same network interface \(NIC\), whether for a gateway or a host, must be on the same subnet\. The following illustration shows the addressing scheme\.
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/ApplianceAddressing.png)
+
+For more information on activating and configuring a hardware appliance, see [Using the AWS Storage Gateway Hardware Appliance](HardwareAppliance.md)\.
 
 ### Allowing AWS Storage Gateway Access Through Firewalls and Routers<a name="allow-firewall-gateway-access"></a>
 
@@ -173,7 +228,7 @@ A Storage Gateway VM is configured to use the following NTP servers\.
  The following table provides a list of region strings for the available AWS Regions\.
 
 
-| Region Name | Region String | File Gateway | Volume Gateway | Tape Gateway | 
+| AWS Region Name | AWS Region String | File Gateway | Volume Gateway | Tape Gateway | 
 | --- | --- | --- | --- | --- | 
 | US East \(Ohio\) | us\-east\-2 | yes | yes | yes | 
 | US East \(N\. Virginia\) | us\-east\-1 | yes | yes | yes | 
@@ -184,12 +239,14 @@ A Storage Gateway VM is configured to use the following NTP servers\.
 | EU \(Frankfurt\) | eu\-central\-1 | yes | yes | yes | 
 | EU \(London\) | eu\-west\-2 | yes | yes | yes | 
 | EU \(Paris\) | eu\-west\-3 | yes | yes | yes | 
+| EU \(Stockholm\) | eu\-north\-1 | yes | yes | yes | 
 | Asia Pacific \(Tokyo\) | ap\-northeast\-1 | yes | yes | yes | 
 | Asia Pacific \(Seoul\) | ap\-northeast\-2 | yes | yes | yes | 
 | Asia Pacific \(Singapore\) | ap\-southeast\-1 | yes | yes | yes | 
 | Asia Pacific \(Sydney\) | ap\-southeast\-2 | yes | yes | yes | 
 | Asia Pacific \(Mumbai\) | ap\-south\-1 | yes | yes | yes | 
 | South America \(São Paulo\) | sa\-east\-1 | yes | yes | no | 
+| AWS GovCloud \(US\) | us\-gov\-west\-1 | yes | yes | yes | 
 
 Depending on your gateway's AWS Region, replace *region* in the endpoint with the corresponding region string\. For example, if you create a gateway in the US West \(Oregon\) region, the endpoint looks like this: `storagegateway.us-west-2.amazonaws.com:443`\.
 
@@ -197,7 +254,7 @@ Depending on your gateway's AWS Region, replace *region* in the endpoint with th
 
 A security group controls traffic to your Amazon EC2 gateway instance\. When you create an instance from the Amazon Machine Image \(AMI\) for AWS Storage Gateway from AWS Marketplace, you have two choices for launching the instance\. To launch the instance by using the **1\-Click Launch** feature of AWS Marketplace, follow the steps in [Deploying a Volume or Tape Gateway on an Amazon EC2 Host](ec2-gateway-common.md) \. We recommend that you use this **1\-Click Launch** feature\. 
 
-You can also launch an instance by using the **Manual Launch** feature in AWS Marketplace\. In this case, an autogenerated security group that is named `AWS Storage Gateway-1-0-AutogenByAWSMP-` is created\. This security group has the correct rule for port 80 to activate your gateway\. For more information about security groups, see [Security Group Concepts](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#concepts-security) in the *Amazon EC2 User Guide for Linux Instances*\.
+You can also launch an instance by using the **Manual Launch** feature in AWS Marketplace\. In this case, an autogenerated security group that is named `AWS Storage Gateway-1-0-AutogenByAWSMP-` is created\. This security group has the correct rule for port 80 to activate your gateway\. For more information about security groups, see [Security Group Concepts](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#concepts-security) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 Regardless of the security group that you use, we recommend the following:
 + The security group should not allow incoming connections from the outside internet\. It should allow only instances within the gateway security group to communicate with the gateway\. If you need to allow instances to connect to the gateway from outside its security group, we recommend that you allow connections only on ports 3260 \(for iSCSI connections\) and 80 \(for activation\)\.
@@ -281,20 +338,19 @@ The type of medium changer you choose depends on the backup application you plan
 | Backup Application | Medium Changer Type | 
 | --- | --- | 
 | Arcserve Backup | AWS\-Gateway\-VTL | 
-| Backup Exec 2012 Veritas has ended support for Backup Exec 2012\. For more information, see [End of Support for Prior Backup Exec Versions](https://www.veritas.com/support/en_US/article.000116356)\.  | STK\-L700 | 
-| Backup Exec 2014 | AWS\-Gateway\-VTL | 
-| Backup Exec 15 | AWS\-Gateway\-VTL | 
-| Backup Exec 16 | AWS\-Gateway\-VTL | 
+| Bacula Enterprise V10\.x | AWS\-Gateway\-VTL or STK\-L700 | 
 | Commvault V11 | STK\-L700 | 
 | Dell EMC NetWorker V8\.x or V9\.x | AWS\-Gateway\-VTL | 
+| IBM Spectrum Protect v7\.x | IBM\-03584L32\-0402 | 
 | Micro Focus \(HPE\) Data Protector 9\.x | AWS\-Gateway\-VTL | 
-| Microsoft System Center 2012 R2 or 2016 Data Protection Manager Data Protection Manager doesn't display barcodes for virtual tapes created in AWS Storage Gateway\.  | STK\-L700 | 
+| Microsoft System Center 2012 R2 or 2016 Data Protection Manager | STK\-L700 | 
 | NovaStor DataCenter/Network 6\.4 or 7\.1 | STK\-L700 | 
-| Quest NetVault Backup 10\.0 | STK\-L700 | 
-| Symantec NetBackup Version 7\.x | AWS\-Gateway\-VTL | 
-| Veeam Backup & Replication V7 | STK\-L700 | 
-| Veeam Backup & Replication V8 | STK\-L700 | 
+| Quest NetVault Backup 10\.0 or 11\.x or 12\.x | STK\-L700 | 
+| Veeam Backup & Replication V7 or V8 | STK\-L700 | 
 | Veeam Backup & Replication V9 Update 2 or later | AWS\-Gateway\-VTL | 
+| Veritas Backup Exec 2014 or 15 or 16 or 20\.x | AWS\-Gateway\-VTL | 
+| Veritas Backup Exec 2012 Veritas has ended support for Backup Exec 2012\. For more information, see [End of Support for Prior Backup Exec Versions](https://www.veritas.com/support/en_US/article.000116356)\.  | STK\-L700 | 
+| Veritas NetBackup Version 7\.x or 8\.x | AWS\-Gateway\-VTL | 
 
 **Important**  
 We highly recommend that you choose the medium changer that's listed for your backup application\. Other medium changers might not function properly\. You can choose a different medium changer after the gateway is activated\. For more information, see [Selecting a Medium Changer After Gateway Activation](resource_vtl-devices.md#change-mediumchanger-vtl)\.

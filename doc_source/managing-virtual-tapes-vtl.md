@@ -44,4 +44,4 @@ The steps involved in archiving a tape depend on your backup software\. For inst
 + ARCHIVING: Data upload is complete and the tape gateway is moving the tape to the archive\.
 + ARCHIVED: The tape is moved and the archive and is available for retrieval\.
 
-You can cancel archival only when the tape's status is IN TRANSIT TO VTS\. Depending on factors such as upload bandwidth and the amount of data being uploaded, this status might or might not be visible in the AWS Storage Gateway console\. To cancel a tape archival, use the [CancelRetrieval](http://docs.aws.amazon.com/storagegateway/latest/APIReference//API_CancelRetrieval.html) action in the API reference\. 
+You can cancel archival only when the tape's status is IN TRANSIT TO VTS\. Depending on factors such as upload bandwidth and the amount of data being uploaded, this status might or might not be visible in the AWS Storage Gateway console\. To cancel a tape archival, use the [CancelRetrieval](https://docs.aws.amazon.com/storagegateway/latest/APIReference//API_CancelRetrieval.html) action in the API reference\. 

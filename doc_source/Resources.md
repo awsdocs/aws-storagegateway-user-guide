@@ -15,3 +15,4 @@ In this section, you can find information about AWS and third\-party software, t
 + [Tagging Storage Gateway Resources](tagging-resources-common.md)
 + [Working with Open\-Source Components for AWS Storage Gateway](AboutAWSStorageGatewaySoftware.md)
 + [AWS Storage Gateway Limits](resource-gateway-limits.md)
++ [Using Storage Classes](storage-classes.md)

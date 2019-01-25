@@ -1,4 +1,4 @@
-# Performing Maintenance Tasks on the Amazon EC2 Gateway Local Console<a name="ec2-local-console-common"></a>
+# Performing Tasks on the Amazon EC2 Local Console \(Volume and Tape Gateways\)<a name="ec2-local-console-common"></a>
 
 Some maintenance tasks require that you log in to the local console when running a gateway deployed on an Amazon EC2 instance\. In this section, you can find information about how to log in to the local console and perform maintenance tasks\.
 
@@ -11,7 +11,7 @@ Some maintenance tasks require that you log in to the local console when running
 
 ## Logging In to Your Amazon EC2 Gateway Local Console<a name="EC2_MaintenanceConsoleWindow-common"></a>
 
-You can connect to your Amazon EC2 instance by using a Secure Shell \(SSH\) client\. For detailed information, see [Connect to Your Instance](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide//AccessingInstances.html) in the *Amazon EC2 User Guide*\. To connect this way, you will need the SSH key pair you specified when you launched the instance\. For information about Amazon EC2 key pairs, see [Amazon EC2 Key Pairs](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide//ec2-key-pairs.html) in the *Amazon EC2 User Guide\.*<a name="EC2_MaintenanceConsoleWindowMenu-common"></a>
+You can connect to your Amazon EC2 instance by using a Secure Shell \(SSH\) client\. For detailed information, see [Connect to Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide//AccessingInstances.html) in the *Amazon EC2 User Guide*\. To connect this way, you will need the SSH key pair you specified when you launched the instance\. For information about Amazon EC2 key pairs, see [Amazon EC2 Key Pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide//ec2-key-pairs.html) in the *Amazon EC2 User Guide\.*<a name="EC2_MaintenanceConsoleWindowMenu-common"></a>
 
 **To log in to the gateway local console**
 

@@ -96,7 +96,7 @@ NovaStor DataCenter/Network can use import/export slots if they are part of the 
 
 For an export, NovaStor DataCenter/Network must know which tapes are going to be physically taken out of the library\. 
 
-For an import, NovaStor DataCenter/Network recognizes tape media that are exported in the tape library and offers to import them all, either from a data slot or an export slot\. Your tape gateway archives tapes in the virtual tape shelf \(VTS\), which is backed by Amazon Glacier\. The VTS is referred to as offsite location in NovaStor DataCenter/Network\.
+For an import, NovaStor DataCenter/Network recognizes tape media that are exported in the tape library and offers to import them all, either from a data slot or an export slot\. Your tape gateway archives tapes in the virtual tape shelf \(VTS\), which is backed by Glacier\. The VTS is referred to as offsite location in NovaStor DataCenter/Network\.
 
 **To configure media import and export**
 

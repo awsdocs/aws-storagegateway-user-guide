@@ -5,7 +5,6 @@ Maintaining your gateway includes tasks such as configuring cache storage and up
 **Topics**
 + [Shutting Down Your Gateway VM](MaintenanceShutDown-common.md)
 + [Managing Local Disks for Your AWS Storage Gateway](ManagingLocalStorage-common.md)
-+ [Optimizing Gateway Performance](Optimizing-common.md)
 + [Managing Bandwidth for Your Gateway](MaintenanceUpdateBandwidth-common.md)
 + [Managing Gateway Updates Using the AWS Storage Gateway Console](MaintenanceManagingUpdate-common.md)
 + [Performing Maintenance Tasks on the Local Console](manage-on-premises.md)

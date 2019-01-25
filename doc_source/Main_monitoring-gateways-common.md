@@ -9,9 +9,9 @@ In this section, you can find information about how to monitor a gateway, includ
 + [Monitoring Your File Share](monitoring-file-gateway.md)
 + [Monitoring Your Volume Gateway](GatewayMetrics-common.md)
 + [Monitoring Your Tape Gateway](GatewayMetrics-vtl-common.md)
-+ [Logging AWS Storage Gateway API Calls by Using AWS CloudTrail](logging-using-cloudtrail-common.md)
++ [Logging Storage Gateway API Calls with AWS CloudTrail](logging-using-cloudtrail.md)
 
-AWS Storage Gateway provides Amazon CloudWatch metrics at no additional charge\. Storage Gateway metrics are recorded for a period of two weeks\. By using these metrics, you can access historical information and get a better perspective on how your gateway and volumes are performing\. For detailed information about CloudWatch, see the *[Amazon CloudWatch User Guide](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/)*\.
+AWS Storage Gateway provides Amazon CloudWatch metrics at no additional charge\. Storage Gateway metrics are recorded for a period of two weeks\. By using these metrics, you can access historical information and get a better perspective on how your gateway and volumes are performing\. For detailed information about CloudWatch, see the *[Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/)*\.
 
 ## Understanding Gateway Metrics<a name="MonitoringGateways-common"></a>
 
@@ -20,36 +20,63 @@ For the discussion in this topic, we define *gateway* metrics as metrics that ar
 When working with gateway metric data, you specify the unique identification of the gateway that you are interested in viewing metrics for\. To do this, you specify both the `GatewayId` and the `GatewayName` values\. When you want to work with metric for a gateway, you specify the gateway *dimension* in the metrics namespace, which distinguishes a gateway\-specific metric from a volume\-specific metric\. For more information, see [Using Amazon CloudWatch Metrics](GatewayMetrics-common.md#UsingCloudWatchConsole-common)\. 
 
 **Topics**
++ [AWS Storage Gateway Metrics](#storagegateway-metrics)
++ [Dimensions for AWS Storage Gateway Metrics](#storagegateway-metric-dimensions)
 
-The following table describes the Storage Gateway metrics that you can use to get information about your gateway\. The entries in the table are grouped functionally by measure\. 
+### AWS Storage Gateway Metrics<a name="storagegateway-metrics"></a>
 
-**Note**  
-The reporting period for these metrics is 5 minutes\.
+The following metrics are available from the AWS Storage Gateway service\.
+
+The following table describes the AWS Storage Gateway metrics that you can use to get information about your gateways\. Specify the `GatewayId` or `GatewayName` dimension for each metric to view the data for a gateway\. Note that these metrics are measured in 5\-minute intervals\.
 
 
-| Metric | Description | Applies To\.\. | 
-| --- | --- | --- | 
-| CacheHitPercent |  Percent of application reads served from the cache\. The sample is taken at the end of the reporting period\. Units: Percent  |  File, Cached volumes and Tape\.  | 
-| CachePercentUsed |  Percent use of the gateway's cache storage\. The sample is taken at the end of the reporting period\. Units: Percent  |  File, Cached volumes and Tape\.  | 
-| CachePercentDirty |  Percent of the gateway's cache that has not been persisted to AWS\. The sample is taken at the end of the reporting period\. Units: Percent  |  File, Cached volumes and Tape\.  | 
-| CloudBytesDownloaded |  The total number of compressed bytes that the gateway downloaded from AWS during the reporting period\.  Use this metric with the `Sum` statistic to measure throughput and with the `Samples` statistic to measure input/output operations per second \(IOPS\)\. Units: Bytes  |  File, Cached volumes, Stored volumes and Tape\.  | 
-| CloudDownloadLatency |  The total number of milliseconds spent reading data from AWS during the reporting period\. Use this metric with the `Average` statistic to measure latency\. Units: Milliseconds  |  File, Cached volumes, Stored volumes and Tape\.  | 
-| CloudBytesUploaded |  The total number of compressed bytes that the gateway uploaded to AWS during the reporting period\.  Use this metric with the `Sum` statistic to measure throughput and with the `Samples` statistic to measure IOPS\.  Units: Bytes  |  File, Cached volumes, Stored volumes and Tape\.  | 
-| UploadBufferFree |  The total amount of unused space in the gateway's upload buffer\. The sample is taken at the end of the reporting period\. Units: Bytes  |  Cached volumes and Tape\.  | 
-| CacheFree |  The total amount of unused space in the gateway's cache storage\. The sample is taken at the end of the reporting period\. Units: Bytes  |  File, Cached volumes, and Tape\.  | 
-| UploadBufferPercentUsed |  Percent use of the gateway's upload buffer\. The sample is taken at the end of the reporting period\. Units: Percent  |   Cached volumes and Tape\.  | 
-| UploadBufferUsed |  The total number of bytes being used in the gateway's upload buffer\. The sample is taken at the end of the reporting period\. Units: Bytes  |  Cached volumes and Tape\.  | 
-| CacheUsed |  The total number of bytes being used in the gateway's cache storage\. The sample is taken at the end of the reporting period\. Units: Bytes  |  File, Cached volumes and Tape\.  | 
-| QueuedWrites |  The number of bytes waiting to be written to AWS, sampled at the end of the reporting period for all volumes in the gateway\. These bytes are kept in your gateway's working storage\. Units: Bytes  |  File, Cached volumes, Stored volumes and Tape\.  | 
-| ReadBytes  |  The total number of bytes read from your on\-premises applications in the reporting period for all volumes in the gateway\. Use this metric with the `Sum` statistic to measure throughput and with the `Samples` statistic to measure IOPS\. Units: Bytes  |  File, Cached volumes, and Stored volumes\.  | 
-| ReadTime |  The total number of milliseconds spent to do read operations from your on\-premises applications in the reporting period for all volumes in the gateway\. Use this metric with the `Average` statistic to measure latency\. Units: Milliseconds  |  File, Cached volumes, and Stored volumes\.  | 
-| TotalCacheSize |  The total size of the cache in bytes\. The sample is taken at the end of the reporting period\. Units: Bytes  |  File, Cached volumes, and Tape\.  | 
-| WriteBytes |  The total number of bytes written to your on\-premises applications in the reporting period for all volumes in the gateway\. Use this metric with the `Sum` statistic to measure throughput and with the `Samples` statistic to measure IOPS\. Units: Bytes  |  File, Cached volumes, and Stored volumes\.  | 
-| WriteTime |  The total number of milliseconds spent to do write operations from your on\-premises applications in the reporting period for all volumes in the gateway\.  Use this metric with the `Average` statistic to measure latency\. Units: Milliseconds  |  File, Cached volumes, and Stored volumes\.  | 
-| TimeSinceLastRecoveryPoint |  The time since the last available recovery point\. For more information, see [Your Cached Gateway is Unreachable And You Want to Recover Your Data](troubleshoot-volume-issues.md#RecoverySnapshotTroubleshooting)\. Units: Seconds  |  Cached volumes and Stored volumes\.  | 
-| WorkingStorageFree |  The total amount of unused space in the gateway's working storage\. The sample is taken at the end of the reporting period\. Units: Bytes  |  Stored volumes only\.  | 
-| WorkingStoragePercentUsed |  Percent use of the gateway's upload buffer\. The sample is taken at the end of the reporting period\. Units: Percent  |  Stored volumes only\.  | 
-| WorkingStorageUsed |  The total number of bytes being used in the gateway's upload buffer\. The sample is taken at the end of the reporting period\. Units: Bytes  |  Stored volumes only\.  | 
+| Metric | Description | Gateway\-Cached | Gateway\-Stored | Gateway\-VTL | 
+| --- | --- | --- | --- | --- | 
+| CacheHitPercent |  Percent of application reads served from the cache\. This metric applies only to the gateway\-cached volume setup\. The sample is taken at the end of the reporting period\. Units: Percent  | yes | no | yes | 
+| CachePercentUsed |  Percent use of the gateway's cache storage\. This metric applies only to the gateway\-cached volume setup\. The sample is taken at the end of the reporting period\. Units: Percent  | yes | no | yes | 
+| CachePercentDirty |  Percent of the gateway's cache that has not been persisted to AWS\. This metric applies only to the gateway\-cached volume setup\. The sample is taken at the end of the reporting period\. Units: Percent  | yes | no | yes | 
+| CloudBytesDownloaded |  The total number of compressed bytes that the gateway downloaded from AWS during the reporting period\.  Use this metric with the `Sum` statistic to measure throughput and with the `Samples` statistic to measure input/output operations per second \(IOPS\)\. Units: Bytes  | yes | yes | yes | 
+| CloudDownloadLatency |  The total number of milliseconds spent reading data from AWS during the reporting period\. Use this metric with the `Average` statistic to measure latency\. Units: Milliseconds  | yes | yes | yes | 
+| CloudBytesUploaded |  The total number of compressed bytes that the gateway uploaded to AWS during the reporting period\.  Use this metric with the `Sum` statistic to measure throughput and with the `Samples` statistic to measure IOPS\.  Units: Bytes  | yes | yes | yes | 
+| UploadBufferFree |  The total amount of unused space in the gateway's upload buffer\. The sample is taken at the end of the reporting period\. Units: Bytes  | yes | no | yes | 
+| CacheFree |  The total amount of unused space in the gateway's cache storage\. The sample is taken at the end of the reporting period\. Units: Bytes  | yes | no | yes | 
+| UploadBufferPercentUsed |  Percent use of the gateway's upload buffer\. The sample is taken at the end of the reporting period\. Units: Percent  | yes | no | yes | 
+| UploadBufferUsed |  The total number of bytes being used in the gateway's upload buffer\. The sample is taken at the end of the reporting period\. Units: Bytes  | yes | no | yes | 
+| CacheUsed |  The total number of bytes being used in the gateway's cache storage\. The sample is taken at the end of the reporting period\. Units: Bytes  | yes | no | yes | 
+| QueuedWrites |  The number of bytes waiting to be written to AWS, sampled at the end of the reporting period for all volumes in the gateway\. These bytes are kept in your gateway's working storage\. Units: Bytes  | yes | yes | yes | 
+| ReadBytes  |  The total number of bytes read from your on\-premises applications in the reporting period for all volumes in the gateway\. Use this metric with the `Sum` statistic to measure throughput and with the `Samples` statistic to measure IOPS\. Units: Bytes  | yes | yes | yes | 
+| ReadTime |  The total number of milliseconds spent to do read operations from your on\-premises applications in the reporting period for all volumes in the gateway\. Use this metric with the `Average` statistic to measure latency\. Units: Milliseconds  | yes | yes | yes | 
+| TotalCacheSize |  The total size of the cache in bytes\. This metric applies only to the gateway\-cached volume setup\. The sample is taken at the end of the reporting period\. Units: Bytes  | yes | no | yes | 
+| WriteBytes |  The total number of bytes written to your on\-premises applications in the reporting period for all volumes in the gateway\. Use this metric with the `Sum` statistic to measure throughput and with the `Samples` statistic to measure IOPS\. Units: Bytes  | yes | yes | yes | 
+| WriteTime |  The total number of milliseconds spent to do write operations from your on\-premises applications in the reporting period for all volumes in the gateway\.  Use this metric with the `Average` statistic to measure latency\. Units: Milliseconds  | yes | yes | yes | 
+| TimeSinceLastRecoveryPoint |  The time since the last available recovery point\.  Units: Seconds  | yes | yes | no | 
+| WorkingStorageFree |  The total amount of unused space in the gateway's working storage\. The sample is taken at the end of the reporting period\.   Working storage applies only to the gateway\-stored volume setup\. The upload buffer applies to both the gateway\-stored and gateway\-cached volume setups\. If you are working with both types of gateway setups, you might find it more convenient to use just the corresponding upload buffer metric, `UploadBufferFree`\.  Units: Bytes  | no | yes | no | 
+| WorkingStoragePercentUsed |  Percent use of the gateway's upload buffer\. The sample is taken at the end of the reporting period\.   Working storage applies only to the gateway\-stored volume setup\. The upload buffer applies to both the gateway\-stored and gateway\-cached volume setups\. If you are working with both types of gateway setups, you might find it more convenient to use just the corresponding upload buffer metric, `UploadBufferPercentUsed`\.  Units: Percent  | no | yes | no | 
+| WorkingStorageUsed |  The total number of bytes being used in the gateway's upload buffer\. The sample is taken at the end of the reporting period\.   Working storage applies only to the gateway\-stored volume setup\. The upload buffer applies to both the gateway\-stored and gateway\-cached volume setups\. If you are working with both types of gateway setups, you might find it more convenient to use just the corresponding upload buffer metric, `UploadBufferUsed`\.  Units: Bytes  | no | yes | no | 
+
+The following table describes the AWS Storage Gateway metrics that you can use to get information about your storage volumes\. Specify the `VolumeId` dimension for each metric to view the data for a storage volume\.
+
+
+| Metric | Description | Gateway\-Cached | Gateway\-Stored | 
+| --- | --- | --- | --- | 
+| CacheHitPercent |  Percent of application read operations from the volume that are served from cache\. This metric applies only to cached volumes\. The sample is taken at the end of the reporting period\. When there are no application read operations from the volume, this metric reports 100 percent\.  Units: Percent  | yes | no | 
+| CachePercentUsed |  The volume's contribution to the overall percent use of the gateway's cache storage\. This metric applies only to cached volumes\. The sample is taken at the end of the reporting period\. Use the `CachePercentUsed` metric of the gateway to view overall percent use of the gateway's cache storage\. Units: Percent  | yes | no | 
+| CachePercentDirty |  The volume's contribution to the overall percentage of the gateway's cache that has not been persisted to AWS\. This metric applies only to volumes in a gateway\-cached setup\. The sample is taken at the end of the reporting period\. Use the `CachePercentDirty` metric of the gateway to view the overall percentage of the gateway's cache that has not been persisted to AWS\. Units: Percent  | yes | no | 
+| ReadBytes  |  The total number of bytes read from your on\-premises applications in the reporting period\. Use this metric with the `Sum` statistic to measure throughput and with the `Samples` statistic to measure IOPS\. Units: Bytes  | yes | yes | 
+| ReadTime |  The total number of milliseconds spent to do read operations from your on\-premises applications in the reporting period\. Use this metric with the `Average` statistic to measure latency\. Units: Milliseconds  | yes | yes | 
+| WriteBytes |  The total number of bytes written to your on\-premises applications in the reporting period\. Use this metric with the `Sum` statistic to measure throughput and with the `Samples` statistic to measure IOPS\. Units: Bytes  | yes | yes | 
+| WriteTime |  The total number of milliseconds spent to do write operations from your on\-premises applications in the reporting period\.  Use this metric with the `Average` statistic to measure latency\. Units: Milliseconds  | yes | yes | 
+| QueuedWrites |  The number of bytes waiting to be written to AWS, sampled at the end of the reporting period\.  Units: Bytes  | yes | yes | 
+
+### Dimensions for AWS Storage Gateway Metrics<a name="storagegateway-metric-dimensions"></a>
+
+The Amazon CloudWatch namespace for the AWS Storage Gateway service is `AWS/StorageGateway`\. Data is available automatically in 5\-minute periods at no charge\. 
+
+
+|  Dimension  |  Description  | 
+| --- | --- | 
+|  GatewayId, GatewayName |  These dimensions filter the data you request to gateway\-specific metrics\. You can identify a gateway to work by its `GatewayId` or its `GatewayName`\. However, note that if the name of your gateway was changed for the time range that you are interested in viewing metrics, then you should use the `GatewayId`\.   Throughput and latency data of a gateway is based on all the volumes for the gateway\. For information about working with gateway metrics, see [Measuring Performance Between Your Gateway and AWS](http://docs.aws.amazon.com/storagegateway/latest/userguide/PerfGatewayAWS.html)\.   | 
+|  VolumeId  |  This dimension filters the data you request to volume\-specific metrics\. Identify a storage volume to work with by its `VolumeId`\. For information about working with volume metrics, see [Measuring Performance Between Your Application and Gateway](http://docs.aws.amazon.com/storagegateway/latest/userguide/PerfAppGateway.html)\.   | 
 
 ## Monitoring the Upload Buffer<a name="PerfUploadBuffer-common"></a>
 
@@ -81,7 +108,7 @@ The `WorkingStoragePercentUsed`, `WorkingStorageUsed`, and `WorkingStorageFree` 
 
 The resulting time\-ordered set of data points contains the percent used of the upload buffer\.
 
-Using the following procedure, you can create an alarm using the CloudWatch console\. To learn more about alarms and thresholds, see [Creating CloudWatch Alarms](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html)\.<a name="GatewayAlarm1-common"></a>
+Using the following procedure, you can create an alarm using the CloudWatch console\. To learn more about alarms and thresholds, see [Creating CloudWatch Alarms](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html)\.<a name="GatewayAlarm1-common"></a>
 
 **To set an upper threshold alarm for a gateway's upload buffer**
 
@@ -111,7 +138,7 @@ Using the following procedure, you can create an alarm using the CloudWatch cons
 
    1. Choose **Choose or create email topic** for **Topic**\.
 
-      To create an email topic means that you set up an Amazon Simple Notification Service \(Amazon SNS\) topic\. For more information about Amazon SNS, see [Set Up Amazon SNS](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/US_SetupSNS.html)\.
+      To create an email topic means that you set up an Amazon Simple Notification Service \(Amazon SNS\) topic\. For more information about Amazon SNS, see [Set Up Amazon SNS](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/US_SetupSNS.html)\.
 
    1. For **Topic**, type a descriptive name for the topic\.
 
