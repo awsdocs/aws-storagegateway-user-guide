@@ -15,7 +15,7 @@ If you haven't already done so, you must install and configure the AWS CLI\. To 
 + [ Installing the AWS Command Line Interface](https://docs.aws.amazon.com/cli/latest/userguide/installing.html)
 + [ Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
 
-The following example shows you how to use the AWS CLI to fetch the HTTP response, parse HTTP headers and get the activation key\.
+The following example shows you how to use wget to fetch the HTTP response, parse HTTP headers and get the activation key\.
 
 ```
 wget 'ec2_instance_ip_address/?activationRegion=eu-west-2' 2>&1 | \
