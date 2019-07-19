@@ -26,7 +26,7 @@ For stored volumes, if the AWS Storage Gateway console indicates that your volum
 
 For cached volumes, if the AWS Storage Gateway console indicates that your volume has a status of IRRECOVERABLE, you can no longer use this volume\. If there is data on the volume, you can create a snapshot of the volume and then recover your data from the snapshot or you can clone the volume from the last recovery point\. You can delete the volume after you have recovered your data\. For more information, see [Your Cached Gateway is Unreachable And You Want to Recover Your Data](#RecoverySnapshotTroubleshooting)\.
 
-For stored volumes, you can create a new volume from the disk that was used to create the irrecoverable volume\. For more information, see [Creating a Volume](GettingStartedCreateVolumes.md)\. For information about volume status, see [Understanding Volume Status](managing-volumes.md#StorageVolumeStatuses)\. 
+For stored volumes, you can create a new volume from the disk that was used to create the irrecoverable volume\. For more information, see [Creating a Volume](GettingStartedCreateVolumes.md)\. For information about volume status, see [Understanding Volume Statuses and Transitions](managing-volumes.md#StorageVolumeStatuses)\. 
 
 ## Your Cached Gateway is Unreachable And You Want to Recover Your Data<a name="RecoverySnapshotTroubleshooting"></a>
 
@@ -44,7 +44,7 @@ To take action before the upload buffer is exceeded, you can set a threshold ala
 
 In contrast, an example of not needing to take action when a volume has the PASS THROUGH status is when the volume is waiting to be bootstrapped because another volume is currently being bootstrapped\. The gateway bootstraps volumes one at a time\.
 
-Infrequently, the PASS THROUGH status can indicate that a disk allocated for an upload buffer has failed\. In this is the case, you should remove the disk\. For more information, see [Volume Gateway](resource-volume-gateway.md)\. For information about volume status, see [Understanding Volume Status](managing-volumes.md#StorageVolumeStatuses)\. 
+Infrequently, the PASS THROUGH status can indicate that a disk allocated for an upload buffer has failed\. In this is the case, you should remove the disk\. For more information, see [Volume Gateway](resource-volume-gateway.md)\. For information about volume status, see [Understanding Volume Statuses and Transitions](managing-volumes.md#StorageVolumeStatuses)\. 
 
 ## You Want to Verify Volume Integrity and Fix Possible Errors<a name="troubleshoot-volume-issues.VerifyIntegrity"></a>
 
@@ -91,4 +91,4 @@ If you use ephemeral disks as cache disks for your gateway or mount your cache d
 
 If a volume snapshot remains in PENDING state longer than expected, the gateway VM might have crashed unexpectedly or the status of a volume might have changed to PASS THROUGH or IRRECOVERABLE\. If any of these are the case, the snapshot remains in PENDING status and the snapshot does not successfully complete\. In these cases, we recommend that you delete the snapshot\. For more information, see [Deleting a Snapshot](managing-volumes.md#DeletingASnapshot)\.
 
-When the volume returns to AVAILABLE status, create a new snapshot of the volume\. For information about volume status, see [Understanding Volume Status](managing-volumes.md#StorageVolumeStatuses)\.
+When the volume returns to AVAILABLE status, create a new snapshot of the volume\. For information about volume status, see [Understanding Volume Statuses and Transitions](managing-volumes.md#StorageVolumeStatuses)\.

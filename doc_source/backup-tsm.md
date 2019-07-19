@@ -2,6 +2,9 @@
 
 You can back up your data to virtual tapes, archive the tapes, and manage your virtual tape library \(VTL\) devices by using IBM Spectrum Protect \(formerly known as Tivoli Storage Manager\)\. In this topic, you can find basic documentation on how to configure the IBM Spectrum Protect Version 7\.x backup software for a tape gateway and perform backup and restore operations\. For detailed information about how to use IBM Spectrum Protect backup software, see the [IBM Spectrum Protect Administrator's Guide](https://www.ibm.com/support/knowledgecenter/SSTG2D_7.1.0/com.ibm.itsm.srv.doc/b_srv_admin_guide_windows.pdf)\.
 
+**Note**  
+The IBM Spectrum Protect backup software is only supported on the Microsoft Windows\.
+
 ## Setting Up IBM Spectrum Protect<a name="tsm-setup"></a>
 
 After you have connected your virtual tape library \(VTL\) devices to your Windows client, you configure the IBM Spectrum Protect Version 7\.x software to recognize your VTL devices\. For information about how to connect VTL devices to your client, see [Connecting Your VTL Devices](GettingStarted-create-tape-gateway.md#GettingStartedAccessTapesVTL)\.

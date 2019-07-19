@@ -78,7 +78,7 @@ When you archive a tape, tape gateway moves the tape from your gateway’s virtu
 
 1. In the **Media Request** pop\-up window, choose **View details**, and then choose **Respond OK** in the **Alert: Media Intervention** window\. 
 
-   In the AWS Storage Gateway console, you can verify the status of the tape you are archiving\. It might take some time to finish uploading data to AWS\. During this time, the exported tape is listed in the tape gateway's VTL with the status **IN TRANSIT TO VTS**\. When the upload is completed and the archiving process begins, the status changes to **ARCHIVING**\. When data archiving has completed, the exported tape is no longer listed in the VTL\.
+   In the AWS Storage Gateway console, you can verify the status of the tape you are archiving\. It might take some time to finish uploading data to AWS\. During this time, the exported tape is listed in the tape gateway's VTL with the status **IN TRANSIT TO VTS**\. When the upload is completed and the archiving process begins, the status changes to **ARCHIVING**\. When data archiving has completed, the exported tape is no longer listed in the VTL but is archived in GLACIER or DEEP\_ARCHIVE\.
 
 1. Choose your gateway, and then choose **VTL Tape Cartridges** and verify that the virtual tape is no longer listed in your gateway\. 
 

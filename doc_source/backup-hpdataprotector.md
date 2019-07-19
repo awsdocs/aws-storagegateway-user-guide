@@ -186,7 +186,7 @@ When you have chosen a tape to archive, use the following procedure\.
 
 1. On the AWS Storage Gateway console, choose your gateway, and then choose **VTL Tape Cartridges** and verify the status of the virtual tape you are archiving\. 
 
-After the tape is ejected, it will be automatically archived in Glacier\. The archiving process can take some time to complete\. The initial status of the tape is shown as **IN TRANSIT TO VTS**\. When archiving starts, the status changes to **ARCHIVING**\. When archiving is completed, the tape is no longer listed in the VTL\. 
+After the tape is ejected, it will be automatically archived in the offline storage \(GLACIER or DEEP\_ARCHIVE\)\. The archiving process can take some time to complete\. The initial status of the tape is shown as **IN TRANSIT TO VTS**\. When archiving starts, the status changes to **ARCHIVING**\. When archiving is completed, the tape is no longer listed in the VTL but is archived in GLACIER or DEEP\_ARCHIVE\. 
 
 ## Restoring Data from a Tape<a name="hpdataprotector-restore-tape"></a>
 

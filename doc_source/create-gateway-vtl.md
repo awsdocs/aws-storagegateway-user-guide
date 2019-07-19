@@ -5,6 +5,7 @@ In this section, you can find instructions about how to download, deploy, and ac
 **Topics**
 + [Choosing a Gateway Type](#GettingStartedSelectGatewayType)
 + [Choosing a Host Platform and Downloading the VM](#hosting-options-vtl)
++ [Choosing a Service Endpoint](#GettingStarted-service-endpoint-file)
 + [Connecting to Your Gateway](#GettingStartedBeginActivateGateway-vtl)
 + [Activating Your Gateway](#GettingStartedActivateGateway-common)
 + [Configuring Local Disks](#configure-local-disk-alarms)
@@ -26,7 +27,7 @@ For a [tape gateway](StorageGatewayConcepts.md#storage-gateway-vtl-concepts), yo
 
 ## Choosing a Host Platform and Downloading the VM<a name="hosting-options-vtl"></a>
 
-If you create your gateway on\-premises, you deploy the Hardware Appliance; or download and deploy a gateway VM, and then activate the gateway\. If you create your gateway on an Amazon EC2 instance, you launch an Amazon Machine Image \(AMI\) that contains the gateway VM image and then activate the gateway\. For information about supported host platforms, see [Supported Hypervisors and Host Requirements](Requirements.md#requirements-host)\.
+If you create your gateway on\-premises, you deploy the hardware appliance, or download and deploy a gateway VM, and then activate the gateway\. If you create your gateway on an Amazon EC2 instance, you launch an Amazon Machine Image \(AMI\) that contains the gateway VM image and then activate the gateway\. For information about supported host platforms, see [Supported Hypervisors and Host Requirements](Requirements.md#requirements-host)\.
 
 **Note**  
 You can run only file, cached volume, and tape gateways on an Amazon EC2 instance\.
@@ -60,9 +61,26 @@ The \.zip file is over 500 MB in size and might take some time to download, depe
 
    Launch an Amazon Machine Image \(AMI\) that contains the gateway VM image, and then activate the gateway\. For information about deploying your gateway to an Amazon EC2 host, see: [Deploying a Volume or Tape Gateway on an Amazon EC2 Host](ec2-gateway-common.md) 
 
-   If you choose the Hardware Appliance, do the following:
+   If you choose the hardware appliance, see [Activate Your Hardware Appliance](appliance-activation.md)\.
 
 For information about deploying your gateway to an Amazon EC2 host, see [Deploy your gateway to an Amazon EC2 host](ec2-gateway-common.md)\.
+
+## Choosing a Service Endpoint<a name="GettingStarted-service-endpoint-file"></a>
+
+You can activate your gateway using a public endpoint and have your gateway communicate with AWS storage services over the public Internet or activate it using a private VPC endpoint\. If you use a VPC endpoint, all communication from your gateway to AWS services occurs through the VPC endpoint in your VPC in AWS\. 
+
+**To choose a service endpoint**
+
+1. For **Endpoint type** you have the following options:  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/choose-endpoint-public.png)
+
+   To make your gateway access AWS services over the public Internet, choose **Public**\. 
+
+   To make your gateway access AWS services through the VPC endpoint in your VPC, choose **VPC**\. 
+
+   This walkthorough assumes that you are activating your gateway with a public endpoint\. For Information about how to activate a gateway using a VPC, endpoint see [Activating a Gateway in a Virtual Private Cloud](gateway-private-link.md)\.
+
+1. Choose **Next** to connect you gateway and activate your gateway\.
 
 ## Connecting to Your Gateway<a name="GettingStartedBeginActivateGateway-vtl"></a>
 
@@ -70,7 +88,7 @@ To connect to your gateway, the first step is to get the IP address of your gate
 
 The activation process associates your gateway with your AWS account\. Your gateway VM must be running for activation to succeed\.
 
-Make sure that you connect to the correct gateway type\. The \.ova files and AMIs for the gateway types are different and are not interchangeable\.
+Make sure that you select the correct gateway type\. The \.ova files and AMIs for the gateway types are different and are not interchangeable\.
 
 **To get the IP address for your gateway VM from the local console**
 
@@ -106,17 +124,16 @@ When your gateway VM is deployed and running, you can configure your gateway set
 
 **To configure your gateway settings**
 
+The gateway type, endpoint type, and AWS Region you selected are shown on the activation page\.
+
 1. Type the information listed on the activation page to configure your gateway settings and complete the activation process\.
 
    The following screenshot shows the activation page for tape gateways\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/activate-gateway-vtl.png)
-   + **AWS Region** specifies the AWS Region where your gateway will be created and your data stored\.
+   + **AWS Region** specifies the AWS Region where your gateway will be activated and where your data will be stored\. If **Endpoint type** is **VPC**, the AWS Region should be same as the Region where your VPC Endpoint is located\.
    + **Gateway time zone** specifies the time zone to use for your gateway\.
    + **Gateway name** identifies your gateway\. You use this name to manage your gateway in the console; you can change it after the gateway is activated\. This name must be unique to your account\. 
-   + **Backup application** specifies the backup application you want to use\. Storage Gateway automatically chooses a compatible medium changer for your backup application\. If your backup application is not listed, choose **Other** and choose a medium changer type\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/activate-vtl-other.png)
-
-      **Medium changer type** specifies the type of medium changer to use for your backup application\.
+   + **Backup application** specifies the backup application you want to use\. Storage Gateway automatically chooses a compatible medium changer for your backup application\. If your backup application is not listed, choose **Other** and choose a medium changer type\. **Medium changer type** specifies the type of medium changer to use for your backup application\.
 
      The type of medium changer you choose depends on the backup application you plan to use\. The following table lists third\-party backup applications that have been tested and found to be compatible with tape gateways\. This table includes the medium changer type recommended for each backup application\.    
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/create-gateway-vtl.html)

@@ -1,24 +1,24 @@
-# AWS Storage Gateway API Permissions: Actions, Resources, and Conditions Reference<a name="sg-api-permissions-ref"></a>
+# Storage Gateway API Permissions: Actions, Resources, and Conditions Reference<a name="sg-api-permissions-ref"></a>
 
- When you are setting up [Access Control](UsingIAMWithStorageGateway.md#access-control) and writing permissions policies that you can attach to an IAM identity \(identity\-based policies\), you can use the following table as a reference\. The table lists each AWS Storage Gateway API operation, the corresponding actions for which you can grant permissions to perform the action, and the AWS resource for which you can grant the permissions\. You specify the actions in the policy's `Action` field, and you specify the resource value in the policy's `Resource` field\. 
+When you set up [access control](UsingIAMWithStorageGateway.md#access-control) and write permissions policies that you can attach to an IAM identity \(identity\-based policies\), you can use the following table as a reference\. The table lists each Storage Gateway API operation, the corresponding actions for which you can grant permissions to perform the action, and the AWS resource for which you can grant the permissions\. You specify the actions in the policy's `Action` field, and you specify the resource value in the policy's `Resource` field\. 
 
-You can use AWS\-wide condition keys in your AWS Storage Gateway policies to express conditions\. For a complete list of AWS\-wide keys, see [Available keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html#AvailableKeys) in the *IAM User Guide*\.
+You can use AWS\-wide condition keys in your Storage Gateway policies to express conditions\. For a complete list of AWS\-wide keys, see [Available Keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html#AvailableKeys) in the *IAM User Guide*\.
 
 **Note**  
-To specify an action, use the `storagegateway:` prefix followed by the API operation name \(for example, `storagegateway:ActivateGateway`\)\. For each AWS Storage Gateway action, you can specify a wildcard character \(\*\) as the resource\.
+To specify an action, use the `storagegateway:` prefix followed by the API operation name \(for example, `storagegateway:ActivateGateway`\)\. For each Storage Gateway action, you can specify a wildcard character \(\*\) as the resource\.
 
 If you see an expand arrow \(**↗**\) in the upper\-right corner of the table, you can open the table in a new window\. To close the window, choose the close button \(**X**\) in the lower\-right corner\.
 
-For a list of Storage Gateway resources with the ARN format, see [AWS Storage Gateway Resources and Operations](managing-access-overview.md#access-control-specify-sg-actions)\.
+For a list of Storage Gateway resources with their ARN formats, see [AWS Storage Gateway Resources and Operations](managing-access-overview.md#access-control-specify-sg-actions)\.
 
 
-**AWS Storage Gateway API and Required Permissions for Actions**  
+**Storage Gateway API and Required Permissions for Actions**  
 
 | Storage Gateway API Operations | Required Permissions \(API Actions\) | Resources | 
 | --- | --- | --- | 
 |  [ActivateGateway](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_ActivateGateway.html)  |  `storagegateway:ActivateGateway`  | \* | 
 |   [AddCache](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_AddCache.html)  |  `storagegateway:AddCache`  |  `arn:aws:storagegateway:region:account-id:gateway/gateway-id`  | 
-|   [AddTagsToResource](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_AddTagsToResource.html)  |  `storagegateway:AddTagsToResource`  |  `arn:aws:storagegateway:region:account-id:gateway/gateway-id`  or  `arn:aws:storagegateway:region:account-id:gateway/gateway-id/volume/volume-id ` or  `arn:aws:storagegateway:region:account-id:tape/tapebarcode` | 
+|   [AddTagsToResource](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_AddTagsToResource.html)  |  `storagegateway:AddTagsToResource`  |  `arn:aws:storagegateway:region:account-id:gateway/gateway-id`  or  `arn:aws:storagegateway:region:account-id:gateway/gateway-id/volume/volume-id ` or  `arn:aws:storagegateway:region:account-id:tape/tapebarcode`  | 
 |   [AddUploadBuffer](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_AddUploadBuffer.html)  |  `storagegateway:AddUploadBuffer`  |  `arn:aws:storagegateway:region:account-id:gateway/gateway-id`  | 
 |   [AddWorkingStorage](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_AddWorkingStorage.html)  |  `storagegateway:AddWorkingStorage`  | arn:aws:storagegateway:region:account\-id:gateway/gateway\-id | 
 |   [CancelArchival](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_CancelArchival.html)  |  `storagegateway:CancelArchival`  | arn:aws:storagegateway:region:account\-id:tape/tapebarcode | 
@@ -35,7 +35,7 @@ For a list of Storage Gateway resources with the ARN format, see [AWS Storage Ga
 |  [DeleteGateway](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_DeleteGateway.html)  |  `storagegateway:DeleteGateway`  |  `arn:aws:storagegateway:region:account-id:gateway/gateway-id`  | 
 |  [DeleteSnapshotSchedule](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_DeleteSnapshotSchedule.html)  |  `storagegateway:DeleteSnapshotSchedule`  |  `arn:aws:storagegateway:region:account-id:gateway/gateway-id/volume/volume-id`  | 
 |  [DeleteTape](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_DeleteTape.html)  |  `storagegateway:DeleteTape`  |  `arn:aws:storagegateway:region:account-id:gateway/gateway-id`  | 
-|  [DeleteTapeArchive](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_DeleteTapeArchive.html)  |  `storagegateway:DeleteTapeArchive`  | `*` | 
+|  [DeleteTapeArchive](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_DeleteTapeArchive.html)  |  `storagegateway:DeleteTapeArchive`  |  `*`  | 
 |  [DeleteVolume](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_DeleteVolume.html)  |  `storagegateway:DeleteVolume`  |  `arn:aws:storagegateway:region:account-id:gateway/gateway-id/volume/volume-id`  | 
 |  [DescribeBandwidthRateLimit](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_DescribeBandwidthRateLimit.html)  |  `storagegateway:DescribeBandwidthRateLimit`  |  `arn:aws:storagegateway:region:account-id:gateway/gateway-id`  | 
 |  [DescribeCache](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_DescribeCache.html)  |  `storagegateway:DescribeCache`  |  `arn:aws:storagegateway:region:account-id:gateway/gateway-id`  | 

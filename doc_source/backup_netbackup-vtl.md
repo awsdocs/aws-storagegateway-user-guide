@@ -205,7 +205,7 @@ When you archive a tape, tape gateway moves the tape from your gateway’s virtu
 
 1. Choose **Close** to close the **Eject Volumes** window\.
 
-1. In the AWS Storage Gateway console, verify the status of the tape you are archiving in the gateway's VTL\. It can take some time to finish uploading data to AWS\. During this time, the ejected tape is listed in the gateway's VTL with the status **IN TRANSIT TO VTS**\. When archiving starts, the status is **ARCHIVING**\. Once data upload has completed, the ejected tape is no longer listed in the VTL\.
+1. In the AWS Storage Gateway console, verify the status of the tape you are archiving in the gateway's VTL\. It can take some time to finish uploading data to AWS\. During this time, the ejected tape is listed in the gateway's VTL with the status **IN TRANSIT TO VTS**\. When archiving starts, the status is **ARCHIVING**\. Once data upload has completed, the ejected tape is no longer listed in the VTL but is archived in GLACIER or DEEP\_ARCHIVE\.
 
 1. To verify that the virtual tape is no longer listed in your gateway, choose your gateway, and then choose **VTL Tape Cartridges**\. 
 

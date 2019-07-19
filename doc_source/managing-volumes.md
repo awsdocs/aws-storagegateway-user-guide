@@ -15,7 +15,7 @@ Cached volumes are volumes in Amazon Simple Storage Service \(Amazon S3\) that a
 + [Creating a One\-Time Snapshot](#CreatingSnapshot)
 + [Editing a Snapshot Schedule](#SchedulingSnapshot)
 + [Deleting a Snapshot](#DeletingASnapshot)
-+ [Understanding Volume Status](#StorageVolumeStatuses)
++ [Understanding Volume Statuses and Transitions](#StorageVolumeStatuses)
 
 **Important**  
 If a cached volume keeps your primary data in Amazon S3, you should avoid processes that read or write all data on the entire volume\. For example, we don't recommend using virus\-scanning software that scans the entire cached volume\. Such a scan, whether done on demand or scheduled, causes all data stored in Amazon S3 to be downloaded locally for scanning, which results in high bandwidth usage\. Instead of doing a full disk scan, you can use real\-time virus scanning—that is, scanning data as it is read from or written to the cached volume\.
@@ -193,7 +193,7 @@ You can now attach the volume to a different gateway\.
 
    If you are attaching a stored volume, enter its disk identifier for **Disk ID**\.
 
-1. Choose **Attach volume**\. If a volume that you attach has a lot of data on it, it transitions from **Detached** to **Attaching** status until it finishes uploading all the data\. Then the status changes to **Attached**\. For small amounts of data, you might not see the **Attaching** status\. If the volume doesn't have data on it, the status changes from **Detached** to **Attached**\. 
+1. Choose **Attach volume**\. If a volume that you attach has a lot of data on it, it transitions from **Detached** to **Attached** if the `AttachVolume` operation succeeds\.
 
 1. In the Configure CHAP authentication wizard that appears, enter the **Initiator name**, **Initiator secret**, and **Target secret**, and then choose **Save**\. For more information about working with Challenge\-Handshake Authentication Protocol \(CHAP\) authentication, see [Configuring CHAP Authentication for Your iSCSI Targets](initiator-connection-common.md#ConfiguringiSCSIClientInitiatorCHAP)\.
 
@@ -716,15 +716,19 @@ foreach ($volume in $volumesResult)
   }
 ```
 
-## Understanding Volume Status<a name="StorageVolumeStatuses"></a>
+## Understanding Volume Statuses and Transitions<a name="StorageVolumeStatuses"></a>
 
-Each volume has an associated status that tells you at a glance what the health of the volume is\. Most of the time, the status indicates that the volume is functioning normally and that no action is needed on your part\. In some cases, the status indicates a problem with the volume that might or might not require action on your part\. You can find information following to help you decide when you need to act\.
+Each volume has an associated status that tells you at a glance what the health of the volume is\. Most of the time, the status indicates that the volume is functioning normally and that no action is needed on your part\. In some cases, the status indicates a problem with the volume that might or might not require action on your part\. You can find information following to help you decide when you need to act\. You can see volume status on the AWS Storage Gateway console or by using one of the Storage Gateway API operations, for example [DescribeCachediSCSIVolumes](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_DescribeCachediSCSIVolumes.html) or [DescribeStorediSCSIVolumes](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_DescribeStorediSCSIVolumes.html)\.
 
 **Topics**
++ [Understanding Volume Status](#StorageVolumeStatuses2)
++ [Understanding Attachment Status](#VolumeAttachStatuses)
 + [Understanding Cached Volume Status Transitions](#CachedVolumeStatusTransition)
 + [Understanding Stored Volume Status Transitions](#StorageVolumeStatusTransition)
 
-You can see volume status on the AWS Storage Gateway console or by using one of the Storage Gateway API operations, for example [DescribeCachediSCSIVolumes](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_DescribeCachediSCSIVolumes.html) or [DescribeStorediSCSIVolumes](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_DescribeStorediSCSIVolumes.html)\. The following example shows volume status on the Storage Gateway console\. Volume status appears in the **Status** column for each storage volume on your gateway\. A volume that is functioning normally has a status of **Available**\. 
+### Understanding Volume Status<a name="StorageVolumeStatuses2"></a>
+
+ The following table shows volume status on the Storage Gateway console\. Volume status appears in the **Status** column for each storage volume on your gateway\. A volume that is functioning normally has a status of **Available**\. 
 
 In the following table, you can find a description of each storage volume status, and if and when you should act based on each status\. The **Available** status is the normal status of a volume\. A volume should have this status all or most of the time it's in use\. 
 
@@ -732,10 +736,6 @@ In the following table, you can find a description of each storage volume status
 | Status | Meaning | 
 | --- | --- | 
 | <a name="VolumeStatusAVAILABLE"></a><a name="VolumeStatusAVAILABLE.title"></a>Available |  The volume is available for use\. This status is the normal running status for a volume\.  When a **Bootstrapping** phase is completed, the volume returns to **Available** state\. That is, the gateway has synchronized any changes made to the volume since it first entered **Pass Through** status\.  | 
-| <a name="VolumeStatusATTACHED"></a><a name="VolumeStatusATTACHED.title"></a>Attached |  The volume is attached to a gateway\.  | 
-| <a name="VolumeStatusATTACH"></a><a name="VolumeStatusATTACH.title"></a>Attaching |  The volume is being attached to a gateway\. When you are attaching a volume and the volume doesn't have data on it, you might not see this status\.  | 
-| <a name="VolumeStatusDETACHED"></a><a name="VolumeStatusDETACHED.title"></a>Detached |  The volume is detached from a gateway\.  | 
-| <a name="VolumeStatusDETACHING"></a><a name="VolumeStatusDETACHING.title"></a>Detaching |  The volume is being detached from a gateway\. When you are detaching a volume and the volume doesn't have data on it, you might not see this status\.  | 
 | <a name="VolumeStatusBOOTSTRAPPING"></a><a name="VolumeStatusBOOTSTRAPPING.title"></a>Bootstrapping |  The gateway is synchronizing data locally with a copy of the data stored in AWS\. You typically don't need to take action for this status, because the storage volume automatically sees the **Available** status in most cases\.  The following are scenarios when a volume status is **Bootstrapping**:[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/managing-volumes.html)  | 
 | <a name="VolumeStatusCREATING"></a><a name="VolumeStatusCREATING.title"></a>Creating |  The volume is currently being created and is not ready for use\. The **Creating** status is transitional\. No action is required\.  | 
 | <a name="VolumeStatusDELETING"></a><a name="VolumeStatusDELETING.title"></a>Deleting |  The volume is currently being deleted\. The **Deleting** status is transitional\. No action is required\.  | 
@@ -744,6 +744,17 @@ In the following table, you can find a description of each storage volume status
 | <a name="VolumeStatusRESTORING"></a><a name="VolumeStatusRESTORING.title"></a>Restoring |  The volume is being restored from an existing snapshot\. This status applies only for stored volumes\. For more information, see [How AWS Storage Gateway Works \(Architecture\)](StorageGatewayConcepts.md)\. If you restore two storage volumes at the same time, both storage volumes show **Restoring** as their status\. Each storage volume changes to the **Available** status automatically when it is finished being created\. You can read and write to a storage volume and take a snapshot of it while it has the **Restoring** status\.  | 
 | Restoring Pass Through |  The volume is being restored from an existing snapshot and has encountered an upload buffer issue\. This status applies only for stored volumes\. For more information, see [How AWS Storage Gateway Works \(Architecture\)](StorageGatewayConcepts.md)\. One reason that can cause the **Restoring Pass Through** status is if your gateway has run out of upload buffer space\. Your applications can continue to read from and write data to your storage volumes while they have the **Restoring Pass Through** status\. However, you can't take snapshots of a storage volume during the **Restoring Pass Through** status period\. For information about what action to take when your storage volume has the **Restoring Pass Through** status because upload buffer capacity has been exceeded, see [Troubleshooting Volume Issues](troubleshoot-volume-issues.md)\.  Infrequently, the **Restoring Pass Through** status can indicate that a disk allocated for an upload buffer has failed\. For information about what action to take in this scenario, see [Troubleshooting Volume Issues](troubleshoot-volume-issues.md)\.  | 
 | <a name="VolumeStatusUPLOADBUFFERNOTCONFIGURED"></a><a name="VolumeStatusUPLOADBUFFERNOTCONFIGURED.title"></a>Upload Buffer Not Configured |  You can't create or use the volume because the gateway doesn't have an upload buffer configured\. For information on how to add upload buffer capacity for volumes in a cached volume setup, see [Determining the Size of Upload Buffer to Allocate](ManagingLocalStorage-common.md#CachedLocalDiskUploadBufferSizing-common)\. For information on how to add upload buffer capacity for volumes in a stored volume setup, see [Determining the Size of Upload Buffer to Allocate](ManagingLocalStorage-common.md#CachedLocalDiskUploadBufferSizing-common)\.  | 
+
+### Understanding Attachment Status<a name="VolumeAttachStatuses"></a>
+
+ You can detach a volume from a gateway or attach it to a gateway by using the Storage Gateway console or API\. The following table shows volume attachment status on the Storage Gateway console\. Volume attachment status appears in the **Attachment status** column for each storage volume on your gateway\. For example, a volume that is detached from a gateway has a status of **Detached**\. For information about how to detach and attach a volume, see [Moving Your Volumes to a Different Gateway](#attach-detach-volume)\.
+
+
+| Status | Meaning | 
+| --- | --- | 
+| <a name="VolumeStatusATTACHED"></a><a name="VolumeStatusATTACHED.title"></a>Attached |  The volume is attached to a gateway\.  | 
+| <a name="VolumeStatusDETACHED"></a><a name="VolumeStatusDETACHED.title"></a>Detached |  The volume is detached from a gateway\.  | 
+| <a name="VolumeStatusDETACHING"></a><a name="VolumeStatusDETACHING.title"></a>Detaching |  The volume is being detached from a gateway\. When you are detaching a volume and the volume doesn't have data on it, you might not see this status\.  | 
 
 ### Understanding Cached Volume Status Transitions<a name="CachedVolumeStatusTransition"></a>
 

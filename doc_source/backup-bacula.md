@@ -2,6 +2,9 @@
 
 You can back up your data to virtual tapes, archive the tapes, and manage your virtual tape library \(VTL\) devices by using Bacula Enterprise version 10\. In this topic, you can find basic documentation on how to configure the Bacula version 10 backup application for a tape gateway and perform backup and restore operations\. For detailed information about how to use Bacula version 10, see [Bacula Systems Manuals and Documentation](https://www.baculasystems.com/bacula-systems-documentation-datasheet) or contact Bacula Systems\.
 
+**Note**  
+Bacula is only supported on Linux\.
+
 ## Setting Up Bacula Enterprise<a name="bacular-setup"></a>
 
 After you have connected your virtual tape library \(VTL\) devices to your Linux client, you configure the Bacula software to recognize your devices\. For information about how to connect VTL devices to your client, see [Connecting Your VTL Devices](GettingStarted-create-tape-gateway.md#GettingStartedAccessTapesVTL)\.
@@ -72,7 +75,7 @@ When all backup jobs for a particular tape are done and you can archive the tape
 
    `/opt/bacula/scripts/mtx-changer transfer 1 1601`
 
-1. Verify that the tape is archived into Glacier and that the tape has the status **Archived**\.
+1. Verify that the tape is archived in the offline storage \(GLACIER or DEEP\_ARCHIVE\) and that the tape has the status **Archived**\.
 
 ## Restoring Data from an Archived and Retrieved Tape<a name="bacula-retrieve-from-archive"></a>
 

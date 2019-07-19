@@ -75,7 +75,7 @@ If you use the media changer driver for Sony TSL\-A500C Autoloader, Microsoft Sy
 
 1. Ensure that all backup jobs have completed and that there are no tasks pending or in progress\.
 
-1. Eject and move the tapes to Glacier and exit the DPM Administrator console\. For information about how to eject a tape in DPM, see [Archiving a Tape by Using DPM](backup-DPM.md#dpm-archive-tape)\.
+1. Eject and move the tapes to offline storage \(GLACIER or DEEP\_ARCHIVE\) and exit the DPM Administrator console\. For information about how to eject a tape in DPM, see [Archiving a Tape by Using DPM](backup-DPM.md#dpm-archive-tape)\.
 
 1. In **Administrative Tools**, choose **Services** and open the context \(right\-click\) menu for **DPM Service** in the **Detail** pane, and then choose **Properties**\.
 

@@ -10,3 +10,4 @@ Choose **Get started** to open the **Create gateway** page\. On this page, you c
 + [Creating a File Gateway](create-file-gateway.md)
 + [Creating a Volume Gateway](create-volume-gateway-volume.md)
 + [Creating a Tape Gateway](create-tape-gateway.md)
++ [Activating a Gateway in a Virtual Private Cloud](gateway-private-link.md)

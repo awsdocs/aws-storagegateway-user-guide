@@ -48,24 +48,25 @@ Besides the Storage Gateway activation and Secure Shell \(SSH\) access ports, NF
 
 1. Select your instance, take note of the public IP address in the **Description** tag and return to the [Connect to gateway](create-gateway-file.md#GettingStartedBeginActivateGateway-file) page on the Storage Gateway console to continue your gateway setup\.
 
-The following table lists the available Storage Gateway AMIs by region\.
+The following shows the file gateway Amazon EC2 AMI names and AMI IDs\.
 
 
-| Region | AMI Name | AMI ID | EC2 Console Link | 
-| --- | --- | --- | --- | 
-| ap\-northeast\-1 | aws\-thinstaller\-1528922603 | ami\-0f71c6da06fb8649d | [Launch instance](https://ap-northeast-1.console.aws.amazon.com/ec2/v2/home?region=ap-northeast-1#LaunchInstanceWizard:ami=ami-0f71c6da06fb8649d) | 
-| ap\-northeast\-2 | aws\-thinstaller\-1528922603 | ami\-03bacd44ea49c26b0 | [Launch instance](https://ap-northeast-2.console.aws.amazon.com/ec2/v2/home?region=ap-northeast-2#LaunchInstanceWizard:ami=ami-03bacd44ea49c26b0) | 
-| ap\-south\-1 | aws\-thinstaller\-1528922603 | ami\-082eb7dd6f3ebd317 | [Launch instance](https://ap-south-1.console.aws.amazon.com/ec2/v2/home?region=ap-south-1#LaunchInstanceWizard:ami=ami-082eb7dd6f3ebd317) | 
-| ap\-southeast\-1 | aws\-thinstaller\-1528922603 | ami\-0aa88018a7a8a9c8c | [Launch instance](https://ap-southeast-1.console.aws.amazon.com/ec2/v2/home?region=ap-southeast-1#LaunchInstanceWizard:ami=ami-0aa88018a7a8a9c8c) | 
-| ap\-southeast\-2 | aws\-thinstaller\-1528922603 | ami\-0ca4c65c606d56fd7 | [Launch instance](https://ap-southeast-2.console.aws.amazon.com/ec2/v2/home?region=ap-southeast-2#LaunchInstanceWizard:ami=ami-0ca4c65c606d56fd7) | 
-| ca\-central\-1 | aws\-thinstaller\-1528922603 | ami\-06289126fa6074fcc | [Launch instance](https://ca-central-1.console.aws.amazon.com/ec2/v2/home?region=ca-central-1#LaunchInstanceWizard:ami=ami-06289126fa6074fcc) | 
-| eu\-central\-1 | aws\-thinstaller\-1528922603 | ami\-0f001eb2d3ca82aa9 | [Launch instance](https://eu-central-1.console.aws.amazon.com/ec2/v2/home?region=eu-central-1#LaunchInstanceWizard:ami-0f001eb2d3ca82aa9) | 
-| eu\-north\-1 | aws\-thinstaller\-1542045415 | ami\-020897557c719806a | [Launch instance](https://eu-central-1.console.aws.amazon.com/ec2/v2/home?region=eu-central-1#LaunchInstanceWizard:ami-020897557c719806a) | 
-| eu\-west\-1 | aws\-thinstaller\-1528922603 | ami\-08a8a9ac2f4bdaab3 | [Launch instance](https://eu-west-1.console.aws.amazon.com/ec2/v2/home?region=eu-west-1#LaunchInstanceWizard:ami=ami-08a8a9ac2f4bdaab3) | 
-| eu\-west\-2 | aws\-thinstaller\-1528922603 | ami\-03eb1b6c734250902 | [Launch instance](https://eu-west-2.console.aws.amazon.com/ec2/v2/home?region=eu-west-2#LaunchInstanceWizard:ami=ami-03eb1b6c734250902) | 
-| eu\-west\-3 | aws\-thinstaller\-1528922603 | ami\-004ff65e137137207 | [Launch instance](https://eu-west-2.console.aws.amazon.com/ec2/v2/home?region=eu-west-3#LaunchInstanceWizard:ami=ami-004ff65e137137207) | 
-| sa\-east\-1 | aws\-thinstaller\-1528922603 | ami\-088a94719b5d1c8bc | [Launch instance](https://sa-east-1.console.aws.amazon.com/ec2/v2/home?region=sa-east-1#LaunchInstanceWizard:ami=ami-088a94719b5d1c8bc) | 
-| us\-east\-1 | aws\-thinstaller\-1528922603 | ami\-0eabc4464d7df5719 | [Launch instance](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#LaunchInstanceWizard:ami=ami-0eabc4464d7df5719) | 
-| us\-east\-2 | aws\-thinstaller\-1528922603 | ami\-02ae2bd0799b31744 | [Launch instance](https://us-east-2.console.aws.amazon.com/ec2/v2/home?region=us-east-2#LaunchInstanceWizard:ami=ami-02ae2bd0799b31744) | 
-| us\-west\-1 | aws\-thinstaller\-1528922603 | ami\-0dd8d0c739942501e | [Launch instance](https://us-west-1.console.aws.amazon.com/ec2/v2/home?region=us-west-1#LaunchInstanceWizard:ami=ami-0dd8d0c739942501e) | 
-| us\-west\-2 | aws\-thinstaller\-1528922603 | ami\-0077f2b393ecfacb3 | [Launch instance](https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#LaunchInstanceWizard:ami=ami-0077f2b393ecfacb3) | 
+| Region | AMI Name | AMI ID | 
+| --- | --- | --- | 
+| ap\-northeast\-1 | aws\-thinstaller\-1560967323 | ami\-0c7b0fb654a4f0f85 | 
+| ap\-northeast\-2 | aws\-thinstaller\-1560967323 | ami\-0909f3ce2d2ff17d6 | 
+| ap\-south\-1 | aws\-thinstaller\-1560967323 | ami\-04a15305837aaafe7 | 
+| ap\-southeast\-1 | aws\-thinstaller\-1560967323 | ami\-06bb5d5822356af8c | 
+| ap\-southeast\-2 | aws\-thinstaller\-1560967323 | ami\-069868a07d9275a11 | 
+| ca\-central\-1 | aws\-thinstaller\-1560967323 | ami\-02c4655d5f162a934 | 
+| eu\-central\-1 | aws\-thinstaller\-1560967323 | ami\-0b899ea99c9087f96 | 
+| eu\-north\-1 | aws\-thinstaller\-1560967323 | ami\-0b7548314677edcb4 | 
+| eu\-west\-1 | aws\-thinstaller\-1560967323 | ami\-02ea6e7d49330d41b | 
+| eu\-west\-2 | aws\-thinstaller\-1560967323 | ami\-0e27eb18911341aa1 | 
+| eu\-west\-3 | aws\-thinstaller\-1560967323 | ami\-054a4df140f73927d | 
+| sa\-east\-1 | aws\-thinstaller\-1560967323 | ami\-017ad775507f8421d | 
+| us\-east\-1 | aws\-thinstaller\-1560967323 | ami\-07b2e2e6e4586930d | 
+| us\-east\-2 | aws\-thinstaller\-1560967323 | ami\-0283b5e2cdf0fed9f | 
+| us\-west\-1 | aws\-thinstaller\-1560967323 | ami\-0831b9be25c2be35d | 
+| us\-west\-2 | aws\-thinstaller\-1560967323 | ami\-0e5a18885401d9460 | 
+| us\-gov\-west\-1 | aws\-thinstaller\-1560967323 | ami\-6d6c160c | 

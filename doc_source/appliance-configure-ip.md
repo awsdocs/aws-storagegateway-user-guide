@@ -1,4 +1,4 @@
-# Configure an IP Address for the Gateway<a name="appliance-configure-ip"></a>
+# Configuring an IP Address for the Gateway<a name="appliance-configure-ip"></a>
 
 To assign a static IP address to a gateway installed on your hardware appliance, configure the IP address from the local console of that gateway\. Your applications \(such as your NFS or SMB client, your iSCSI initiator, and so on\) connect to this IP address\. You can access the gateway local console from the hardware appliance console\. 
 
@@ -10,9 +10,9 @@ To assign a static IP address to a gateway installed on your hardware appliance,
 
    For File Gateway the default account is `admin` and the default password is `password`\. For Tape Gateway and Volume Gateway the default account is `sguser` the default password is `sgpassword`\.
 
-1. Change the default password\. Choose **Actions** then **Set Local Password** and enter your new credentials in the **Set Local Password**/> dialog box\.
+1. Change the default password\. Choose **Actions** then **Set Local Password** and enter your new credentials in the **Set Local Password** dialog box\.
 
-1. \(Optional\) Configure your proxy settings\. Please see [Setting the Local Console Password from the Storage Gateway Console](manage-on-premises-common.md#set-password) for instructions\.
+1. \(Optional\) Configure your proxy settings\. See [Setting the Local Console Password from the Storage Gateway Console](manage-on-premises-common.md#set-password) for instructions\.
 
 1. Navigate to the Network Settings page of the gateway local console as shown following\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/ApplianceNetworkSettings.png)  
@@ -33,4 +33,4 @@ The keystroke preceding is the only way to exit the gateway local console\.
 
 **Next Step**
 
-[Configure Your Gateway](appliance-configure-gateway.md)
+[Configuring Your Gateway](appliance-configure-gateway.md)

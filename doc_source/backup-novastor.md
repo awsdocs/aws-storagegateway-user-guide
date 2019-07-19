@@ -96,7 +96,7 @@ NovaStor DataCenter/Network can use import/export slots if they are part of the 
 
 For an export, NovaStor DataCenter/Network must know which tapes are going to be physically taken out of the library\. 
 
-For an import, NovaStor DataCenter/Network recognizes tape media that are exported in the tape library and offers to import them all, either from a data slot or an export slot\. Your tape gateway archives tapes in the virtual tape shelf \(VTS\), which is backed by Glacier\. The VTS is referred to as offsite location in NovaStor DataCenter/Network\.
+For an import, NovaStor DataCenter/Network recognizes tape media that are exported in the tape library and offers to import them all, either from a data slot or an export slot\. Your tape gateway archives tapes in the offline storage \(GLACIER or DEEP\_ARCHIVE\)\.
 
 **To configure media import and export**
 
@@ -106,7 +106,7 @@ For an import, NovaStor DataCenter/Network recognizes tape media that are export
 
 1. Open the context \(right\-click\) menu for the white area, and choose **Add** to open a new panel\.
 
-1. In the panel, type **Glacier** and add an optional description in the text box\.
+1. In the panel, type **S3 Glacier** or **S3 Glacier Deep Archive** and add an optional description in the text box\.
 
 ## Backing Up Data to Tape<a name="novastor-backup-data"></a>
 
@@ -122,7 +122,7 @@ When you archive a tape, a tape gateway ejects the tape from the tape drive to t
 
 1. Choose the **Library** tab to see the library's inventory\.
 
-1. Highlight the tapes you want to archive, open the context \(right\-click\) menu for the tapes, and choose **Mail Slot Export to Glacier**\.
+1. Highlight the tapes you want to archive, open the context \(right\-click\) menu for the tapes, and choose your off\-site archive location\.
 
 The archiving process can take some time to complete\. The initial status of the tape appears as **IN TRANSIT TO VTS**\. When archiving starts, the status changes to **ARCHIVING**\. When archiving is completed, the tape is no longer listed in the VTL\.
 

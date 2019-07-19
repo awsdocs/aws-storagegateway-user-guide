@@ -1,6 +1,6 @@
 # Troubleshooting Your Gateway<a name="Troubleshooting-common"></a>
 
-Following, you can find information about troubleshooting issues related to gateways, file shares, volumes, virtual tapes, and snapshots\. The on\-premises gateway troubleshooting information covers gateways deployed on both the VMware ESXi and Microsoft Hyper\-V clients\. The troubleshooting information for file shares apply to the file gateway type\. The troubleshooting information for volumes applies to the volume gateway type\. The troubleshooting information for tapes applies to the tape gateway type\.
+Following, you can find information about troubleshooting issues related to gateways, file shares, volumes, virtual tapes, and snapshots\. The on\-premises gateway troubleshooting information covers gateways deployed on both the VMware ESXi and Microsoft Hyper\-V clients\. The troubleshooting information for file shares applies to the file gateway type\. The troubleshooting information for volumes applies to the volume gateway type\. The troubleshooting information for tapes applies to the tape gateway type\.
 
 **Topics**
 + [Troubleshooting On\-Premises Gateway Issues](GatewayTroubleshooting.md)

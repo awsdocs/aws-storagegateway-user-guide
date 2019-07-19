@@ -1,6 +1,6 @@
 # Troubleshooting Hardware Appliance Issues<a name="hardware-appliance-issues"></a>
 
-The following topics discuss issues that you might encounter with the Hardware Appliance, and suggestions on troubleshooting these\.
+The following topics discuss issues that you might encounter with the AWS Storage Gateway Hardware Appliance, and suggestions on troubleshooting these\.
 
 ## You Can't Determine the Service IP Address<a name="service_ip_address"></a>
 
@@ -16,7 +16,7 @@ The Dell PowerEdge R640 server comes with the Dell iDRAC management interface\. 
 
 ## You Can't Find the Hardware Appliance Serial Number<a name="appliance_serial_number"></a>
 
-To find the serial number of the Hardware Appliance, go to the **Hardware** page in the AWS Storage Gateway console, as shown following\.
+To find the serial number of the hardware appliance, go to the **Hardware** page in the AWS Storage Gateway console, as shown following\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/ApplianceSerialNumber.png)
 

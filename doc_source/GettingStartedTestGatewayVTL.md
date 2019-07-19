@@ -16,6 +16,9 @@ To improve I/O performance, we recommend setting the block size of the tape driv
 
 To test your setup, use a compatible backup application, as described following\.
 
+**Note**  
+Unless otherwise stated, all backup applications were qualified on Microsoft Windows\. 
+
 **Topics**
 + [Testing Your Setup by Using Arcserve Backup r17\.0](backup-arcserve.md)
 + [Testing Your Setup by Using Bacula Enterprise](backup-bacula.md)

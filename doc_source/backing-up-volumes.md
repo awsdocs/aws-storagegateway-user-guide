@@ -4,7 +4,7 @@ By using AWS Storage Gateway, you can help protect your on\-premises business ap
 
 **Topics**
 + [Using Storage Gateway to Back Up Your Volumes](#backup-with-sgw)
-+ [Using AWS Backup to Back Up Your Volumes](#backup-volumes-cryo)
++ [Using AWS Backup to Back Up Your Volumes](#aws-backup-volumes)
 
 ## Using Storage Gateway to Back Up Your Volumes<a name="backup-with-sgw"></a>
 
@@ -13,7 +13,7 @@ You can use the Storage Gateway Management Console to back up your volumes by ta
 + [Creating a One\-Time Snapshot](managing-volumes.md#CreatingSnapshot) 
 + [Cloning a Volume](managing-volumes.md#clone-volume)
 
-## Using AWS Backup to Back Up Your Volumes<a name="backup-volumes-cryo"></a>
+## Using AWS Backup to Back Up Your Volumes<a name="aws-backup-volumes"></a>
 
 AWS Backup is a centralized backup service that makes it easy and cost\-effective for you to back up your application data across AWS services in both the AWS Cloud and on\-premises\. Doing this helps you meet your business and regulatory backup compliance requirements\. AWS Backup makes protecting your AWS storage volumes, databases, and file systems simple by providing a central place where you can do the following: 
 + Configure and audit the AWS resources that you want to back up\.

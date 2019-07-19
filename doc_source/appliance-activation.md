@@ -1,12 +1,8 @@
-# Activate Your Appliance<a name="appliance-activation"></a>
+# Activate Your Hardware Appliance<a name="appliance-activation"></a>
 
-After configuring your IP address, you enter this IP address in the console **Hardware** screen, as described following\. The activation process validates that your hardware appliance has the appropriate security credentials and registers the appliance to your AWS account\.
+After configuring your IP address, you enter this IP address in the console on the **Hardware** page, as described following\. The activation process validates that your hardware appliance has the appropriate security credentials and registers the appliance to your AWS account\.
 
-You can choose to activate your hardware appliance in any of the AWS Regions listed following:
-+ US East \(N\. Virginia\)
-+ US East \(Ohio\)
-+ US West \(N\. California\) 
-+ US West \(Oregon\)
+AWS Storage Gateway Hardware Appliance is only available in the US and Europe\. You can choose to activate your hardware appliance in any of the supported AWS Regions\. For the supported AWS Regions, see [AWS Storage Gateway Hardware Appliance Regions](http://docs.aws.amazon.com/general/latest/gr/rande.html#sg-hardware-appliance) in the *AWS General Reference*\.
 
 **To activate your appliance for the first time or in an AWS Region where you have no gateways deployed**
 
@@ -52,7 +48,7 @@ We recommend setting the time zone for your appliance as this determines a stand
 
 1.  Choose **Next** to finish activation\. 
 
-A console banner appears on the Hardware page indicating that the Hardware Appliance has been successfully activated, as shown following\. 
+A console banner appears on the Hardware page indicating that the hardware appliance has been successfully activated, as shown following\. 
 
 At this point, the appliance is associated with your account\. The next step is to launch a file, tape, or cached volume gateway on your appliance\.
 
@@ -64,4 +60,4 @@ At this point, the appliance is associated with your account\. The next step is 
 
 **Next Step**
 
-[Launch a Gateway](appliance-launch-gateway.md)
+[Launching a Gateway](appliance-launch-gateway.md)

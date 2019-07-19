@@ -85,7 +85,7 @@ When you archive a tape, your tape gateway moves the tape from the tape library 
 
 1. Assign a mail slot to load the tape\. The status in the Storage Gateway console changes to **Archive**\. The archive process might take some time\.
 
-The archiving process can take some time to complete\. The initial status of the tape appears as **IN TRANSIT TO VTS**\. When archiving starts, the status changes to **ARCHIVING**\. When archiving is completed, the tape is no longer listed in the VTL\.
+The archiving process can take some time to complete\. The initial status of the tape appears as **IN TRANSIT TO VTS**\. When archiving starts, the status changes to **ARCHIVING**\. When archiving is completed, the tape is no longer listed in the VTL but is archived in S3 Glacier or S3 Glacier Deep Archive\.
 
 ## Restoring Data from a Tape<a name="archServe-restore-tape"></a>
 

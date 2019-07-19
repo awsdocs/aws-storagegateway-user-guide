@@ -80,6 +80,8 @@ You can edit file share settings, edit allowed and denied users and groups, and 
 
    When you enter allowed users and groups, you are creating a whitelist\. Without a whitelist, all authenticated Microsoft AD users can access the SMB file share\. Any users and groups that are marked as denied are added to a blacklist and can't access the SMB file share\. In instances where a user or group is on both the blacklist and whitelist, the blacklist takes precedence\.
 
+   You can enable Access Control Lists\(ACLs\) on your SMB file share\. For information about how to enable ACLs, see [Using Microsoft Windows ACLs to Control Access to an SMB File Share](smb-acl.md)\.
+
 **Next Step**
 
 [Testing Your File Gateway](GettingStartedTestFileShare.md)

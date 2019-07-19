@@ -73,7 +73,7 @@ When you archive a tape, tape gateway moves the tape from the Veeam tape library
 
 1. On the AWS Storage Gateway console, choose your gateway, and then choose **VTL Tape Cartridges** and verify the status of the virtual tape you are archiving\. 
 
-   The archiving process can take some time to complete\. The initial status of the tape appears as **IN TRANSIT TO VTS**\. When archiving starts, the status changes to **ARCHIVING**\. When archiving is completed, the tape is no longer listed in the VTL\.
+   The archiving process can take some time to complete\. The initial status of the tape appears as **IN TRANSIT TO VTS**\. When archiving starts, the status changes to **ARCHIVING**\. When archiving is completed, the tape is no longer listed in the VTL but is archived in GLACIER or DEEP\_ARCHIVE\.
 
 ## Restoring Data from a Tape Archived in Veeam<a name="veeam-restore-tape"></a>
 

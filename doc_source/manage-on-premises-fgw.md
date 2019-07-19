@@ -99,15 +99,21 @@ You can use your gateway's local console to test your internet connection\. This
 1. On the **AWS Appliance Activation \- Configuration** main menu, enter **3** to begin testing network connectivity\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/local-console-file-0.png)
 
-1. Choose option **1** for Storage Gateway\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/local-console-file-3.png)
+1. Choose option **1** for Storage Gateway\.
 
-   The console displays the available AWS Regions for Storage Gateway\.
+1. For **Select endpoint type** type one of the following options:
 
-1. Choose the AWS Region that you want to test\. Following are the available AWS Regions for gateways deployed on\-premises\.    
-[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/manage-on-premises-fgw.html)
+   1. **Public** if you want to test a public endpoint\.
 
-   Each endpoint in the selected AWS Region displays either a **PASSED** or **FAILED** message, as shown following\.    
+   1. **VPC \(PrivateLink\)** if you want to test a VPC endpoint\.
+   + If you selected **Public**, the console displays the available AWS Regions for Storage Gateway\.
+
+     Choose the AWS Region that you want to test\. For example, us\-east\-2\. For supported AWS Regions and a list of AWS service endpoints you can use with Storage Gateway, see [Regions and Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region) in the *AWS General Reference*\.
+
+     Each endpoint in the selected AWS Region displays either a **PASSED** or **FAILED** message, as shown following\.
+   + If you selected **VPC \(PrivateLink\)**, each VPC endpoint \(DNS/IP\) in the AWS Region displays either a **PASSED** or **FAILED** message, as shown following\.
+
+1.     
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/manage-on-premises-fgw.html)
 
 For information about network and firewall requirements, see [Network and Firewall Requirements](Requirements.md#networks)\.

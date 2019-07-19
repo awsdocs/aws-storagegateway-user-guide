@@ -4,6 +4,6 @@ In this section, you can find instructions about how to get started with AWS Sto
 
 **Topics**
 + [Sign Up for AWS Storage Gateway](GettingStartedSignUpStep1-common.md)
-+ [Regions](available-regions-intro.md)
++ [AWS Regions](available-regions-intro.md)
 + [Requirements](Requirements.md)
 + [Accessing AWS Storage Gateway](WhatIsAPIIntro.md)

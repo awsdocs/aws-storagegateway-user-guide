@@ -76,8 +76,7 @@ You can use your gateway's local console to test your internet connection\. This
 
    The console displays the available AWS Regions for Storage Gateway\.
 
-1. Choose the AWS Region that you want to test\. Following are the available AWS Regions for gateways deployed an EC2 instance\.    
-[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/ec2-local-console-fwg.html)
+1. Choose the AWS Region that you want to test\. For example, us\-east\-2\. For supported AWS Regions and a list of AWS service endpoints you can use with Storage Gateway, see [Regions and Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region) in the *AWS General Reference*\.
 
    Each endpoint in the AWS Region that you choose displays either a **\[PASSED\]** or **\[FAILED\]** message, as shown following\.    
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/ec2-local-console-fwg.html)

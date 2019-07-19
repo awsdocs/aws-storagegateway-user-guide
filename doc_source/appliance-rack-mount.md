@@ -9,7 +9,7 @@ To install your hardware appliance, you need the following components:
 
 **To connect the hardware appliance to power**
 **Note**  
-Before you perform the following procedure, make sure that you meet all of the requirements for the AWS Storage Gateway Hardware Appliance as described in [Networking and Firewall Requirements for the Hardware Appliance](Requirements.md#appliance-network-requirements)\.
+Before you perform the following procedure, make sure that you meet all of the requirements for the AWS Storage Gateway Hardware Appliance as described in [Networking and Firewall Requirements for the AWS Storage Gateway Hardware Appliance](Requirements.md#appliance-network-requirements)\.
 
 1. Plug in a power connection to each of the two power supplies\. It's possible to plug in to only one power connection, but we recommend power connections to both power supplies\.
 
@@ -19,6 +19,8 @@ Before you perform the following procedure, make sure that you meet all of the r
 
 
 1. Plug an Ethernet cable into the `em1` port to provide an always\-on internet connection\. The `em1` port is the first of the four physical network ports on the rear, from left to right\.
+**Note**  
+The hardware appliance doesn't support VLAN trunking\. Set up the switch port to which you are connecting the hardware appliance as a non\-trunked VLAN port\.
 
 1. Plug in the keyboard and monitor\.
 

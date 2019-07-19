@@ -44,4 +44,4 @@ If you configure any other interface, it must provide the same always\-on connec
 
 **Next Step**
 
-[Activate Your Appliance](appliance-activation.md)
+[Activate Your Hardware Appliance](appliance-activation.md)

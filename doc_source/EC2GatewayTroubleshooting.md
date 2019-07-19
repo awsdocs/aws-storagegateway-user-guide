@@ -89,7 +89,7 @@ To let AWS Support connect to your gateway, you first log in to the local consol
    You can use the following command to log in to the EC2 instance's local console\. 
 
    ```
-   ssh –i PRIVATE-KEY sguser@INSTANCE-PUBLIC-DNS-NAME
+   ssh –i PRIVATE-KEY admin@INSTANCE-PUBLIC-DNS-NAME
    ```
 **Note**  
 The *PRIVATE\-KEY* is the `.pem` file containing the private certificate of the EC2 key pair that you used to launch the Amazon EC2 instance\. For more information, see [Retrieving the Public Key for Your Key Pair](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#retriving-the-public-key) in the *Amazon EC2 User Guide*\.  
@@ -103,7 +103,9 @@ The *INSTANCE\-PUBLIC\-DNS\-NAME* is the public Domain Name System \(DNS\) name 
 
 1. Type **h** to open the **AVAILABLE COMMANDS** window\.
 
-1. In the **AVAILABLE COMMANDS** window, type **open\-support\-channel** to connect to customer support for AWS Storage Gateway\. You must allow TCP port 22 to initiate a support channel to AWS\. When you connect to customer support, Storage Gateway assigns you a support number\. Make a note of your support number\.  
+1. 
+   + If you gateway is using a public endpoint, in the **AVAILABLE COMMANDS** window, type **open\-support\-channel** to connect to customer support for AWS Storage Gateway\. You must allow TCP port 22 to initiate a support channel to AWS\. When you connect to customer support, Storage Gateway assigns you a support number\. Make a note of your support number\.
+   + If you gateway is using a VPC endpoint, in the **AVAILABLE COMMANDS** window, type **open\-support\-channel**, If your gateway is not activated, provide the *VPC endpoint or IP address* to connect to customer support for AWS Storage Gateway\. You must allow TCP port 22 to initiate a support channel to AWS\. When you connect to customer support, Storage Gateway assigns you a support number\. Make a note of your support number\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/EC2-assign-service-number.png)
 **Note**  
 The channel number is not a Transmission Control Protocol/User Datagram Protocol \(TCP/UDP\) port number\. Instead, the gateway makes a Secure Shell \(SSH\) \(TCP 22\) connection to Storage Gateway servers and provides the support channel for the connection\.

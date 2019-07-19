@@ -18,7 +18,7 @@ AWS Storage Gateway doesn’t support recovering a gateway VM from a snapshot th
 
 If your VM shuts down unexpectedly, for example during a power outage, your gateway becomes unreachable\. When power and network connectivity are restored, your gateway becomes reachable and starts to function normally\. Following are some steps you can take at that point to help recover your data:
 + If an outage causes network connectivity issues, you can troubleshoot the issue\. For information about how to test network connectivity, see [Testing Your Gateway Connection to the Internet](manage-on-premises-common.md#MaintenanceTestGatewayConnectivity-common)\.
-+  For cached volumes and tapes setups, when your gateway becomes reachable, your volumes or tapes go into BOOTSTRAPPING status\. This functionality ensures that your locally stored data continues to be synchronized with AWS\. For more information on this status, see [Understanding Volume Status](managing-volumes.md#StorageVolumeStatuses)\.
++  For cached volumes and tapes setups, when your gateway becomes reachable, your volumes or tapes go into BOOTSTRAPPING status\. This functionality ensures that your locally stored data continues to be synchronized with AWS\. For more information on this status, see [Understanding Volume Statuses and Transitions](managing-volumes.md#StorageVolumeStatuses)\.
 + If your gateway malfunctions and issues occur with your volumes or tapes as a result of an unexpected shutdown, you can recover your data\. For information about how to recover your data, see the sections following that apply to your scenario\.
 
 ## Recovering Your Data from a Malfunctioning Gateway or VM<a name="recover-from-gateway"></a>
@@ -119,7 +119,7 @@ You can continue to use the original volume as\-is, or you can create a new gate
 
 ## Recovering Your Data From An Inaccessible Data Center<a name="disaster-recovery"></a>
 
-If your gateway or data center becomes inaccessible for some reason, you can recover your data to a another gateway in a different data center or recover to a gateway hosted on an Amazon EC2 instance\. If you don't have access to another data center, we recommend creating the gateway on an Amazon EC2 instance\. The steps you follow depends on the gateway type you are covering the data from\.
+If your gateway or data center becomes inaccessible for some reason, you can recover your data to another gateway in a different data center or recover to a gateway hosted on an Amazon EC2 instance\. If you don't have access to another data center, we recommend creating the gateway on an Amazon EC2 instance\. The steps you follow depends on the gateway type you are covering the data from\.
 
 **To recover data from a volume gateway in an inaccessible data center**
 
@@ -151,4 +151,4 @@ For file gateway, you map a new file share to the Amazon S3 that contains the da
 
 1. Create a new file share on the EC2 gateway you created\. For more information, see [Creating a File Share](GettingStartedCreateFileShare.md)\.
 
-1. Mount your file share on your client and map the it to the Amazon S3 bucket that contains the data you want to recover\. For more information, see [Using Your File Share](getting-started-use-fileshare.md)\. 
+1. Mount your file share on your client and map it to the Amazon S3 bucket that contains the data that you want to recover\. For more information, see [Using Your File Share](getting-started-use-fileshare.md)\. 

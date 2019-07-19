@@ -10,6 +10,8 @@ You can find information following about actions to take if you experience unexp
 + [You Can't Upload Files into Your S3 Bucket](#access-s3bucket)
 + [Can't Change the Default Encryption to Use SSE\-KMS to Encrypt Objects Stored in My Amazon S3 Bucket\.](#encryption-issues)
 + [Object Versioning Might Affect What You See in Your File System](#swg-object-versioning)
++ [ACL Permissions Aren't Working as Expected](#smb-acl-issues)
++ [Your Gateway Performance Declined After You Performed a Recursive Operation](#recursive-operation-issues)
 
 ## Your File Share Is Stuck in CREATING Status<a name="creating-state"></a>
 
@@ -67,7 +69,7 @@ If your Amazon S3 bucket has objects written to it by another client, your view 
 
 When you delete a versioned object, that object is flagged with a delete marker but retained\. Only an S3 bucket owner can permanently delete an object with versioning turned on\.
 
-In your file gateway, files shown are the most recent versions of objects in an S3 bucket at the time the object was fetched or the cache was refreshed\. File gateway ignore any older versions or any objects marked for deletion\. When reading a file, you read data from the latest version\. When you write a file in your file share, your file gateway creates a new version of a named object with your changes, and that version becomes the latest version\.
+In your file gateway, files shown are the most recent versions of objects in an S3 bucket at the time the object was fetched or the cache was refreshed\. File gateways ignore any older versions or any objects marked for deletion\. When reading a file, you read data from the latest version\. When you write a file in your file share, your file gateway creates a new version of a named object with your changes, and that version becomes the latest version\.
 
 Your file gateway continues to read from the earlier version, and updates that you make are based on the earlier version should a new version be added to the S3 bucket outside of your application\. To read the latest version of an object, use the [RefreshCache](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_RefreshCache.html) API action or refresh from the console as described in [Refreshing Objects in Your Amazon S3 Bucket](managing-gateway-file.md#refresh-cache)\. We don't recommend that objects or files be written to your file gateway S3 bucket from outside of the file share\.
 
@@ -76,3 +78,15 @@ Use of versioned S3 buckets can greatly increase the amount of storage in S3 bec
 If you enable object versioning after installing a file gateway, all unique objects are retained \(`ID=”NULL”`\) and you can see them all in the file system\. New versions of objects are assigned a unique ID \(older versions are retained\)\. Based on the object's timestamp only the newest versioned object is viewable in the NFS file system\.
 
 After you enable object versioning, your S3 bucket can't be returned to a nonversioned state\. You can, however, suspend versioning\. When you suspend versioning, a new object is assigned an ID\. If the same named object exists with an `ID=”NULL”` value, the older version is overwritten\. However, any version that contains a non\-`NULL` ID is retained\. Timestamps identify the new object as the current one, and that is the one that appears in the NFS file system\.
+
+## ACL Permissions Aren't Working as Expected<a name="smb-acl-issues"></a>
+
+If access control list \(ACL\) permissions aren't working as you expect with your SMB file share, you can perform a test\. 
+
+To do this, first test the permissions on a Microsoft Windows file server or a local Windows file share\. Then compare the behavior to your gateway's file share\.
+
+## Your Gateway Performance Declined After You Performed a Recursive Operation<a name="recursive-operation-issues"></a>
+
+In some cases, you might perform a recursive operation, such as renaming a directory or enabling inheritance for an ACL, and force it down the tree\. If you do this, file gateway recursively applies the operation to all objects in the file share\. 
+
+For example, suppose that you apply inheritance to existing object in an Amazon S3 bucket\. file gateway recursively applies inheritance to all objects in the bucket\. Such operations can cause your gateway performance to decline\.

@@ -7,7 +7,7 @@ You can back up your data to virtual tapes, archive the tapes, and manage your v
 
 In this topic, you can find basic documentation on how to configure the Quest NetVault Backup application for a tape gateway and perform a backup and restore operation\. 
 
-For additional setup information, see [Backing up to Amazon AWS with Quest NetVault Backup](https://www.scribd.com/document/294138486/backing-up-to-amazon-aws-with-dell-netvault-backup-technical-brief-75488-pdf) on the Quest \(formerly Dell\) website\. For detailed information about how to use the Quest NetVault Backup application, see the [Quest NetVault Backup 10\.0\.1 – Administration Guide](https://support.quest.com/technical-documents/netvault-backup/10.0.1/administration-guide/26#TOPIC-229714)\. For more information about compatible backup applications, see [Supported Third\-Party Backup Applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
+For additional setup information, see [Backing up to Amazon AWS with Quest NetVault Backup](https://www.scribd.com/document/294138486/backing-up-to-amazon-aws-with-dell-netvault-backup-technical-brief-75488-pdf) on the Quest \(formerly Dell\) website\. For detailed information about how to use the Quest NetVault Backup application, see the Quest NetVault Backup 10\.0\.1 – Administration Guide\. For more information about compatible backup applications, see [Supported Third\-Party Backup Applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
 
 **Topics**
 + [Configuring Quest NetVault Backup to Work with VTL Devices](#netvault-configure-software)
@@ -85,7 +85,7 @@ Restoring your archived data is a two\-step process\.
 
 1. Retrieve the archived tape from archive to a tape gateway\. For instructions, see [Retrieving Archived Tapes](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
 
-1. Use the Quest NetVault Backup application to restore the data\. You do this by creating a restoring a folder file, as you do when restoring data from physical tapes\. For instructions, see [Quest NetVault Backup 10\.0\.1 – Administration Guide \(Creating a restore job\)](http://support-public.cfm.quest.com/4b094d45-9eab-4ba5-8a57-09ed5f8e6840:1785915.pdf) in the Quest NetVault Backup documentation\.
+1. Use the Quest NetVault Backup application to restore the data\. You do this by creating a restoring a folder file, as you do when restoring data from physical tapes\. For instructions, see the Quest NetVault Backup 10\.0\.1 – Administration Guide \(Creating a restore job\) in the Quest NetVault Backup documentation\.
 
 **Next Step**
 

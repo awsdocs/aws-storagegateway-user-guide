@@ -1,4 +1,4 @@
-# Launch a Gateway<a name="appliance-launch-gateway"></a>
+# Launching a Gateway<a name="appliance-launch-gateway"></a>
 
 You can launch any of the three storage gateways on the appliance—file gateway, volume gateway \(cached\), or tape gateway\.
 
@@ -22,4 +22,4 @@ To assign a static IP address to your installed gateway, you next configure the 
 
 **Next Step**
 
-[Configure an IP Address for the Gateway](appliance-configure-ip.md)
+[Configuring an IP Address for the Gateway](appliance-configure-ip.md)

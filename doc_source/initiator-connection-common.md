@@ -1,6 +1,6 @@
 # Connecting iSCSI Initiators<a name="initiator-connection-common"></a>
 
-When managing your gateway, you work with file shares, volumes or virtual tape library \(VTL\) devices that are exposed as Internet Small Computer System Interface \(iSCSI\) targets\. For file gateways the iSCSI targets are file share, For volume gateways, the iSCSI targets are volumes\. For tape gateways, the targets are VTL devices\. As part of this work, you do such tasks as connecting to those targets, customizing iSCSI settings, connecting from a Red Hat Linux client, and configuring Challenge\-Handshake Authentication Protocol \(CHAP\)\. 
+When managing your gateway, you work with volumes or virtual tape library \(VTL\) devices that are exposed as Internet Small Computer System Interface \(iSCSI\) targets\. For volume gateways, the iSCSI targets are volumes\. For tape gateways, the targets are VTL devices\. As part of this work, you do such tasks as connecting to those targets, customizing iSCSI settings, connecting from a Red Hat Linux client, and configuring Challenge\-Handshake Authentication Protocol \(CHAP\)\. 
 
 **Topics**
 + [Connecting to Your Volumes to a Windows Client](#ConfiguringiSCSIClient)

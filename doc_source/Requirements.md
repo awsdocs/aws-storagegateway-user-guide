@@ -77,7 +77,7 @@ In some cases, you might deploy AWS Storage Gateway on Amazon EC2 or use other t
 
 **Topics**
 + [Port Requirements](#requirements-network)
-+ [Networking and Firewall Requirements for the Hardware Appliance](#appliance-network-requirements)
++ [Networking and Firewall Requirements for the AWS Storage Gateway Hardware Appliance](#appliance-network-requirements)
 + [Allowing AWS Storage Gateway Access Through Firewalls and Routers](#allow-firewall-gateway-access)
 + [Configuring Security Groups for Your Amazon EC2 Gateway Instance](#EC2GatewayCustomSecurityGroup-common)
 
@@ -133,7 +133,9 @@ In addition to the common ports, volume and tape gateways require the following 
 | --- | --- | --- | --- | --- | --- | 
 |  TCP  |  3260 \(iSCSI\)  |  Inbound  |  iSCSI Initiators  |  Storage Gateway  |  By local systems to connect to iSCSI targets exposed by the gateway\.   | 
 
-### Networking and Firewall Requirements for the Hardware Appliance<a name="appliance-network-requirements"></a>
+For detailed information about port requirements, see [Port Requirements](Resource_Ports.md) in the *Additional AWS Storage Gateway Resources* section\.
+
+### Networking and Firewall Requirements for the AWS Storage Gateway Hardware Appliance<a name="appliance-network-requirements"></a>
 
 Each AWS Storage Gateway Hardware Appliance requires the following network services:
 + **Internet access** – an always\-on network connection to the internet through any network interface on the server\.
@@ -162,11 +164,11 @@ A hardware appliance requires the following ports to operate\.
 
 |  Protocol  |  Port  |  Direction  |  Source  |  Destination  |  How Used  | 
 | --- | --- | --- | --- | --- | --- | 
-| SSH |  22  |  Outbound  | Hardware Appliance |  `54.201.223.107`  | Support channel | 
-| DNS | 53 | Outbound | Hardware Appliance | DNS server\(s\) | Name resolution | 
-| UDP/NTP | 123 | Outbound | Hardware Appliance | \*\.amazon\.pool\.ntp\.org | Time synchronization | 
-| HTTPS |  443  |  Outbound  | Hardware Appliance |  `*.amazonaws.com`  |  Data transfer  | 
-| HTTP | 8080 | Inbound | AWS | Hardware Appliance | Activation \(only briefly\) | 
+| SSH |  22  |  Outbound  | Hardware appliance |  `54.201.223.107`  | Support channel | 
+| DNS | 53 | Outbound | Hardware appliance | DNS servers | Name resolution | 
+| UDP/NTP | 123 | Outbound | Hardware appliance | \*\.amazon\.pool\.ntp\.org | Time synchronization | 
+| HTTPS |  443  |  Outbound  | Hardware appliance |  `*.amazonaws.com`  |  Data transfer  | 
+| HTTP | 8080 | Inbound | AWS | Hardware appliance | Activation \(only briefly\) | 
 
 To perform as designed, a hardware appliance requires network and firewall settings as follows:
 + Configure all connected network interfaces in the hardware console\.
@@ -225,30 +227,9 @@ A Storage Gateway VM is configured to use the following NTP servers\.
 3.amazon.pool.ntp.org
 ```
 
- The following table provides a list of region strings for the available AWS Regions\.
-
-
-| AWS Region Name | AWS Region String | File Gateway | Volume Gateway | Tape Gateway | 
-| --- | --- | --- | --- | --- | 
-| US East \(Ohio\) | us\-east\-2 | yes | yes | yes | 
-| US East \(N\. Virginia\) | us\-east\-1 | yes | yes | yes | 
-| US West \(N\. California\) | us\-west\-1 | yes | yes | yes | 
-| US West \(Oregon\) | us\-west\-2 | yes | yes | yes | 
-| Canada \(Central\) | ca\-central\-1 | yes | yes | yes | 
-| EU \(Ireland\) | eu\-west\-1 | yes | yes | yes | 
-| EU \(Frankfurt\) | eu\-central\-1 | yes | yes | yes | 
-| EU \(London\) | eu\-west\-2 | yes | yes | yes | 
-| EU \(Paris\) | eu\-west\-3 | yes | yes | yes | 
-| EU \(Stockholm\) | eu\-north\-1 | yes | yes | yes | 
-| Asia Pacific \(Tokyo\) | ap\-northeast\-1 | yes | yes | yes | 
-| Asia Pacific \(Seoul\) | ap\-northeast\-2 | yes | yes | yes | 
-| Asia Pacific \(Singapore\) | ap\-southeast\-1 | yes | yes | yes | 
-| Asia Pacific \(Sydney\) | ap\-southeast\-2 | yes | yes | yes | 
-| Asia Pacific \(Mumbai\) | ap\-south\-1 | yes | yes | yes | 
-| South America \(São Paulo\) | sa\-east\-1 | yes | yes | no | 
-| AWS GovCloud \(US\) | us\-gov\-west\-1 | yes | yes | yes | 
-
 Depending on your gateway's AWS Region, replace *region* in the endpoint with the corresponding region string\. For example, if you create a gateway in the US West \(Oregon\) region, the endpoint looks like this: `storagegateway.us-west-2.amazonaws.com:443`\.
++ Storage Gateway—For supported AWS Regions and a list of AWS service endpoints you can use with Storage Gateway, see [Regions and Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region) in the *AWS General Reference*\.
++ AWS Storage Gateway Hardware Appliance—For supported AWS Regions you can use with the hardware appliance see [AWS Storage Gateway Hardware Appliance Regions](http://docs.aws.amazon.com/general/latest/gr/rande.html#sg-hardware-appliance) in the *AWS General Reference*\. 
 
 ### Configuring Security Groups for Your Amazon EC2 Gateway Instance<a name="EC2GatewayCustomSecurityGroup-common"></a>
 
@@ -271,15 +252,17 @@ For information about the ports to open for your gateway, see [Port Requirements
 
 ## Supported Hypervisors and Host Requirements<a name="requirements-host"></a>
 
-You can run AWS Storage Gateway either on\-premises as a virtual machine \(VM\) appliance, or in AWS as an Amazon Elastic Compute Cloud \(Amazon EC2\) instance\.
+You can run AWS Storage Gateway on\-premises as either a virtual machine \(VM\) appliance, or a physical hardware appliance, or in AWS as an Amazon Elastic Compute Cloud \(Amazon EC2\) instance\.
 
 AWS Storage Gateway supports the following hypervisor versions and hosts:
 + VMware ESXi Hypervisor \(version 4\.1, 5\.0, 5\.1, 5\.5, 6\.0 or 6\.5\)—A free version of VMware is available on the [VMware website](http://www.vmware.com/products/vsphere-hypervisor/overview.html)\. For this setup, you also need a VMware vSphere client to connect to the host\. 
 +  Microsoft Hyper\-V Hypervisor \(version 2008 R2, 2012, or 2012 R2\)—A free, standalone version of Hyper\-V is available at the [Microsoft Download Center](http://www.microsoft.com/en-us/search/Results.aspx?q=hyper-V&form=DLC)\. For this setup, you need a Microsoft Hyper\-V Manager on a Microsoft Windows client computer to connect to the host\. 
 + EC2 instance—AWS Storage Gateway provides an Amazon Machine Image \(AMI\) that contains the gateway VM image\. Only file, cached volume, and tape gateway types can be deployed on Amazon EC2\. For information about how to deploy a gateway on Amazon EC2, see [Deploying a Volume or Tape Gateway on an Amazon EC2 Host](ec2-gateway-common.md)\.
++ Storage Gateway Hardware Appliance—AWS Storage Gateway provides a physical hardware appliance as a on\-premises deployment option for locations with limited virtual machine infrastructure\.
 
 **Note**  
-AWS Storage Gateway doesn’t support recovering a gateway from a VM that was created from a snapshot or clone of another gateway VM or from your Amazon EC2 AMI\. If your gateway VM malfunctions, activate a new gateway and recover your data to that gateway\. For more information, see [Recovering from an Unexpected Virtual Machine Shutdown](recover-data-from-gateway.md#recover-from-gateway-shutdown)\.
+AWS Storage Gateway doesn’t support recovering a gateway from a VM that was created from a snapshot or clone of another gateway VM or from your Amazon EC2 AMI\. If your gateway VM malfunctions, activate a new gateway and recover your data to that gateway\. For more information, see [Recovering from an Unexpected Virtual Machine Shutdown](recover-data-from-gateway.md#recover-from-gateway-shutdown)\.  
+AWS Storage Gateway doesn’t support dynamic memory and virtual memory ballooning\. 
 
 ## Supported NFS Clients for a File Gateway<a name="requirements-nfs-clients"></a>
 

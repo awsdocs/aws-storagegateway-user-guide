@@ -6,6 +6,8 @@ As an example, you can use tags to identify Storage Gateway resources used by ea
 
 If you archive a virtual tape that is tagged, the tape maintains its tags in the archive\. Similarly, if you retrieve a tape from the archive to another gateway, the tags are maintained in the new gateway\. 
 
+For file gateway, you can use tags to control access to resources\. For information about how to do this, see [Using Tags to Control Access to File Gateway Resources](restrict-fgw-access.md)\.
+
 Tags don’t have any semantic meaning but rather are interpreted as strings of characters\.
 
 The following restrictions apply to tags:
@@ -59,3 +61,7 @@ You can leave the **Value** box blank\.
 1. Choose **Tags**, and then choose **Add/edit tags** to open the **Add/edit tags** dialog box\.
 
 1. Choose the **X** icon next to the tag you want to delete, and then choose **Save**\. 
+
+## See Also<a name="see-also-tags"></a>
+
+[Using Tags to Control Access to File Gateway Resources](restrict-fgw-access.md)
