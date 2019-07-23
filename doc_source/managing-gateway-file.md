@@ -239,7 +239,7 @@ You can set the security level for your gateway, set access for AD user and give
 + [Using Active Directory to Authenticate Users](#enable-ad-settings)
 + [Providing Guest Access to Your File Share](#guest-access)
 
-**To edit access settings for your SBM file share**
+**To edit access settings for your SMB file share**
 
 1. Open the AWS Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
 
