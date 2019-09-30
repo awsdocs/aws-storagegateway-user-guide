@@ -26,7 +26,7 @@ After your file gateway is activated and running, you can add additional file sh
 
 When you create a file share, your file gateway requires access to upload files into your Amazon S3 bucket\. To grant this access, your file gateway assumes an AWS Identity and Access Management \(IAM\) role that is associated with an IAM policy that grants this access\. 
 
-The role requires this IAM policy and a security token service trust \(STS\) relationship for it\. The policy determines which actions the role can perform\. In addition, your S3 bucket must have an access policy that allows the IAM role to access the S3 bucket\. 
+The role requires this IAM policy and a security token service \(STS\) trust relationship for it\. The policy determines which actions the role can perform\. In addition, your S3 bucket must have an access policy that allows the IAM role to access the S3 bucket\. 
 
 You can create the role and access policy yourself, or your file gateway can create them for you\. If your file gateway creates the policy for you, the policy contains a list of S3 actions\. For information about roles and permissions, see [Creating a Role to Delegate Permissions to an AWS Service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-service.html) in the *IAM User Guide*\.
 
