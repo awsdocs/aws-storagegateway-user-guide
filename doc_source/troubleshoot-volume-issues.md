@@ -84,7 +84,7 @@ If one or more cache disks in your gateway encounters a failure, the gateway pre
 + If the cache disk is still accessible and useable, reconnect it to your gateway\.
 
 **Note**  
-If you delete a cache disk, tapes or volumes that have clean data \(that is, for which data in the cache disk and Amazon S3 are synchronized\) will continue to be available when the gateway resumes normal functionality\. For example, if your gateway has three cache disks and you delete two, tapes or volumes that are clean will have AVAILABLE status\. Other tapes and volumes will have IRRECOVERABLE status\.  
+If you delete a cache disk, then tapes or volumes that have clean data \(that is, for which data in the cache disk and Amazon S3 are synchronized\) will continue to be available when the gateway resumes normal functionality\. For example, if your gateway has three cache disks and you delete two, tapes or volumes that are clean will have AVAILABLE status\. Other tapes and volumes will have IRRECOVERABLE status\.  
 If you use ephemeral disks as cache disks for your gateway or mount your cache disks on an ephemeral drive, your cache disks will be lost when you shut down the gateway\. Shutting down the gateway when your cache disk and Amazon S3 are not synchronized can result in data loss\. As a result, we don't recommend using ephemeral drives or disks\.
 
 ## A Volume Snapshot Has PENDING Status Longer Than Expected<a name="SnapshotTroubleshooting.Pending"></a>
