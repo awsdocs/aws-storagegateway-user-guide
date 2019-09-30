@@ -17,11 +17,11 @@ For best performance, the cache disk size must be tuned to the size of the activ
 Following are recommended configurations for your file gateway\. 
 
 
-| Recommended Configuration  | Write Throughput \(File Sizes > 6 MB\) | 
+| Recommended Configuration  | Write Throughput \(File Sizes > 6 MiB\) | 
 | --- | --- | 
-|  Root disk: 80 GB io1, 4,000 IOPS Cache disk: 512 GiB EBS cache, io1, 1,500 provisioned IOPS  Minimum network performance: 1 Gbps Amazon EC2 instance: c5\.4xlarge  | 125 MiB/s \(0\.9 Gbps\) | 
+|  Root disk: 80 GiB io1, 4,000 IOPS Cache disk: 512 GiB EBS cache, io1, 1,500 provisioned IOPS  Minimum network performance: 1 Gbps Amazon EC2 instance: c5\.4xlarge  | 125 MiB/s \(0\.9 Gbps\) | 
 | [Storage Gateway Hardware Appliance](https://www.amazon.com/dp/B079RBVX3M) Minimum network performance: 5 Gbps  | 300 MiB/s \(2\.3 Gbps\) | 
-|  Root disk: 80 GB io1, 4,000 IOPS Cache disk: Two 1\.9 TiB NVME caches \(ephemeral\) Minimum network performance: 5 Gbps Amazon EC2 instance: i3\.4xlarge \([Using Ephemeral Storage With EC2 Gateways](ManagingLocalStorage-common.md#ephemral-disk-cache)\)   | 500 MiB/s \(3\.9 Gbps\) | 
+|  Root disk: 80 GiB io1, 4,000 IOPS Cache disk: Two 1\.9 TiB NVME caches \(ephemeral\) Minimum network performance: 5 Gbps Amazon EC2 instance: i3\.4xlarge \([Using Ephemeral Storage With EC2 Gateways](ManagingLocalStorage-common.md#ephemral-disk-cache)\)   | 500 MiB/s \(3\.9 Gbps\) | 
 
 ## Performance Guidance for Tape Gateways<a name="performance-tgw"></a>
 
@@ -31,12 +31,12 @@ In this section, you can find configuration guidance for provisioning hardware f
 | Configuration | Read/Write from/to cache | Read/Write from/to Cloud | 
 | --- | --- | --- | 
 |  | Write Gbps  | Read Gbps  | Write Gbps  | Read Gbps  | 
-|  Host Platform: Amazon EC2 instance—c5\.4xlarge  Cache disk: 150 GB Upload buffer: 150 GB CPU: 16vCPU \| RAM: 32 GB Minimum network performance: 10 Gbps  | 2\.3  | 3\.2  | 1\.2  | 0\.6  | 
-|  Host Platform: [Storage Gateway Hardware Appliance](https://www.amazon.com/dp/B079RBVX3M) Cache disk: 2\.5 TB Upload buffer: 2 TB CPU: 20 cores \| RAM: 128 GB Minimum network performance: 10 Gbps  | 1\.4  | 4\.3  | 1\.4  | 0\.5  | 
-|  Host Platform: Amazon EC2instance—c5d\.9xlarge Cache disk: 450 GB NVMe Upload buffer: 450 GB NVMe CPU: 36 vCPU \| RAM: 72 GB Minimum network performance: 10Gbps  | 2\.7  | 3\.9  | 1\.3  | 0\.7  | 
+|  Host Platform: Amazon EC2 instance—c5\.4xlarge  Cache disk: 150 GiB Upload buffer: 150 GiB CPU: 16vCPU \| RAM: 32 GiB Minimum network performance: 10 Gbps  | 2\.3  | 3\.2  | 1\.2  | 0\.6  | 
+|  Host Platform: [Storage Gateway Hardware Appliance](https://www.amazon.com/dp/B079RBVX3M) Cache disk: 2\.5 TiB Upload buffer: 2 TiB CPU: 20 cores \| RAM: 128 GiB Minimum network performance: 10 Gbps  | 1\.4  | 4\.3  | 1\.4  | 0\.5  | 
+|  Host Platform: Amazon EC2instance—c5d\.9xlarge Cache disk: 450 GiB NVMe Upload buffer: 450 GiB NVMe CPU: 36 vCPU \| RAM: 72 GiB Minimum network performance: 10Gbps  | 2\.7  | 3\.9  | 1\.3  | 0\.7  | 
 
 **Note**  
-This performance was achieved by using1 MB block size and 4 tape drives simultaneously\. 
+This performance was achieved by using 1 MiB block size and 4 tape drives simultaneously\. 
 
 For additional information, see [Use a Larger Block Size for Tape Drives](#block-size) and [Optimize the Performance of Virtual Tape Drives in the Backup Software](#optimize-virtual-tape-drive)\.
 
@@ -76,7 +76,7 @@ For volumes gateways, if you find that adding more volumes to a gateway reduces 
 
 ### Use a Larger Block Size for Tape Drives<a name="block-size"></a>
 
-For a tape gateway, the default block size for a tape drive is 64 KB\. However, you can increase the block size up to 1 MB to improve I/O performance\. 
+For a tape gateway, the default block size for a tape drive is 64 KiB\. However, you can increase the block size up to 1 MiB to improve I/O performance\. 
 
 The block size that you choose depends on the maximum block size that your backup software supports\. We recommend that you set the block size of the tape drives in your backup software to a size that is as large as possible\. However, this block size must not be greater than the 1 MB maximum size that the gateway supports\. 
 
