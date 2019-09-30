@@ -19,9 +19,9 @@ Following are recommended configurations for your file gateway\.
 
 | Recommended Configuration  | Write Throughput \(File Sizes > 6 MB\) | 
 | --- | --- | 
-|  Root disk: 80 GB io1, 4,000 IOPS Cache disk: 512 GiB EBS cache, io1, 1,500 provisioned IOPS  Minimum network performance: 1 Gbps Amazon EC2 instance: c5\.4xlarge  | 125 MiB/s \(0\.9 Gbps\) | 
+|  Root disk: 80 GB (io1), 4,000 IOPS Cache disk: 512 GiB EBS cache (io1), 1,500 provisioned IOPS  Minimum network performance: 1 Gbps Amazon EC2 instance: c5\.4xlarge  | 125 MiB/s \(0\.9 Gbps\) | 
 | [Storage Gateway Hardware Appliance](https://www.amazon.com/dp/B079RBVX3M) Minimum network performance: 5 Gbps  | 300 MiB/s \(2\.3 Gbps\) | 
-|  Root disk: 80 GB io1, 4,000 IOPS Cache disk: Two 1\.9 TiB NVME caches \(ephemeral\) Minimum network performance: 5 Gbps Amazon EC2 instance: i3\.4xlarge \([Using Ephemeral Storage With EC2 Gateways](ManagingLocalStorage-common.md#ephemral-disk-cache)\)   | 500 MiB/s \(3\.9 Gbps\) | 
+|  Root disk: 80 GB (io1), 4,000 IOPS Cache disk: Two 1\.9 TiB NVME caches \(ephemeral\) Minimum network performance: 5 Gbps Amazon EC2 instance: i3\.4xlarge \([Using Ephemeral Storage With EC2 Gateways](ManagingLocalStorage-common.md#ephemral-disk-cache)\)   | 500 MiB/s \(3\.9 Gbps\) | 
 
 ## Performance Guidance for Tape Gateways<a name="performance-tgw"></a>
 
