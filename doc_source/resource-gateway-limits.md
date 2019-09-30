@@ -17,7 +17,7 @@ The following table lists limits for file shares\.
 | --- | --- | 
 | Maximum number of file shares per Amazon S3 bucket\. There is a one\-to\-one mapping between a file share and an S3 bucket | 1 | 
 | Maximum number of file shares per gateway | 10 | 
-| The maximum size of an individual file, which is the maximum size of an individual object in Amazon S3  If you write a file larger than 5 TB, you get a "file too large" error message and only the first 5 TB of the file is uploaded\.   | 5 TB | 
+| The maximum size of an individual file, which is the maximum size of an individual object in Amazon S3  If you write a file larger than 5 TB, you get a "file too large" error message and only the first 5 TiB of the file is uploaded\.   | 5 TiB | 
 | Maximum path length Clients are not allowed to create a path exceeding this length, and doing so results in an error\. This limit applies to both protocols supported by file gateways, NFS and SMB\.  | 1024 bytes | 
 
 ## Limits for Volumes<a name="resource-volume-limits"></a>
