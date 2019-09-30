@@ -125,7 +125,7 @@ If your gateway or data center becomes inaccessible for some reason, you can rec
 
 1. Create and activate a new volume gateway on an Amazon EC2 host\. For more information, see [Deploying a Volume or Tape Gateway on an Amazon EC2 Host](ec2-gateway-common.md)\.
 **Note**  
-Gateway stored volumes can't be hosted on Amazon EC2 instance\.
+Gateway stored volumes can't be hosted on Amazon EC2 instances\.
 
 1. Create a new volume and choose the EC2 gateway as the target gateway\. For more information, see [Creating a Volume](GettingStartedCreateVolumes.md)\.
 
