@@ -12,7 +12,7 @@ AWS Storage Gateway doesn’t support recovering a gateway VM from a snapshot th
 + [Recovering Your Data from an Irrecoverable Tape](#recover-from-tape)
 + [Recovering Your Data from a Malfunctioning Cache Disk](#recover-from-cahe-disk)
 + [Recovering Your Data from a Corrupted File System](#recover-corrupt-file-system)
-+ [Recovering Your Data From An Inaccessible Data Center](#disaster-recovery)
++ [Recovering Your Data From an Inaccessible Data Center](#disaster-recovery)
 
 ## Recovering from an Unexpected Virtual Machine Shutdown<a name="recover-from-gateway-shutdown"></a>
 
@@ -39,11 +39,11 @@ For detailed information on how to recover cached volumes data from a recovery s
 
 If your tape gateway or the hypervisor host encounters an unrecoverable failure, you can use the following steps to recover the tapes from the malfunctioning tape gateway to another tape gateway:
 
-1. Identify a tape gateway you want to use as the recovery target or create you can create a new one\.
+1. Identify the tape gateway that you want to use as the recovery target, or create a new one\.
 
 1. Disable the malfunctioning gateway\.
 
-1. Create recovery tapes for each tape you want to recover and specify the target tape gateway\.
+1. Create recovery tapes for each tape that you want to recover and specify the target tape gateway\.
 
 1. Delete the malfunctioning tape gateway\.
 
@@ -117,7 +117,7 @@ You use this snapshot as a fallback if your file system can't be repaired or the
 
 You can continue to use the original volume as\-is, or you can create a new gateway with a new volume based on either the recovery snapshot or the completed snapshot\. Alternatively, you can create a new volume from any of your completed snapshots from this volume\.
 
-## Recovering Your Data From An Inaccessible Data Center<a name="disaster-recovery"></a>
+## Recovering Your Data From an Inaccessible Data Center<a name="disaster-recovery"></a>
 
 If your gateway or data center becomes inaccessible for some reason, you can recover your data to another gateway in a different data center or recover to a gateway hosted on an Amazon EC2 instance\. If you don't have access to another data center, we recommend creating the gateway on an Amazon EC2 instance\. The steps you follow depends on the gateway type you are covering the data from\.
 
@@ -147,7 +147,7 @@ Gateway stored volumes can't be hosted on Amazon EC2 instance\.
 
 For file gateway, you map a new file share to the Amazon S3 that contains the data you want to recover\.
 
-1. Create and activate a new file gateway on an Amazon EC2 host\. For more information, see [Deploying File Gateway on an Amazon EC2 Host](ec2-gateway-file.md)\.
+1. Create and activate a new file gateway on an Amazon EC2 host\. For more information, see [Deploying a File Gateway on an Amazon EC2 Host](ec2-gateway-file.md)\.
 
 1. Create a new file share on the EC2 gateway you created\. For more information, see [Creating a File Share](GettingStartedCreateFileShare.md)\.
 

@@ -26,7 +26,7 @@ To find the serial number of the hardware appliance, go to the **Hardware** page
 
 ## Where to Obtain Hardware Appliance Support<a name="appliance_support"></a>
 
-To contact the AWS Storage Gateway Hardware Appliance support, see [https://aws.amazon.com/contact-us](https://aws.amazon.com/contact-us)\. 
+To contact the AWS Storage Gateway Hardware Appliance support, see [AWS Support](http://aws.amazon.com/contact-us)\.
 
 The AWS Support team might ask you to activate the support channel to troubleshoot your gateway issues remotely\. You don't need this port to be open for the normal operation of your gateway, but it is required for troubleshooting\. You can activate the support channel from the hardware console as shown in the procedure following\.
 

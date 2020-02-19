@@ -4,7 +4,7 @@ AWS Storage Gateway connects an on\-premises software appliance with cloud\-base
 
 AWS Storage Gateway offers file\-based, volume\-based, and tape\-based storage solutions:
 
-**File Gateway** – A file gateway supports a file interface into Amazon Simple Storage Service \(Amazon S3\) and combines a service and a virtual software appliance\. By using this combination, you can store and retrieve objects in Amazon S3 using industry\-standard file protocols such as Network File System \(NFS\) and Server Message Block \(SMB\)\. The software appliance, or gateway, is deployed into your on\-premises environment as a virtual machine \(VM\) running on VMware ESXi or Microsoft Hyper\-V hypervisor\. The gateway provides access to objects in S3 as files or file share mount points\. With a file gateway, you can do the following: 
+**File Gateway** – A file gateway supports a file interface into Amazon Simple Storage Service \(Amazon S3\) and combines a service and a virtual software appliance\. By using this combination, you can store and retrieve objects in Amazon S3 using industry\-standard file protocols such as Network File System \(NFS\) and Server Message Block \(SMB\)\. The software appliance, or gateway, is deployed into your on\-premises environment as a virtual machine \(VM\) running on VMware ESXi, Microsoft Hyper\-V, or Linux Kernel\-based Virtual Machine \(KVM\) hypervisor\. The gateway provides access to objects in S3 as files or file share mount points\. With a file gateway, you can do the following: 
 + You can store and retrieve files directly using the NFS version 3 or 4\.1 protocol\.
 + You can store and retrieve files directly using the SMB file system version, 2 and 3 protocol\.
 + You can access your data directly in Amazon S3 from any AWS Cloud application or service\.
@@ -18,15 +18,21 @@ A file gateway simplifies file storage in Amazon S3, integrates to existing appl
 + Operations using the AWS Management Console and AWS Command Line Interface \(AWS CLI\)
 + Billing and cost management
 
-**Volume Gateway** – A volume gateway provides cloud\-backed storage volumes that you can mount as Internet Small Computer System Interface \(iSCSI\) devices from your on\-premises application servers\. The gateway supports the following volume configurations:
+**Volume Gateway** – A volume gateway provides cloud\-backed storage volumes that you can mount as Internet Small Computer System Interface \(iSCSI\) devices from your on\-premises application servers\.
+
+The volume gateway is deployed into your on\-premises environment as a VM running on VMware ESXi, KVM, or Microsoft Hyper\-V hypervisor\.
+
+The gateway supports the following volume configurations:
 + **Cached volumes** – You store your data in Amazon Simple Storage Service \(Amazon S3\) and retain a copy of frequently accessed data subsets locally\. Cached volumes offer a substantial cost savings on primary storage and minimize the need to scale your storage on\-premises\. You also retain low\-latency access to your frequently accessed data\.
-+ **Stored volumes** – If you need low\-latency access to your entire dataset, first configure your on\-premises gateway to store all your data locally\. Then asynchronously back up point\-in\-time snapshots of this data to Amazon S3\. This configuration provides durable and inexpensive offsite backups that you can recover to your local data center or Amazon EC2\. For example, if you need replacement capacity for disaster recovery, you can recover the backups to Amazon EC2\. 
++ **Stored volumes** – If you need low\-latency access to your entire dataset, first configure your on\-premises gateway to store all your data locally\. Then asynchronously back up point\-in\-time snapshots of this data to Amazon S3\. This configuration provides durable and inexpensive offsite backups that you can recover to your local data center or Amazon Elastic Compute Cloud \(Amazon EC2\)\. For example, if you need replacement capacity for disaster recovery, you can recover the backups to Amazon EC2\. 
 
-**Tape Gateway** – With a tape gateway, you can cost\-effectively and durably archive backup data in GLACIER or DEEP\_ARCHIVE\. A tape gateway provides a virtual tape infrastructure that scales seamlessly with your business needs and eliminates the operational burden of provisioning, scaling, and maintaining a physical tape infrastructure\. 
+**Tape Gateway** – A tape gateway provides cloud\-backed virtual tape storage\. The tape gateway is deployed into your on\-premises environment as a VM running on VMware ESXi, KVM, or Microsoft Hyper\-V hypervisor\.
 
-You can run AWS Storage Gateway either on\-premises as a VM appliance, as a hardware appliance, or in AWS as an Amazon Elastic Compute Cloud \(Amazon EC2\) instance\. You deploy your gateway on an EC2 instance to provision iSCSI storage volumes in AWS\. You can use gateways hosted on EC2 instances for disaster recovery, data mirroring, and providing storage for applications hosted on Amazon EC2\.
+With a tape gateway, you can cost\-effectively and durably archive backup data in GLACIER or DEEP\_ARCHIVE\. A tape gateway provides a virtual tape infrastructure that scales seamlessly with your business needs and eliminates the operational burden of provisioning, scaling, and maintaining a physical tape infrastructure\. 
 
-For an architectural overview, see [How AWS Storage Gateway Works \(Architecture\)](StorageGatewayConcepts.md)\. To see the wide range of use cases that AWS Storage Gateway helps make possible, see the [AWS Storage Gateway detail page](http://aws.amazon.com/storagegateway/#pricing)\. 
+You can run AWS Storage Gateway either on\-premises as a VM appliance, as a hardware appliance, or in AWS as an Amazon EC2 instance\. You deploy your gateway on an EC2 instance to provision iSCSI storage volumes in AWS\. You can use gateways hosted on EC2 instances for disaster recovery, data mirroring, and providing storage for applications hosted on Amazon EC2\.
+
+For an architectural overview, see [How AWS Storage Gateway Works \(Architecture\)](StorageGatewayConcepts.md)\. To see the wide range of use cases that AWS Storage Gateway helps make possible, see [AWS Storage Gateway](http://aws.amazon.com/storagegateway)\.
 
 To get started with Storage Gateway, see the following\.
 
@@ -73,6 +79,6 @@ Additionally, as you configure a host to deploy a gateway software appliance, yo
 
 Before you continue to the next step, make sure that you have done the following:
 
-1. For a gateway deployed on\-premises, you chose the type of host, VMware ESXi Hypervisor or Microsoft Hyper\-V\. and set it up\. For more information, see [Requirements](Requirements.md)\. If you deploy the gateway behind a firewall, make sure that ports are accessible to the gateway VM\. For more information, see [Requirements](Requirements.md)\. 
+1. For a gateway deployed on\-premises, you choose the type of VM host and set it up\. Your options are VMware ESXi Hypervisor, Microsoft Hyper\-V, and Linux Kernel\-based Virtual Machine \(KVM\)\. If you deploy the gateway behind a firewall, make sure that ports are accessible to the gateway VM\. For more information, see [Requirements](Requirements.md)\. 
 
 1. For a tape gateway, you have installed client backup software\. For more information, see [Supported Third\-Party Backup Applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.

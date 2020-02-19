@@ -5,6 +5,7 @@ You can find information following about actions to take if you experience unexp
 **Topics**
 + [Recovering a Virtual Tape From An Unrecoverable Gateway](#recovery-tapes)
 + [Troubleshooting Irrecoverable Tapes](#IrrecoverableTapes)
++ [High Availability Health Notifications](#troubleshooting-ha-notifications)
 
 ## Recovering a Virtual Tape From An Unrecoverable Gateway<a name="recovery-tapes"></a>
 
@@ -91,7 +92,7 @@ The gateway should recover after the restart\. You can then verify the status of
 
 1. In the navigation pane, choose **Gateways**, and then choose your gateway\.
 
-1. On the **Actions** menu, choose **Configure Local Storage** to display the **Configure Local Storage** dialog box\. This dialog box shows all local disks in the gateway\.
+1. For **Actions**, choose **Configure Local Storage** to display the **Configure Local Storage** dialog box\. This dialog box shows all local disks in the gateway\.
 
 The cache disk node status is displayed next to the disk\.
 
@@ -123,3 +124,7 @@ If one or more cache disks in your gateway encounters a failure, the gateway pre
 **Note**  
 If you delete a cache disk, tapes or volumes that have clean data \(that is, for which data in the cache disk and Amazon S3 are synchronized\) will continue to be available when the gateway resumes normal functionality\. For example, if your gateway has three cache disks and you delete two, tapes or volumes that are clean will have AVAILABLE status\. Other tapes and volumes will have IRRECOVERABLE status\.  
 If you use ephemeral disks as cache disks for your gateway or mount your cache disks on an ephemeral drive, your cache disks will be lost when you shut down the gateway\. Shutting down the gateway when your cache disk and Amazon S3 are not synchronized can result in data loss\. As a result, we don't recommend using ephemeral drives or disks\.
+
+## High Availability Health Notifications<a name="troubleshooting-ha-notifications"></a>
+
+When running your gateway on the VMware vSphere High Availability \(HA\) platform, you may receive health notifications\. For more information about health notifications, see [Troubleshooting High Availability Issues](troubleshooting-ha-issues.md)\.

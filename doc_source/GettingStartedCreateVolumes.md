@@ -41,6 +41,8 @@ You can use AWS Key Management Service \(AWS KMS\) to encrypt data written to a 
 **Note**  
 After you choose a network adapter, you can't change this setting\. 
 
+1. \(Optional\) For **Tags**, enter a key and value to add tags to your volume\. A tag is a case\-sensitive key\-value pair that helps you manage, filter, and search for your volumes\. 
+
 1. Choose **Create volume**\. 
 
    If you have previously created volumes in this region, you can see them listed on the Storage Gateway console\. 

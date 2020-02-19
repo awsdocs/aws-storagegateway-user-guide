@@ -14,7 +14,7 @@ Following, you can find information about how to manage your tape gateway resour
 
 ## Adding Virtual Tapes<a name="creating-virtual-tapes-vtl"></a>
 
-You can add tapes in your tape gateway when you need them\. For information about how to create tapes, see [Creating Tapes](GettingStartedCreateTapes.md)\. After your tape is created, information about your tape is displayed in the columns and in the **Details** tab of your tape library\. For information about tape gateway tape limits, see [AWS Storage Gateway Limits](resource-gateway-limits.md)\.
+You can add tapes in your tape gateway when you need them\. For information about how to create tapes, see [Creating Tapes](GettingStartedCreateTapes.md)\. After your tape is created, information about your tape is displayed in the columns and in the **Details** tab of your tape library\. For information about tape gateway tape quotas, see [AWS Storage Gateway Quotas](resource-gateway-limits.md)\.
 
 You can create additional tapes directly in a preselected pool that represents the storage you want the tapes to be archived in\. 
 
@@ -28,9 +28,9 @@ You can create additional tapes directly in a preselected pool that represents t
 
 1. For **Gateway**, choose a gateway\. The tape is created for this gateway\.
 
-1. For **Number of tapes**, choose the number of tapes you want to create\. For more information about tape limits, see [AWS Storage Gateway Limits](resource-gateway-limits.md)\.
+1. For **Number of tapes**, choose the number of tapes you want to create\. For more information about tape quotas, see [AWS Storage Gateway Quotas](resource-gateway-limits.md)\.
 
-1. For **Capacity**, type the size of the virtual tape you want to create\. Tapes must be larger than 100 GiB\. For information about capacity limits, see [AWS Storage Gateway Limits](resource-gateway-limits.md)\.
+1. For **Capacity**, type the size of the virtual tape you want to create\. Tapes must be larger than 100 GiB\. For information about capacity quotas, see [AWS Storage Gateway Quotas](resource-gateway-limits.md)\.
 
 1. For **Barcode prefix**, type the prefix you want to prepend to the barcode of your virtual tapes\.
 **Note**  
@@ -43,9 +43,9 @@ Virtual tapes are uniquely identified by a barcode\. You can add a prefix to the
 1. In the navigation pane, choose the **Tape Library** tab and choose **Tapes** to see your tapes\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/created-tapes.png)
 
-**Glacier Pool**—will archive the tape in GLACIER\. When your backup software ejects the tape, it is automatically archived in GLACIER\. You use GLACIER for more active archives where you can retrieve the tapes in 3\-5 hours\. For detailed information, see [What Is Amazon S3 Glacier?](https://docs.aws.amazon.com/amazonglacier/latest/dev/introduction.html) 
+**S3 Glacier Pool**—will archive the tape in GLACIER\. When your backup software ejects the tape, it is automatically archived in GLACIER\. You use GLACIER for more active archives where you can retrieve the tapes typically within 3\-5 hours\. For detailed information, see [What Is Amazon S3 Glacier?](https://docs.aws.amazon.com/amazonglacier/latest/dev/introduction.html) 
 
-**Deep Archive Pool**—will archive the tape in DEEP\_ARCHIVE\. When your backup software ejects the tape, the tape is automatically archived in DEEP\_ARCHIVE\. You use DEEP\_ARCHIVE for long\-term data retention and digital preservation where data is accessed once or twice a year\. You can retrieve tapes archived in DEEP\_ARCHIVE within 12 hours\. For detailed information, see [GLACIER Storage Class](https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html#sc-glacier)\.
+**Deep Archive Pool**—will archive the tape in DEEP\_ARCHIVE\. When your backup software ejects the tape, the tape is automatically archived in DEEP\_ARCHIVE\. You use DEEP\_ARCHIVE for long\-term data retention and digital preservation where data is accessed once or twice a year\. You can retrieve tapes archived in DEEP\_ARCHIVE typically within 12 hours\. For detailed information, see [GLACIER Storage Class](https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html#sc-glacier)\.
 
 If you archive a tape in GLACIER, you can move it to DEEP\_ARCHIVE later\. For more information, see [Moving Your Tape from Glacier to Deep Archive Storage Class](#moving-tapes-vtl)\.
 
@@ -56,7 +56,7 @@ Tapes created before March 27, 2019, are archived directly in Amazon S3 Glacier 
 
 You can archive your tapes to Amazon S3 Glacier or DEEP\_ARCHIVE\. When you create a tape, you choose the archive pool that you want to use to archive your tape\. 
 
-You choose **Glacier Pool** if you want to archive the tape in S3 Glacier\. When your backup software ejects the tape, it is automatically archived in S3 Glacier\. You use S3 Glacier for more active archives where the data is regularly retrieved and needed in minutes\. For detailed information, see [Storage Classes for Archiving Objects](https://docs.aws.amazon.com/amazonglacier/latest/dev/storage-class-intro.html#sc-glacier) 
+You choose **S3 Glacier Pool** if you want to archive the tape in S3 Glacier\. When your backup software ejects the tape, it is automatically archived in S3 Glacier\. You use S3 Glacier for more active archives where the data is regularly retrieved and needed in minutes\. For detailed information, see [Storage Classes for Archiving Objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html#sc-glacier) 
 
 You choose **Deep Archive Pool** if you want to archive the tape in DEEP\_ARCHIVE\. When your backup software ejects the tape, the tape is automatically archived in DEEP\_ARCHIVE\. You use DEEP\_ARCHIVE for long\-term data retention and digital preservation at a very low cost\. Data in S3 Glacier DEEP\_ARCHIVE is not retrieved often or is rarely retrieved\. For detailed information, see [Storage Classes for Archiving Objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html#sc-glacier)\.
 
@@ -75,9 +75,9 @@ Move your tapes from GLACIER to DEEP\_ARCHIVE for long\-term data retention and 
 
 1. Choose the tape or tapes you want to move to DEEP\_ARCHIVE\. You can see the pool that this tape is associated with in the **Pool** column\.
 
-1. In the **Actions** menu, choose **Assign tape to pool**\.
+1. For **Actions**, choose **Assign tape to pool**\.
 
-1. In the Assign tape to pool dialog box, verify the tape id you are moving and choose the confirmation box\. 
+1. In the Assign tape to pool dialog box, verify the tape ID for the tape you are moving and choose the confirmation box\. 
 **Note**  
 If a tape has been ejected by the backup application and archived in DEEP\_ARCHIVE you can't move it back to GLACIER\. There's a charge for moving your tapes from GLACIER to DEEP\_ARCHIVE\. In addition, if you move tapes from GLACIER to DEEP\_ARCHIVE prior to 90 days, there is an early deletion fee for GLACIER\.
 
@@ -85,14 +85,14 @@ If a tape has been ejected by the backup application and archived in DEEP\_ARCHI
 
 ## Retrieving Archived Tapes<a name="retrieving-archived-tapes-vtl"></a>
 
-To access data stored on an archived virtual tape, you must first retrieve the tape that you want to your tape gateway\. Your tape gateway provides one virtual tape library \(VTL\) for each gateway\. You can restore a tape to a tape gateway\.
+To access data stored on an archived virtual tape, you must first retrieve the tape that you want to your tape gateway\. Your tape gateway provides one virtual tape library \(VTL\) for each gateway\. You only can restore a tape to a tape gateway\.
 
 If you have multiple tape gateways in an AWS Region, you can retrieve a tape to only one gateway\.
 
 The retrieved tape is write\-protected; you can only read the data on the tape\.
 
 **Important**  
-It takes up to three to five hours for the tape to be available in your tape gateway if the tape is archived in GLACIER and up to 12 hours in DEEP\_ARCHIVE\.
+If you archive a tape in GLACIER, you can retrieve the tape typically within 3\-5 hours\. If you archive the tape in DEEP\_ARCHIVE, you can retrieve it typically within 12 hours\.
 
 **Note**  
 There is a charge for retrieving tapes from archive\. For detailed pricing information, see [AWS Storage Gateway Pricing](http://aws.amazon.com/storagegateway/pricing/)\.
@@ -153,7 +153,7 @@ This procedure permanently deletes the selected virtual tape\.
 
 1. Choose the virtual tape that you want to delete\. 
 
-1. On the **Actions** menu, choose **Delete tape**\. A confirmation box appears, as shown following\.  
+1. For **Actions**, choose **Delete tape**\. A confirmation box appears, as shown following\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/delete-tape.png)
 
 1. Make sure that the tape listed is the tape you intend to delete, select the confirmation check box, and then choose **Delete**\.

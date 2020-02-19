@@ -48,7 +48,7 @@ It might take several moments for the adapter changes to take effect and the VM 
 
 1. In the **Navigation** pane of the Storage Gateway console, choose **Gateways** and choose the gateway to which you added the adapter\. Confirm that the second IP address is listed in the **Details** tab\.
 
-For information about local console tasks common to VMware and Hyper\-V host, see [Performing Tasks on the VM Local Console \(Volume and Tape Gateways\)](manage-on-premises-common.md)
+For information about local console tasks common to VMware, Hyper\-V, and KVM hosts, see [Performing Tasks on the VM Local Console \(Volume and Tape Gateways\)](manage-on-premises-common.md)
 
 ## Configuring Your Gateway for Multiple NICs in Microsoft Hyper\-V Host<a name="MaintenanceMultiNIC-hyperv"></a>
 
@@ -81,4 +81,4 @@ The following procedure assumes that your gateway VM already has one network ada
 
 1. In the **Navigation** pane choose **Gateways**, then select the gateway to which you added the adapter\. Confirm that the second IP address is listed in the **Details** tab\.
 
-For information about local console tasks common to VMware and Hyper\-V host, see [Performing Tasks on the VM Local Console \(Volume and Tape Gateways\)](manage-on-premises-common.md)
+For information about local console tasks common to VMware, Hyper\-V, and KVM hosts, see [Performing Tasks on the VM Local Console \(Volume and Tape Gateways\)](manage-on-premises-common.md)

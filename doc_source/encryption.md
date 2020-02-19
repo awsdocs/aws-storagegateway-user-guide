@@ -1,4 +1,4 @@
-# Encrypting Your Data Using AWS Key Management Service<a name="encryption"></a>
+# Data Encryption Using AWS KMS<a name="encryption"></a>
 
 AWS Storage Gateway uses SSL/TLS \(Secure Socket Layers/Transport Layer Security\) to encrypt data that is transferred between your gateway appliance and AWS storage\. By default, Storage Gateway uses Amazon S3\-Managed Encryption Keys \(SSE\-S3\) to server\-side encrypt all data it stores in Amazon S3\. You have an option to use the Storage Gateway API to configure the different gateway types to encrypt data stored in the cloud using the AWS Key Management Service \(KMS\)\.
 

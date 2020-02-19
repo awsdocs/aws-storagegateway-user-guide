@@ -26,7 +26,7 @@ For tape drives, Storage Gateway works with the following:
  After your gateway is activated, you can choose to select a different medium changer type\. 
 
 **Important**  
-If your tape gateway uses the Symantec Backup Exec 2014 or NetBackup 7\.x backup software, you must select the AWS\-Gateway\-VTL device type\. For more information on how to change the medium changer after gateway activation for these applications, see [Best Practices for using Symantec Backup products \(NetBackup, Backup Exec\) with the Amazon Web Services \(AWS\) Storage Tape Gateway](http://www.symantec.com/docs/TECH227133) in *Symantec Support*\.
+If your tape gateway uses the Symantec Backup Exec 2014 or NetBackup 7\.x backup software, you must select the AWS\-Gateway\-VTL device type\. For more information on how to change the medium changer after gateway activation for these applications, see [Best Practices for using Veritas Backup products \(NetBackup, Backup Exec\) with the Amazon Web Services \(AWS\) Storage Tape Gateway\-VTL](https://www.veritas.com/support/en_US/article.100014745) in *Symantec Support*\.
 
 **To select a different medium changer type after gateway activation**
 

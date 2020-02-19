@@ -1,6 +1,6 @@
 # Troubleshooting Your Gateway<a name="Troubleshooting-common"></a>
 
-Following, you can find information about troubleshooting issues related to gateways, file shares, volumes, virtual tapes, and snapshots\. The on\-premises gateway troubleshooting information covers gateways deployed on both the VMware ESXi and Microsoft Hyper\-V clients\. The troubleshooting information for file shares applies to the file gateway type\. The troubleshooting information for volumes applies to the volume gateway type\. The troubleshooting information for tapes applies to the tape gateway type\.
+Following, you can find information about troubleshooting issues related to gateways, file shares, volumes, virtual tapes, and snapshots\. The on\-premises gateway troubleshooting information covers gateways deployed on both the VMware ESXi and Microsoft Hyper\-V clients\. The troubleshooting information for file shares applies to the file gateway type\. The troubleshooting information for volumes applies to the volume gateway type\. The troubleshooting information for tapes applies to the tape gateway type\. The troubleshooting information for gateway issues applies to using CloudWatch metrics\. The troubleshooting information for high availability issues covers gateways running on VMware vSphere High Availability \(HA\) platform\.
 
 **Topics**
 + [Troubleshooting On\-Premises Gateway Issues](GatewayTroubleshooting.md)
@@ -10,4 +10,6 @@ Following, you can find information about troubleshooting issues related to gate
 + [Troubleshooting File Share Issues](file-share-issues.md)
 + [Troubleshooting Volume Issues](troubleshoot-volume-issues.md)
 + [Troubleshooting Virtual Tape Issues](Main_TapesIssues-vtl.md)
++ [Troubleshooting File Gateway Issues](troubleshoot-logging-errors.md)
++ [Troubleshooting High Availability Issues](troubleshooting-ha-issues.md)
 + [Best Practices for Recovering Your Data](recover-data-from-gateway.md)

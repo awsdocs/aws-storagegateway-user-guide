@@ -1,12 +1,12 @@
-# Activate Your Hardware Appliance<a name="appliance-activation"></a>
+# Activating Your Hardware Appliance<a name="appliance-activation"></a>
 
 After configuring your IP address, you enter this IP address in the console on the **Hardware** page, as described following\. The activation process validates that your hardware appliance has the appropriate security credentials and registers the appliance to your AWS account\.
 
-AWS Storage Gateway Hardware Appliance is only available in the US and Europe\. You can choose to activate your hardware appliance in any of the supported AWS Regions\. For the supported AWS Regions, see [AWS Storage Gateway Hardware Appliance Regions](http://docs.aws.amazon.com/general/latest/gr/rande.html#sg-hardware-appliance) in the *AWS General Reference*\.
+AWS Storage Gateway Hardware Appliance is only available in the US and Europe\. You can choose to activate your hardware appliance in any of the supported AWS Regions\. For the supported AWS Regions, see [AWS Storage Gateway Hardware Appliance Regions](https://docs.aws.amazon.com/general/latest/gr/sg.html#sg-hardware-appliance) in the *AWS General Reference*\.
 
 **To activate your appliance for the first time or in an AWS Region where you have no gateways deployed**
 
-1. Sign in to the AWS Management Console and open the AWS Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/) with the account credentials to use to activate your hardware\.
+1. Sign in to the AWS Management Console and open the Storage Gateway console at [AWS Storage Gateway Management Console](https://console.aws.amazon.com/storagegateway/home) with the account credentials to use to activate your hardware\.
 
    If this is your first gateway in an AWS Region, you see the splash screen shown following\. After you create a gateway in this AWS Region, this screen no longer displays\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/ApplianceIntoSplash.png)  
@@ -44,7 +44,7 @@ We recommend setting the time zone for your appliance as this determines a stand
 
    ZFS RAID is a software\-based, open\-source file system and logical volume manager\. We recommend using ZFS for most hardware appliance use cases because it offers superior performance and integration compared with MD RAID\. The hardware appliance is specifically tuned for ZFS RAID\. For more information on ZFS RAID, see the [ZFS](https://en.wikipedia.org/wiki/ZFS) Wikipedia page\. 
 
-   If you don't want to accept CDDL license terms, as documented in [CDDL 1\.0](https://opensource.org/licenses/CDDL-1.0) on the Opensource\.org site, we also offer MD RAID\. For more information on MD RAID, see the [mdadm]( https://en.wikipedia.org/wiki/Mdadm) Wikipedia page\. To change the volume manager on your hardware appliance, contact [AWS Support](https://aws.amazon.com/contact-us)\. AWS Support can provide an International Organization for Standardization \(ISO\) standard image, instructions on performing a factory reset of a hardware appliance, and instructions on installing the new ISO image\. 
+   If you don't want to accept CDDL license terms, as documented in [CDDL 1\.0](https://opensource.org/licenses/CDDL-1.0) on the Opensource\.org site, we also offer MD RAID\. For more information on MD RAID, see the [mdadm]( https://en.wikipedia.org/wiki/Mdadm) Wikipedia page\. To change the volume manager on your hardware appliance, contact [AWS Support](http://aws.amazon.com/contact-us)\. AWS Support can provide an International Organization for Standardization \(ISO\) standard image, instructions on performing a factory reset of a hardware appliance, and instructions on installing the new ISO image\. 
 
 1.  Choose **Next** to finish activation\. 
 

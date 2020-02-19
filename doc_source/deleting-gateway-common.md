@@ -16,8 +16,8 @@ You can delete a gateway using the Storage Gateway console or programmatically\.
 The procedure for deleting a gateway is the same for all gateway types\. However, depending on the type of gateway you want to delete and the host the gateway is deployed on, you might have to perform additional tasks to remove resources associated with the gateway\. Removing these resources helps you avoid paying for resources you don't plan to use\. 
 
 **Note**  
-For gateways deployed on a Amazon Elastic Compute Cloud \(Amazon EC2\) instance, the instance continues to exist until you delete it\.  
-For gateways deployed on a virtual machine \(VM\), after you delete your gateway the gateway VM still exists in your virtualization environment\. To remove the VM, use the VMware vSphere client or Microsoft Hyper\-V Manager to connect to the host and remove the VM\. Note that you can't reuse the deleted gateway's VM to activate a new gateway\.
+For gateways deployed on an Amazon EC2 instance, the instance continues to exist until you delete it\.  
+For gateways deployed on a virtual machine \(VM\), after you delete your gateway the gateway VM still exists in your virtualization environment\. To remove the VM, use the VMware vSphere client, Microsoft Hyper\-V Manager, or Linux Kernel\-based Virtual Machine \(KVM\) client to connect to the host and remove the VM\. Note that you can't reuse the deleted gateway's VM to activate a new gateway\.
 
 **To delete a gateway**
 
@@ -25,13 +25,12 @@ For gateways deployed on a virtual machine \(VM\), after you delete your gateway
 
 1. In the navigation pane, choose **Gateways**, and then choose the gateway you want to delete\.
 
-1. On the **Actions** menu, choose **Delete gateway**\.
+1. For **Actions**, choose **Delete gateway**\.
 
 1. 
-**Important**  
-Before you do this step, be sure that there are no applications currently writing to the gateway's volumes\. If you delete the gateway while it is in use, data loss can occur\.
 **Warning**  
-When a gateway is deleted, there is no way to get it back\.
+Before you do this step, be sure that there are no applications currently writing to the gateway's volumes\. If you delete the gateway while it is in use, data loss can occur\.  
+Also, when a gateway is deleted, there is no way to get it back\.
 
    In the confirmation dialog box that appears, select the check box to confirm your deletion\. Make sure the gateway ID listed specifies the gateway you want to delete\. and then choose **Delete**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/delete-gateway.png)

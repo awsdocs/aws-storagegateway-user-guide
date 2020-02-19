@@ -15,10 +15,11 @@ You can find information about the most typical issues you might encounter when 
 + [Throughput from Your Application to a Volume Has Dropped to Zero](#troubleshoot-volume-issues.ThroughputZero)
 + [A Cache Disk in Your Gateway Encounters a Failure](#troubleshoot-volume-issues.CacheDiskFail)
 + [A Volume Snapshot Has PENDING Status Longer Than Expected](#SnapshotTroubleshooting.Pending)
++ [High Availability Health Notifications](#troubleshooting-ha-notifications)
 
 ## The Console Says That Your Volume Is Not Configured<a name="troubleshoot-volume-issues.VolumeNotConfigured"></a>
 
-If the AWS Storage Gateway console indicates that your volume has a status of UPLOAD BUFFER NOT CONFIGURED, add upload buffer capacity to your gateway\. You cannot use a gateway to store your application data if the upload buffer for the gateway is not configured\. For more information, see [To add and configure upload buffer or cache storage ](ManagingLocalStorage-common.md#GatewayWorkingStorageCachedTaskBuffer)\.
+If the AWS Storage Gateway console indicates that your volume has a status of UPLOAD BUFFER NOT CONFIGURED, add upload buffer capacity to your gateway\. You cannot use a gateway to store your application data if the upload buffer for the gateway is not configured\. For more information, see [To add and configure upload buffer or cache storage](ManagingLocalStorage-common.md#GatewayWorkingStorageCachedTaskBuffer)\.
 
 ## The Console Says That Your Volume Is Irrecoverable<a name="troubleshoot-volume-issues.VolumeIrrecoverable"></a>
 
@@ -52,7 +53,7 @@ If you want to verify volume integrity and fix possible errors, and your gateway
 
 ## Your Volume's iSCSI Target Doesn’t Appear in Windows Disk Management Console<a name="troubleshoot-volume-issues.DoesNotAppear"></a>
 
-If your volume's iSCSI target does not show up in the Disk Management Console in Windows, check that you have configured the upload buffer for the gateway\. For more information, see [To add and configure upload buffer or cache storage ](ManagingLocalStorage-common.md#GatewayWorkingStorageCachedTaskBuffer)\.
+If your volume's iSCSI target does not show up in the Disk Management Console in Windows, check that you have configured the upload buffer for the gateway\. For more information, see [To add and configure upload buffer or cache storage](ManagingLocalStorage-common.md#GatewayWorkingStorageCachedTaskBuffer)\.
 
 ## You Want to Change Your Volume's iSCSI Target Name<a name="troubleshoot-volume-issues.ChangeISCSI"></a>
 
@@ -75,7 +76,7 @@ If throughput from your application to a volume has dropped to zero, try the fol
 + If there is no IP address in the **Host IP** box for the volume and the gateway is online\. For example, this could occur if you create a volume associated with an IP address of a network adapter of a gateway that has two or more network adapters\. When you remove or disable the network adapter that the volume is associated with, the IP address might not appear in the **Host IP** box\. To address this issue, delete the volume and then re\-create it preserving its existing data\.
 + Check that the iSCSI initiator your application uses is correctly mapped to the iSCSI target for the storage volume\. For more information about connecting to storage volumes, see [Connecting to Your Volumes to a Windows Client](initiator-connection-common.md#ConfiguringiSCSIClient)\.
 
-You can view the throughput for volumes and create alarms from the Amazon CloudWatch console\. For more information about measuring throughput from your application to a volume, see [Measuring Performance Between Your Application and Gateway](GatewayMetrics-common.md#PerfAppGateway-common)\.
+You can view the throughput for volumes and create alarms from the Amazon CloudWatch console\. For more information about measuring throughput from your application to a volume, see [Measuring Performance Between Your Application and Gateway](monitoring-volume-gateway.md#PerfAppGateway-common)\.
 
 ## A Cache Disk in Your Gateway Encounters a Failure<a name="troubleshoot-volume-issues.CacheDiskFail"></a>
 
@@ -92,3 +93,7 @@ If you use ephemeral disks as cache disks for your gateway or mount your cache d
 If a volume snapshot remains in PENDING state longer than expected, the gateway VM might have crashed unexpectedly or the status of a volume might have changed to PASS THROUGH or IRRECOVERABLE\. If any of these are the case, the snapshot remains in PENDING status and the snapshot does not successfully complete\. In these cases, we recommend that you delete the snapshot\. For more information, see [Deleting a Snapshot](managing-volumes.md#DeletingASnapshot)\.
 
 When the volume returns to AVAILABLE status, create a new snapshot of the volume\. For information about volume status, see [Understanding Volume Statuses and Transitions](managing-volumes.md#StorageVolumeStatuses)\.
+
+## High Availability Health Notifications<a name="troubleshooting-ha-notifications"></a>
+
+When running your gateway on the VMware vSphere High Availability \(HA\) platform, you may receive health notifications\. For more information about health notifications, see [Troubleshooting High Availability Issues](troubleshooting-ha-issues.md)\.

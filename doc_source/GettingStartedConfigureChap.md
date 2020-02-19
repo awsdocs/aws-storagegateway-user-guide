@@ -6,7 +6,7 @@ In AWS Storage Gateway, your iSCSI initiators connect to your volumes as iSCSI t
 
 1. In the AWS Storage Gateway Console, choose **Volumes** and select the volume for which you want to configure CHAP credentials\.
 
-1. On the **Actions** menu, choose **Configure CHAP authentication**\.
+1. For **Actions**, choose **Configure CHAP authentication**\.
 
 1. For **Initiator name**, type the name of your initiator\. The name must be at least 1 character and at most 255 characters long\.
 
@@ -28,7 +28,7 @@ You can add, remove or update CHAP credentials for each user\. To view or edit C
 
 1. In the AWS Storage Gateway Console, choose **Volumes** and select the volume for which you want to add CHAP credentials\.
 
-1. On the **Actions** menu, choose **Configure CHAP authentication**\.
+1. For **Actions**, choose **Configure CHAP authentication**\.
 
 1. In the Configure CHAPS page, provide the **Initiator name**, **Initiator secret**, and **Target secret** in the respective boxes and choose **Save**\.
 
@@ -36,7 +36,7 @@ You can add, remove or update CHAP credentials for each user\. To view or edit C
 
 1. In the AWS Storage Gateway Console, choose **Volumes** and select the volume for which you want to remove CHAP credentials\.
 
-1. On the **Actions** menu, choose **Configure CHAP authentication**\.
+1. For **Actions**, choose **Configure CHAP authentication**\.
 
 1. Click the **X** next to the credentials you want to remove and choose **Save**\.
 
@@ -44,7 +44,7 @@ You can add, remove or update CHAP credentials for each user\. To view or edit C
 
 1. In the AWS Storage Gateway Console, choose **Volumes** and select the volume for which you want to update CHAP\.
 
-1. On the **Actions** menu, choose **Configure CHAP authentication**\.
+1. For **Actions**, choose **Configure CHAP authentication**\.
 
 1. In Configure CHAP credentials page, change the entries for the credentials you to update\.
 

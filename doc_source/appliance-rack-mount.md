@@ -1,4 +1,4 @@
-# Rack\-Mount Your Hardware Appliance and Connect It to Power<a name="appliance-rack-mount"></a>
+# Rack\-Mounting Your Hardware Appliance and Connecting It to Power<a name="appliance-rack-mount"></a>
 
 After you unbox your AWS Storage Gateway Hardware Appliance, follow the instructions contained in the box to rack\-mount the server\. Your appliance has a 1U form factor and fits into a 19\-inch rack to the International Electrotechnical Commission \(IEC\) industry standard, as described on the [19\-inch rack](https://en.wikipedia.org/wiki/19-inch_rack) Wikipedia page\.
 
@@ -31,7 +31,7 @@ The hardware appliance doesn't support VLAN trunking\. Set up the switch port to
 
 After the server boots up, the hardware console appears on the monitor\. The hardware console presents a user interface specific to AWS that you can use to configure initial network parameters\. You configure these parameters to connect the appliance to AWS and open up a support channel for troubleshooting by AWS Support\.
 
-To work with the hardware console, enter text from the keyboard and use the `Up`, `Down`, `Right`, and `Left Arrow` keys to move about the screen in the indicated direction\. Use the `Tab` key to move sequentially forward through items on\-screen\. On some setups, you can use the `Shift+Tab` keystroke to move sequentially backward\. Use the `Enter` key to save selections, or to choose a button on the screen\.
+To work with the hardware console, enter text from the keyboard and use the `Up`, `Down`, `Right`, and `Left Arrow` keys to move about the screen in the indicated direction\. Use the `Tab` key to move forward in order through items on\-screen\. On some setups, you can use the `Shift+Tab` keystroke to move sequentially backward\. Use the `Enter` key to save selections, or to choose a button on the screen\.
 
 **To set a password for the first time**
 
@@ -55,4 +55,4 @@ At this point, you are in the hardware console, shown following\.
 
 **Next Step**
 
-[Configure Network Parameters](appliance-configure-network.md)
+[Configuring Network Parameters](appliance-configure-network.md)

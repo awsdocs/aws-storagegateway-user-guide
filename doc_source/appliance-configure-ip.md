@@ -8,7 +8,7 @@ To assign a static IP address to a gateway installed on your hardware appliance,
 
 1. Enter the localhost **login** password, and then press `Enter`\.
 
-   For File Gateway the default account is `admin` and the default password is `password`\. For Tape Gateway and Volume Gateway the default account is `sguser` the default password is `sgpassword`\.
+   The default account is `admin` and the default password is `password`\.
 
 1. Change the default password\. Choose **Actions** then **Set Local Password** and enter your new credentials in the **Set Local Password** dialog box\.
 

@@ -1,6 +1,6 @@
 # API Reference for AWS Storage Gateway<a name="AWSStorageGatewayAPI"></a>
 
-In addition to using the console, you can use the AWS Storage Gateway API to programmatically configure and manage your gateways\. This section describes the AWS Storage Gateway operations, request signing for authentication and the error handling\. For information about the regions and endpoints available for AWS Storage Gateway, see [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region)\.
+In addition to using the console, you can use the AWS Storage Gateway API to programmatically configure and manage your gateways\. This section describes the AWS Storage Gateway operations, request signing for authentication and the error handling\. For information about the regions and endpoints available for AWS Storage Gateway, see [AWS Storage Gateway Endpoints and Quotas](https://docs.aws.amazon.com/general/latest/gr/sg.html) in the *AWS General Reference*\.
 
 **Note**  
 You can also use the AWS SDKs when developing applications with AWS Storage Gateway\. The AWS SDKs for Java, \.NET, and PHP wrap the underlying AWS Storage Gateway API, simplifying your programming tasks\. For information about downloading the SDK libraries, see [Sample Code Libraries](http://aws.amazon.com/code)\.
@@ -33,7 +33,7 @@ The following are the headers that must include with your POST requests to AWS S
 | --- | --- | 
 | Authorization |  The authorization header contains several of pieces of information about the request that enable AWS Storage Gateway to determine if the request is a valid action for the requester\. The format of this header is as follows \(line breaks added for readability\): <pre>Authorization: AWS4-HMAC_SHA456 <br />Credentials=YourAccessKey/yyymmdd/region/storagegateway/aws4_request, <br />SignedHeaders=content-type;host;x-amz-date;x-amz-target, <br />Signature=CalculatedSignature</pre> In the preceding syntax, you specify *YourAccessKey*, the year, month, and day \(*yyyymmdd*\), the *region*, and the *CalculatedSignature*\. The format of the authorization header is dictated by the requirements of the AWS V4 Signing process\. The details of signing are discussed in the topic [Signing Requests](#AWSStorageGatewaySigningRequests)\.  | 
 | Content\-Type |  Use `application/x-amz-json-1.1` as the content type for all requests to AWS Storage Gateway\. <pre>Content-Type: application/x-amz-json-1.1</pre>  | 
-| Host |  Use the host header to specify the AWS Storage Gateway endpoint where you send your request\. For example, `storagegateway.us-east-2.amazonaws.com` is the endpoint for the US East \(Ohio\) region\. For more information about the endpoints available for AWS Storage Gateway, see [Regions and Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region)\. <pre>Host: storagegateway.region.amazonaws.com</pre>  | 
+| Host |  Use the host header to specify the AWS Storage Gateway endpoint where you send your request\. For example, `storagegateway.us-east-2.amazonaws.com` is the endpoint for the US East \(Ohio\) region\. For more information about the endpoints available for AWS Storage Gateway, see [AWS Storage Gateway Endpoints and Quotas](https://docs.aws.amazon.com/general/latest/gr/sg.html) in the *AWS General Reference*\. <pre>Host: storagegateway.region.amazonaws.com</pre>  | 
 | x\-amz\-date |  You must provide the time stamp in either the HTTP `Date` header or the AWS `x-amz-date` header\. \(Some HTTP client libraries don't let you set the `Date` header\.\) When an `x-amz-date` header is present, the AWS Storage Gateway ignores any `Date` header during the request authentication\. The `x-amz-date` format must be ISO8601 Basic in the YYYYMMDD'T'HHMMSS'Z' format\. If both the `Date` and `x-amz-date` header are used, the format of the Date header does not have to be ISO8601\. <pre>x-amz-date: YYYYMMDD'T'HHMMSS'Z'</pre>  | 
 | x\-amz\-target |  This header specifies the version of the API and the operation that you are requesting\. The target header values are formed by concatenating the API version with the API name and are in the following format\. <pre>x-amz-target: StorageGateway_APIversion.operationName</pre> The *operationName* value \(e\.g\. "ActivateGateway"\) can be found from the API list, [API Reference for AWS Storage Gateway](#AWSStorageGatewayAPI)\.  | 
 
@@ -43,20 +43,20 @@ AWS Storage Gateway requires that you authenticate every request you send by sig
 
 After receiving your request, AWS Storage Gateway recalculates the signature using the same hash function and input that you used to sign the request\. If the resulting signature matches the signature in the request, AWS Storage Gateway processes the request\. Otherwise, the request is rejected\. 
 
-AWS Storage Gateway supports authentication using [AWS Signature Version 4](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html)\. The process for calculating a signature can be broken into three tasks:
-+ <a name="SignatureCalculationTask1"></a><a name="SignatureCalculationTask1.title"></a>[Task 1: Create a Canonical Request](http://docs.aws.amazon.com/general/latest/gr/sigv4-create-canonical-request.html)
+AWS Storage Gateway supports authentication using [AWS Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html)\. The process for calculating a signature can be broken into three tasks:
++ <a name="SignatureCalculationTask1"></a><a name="SignatureCalculationTask1.title"></a>[Task 1: Create a Canonical Request](https://docs.aws.amazon.com/general/latest/gr/sigv4-create-canonical-request.html)
 
   Rearrange your HTTP request into a canonical format\. Using a canonical form is necessary because AWS Storage Gateway uses the same canonical form when it recalculates a signature to compare with the one you sent\. 
-+ <a name="SignatureCalculationTask2"></a><a name="SignatureCalculationTask2.title"></a>[Task 2: Create a String to Sign](http://docs.aws.amazon.com/general/latest/gr/sigv4-create-string-to-sign.html)
++ <a name="SignatureCalculationTask2"></a><a name="SignatureCalculationTask2.title"></a>[Task 2: Create a String to Sign](https://docs.aws.amazon.com/general/latest/gr/sigv4-create-string-to-sign.html)
 
   Create a string that you will use as one of the input values to your cryptographic hash function\. The string, called the *string to sign*, is a concatenation of the name of the hash algorithm, the request date, a *credential scope* string, and the canonicalized request from the previous task\. The *credential scope* string itself is a concatenation of date, region, and service information\.
-+ <a name="SignatureCalculationTask3"></a><a name="SignatureCalculationTask3.title"></a>[Task 3: Create a Signature](http://docs.aws.amazon.com/general/latest/gr/sigv4-calculate-signature.html)
++ <a name="SignatureCalculationTask3"></a><a name="SignatureCalculationTask3.title"></a>[Task 3: Create a Signature](https://docs.aws.amazon.com/general/latest/gr/sigv4-calculate-signature.html)
 
   Create a signature for your request by using a cryptographic hash function that accepts two input strings: your *string to sign* and a *derived key*\. The *derived key* is calculated by starting with your secret access key and using the *credential scope* string to create a series of Hash\-based Message Authentication Codes \(HMACs\)\.
 
 ### Example Signature Calculation<a name="X"></a>
 
-The following example walks you through the details of creating a signature for [ListGateways](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_ListGateways.html)\. The example could be used as a reference to check your signature calculation method\. Other reference calculations are included in the [Signature Version 4 Test Suite](http://docs.aws.amazon.com/general/latest/gr/signature-v4-test-suite.html) of the Amazon Web Services Glossary\.
+The following example walks you through the details of creating a signature for [ListGateways](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_ListGateways.html)\. The example could be used as a reference to check your signature calculation method\. Other reference calculations are included in the [Signature Version 4 Test Suite](https://docs.aws.amazon.com/general/latest/gr/signature-v4-test-suite.html) of the Amazon Web Services Glossary\.
 
 The example assumes the following:
 + The time stamp of the request is "Mon, 10 Sep 2012 00:00:00" GMT\.
@@ -74,7 +74,7 @@ x-amz-target: StorageGateway_20120630.ListGateways
 {}
 ```
 
-The canonical form of the request calculated for [[Task 1: Create a Canonical Request](http://docs.aws.amazon.com/general/latest/gr/sigv4-create-canonical-request.html)](#SignatureCalculationTask1) is:
+The canonical form of the request calculated for [[Task 1: Create a Canonical Request](https://docs.aws.amazon.com/general/latest/gr/sigv4-create-canonical-request.html)](#SignatureCalculationTask1) is:
 
 ```
 POST
@@ -91,7 +91,7 @@ content-type;host;x-amz-date;x-amz-target
 
 The last line of the canonical request is the hash of the request body\. Also, note the empty third line in the canonical request\. This is because there are no query parameters for this API \(or any AWS Storage Gateway APIs\)\. 
 
-The *string to sign* for [[Task 2: Create a String to Sign](http://docs.aws.amazon.com/general/latest/gr/sigv4-create-string-to-sign.html)](#SignatureCalculationTask2) is:
+The *string to sign* for [[Task 2: Create a String to Sign](https://docs.aws.amazon.com/general/latest/gr/sigv4-create-string-to-sign.html)](#SignatureCalculationTask2) is:
 
 ```
 AWS4-HMAC-SHA256
@@ -102,7 +102,7 @@ AWS4-HMAC-SHA256
 
 The first line of the *string to sign* is the algorithm, the second line is the time stamp, the third line is the *credential scope*, and the last line is a hash of the canonical request from Task 1\.
 
-For [[Task 3: Create a Signature](http://docs.aws.amazon.com/general/latest/gr/sigv4-calculate-signature.html)](#SignatureCalculationTask3), the *derived key* can be represented as:
+For [[Task 3: Create a Signature](https://docs.aws.amazon.com/general/latest/gr/sigv4-calculate-signature.html)](#SignatureCalculationTask3), the *derived key* can be represented as:
 
 ```
 derived key = HMAC(HMAC(HMAC(HMAC("AWS4" + YourSecretAccessKey,"20120910"),"us-east-2"),"storagegateway"),"aws4_request")

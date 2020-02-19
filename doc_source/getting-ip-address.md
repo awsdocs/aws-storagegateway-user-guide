@@ -5,6 +5,7 @@ After you choose a host and deploy your gateway VM, you connect and activate you
 For gateways deployed on\-premises, you can also get the IP address from your hypervisor\. For Amazon EC2 gateways, you can also get the IP address of your Amazon EC2 instance from the Amazon EC2 Management Console\. To find how to get your gateway's IP address, see one of the following:
 + VMware host: [Accessing the Gateway Local Console with VMware ESXi](accessing-local-console.md#MaintenanceConsoleWindowVMware-common)
 + HyperV host: [Access the Gateway Local Console with Microsoft Hyper\-V](accessing-local-console.md#MaintenanceConsoleWindowHyperV-common)
++ Linux Kernel\-based Virtual Machine \(KVM\) host: [Accessing the Gateway Local Console with Linux KVM](accessing-local-console.md#MaintenanceConsoleWindowKVM-common)
 + EC2 host: [Getting an IP Address from an Amazon EC2 Host](#get-ip-from-ec2)
 
 When you locate the IP address, take note of it\. Then return to the AWS Storage Gateway console and type the IP address into the console\.

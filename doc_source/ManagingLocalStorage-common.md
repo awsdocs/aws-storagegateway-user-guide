@@ -7,7 +7,7 @@ The gateway virtual machine \(VM\) uses the local disks that you allocate on\-pr
 + [Determining the Size of Upload Buffer to Allocate](#CachedLocalDiskUploadBufferSizing-common)
 + [Determining the Size of Cache Storage to Allocate](#CachedLocalDiskCacheSizing-common)
 + [Adding an Upload Buffer or Cache Storage](#ConfiguringLocalDiskStorage)
-+ [Using Ephemeral Storage With EC2 Gateways](#ephemral-disk-cache)
++ [Using Ephemeral Storage With EC2 Gateways](#ephemeral-disk-cache)
 
 ## Deciding the Amount of Local Disk Storage<a name="decide-local-disks-and-sizes"></a>
 
@@ -48,7 +48,9 @@ This rate refers to the application throughput, the rate at which your on\-premi
 **Rate of outgoing data**  
 This rate refers to the network throughput, the rate at which your gateway is able to upload data to AWS\. This rate depends on your network speed, utilization, and whether you've enabled bandwidth throttling\. This rate should be adjusted for compression\. When uploading data to AWS, the gateway applies data compression where possible\. For example, if your application data is text\-only, you might get an effective compression ratio of about 2:1\. However, if you are writing videos, the gateway might not be able to achieve any data compression and might require more upload buffer for the gateway\.
 
-We strongly recommend that you allocate at least 150 GiB of upload buffer space if either of the following is true: Your incoming rate is higher than the outgoing rate, The formula returns a value less than 150 GiB\.
+We strongly recommend that you allocate at least 150 GiB of upload buffer space if either of the following is true:
++ Your incoming rate is higher than the outgoing rate\.
++ The formula returns a value less than 150 GiB\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/WorkingStorageFormula-diagram.png)
 
@@ -99,13 +101,16 @@ For stored volumes, only the upload buffer is displayed because stored volumes h
 
 1. Choose **Save** to save your configuration settings\.
 
-## Using Ephemeral Storage With EC2 Gateways<a name="ephemral-disk-cache"></a>
+## Using Ephemeral Storage With EC2 Gateways<a name="ephemeral-disk-cache"></a>
 
 This section describes steps you need to take to prevent data loss when you select an ephemeral disk as storage for your gateway's cache\.
 
 Ephemeral disks provide temporary block\-level storage for your Amazon EC2 instance\. Ephemeral disks are ideal for temporary storage of data that changes frequently, such as data in a gateway's upload buffer or cache storage\. When you launch your gateway with an Amazon EC2 Amazon Machine Image, and the instance type you select supports ephemeral storage, the disks are listed automatically and you can select one of the disks to store data in your gateway's cache\. For more information, see [Amazon EC2 Instance Store](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 Application writes to the disks are stored in the cache synchronously, and asynchronously uploaded to durable storage in Amazon S3\. If the data stored in the ephemeral storage is lost because an Amazon EC2 instance stopped before data upload was completed, the data that is still in the cache and has not been uploaded to Amazon S3 can be lost\. You can prevent such data loss by following the steps before you restart or stop the EC2 instance that hosts your gateway\.
+
+**Note**  
+If you are using ephemeral storage and you stop and start your gateway, the gateway will be permanently offline\. This happens because the physical storage disk is replaced\. There is no work around for this issue so you'd have to delete the gateway and activate a new one on a new Amazon EC2 instance\.
 
 These steps in this following procedure are specific for file gateways\.
 

@@ -23,7 +23,7 @@ The following procedure shows you how to change a gateway's bandwidth throttling
 
 1. In the navigation pane, choose **Gateways**, and then choose the gateway you want to manage\.
 
-1. On the **Actions** menu, choose **Edit Bandwidth Rate Limit**\.
+1. For **Actions**, choose **Edit Bandwidth Rate Limit**\.
 
 1. In the **Edit Rate Limits** dialog box, type new limit values, and then choose **Save**\. Your changes appear in the **Details** tab for your gateway\.
 
@@ -32,7 +32,7 @@ The following procedure shows you how to change a gateway's bandwidth throttling
 By updating bandwidth rate limits programmatically, you can adjust limits automatically over a period of time—for example, by using scheduled tasks\. The following example demonstrates how to update a gateway's bandwidth rate limits using the AWS SDK for Java\. To use the example code, you should be familiar with running a Java console application\. For more information, see [Getting Started](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/java-dg-setup.html) in the *AWS SDK for Java Developer Guide*\. 
 
 **Example : Updating Gateway Bandwidth Limits Using the AWS SDK for Java**  
-The following Java code example updates a gateway's bandwidth rate limits\. You need to update the code and provide the service endpoint, your gateway Amazon Resource Name \(ARN\), and the upload and download limits\. For a list of AWS service endpoints you can use with AWS Storage Gateway, see [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region) in the *AWS General Reference*\.  
+The following Java code example updates a gateway's bandwidth rate limits\. You need to update the code and provide the service endpoint, your gateway Amazon Resource Name \(ARN\), and the upload and download limits\. For a list of AWS service endpoints you can use with AWS Storage Gateway, see [AWS Storage Gateway Endpoints and Quotas](https://docs.aws.amazon.com/general/latest/gr/sg.html) in the *AWS General Reference*\.  
 
 ```
 import java.io.IOException;
@@ -98,7 +98,7 @@ public class UpdateBandwidthExample {
 By updating bandwidth rate limits programmatically, you can adjust limits automatically over a period of time—for example, by using scheduled tasks\. The following example demonstrates how to update a gateway's bandwidth rate limits by using the AWS Software Development Kit \(SDK\) for \.NET\. To use the example code, you should be familiar with running a \.NET console application\. For more information, see [Getting Started](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/net-dg-setup.html) in the *AWS SDK for \.NET Developer Guide*\. 
 
 **Example : Updating Gateway Bandwidth Limits by Using the AWS SDK for \.NET**  
-The following C\# code example updates a gateway's bandwidth rate limits\. You need to update the code and provide the service endpoint, your gateway Amazon Resource Name \(ARN\), and the upload and download limits\. For a list of AWS service endpoints you can use with AWS Storage Gateway, see [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region) in the *AWS General Reference*\.  
+The following C\# code example updates a gateway's bandwidth rate limits\. You need to update the code and provide the service endpoint, your gateway Amazon Resource Name \(ARN\), and the upload and download limits\. For a list of AWS service endpoints you can use with AWS Storage Gateway, see [AWS Storage Gateway Endpoints and Quotas](https://docs.aws.amazon.com/general/latest/gr/sg.html) in the *AWS General Reference*\.  
 
 ```
 using System;
@@ -177,9 +177,10 @@ The following PowerShell script example updates a gateway's bandwidth rate limit
     
 .NOTES
     PREREQUISITES:
-    1) AWS Tools for PowerShell from http://aws.amazon.com/powershell/
+    1) AWS Tools for PowerShell from https://aws.amazon.com/powershell/
     2) Credentials and region stored in session using Initialize-AWSDefault.
-    For more info see, http://docs.aws.amazon.com/powershell/latest/userguide/specifying-your-aws-credentials.html
+    For more info, see https://docs.aws.amazon.com/powershell/latest/userguide/specifying-your-aws-credentials.html
+    
 
 .EXAMPLE
     powershell.exe .\SG_UpdateBandwidth.ps1 

@@ -13,7 +13,11 @@ Use the following procedure to create an NFS file share\.
 
 1. For **Access objects using**, choose **Network File System\(NFS\)**\.
 
-1. For **Gateway**, choose your file gateway from the list and choose **Next**\.   
+1. For **Gateway**, choose your file gateway from the list\.
+
+1. \(Optional\) In the **Add tags** section, enter a key and value to add tags to your file share\. A tag is a case\-sensitive key\-value pair that helps you manage, filter, and search for your file share\. 
+
+1.  choose **Next**\.   
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/create-file-share-2.png)
 
 1. For **Storage class for new objects**, choose a storage class to use for new objects created in your Amazon S3 bucket:

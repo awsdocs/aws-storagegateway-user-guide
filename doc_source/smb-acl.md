@@ -25,11 +25,15 @@ Take the following steps to enable Windows ACLs on a new SMB file share\.
 
 1. Create an SMB file share\. For more information, see [Creating a File Share](GettingStartedCreateFileShare.md)\. 
 
-1. Use the [UpdateSMBFileShare](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_UpdateSMBFileShare.html) API operation to enable options for ACLs as follows:
+1. Enable Windows ACL on the file share from the Storage Gateway console\.
 
-   1. Use the [SmbAclEnabled](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_CreateSMBFileShare.html#StorageGateway-CreateSMBFileShare-request-SMBACLEnabled) option in the Storage Gateway API to enable Windows ACLs\. That is, set `SmbAclEnabled` to **true**\. 
+   To use the Storage Gateway Console, do the following:
 
-   1. \(Optional\) Add an admin user to the [AdminUsersList](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_CreateSMBFileShare.html#StorageGateway-CreateSMBFileShare-request-AdminUserList), if you want the admin user to have privileges to update ACLs on all files and folders in the file share\.
+   1. Choose the file share and choose **Edit file share**\.
+
+   1. For the **File/directory access controlled by** option, choose **Windows Access Control List**\.
+
+1. \(Optional\) Add an admin user to the [AdminUsersList](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_CreateSMBFileShare.html#StorageGateway-CreateSMBFileShare-request-AdminUserList), if you want the admin user to have privileges to update ACLs on all files and folders in the file share\.
 
 1. Update the ACLs for the parent folders under the root folder\. To do this, use Windows File Explorer to configure the ACLs on the folders in the SMB file share\.
 **Note**  
@@ -47,11 +51,11 @@ If you enable inheritance and update the permissions recursively, Storage Gatewa
 
 Take the following steps to enable Windows ACLs on an existing SMB file share that has POSIX permissions\.
 
-**To enable Windows ACLs on an existing SMB file share**
+**To enable Windows ACLs on an existing SMB file share using the Storage Gateway Console**
 
-1. Call the [UpdateSMBFileShare](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_UpdateSMBFileShare.html) API operation on an existing SMB file share and set the [SmbAclEnabled](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_CreateSMBFileShare.html#StorageGateway-CreateSMBFileShare-request-SMBACLEnabled) option to `true`\.
+1. Choose the file share and choose **Edit file share**\.
 
-1. Update the root ACL\. To do this, use Windows File Explorer to configure the ACLs on the folders in the SMB file share\.
+1. For the **File/directory access controlled by** option, choose **Windows Access Control List**\.
 
 1. Enable inheritance as appropriate\.
 **Note**  
@@ -59,9 +63,9 @@ We don't recommend setting the ACLs at the root level, because if you do this an
 
 If you enable inheritance and update the permissions recursively, Storage Gateway updates all the objects in the S3 bucket\. Depending on the number of objects in the bucket, the update can take a while to complete\. 
 
-## Limits on Using Windows ACLs<a name="acl-limits"></a>
+## Limitations When Using Windows ACLs<a name="acl-limits"></a>
 
-Keep the following limits in mind when using Windows ACLs to control access to SMB file shares:
+Keep the following limitations in mind when using Windows ACLs to control access to SMB file shares:
 + Windows ACLs are only supported on file shares that are enabled for Active Directory when you use Windows SMB clients to access the file shares\.
 + File gateways support a maximum of 10 ACL entries for each file and directory\.
 + File gateways don't support `Audit` and `Alarm` entries, which are system access\-control list \(SACL\) entries\. File gateways support `Allow` and `Deny` entries, which are discretionary access control list \(DACL\) entries\. 

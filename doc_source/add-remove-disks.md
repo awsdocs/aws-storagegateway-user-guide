@@ -34,3 +34,13 @@ Using the following procedure, you can remove a disk from your gateway hosted on
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/hyperv-vm-settings14.png)
 
 1. Choose **OK** to apply the change\.
+
+## Removing a Disk from a Gateway Hosted on Linux KVM<a name="remove-disk-KVM"></a>
+
+To detach a disk from your gateway hosted on Linux Kernel\-based Virtual Machine \(KVM\) hypervisor, you can use a `virsh` command similar to the one following\. 
+
+```
+$ virsh detach-disk domain_name /device/path
+```
+
+For more details about managing KVM disks, see documentation of your Linux distribution\.

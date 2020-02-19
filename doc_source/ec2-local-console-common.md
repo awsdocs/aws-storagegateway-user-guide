@@ -11,7 +11,7 @@ Some maintenance tasks require that you log in to the local console when running
 
 ## Logging In to Your Amazon EC2 Gateway Local Console<a name="EC2_MaintenanceConsoleWindow-common"></a>
 
-You can connect to your Amazon EC2 instance by using a Secure Shell \(SSH\) client\. For detailed information, see [Connect to Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide//AccessingInstances.html) in the *Amazon EC2 User Guide*\. To connect this way, you will need the SSH key pair you specified when you launched the instance\. For information about Amazon EC2 key pairs, see [Amazon EC2 Key Pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide//ec2-key-pairs.html) in the *Amazon EC2 User Guide\.*<a name="EC2_MaintenanceConsoleWindowMenu-common"></a>
+You can connect to your Amazon EC2 instance by using a Secure Shell \(SSH\) client\. For detailed information, see [Connect to Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstances.html) in the *Amazon EC2 User Guide*\. To connect this way, you will need the SSH key pair you specified when you launched the instance\. For information about Amazon EC2 key pairs, see [Amazon EC2 Key Pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the *Amazon EC2 User Guide\.*<a name="EC2_MaintenanceConsoleWindowMenu-common"></a>
 
 **To log in to the gateway local console**
 
@@ -32,9 +32,9 @@ AWS Storage Gateway supports the configuration of a Socket Secure version 5 \(SO
 **Note**  
 The only proxy configuration AWS Storage Gateway supports is SOCKS5\.
 
-If your gateway must use a proxy server to communicate to the Internet, then you need to configure the SOCKS proxy settings for your gateway\. You do this by specifying an IP address and port number for the host running your proxy\. After you do so, AWS Storage Gateway will route all HyperText Transfer Protocol Secure \(HTTPS\) traffic through your proxy server\. 
+If your gateway must use a proxy server to communicate to the internet, then you need to configure the SOCKS proxy settings for your gateway\. You do this by specifying an IP address and port number for the host running your proxy\. After you do so, AWS Storage Gateway will route all HyperText Transfer Protocol Secure \(HTTPS\) traffic through your proxy server\. 
 
-**To route your gateway Internet traffic through a local proxy server**
+**To route your gateway internet traffic through a local proxy server**
 
 1. Log in to your gateway's local console\. For instructions, see [Logging In to Your Amazon EC2 Gateway Local Console](#EC2_MaintenanceConsoleWindow-common)\.
 
@@ -49,7 +49,7 @@ If your gateway must use a proxy server to communicate to the Internet, then you
 
 You can use your gateway's local console to test your Internet connection\. This test can be useful when you are troubleshooting network issues with your gateway\.
 
-**To test your gateway's connection to the Internet**
+**To test your gateway's connection to the internet**
 
 1. Log in to your gateway's local console\. For instructions, see [Logging In to Your Amazon EC2 Gateway Local Console](#EC2_MaintenanceConsoleWindow-common)\.
 
@@ -58,7 +58,7 @@ You can use your gateway's local console to test your Internet connection\. This
 
    The console displays the available regions\. 
 
-1. Select the region you want to test\. For example, us\-east\-2\. For supported AWS Regions and a list of AWS service endpoints you can use with Storage Gateway, see [Regions and Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region) in the *AWS General Reference*\.
+1. Select the region you want to test\. For example, us\-east\-2\. For supported AWS Regions and a list of AWS service endpoints you can use with Storage Gateway, see [AWS Storage Gateway Endpoints and Quotas](https://docs.aws.amazon.com/general/latest/gr/sg.html) in the *AWS General Reference*\.
 
    Each endpoint in the region you select displays either a **\[PASSED\]** or **\[FAILED\]** message, as shown following\.    
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/ec2-local-console-common.html)

@@ -26,8 +26,11 @@ Find details on how to configure these settings following\.
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/security-strategy.png)
 
 1. For **Security level**, choose one of the following:
-   + **Enforce encryption** – if you choose this option, file gateway only allows connections from SMBv3 clients that have encryption enabled\. This option is highly recommended for environments that handle sensitive data\. 
-   + **Enforce signing** – if you choose this option, file gateway only allows connections from SMBv2 or SMBv3 clients that have signing enabled\. 
+**Note**  
+This setting is called SMBSecurityStrategy in the API Reference\.  
+A higher security level can affect performance\.
+   + **Enforce encryption** – if you choose this option, file gateway only allows connections from SMBv3 clients that have encryption enabled\. This option is highly recommended for environments that handle sensitive data\. This option works with SMB clients on Microsoft Windows 8, Windows Server 2012, or newer\. 
+   + **Enforce signing** – if you choose this option, file gateway only allows connections from SMBv2 or SMBv3 clients that have signing enabled\. This option works with SMB clients on Microsoft Windows Vista, Windows Server 2008, or newer\. 
    + **Client negotiated** – if you choose this option, requests are established based on what is negotiated by the client\. This option is recommended when you want to maximize compatibility across different clients in your environment\.
 **Note**  
 For gateways activated before June 20, 2019, the default security level is **Client negotiated**\.  
@@ -42,13 +45,15 @@ For gateways activated on June 20, 2019 and later, the default security level is
 1. For **Actions**, choose **Edit SMB settings**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/smb-join-domain.png)
 
-1. For Microsoft Active Directory authentication, choose **Join domain**\. You can join a domain by using its IP address or its organizational unit\. An *organizational unit* is an Active Directory subdivision that can hold users, groups, computers, and other organizational units\.
+1. In the **Active Directory settings** section, for **Domain name**, provide the domain that you want the gateway to join\. You can join a domain by using its IP address or its organizational unit\. An *organizational unit* is an Active Directory subdivision that can hold users, groups, computers, and other organizational units\.
 **Note**  
 If your gateway can't join an Active Directory directory, try joining with the directory's IP address by using the [JoinDomain](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_JoinDomain.html) API operation\.
+**Note**  
+**Active Directory status** shows **Detached** when a gateway has never joined a domain\.
 
 1. For **Domain name**, enter your fully qualified domain name\.
 **Note**  
-You can use the [AWS Directory Service](https://aws.amazon.com/directoryservice/) to create a hosted Microsoft Active Directory domain service in the AWS Cloud\.
+You can use the [AWS Directory Service](http://aws.amazon.com/directoryservice/) to create a hosted Microsoft Active Directory domain service in the AWS Cloud\.
 
 1. For **Domain user**, enter your account name\. Your account must be able to join a server to a domain\.
 
@@ -56,7 +61,7 @@ You can use the [AWS Directory Service](https://aws.amazon.com/directoryservice/
 
 1. For **Organizational unit**, enter your organizational unit\.
 
-1. For **Domain controllers**, enter a comma\-separated list of Internet Protocol version 4 \(IPv4\) addresses, NetBios names, or hostnames of your domain server\.
+1. For **Domain controllers**, enter a comma\-separated list of Internet Protocol version 4 \(IPv4\) addresses, NetBIOS names, or hostnames of your domain server\.
 
 **To configure your SMB file share for guest access**
 
@@ -114,6 +119,8 @@ In the next procedure, you create an SMB file share with either Microsoft Active
    + Choose **Enable requester pays** if you are using this file share on a bucket that requires the requester or reader instead of bucket owner to pay for access charges\. For more information, see [Requester Pays Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html)\.
 
 1. For **Access to your bucket**, choose the AWS Identity and Access Management \(IAM\) role that you want your gateway to use to access your Amazon S3 bucket\. This role allows the gateway to access your S3 bucket\. A file gateway can create a new IAM role and access policy on your behalf\. Or, if you have an IAM role you want to use, you can specify it in the **IAM role** box and set up the access policy manually\. For more information, see [Granting Access to an Amazon S3 Bucket](managing-gateway-file.md#grant-access-s3)\. For information about IAM roles, see [IAM Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) in the *IAM User Guide*\.
+
+1. \(Optional\) In the **Add tags** section, enter a key and value to add tags to your file share\. A tag is a case\-sensitive key\-value pair that helps you manage, filter, and search for your file share\. 
 
 1. Choose **Next** to review configuration settings for your SMB file share, as shown in the figure following\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/gateway-settings-review-db.png)  

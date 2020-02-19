@@ -59,13 +59,13 @@ If you can't upload files into your Amazon S3 bucket, do the following:
 
 If you change the default encryption and make SSE\-KMS \(server\-side encryption with AWS KMS–managed keys\) the default for your S3 bucket, objects that a file gateway stores in the bucket are not encrypted with SSE\-KMS\. By default, a file gateway uses server\-side encryption managed with Amazon S3 \(SSE\-S3\) when it writes data to an Amazon S3 bucket\. Changing the default won't automatically change your encryption\.
 
-To change the encryption to use SSE\-KMS with your own AWS KMS key, you must enable SSE\-KMS encryption\. To do so, you provide the Amazon Resource Name \(ARN\) of the KMS key when you create your file share\. You can also update KMS settings for your file share by using the `UpdateNFSFileShare` or `UpdateSMBFileShare` API operation\. This update applies to objects stored in the Amazon S3 buckets after the update\. For more information, see [Encrypting Your Data Using AWS Key Management Service](encryption.md)\.
+To change the encryption to use SSE\-KMS with your own AWS KMS key, you must enable SSE\-KMS encryption\. To do so, you provide the Amazon Resource Name \(ARN\) of the KMS key when you create your file share\. You can also update KMS settings for your file share by using the `UpdateNFSFileShare` or `UpdateSMBFileShare` API operation\. This update applies to objects stored in the Amazon S3 buckets after the update\. For more information, see [Data Encryption Using AWS KMS](encryption.md)\.
 
 ## Object Versioning Might Affect What You See in Your File System<a name="swg-object-versioning"></a>
 
 If your Amazon S3 bucket has objects written to it by another client, your view of the S3 bucket might not be up\-to\-date as a result of S3 bucket object versioning\. You should always refresh your cache before examining files of interest\.
 
-*Object versioning *is an optional S3 bucket feature that helps protect data by storing multiple copies of the same\-named object\. Each copy has a separate ID value, for example `file1.jpg`: `ID="xxx"` and `file1.jpg`: `ID="yyy"`\. The number of identically named objects and their lifetimes is controlled by S3 lifecycle policies\. For more details on these S3 concepts, see [Using Versioning](url-s3-dev;Versioning.html) and [Object Lifecycle Management](url-s3-dev;object-lifecycle-mgmt.html) in the *Amazon S3 Developer Guide\. * 
+*Object versioning *is an optional S3 bucket feature that helps protect data by storing multiple copies of the same\-named object\. Each copy has a separate ID value, for example `file1.jpg`: `ID="xxx"` and `file1.jpg`: `ID="yyy"`\. The number of identically named objects and their lifetimes is controlled by S3 lifecycle policies\. For more details on these S3 concepts, see [Using Versioning](https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html) and [Object Lifecycle Management](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html) in the *Amazon S3 Developer Guide\. * 
 
 When you delete a versioned object, that object is flagged with a delete marker but retained\. Only an S3 bucket owner can permanently delete an object with versioning turned on\.
 
@@ -87,6 +87,6 @@ To do this, first test the permissions on a Microsoft Windows file server or a l
 
 ## Your Gateway Performance Declined After You Performed a Recursive Operation<a name="recursive-operation-issues"></a>
 
-In some cases, you might perform a recursive operation, such as renaming a directory or enabling inheritance for an ACL, and force it down the tree\. If you do this, file gateway recursively applies the operation to all objects in the file share\. 
+In some cases, you might perform a recursive operation, such as renaming a directory or enabling inheritance for an ACL, and force it down the tree\. If you do this, your file gateway recursively applies the operation to all objects in the file share\. 
 
-For example, suppose that you apply inheritance to existing object in an Amazon S3 bucket\. file gateway recursively applies inheritance to all objects in the bucket\. Such operations can cause your gateway performance to decline\.
+For example, suppose that you apply inheritance to existing objects in an Amazon S3 bucket\. Your file gateway recursively applies inheritance to all objects in the bucket\. Such operations can cause your gateway performance to decline\.

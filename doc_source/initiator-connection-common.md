@@ -30,7 +30,7 @@ Each type of gateway can connect to iSCSI devices, and you can customize those c
 A volume gateway exposes volumes you have created for the gateway as iSCSI targets\. For more information, see [Connecting Your Volumes to Your Client](GettingStarted-use-volumes.md#GettingStartedAccessVolumes)\.
 
 **Note**  
-To connect to your volume target, your gateway must have an upload buffer configured\. If an upload buffer is not configured for your gateway, then the status of your volumes is displayed as UPLOAD BUFFER NOT CONFIGURED\. To configure an upload buffer for a gateway in a stored volumes setup, see [To add and configure upload buffer or cache storage ](ManagingLocalStorage-common.md#GatewayWorkingStorageCachedTaskBuffer)\. To configure an upload buffer for a gateway in a cached volumes setup, see [To add and configure upload buffer or cache storage ](ManagingLocalStorage-common.md#GatewayWorkingStorageCachedTaskBuffer)\. 
+To connect to your volume target, your gateway must have an upload buffer configured\. If an upload buffer is not configured for your gateway, then the status of your volumes is displayed as UPLOAD BUFFER NOT CONFIGURED\. To configure an upload buffer for a gateway in a stored volumes setup, see [To add and configure upload buffer or cache storage](ManagingLocalStorage-common.md#GatewayWorkingStorageCachedTaskBuffer)\. To configure an upload buffer for a gateway in a cached volumes setup, see [To add and configure upload buffer or cache storage](ManagingLocalStorage-common.md#GatewayWorkingStorageCachedTaskBuffer)\. 
 
 The following diagram highlights the iSCSI target in the larger picture of the AWS Storage Gateway architecture\. For more information, see [How AWS Storage Gateway Works \(Architecture\)](StorageGatewayConcepts.md)\.
 
@@ -217,7 +217,7 @@ When using Red Hat Enterprise Linux \(RHEL\), you use the iscsi\-initiator\-util
 
    Note that you need to specify the correct *\[GATEWAY\_IP\]* and IQN in the connect command\.
 **Warning**  
-For gateways that are deployed on an Amazon EC2 instance, accessing the gateway over a public Internet connection is not supported\. The elastic IP address of the Amazon EC2 instance cannot be used as the target address\. 
+For gateways that are deployed on an Amazon EC2 instance, accessing the gateway over a public internet connection is not supported\. The elastic IP address of the Amazon EC2 instance cannot be used as the target address\. 
 
    ```
    sudo /sbin/iscsiadm --mode node --targetname iqn.1997-05.com.amazon:[ISCSI_TARGET_NAME] --portal [GATEWAY_IP]:3260,1 --login
@@ -408,7 +408,7 @@ In this procedure, you specify two secret keys that are used to read and write t
 
 1. On the AWS Storage Gateway console, choose **Volumes** in the navigation pane\.
 
-1. On the **Actions** menu, choose **Configure CHAP Authentication**\.
+1. For **Actions**, choose **Configure CHAP Authentication**\.
 
 1. Provide the requested information in the **Configure CHAP Authentication** dialog box, shown in the screenshot following:  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/configure-chap.png)

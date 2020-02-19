@@ -4,11 +4,11 @@ After you activate your Hardware Appliance in your AWS account, you might have a
 
 **To delete your hardware appliance**
 
-1. If you have installed a gateway on the hardware appliance, you must first remove the gateway before you can delete the appliance\. For instructions on how to remove a gateway from your Hardware Appliance, see [Removing a Gateway From the Hardware Appliance](appliance-remove-gateway.md)\.
+1. If you have installed a gateway on the hardware appliance, you must first remove the gateway before you can delete the appliance\. For instructions on how to remove a gateway from your Hardware Appliance, see [Removing a Gateway from the Hardware Appliance](appliance-remove-gateway.md)\.
 
 1. On the Hardware page, choose the hardware appliance you want to delete\.
 
-1. Choose **Actions**, and then choose **Delete Appliance**\.
+1. For **Actions**, choose **Delete Appliance**\.
 
 1. In the **Confirm deletion of resource\(s\)** dialog box, choose the confirmation check box and choose **Delete**\. A message indicating successful deletion is displayed\.
 

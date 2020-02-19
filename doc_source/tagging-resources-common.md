@@ -2,23 +2,23 @@
 
 In AWS Storage Gateway, you can use tags to manage your resources\. Tags let you add metadata to your resources and categorize your resources to make them easier to manage\. Each tag consists of a key\-value pair, which you define\. You can add tags to gateways, volumes, and virtual tapes\. You can search and filter these resources based on the tags you add\.
 
-As an example, you can use tags to identify Storage Gateway resources used by each department in your organization\. You might tag gateways and volumes used by your accounting department like this: \(`key=department` and `value=accounting`\)\. You can then filter with this tag to identify all gateways and volumes used by your accounting department and use the information to determine cost\. For more information, see [Using Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2//cost-alloc-tags.html) and [Working with Tag Editor](http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/tag-editor.html)\.
+As an example, you can use tags to identify Storage Gateway resources used by each department in your organization\. You might tag gateways and volumes used by your accounting department like this: \(`key=department` and `value=accounting`\)\. You can then filter with this tag to identify all gateways and volumes used by your accounting department and use the information to determine cost\. For more information, see [Using Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html) and [Working with Tag Editor](https://docs.aws.amazon.com/ARG/latest/userguide/tag-editor.html)\.
 
 If you archive a virtual tape that is tagged, the tape maintains its tags in the archive\. Similarly, if you retrieve a tape from the archive to another gateway, the tags are maintained in the new gateway\. 
 
-For file gateway, you can use tags to control access to resources\. For information about how to do this, see [Using Tags to Control Access to File Gateway Resources](restrict-fgw-access.md)\.
+For file gateway, you can use tags to control access to resources\. For information about how to do this, see [Using Tags to Control Access to Your Gateway and Resources](restrict-fgw-access.md)\.
 
 Tags don’t have any semantic meaning but rather are interpreted as strings of characters\.
 
 The following restrictions apply to tags:
 + Tag keys and values are case\-sensitive\.
-+ The maximum number of tags for each resource is 10\.
++ The maximum number of tags for each resource is 50\.
 + Tag keys cannot begin with `aws:`\. This prefix is reserved for AWS use\.
 + Valid characters for the key property are UTF\-8 letters and numbers, space, and special characters \+ \- = \. \_ : / and @\.
 
 ## Working with Tags<a name="working-with-tags-common"></a>
 
-You can work with tags by using the Storage Gateway console, the Storage Gateway API, or the [Storage Gateway Command Line Interface \(CLI\)](https://docs.aws.amazon.com//cli/latest/reference/storagegateway/index.html)\. The following procedures show you how to add, edit, and delete a tag on the console\.
+You can work with tags by using the Storage Gateway console, the Storage Gateway API, or the [Storage Gateway Command Line Interface \(CLI\)](https://docs.aws.amazon.com/cli/latest/reference/storagegateway/index.html)\. The following procedures show you how to add, edit, and delete a tag on the console\.
 
 **To add a tag**
 
@@ -64,4 +64,4 @@ You can leave the **Value** box blank\.
 
 ## See Also<a name="see-also-tags"></a>
 
-[Using Tags to Control Access to File Gateway Resources](restrict-fgw-access.md)
+[Using Tags to Control Access to Your Gateway and Resources](restrict-fgw-access.md)

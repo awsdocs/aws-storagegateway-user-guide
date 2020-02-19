@@ -1,4 +1,4 @@
-# Removing a Gateway From the Hardware Appliance<a name="appliance-remove-gateway"></a>
+# Removing a Gateway from the Hardware Appliance<a name="appliance-remove-gateway"></a>
 
 To remove gateway software from your hardware appliance, use the following procedure\. After you do so, the gateway software is uninstalled from your hardware appliance\.
 

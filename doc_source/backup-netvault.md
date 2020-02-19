@@ -55,7 +55,7 @@ When you add a drive to a bay, the drive and bay numbers must match\. For exampl
 
 ## Backing Up Data to a Tape in the Quest NetVault Backup<a name="netvault-write-data-to-tape"></a>
 
-You create a backup job and write data to a virtual tape by using the same procedures you do with physical tapes\. For detailed information about how to back up data, see the [Quest NetVault Backup documentation](https://support.quest.com/technical-documents/netvault-backup/10.0.1/administration-guide/26#TOPIC-229714)\.
+You create a backup job and write data to a virtual tape by using the same procedures you do with physical tapes\. For detailed information about how to back up data, see the [Quest NetVault Backup 12\.4 \- Administration Guide](https://support.quest.com/technical-documents/netvault-backup/12.4/administration-guide)\.
 
 ## Archiving a Tape by Using the Quest NetVault Backup<a name="netvault-archive-tape"></a>
 
@@ -85,7 +85,7 @@ Restoring your archived data is a two\-step process\.
 
 1. Retrieve the archived tape from archive to a tape gateway\. For instructions, see [Retrieving Archived Tapes](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
 
-1. Use the Quest NetVault Backup application to restore the data\. You do this by creating a restoring a folder file, as you do when restoring data from physical tapes\. For instructions, see the Quest NetVault Backup 10\.0\.1 – Administration Guide \(Creating a restore job\) in the Quest NetVault Backup documentation\.
+1. Use the Quest NetVault Backup application to restore the data\. You do this by creating a restoring a folder file, as you do when restoring data from physical tapes\. For instructions on creating a restore job, see [Quest NetVault Backup 12\.4 \- Administration Guide](https://support.quest.com/technical-documents/netvault-backup/12.4/administration-guide)\.
 
 **Next Step**
 

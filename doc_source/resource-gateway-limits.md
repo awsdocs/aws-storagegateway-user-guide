@@ -1,16 +1,16 @@
-# AWS Storage Gateway Limits<a name="resource-gateway-limits"></a>
+# AWS Storage Gateway Quotas<a name="resource-gateway-limits"></a>
 
-In this topic, you can find information about file share, volume, tape, configuration, and performance limits for Storage Gateway\.
+In this topic, you can find information about file share, volume, tape quotas, configuration, and performance limits for Storage Gateway\.
 
 **Topics**
-+ [Limits for File Shares](#resource-file-limits)
-+ [Limits for Volumes](#resource-volume-limits)
-+ [Limits for Tapes](#resource-tape-limits)
++ [Quotas for File Shares](#resource-file-limits)
++ [Quotas for Volumes](#resource-volume-limits)
++ [Quotas for Tapes](#resource-tape-limits)
 + [Recommended Local Disk Sizes For Your Gateway](#disk-sizes)
 
-## Limits for File Shares<a name="resource-file-limits"></a>
+## Quotas for File Shares<a name="resource-file-limits"></a>
 
-The following table lists limits for file shares\.
+The following table lists quotas for file shares\.
 
 
 | Description | File Gateway | 
@@ -20,9 +20,9 @@ The following table lists limits for file shares\.
 | The maximum size of an individual file, which is the maximum size of an individual object in Amazon S3  If you write a file larger than 5 TB, you get a "file too large" error message and only the first 5 TB of the file is uploaded\.   | 5 TB | 
 | Maximum path length Clients are not allowed to create a path exceeding this length, and doing so results in an error\. This limit applies to both protocols supported by file gateways, NFS and SMB\.  | 1024 bytes | 
 
-## Limits for Volumes<a name="resource-volume-limits"></a>
+## Quotas for Volumes<a name="resource-volume-limits"></a>
 
-The following table lists limits for volumes\.
+The following table lists quotas for volumes\.
 
 
 | Description | Cached Volumes | Stored Volumes | 
@@ -31,15 +31,15 @@ The following table lists limits for volumes\.
 | Maximum number of volumes per gateway | 32 | 32 | 
 | Total size of all volumes for a gateway | 1,024 TiB | 512 TiB | 
 
-## Limits for Tapes<a name="resource-tape-limits"></a>
+## Quotas for Tapes<a name="resource-tape-limits"></a>
 
-The following table lists limits for tapes\.
+The following table lists quotas for tapes\.
 
 
 | Description | Tape Gateway | 
 | --- | --- | 
 | Minimum size of a virtual tape | 100 GiB | 
-| Maximum size of a virtual tape | 2\.5 TiB | 
+| Maximum size of a virtual tape | 5 TiB | 
 | Maximum number of virtual tapes for a virtual tape library \(VTL\) | 1,500  | 
 | Total size of all tapes in a virtual tape library \(VTL\) | 1 PiB | 
 | Maximum number of virtual tapes in archive | No limit | 

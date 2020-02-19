@@ -1,6 +1,6 @@
-# Configure Network Parameters<a name="appliance-configure-network"></a>
+# Configuring Network Parameters<a name="appliance-configure-network"></a>
 
-After the server boots up, you can enter your first password in the hardware console as described in [Rack\-Mount Your Hardware Appliance and Connect It to Power](appliance-rack-mount.md)\. 
+After the server boots up, you can enter your first password in the hardware console as described in [Rack\-Mounting Your Hardware Appliance and Connecting It to Power](appliance-rack-mount.md)\. 
 
 Next, on the hardware console take the following steps to configure network parameters so your hardware appliance can connect to AWS\.
 
@@ -44,4 +44,4 @@ If you configure any other interface, it must provide the same always\-on connec
 
 **Next Step**
 
-[Activate Your Hardware Appliance](appliance-activation.md)
+[Activating Your Hardware Appliance](appliance-activation.md)

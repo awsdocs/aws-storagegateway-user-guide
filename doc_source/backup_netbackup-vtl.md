@@ -4,7 +4,7 @@ You can back up your data to virtual tapes, archive the tapes, and manage your v
 + Veritas NetBackup 7\.x
 + Veritas NetBackup 8\.x
 
-The procedure for using these versions of Backup Exec with a tape gateway is similar\. For detailed information about how to use NetBackup, see the [Veritas Services and Operations Readiness Tools \(SORT\)](https://sort.veritas.com/documents) on the Veritas website\. For Veritas support information on hardware compatibility, see the [NetBackup 7\.0 \- 7\.6\.x Hardware Compatibility List](https://www.veritas.com/support/en_US/article.000040791) on the Veritas website\.
+The procedure for using these versions of Backup Exec with a tape gateway is similar\. For detailed information about how to use NetBackup, see the [Veritas Services and Operations Readiness Tools \(SORT\)](https://sort.veritas.com/documents) on the Veritas website\. For Veritas support information on hardware compatibility, see the [NetBackup 7\.0 \- 7\.6\.x Hardware Compatibility List](https://sort.veritas.com/DocPortal/pdf/NB_76_HCL), [NetBackup 8\.0 \- 8\.1\.x Hardware Compatibility List](https://www.veritas.com/content/support/en_US/doc/NB_80_HCL), or [NetBackup 8\.2 \- 8\.x\.x Hardware Compatibility List](https://www.veritas.com/content/support/en_US/doc/NB_82_HCL) on the Veritas website\.
 
 For more information about compatible backup applications, see [Supported Third\-Party Backup Applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
 
@@ -81,7 +81,7 @@ Now that you have connected your devices and made them available to your backup 
 You test the tape gateway setup by backing up data onto your virtual tapes\.
 
 **Note**  
-You should back up only a small amount of data for this Getting Started exercise, because there are costs associated with storing, archiving, and retrieving data\. For pricing information, see [Pricing](http://aws.amazon.com/storagegateway/#pricing) on the AWS Storage Gateway detail page\.
+You should back up only a small amount of data for this Getting Started exercise, because there are costs associated with storing, archiving, and retrieving data\. For pricing information, see [Pricing](http://aws.amazon.com/storagegateway/pricing) on the AWS Storage Gateway detail page\.
 
 **To create a volume pool**
 

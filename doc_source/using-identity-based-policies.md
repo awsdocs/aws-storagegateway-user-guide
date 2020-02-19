@@ -43,7 +43,7 @@ The policy has two statements \(note the `Action` and `Resource` elements in bot
 **Note**  
 ARNs uniquely identify AWS resources\. For more information, see [Amazon Resource Names \(ARNs\) and AWS Service Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) in the *AWS General Reference*\.
 
-  The wildcard character \(\*\) at the end of the gateway ARN means that this statement can match any gateway ID\. In this case, the statement allows the `storagegateway:ActivateGateway` and `storagegateway:ListGateways` actions on any gateway in the specified region, `us-west-2`, and the specified ID identifies the account that is owner of the gateway resource\. For information about how to use a wildcard character \(\*\) in a policy, see [Example 2: Allow Read\-Only Access to a Gateway](#sg-example2)\.
+  The wildcard character \(\*\) at the end of the gateway ARN means that this statement can match any gateway ID\. In this case, the statement allows the `storagegateway:ActivateGateway` and `storagegateway:ListGateways` actions on any gateway in the specified AWS Region, `us-west-2`, and the specified ID identifies the account that is owner of the gateway resource\. For information about how to use a wildcard character \(\*\) in a policy, see [Example 2: Allow Read\-Only Access to a Gateway](#sg-example2)\.
 
   To limit permissions for a particular action to a specific gateway only, create a separate statement for that action in the policy and specify the gateway ID in that statement\. 
 

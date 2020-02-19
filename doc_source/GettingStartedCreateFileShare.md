@@ -9,7 +9,7 @@ For SMB, you can have one of three different modes of authentication:
 + An SMB file share with limited access\. Only certain domain users and groups that you specify are allowed access \(white listed\)\. Users and groups can also be denied access \(black listed\)\.
 + An SMB file share with guest access\. Any users who can provide the guest password get access to this file share\.
 **Note**  
-File shares exported through the gateway for NFS file shares support POSIX permissions\. For SMB file shares, you can use Access Control Lists \(ACLs\) to manage permissions on files and folders in your file share\. For more information, see [Using Microsoft Windows ACLs to Control Access to an SMB File Share](smb-acl.md)\.
+File shares exported through the gateway for NFS file shares support POSIX permissions\. For SMB file shares, you can use access control lists \(ACLs\) to manage permissions on files and folders in your file share\. For more information, see [Using Microsoft Windows ACLs to Control Access to an SMB File Share](smb-acl.md)\.
 
 A file gateway can host one or more file shares of different types\. You can have multiple NFS and SMB file shares on a file gateway\.
 

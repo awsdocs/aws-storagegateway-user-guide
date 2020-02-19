@@ -8,7 +8,8 @@ Following, you can find information about how to manage your file gateway resour
 + [Editing Storage Settings for Your File Share](#edit-storage-class)
 + [Editing Metadata Defaults for Your NFS File Share](#edit-metadata-defaults)
 + [Editing Access Settings for Your NFS File Share](#edit-nfs-client)
-+ [Editing Access Settings for Your SMB File Share](#edit-smb-access-settings)
++ [Editing Gateway Level Access Settings for Your SMB File Share](#edit-smb-access-settings)
++ [Editing Your SMB File Share Settings](#edit-smbfileshare-settings)
 + [Refreshing Objects in Your Amazon S3 Bucket](#refresh-cache)
 + [Using S3 Object Lock with File Gateway](#s3-object-lock)
 + [Understanding File Share Status](#understand-file-share)
@@ -230,7 +231,7 @@ We recommend changing the allowed NFS client settings for your NFS file share\. 
 
 1. In the **Edit allowed clients** dialog box, choose **Add entry**, provide the IP address or CIDR notation for the client that you want to allow, and then choose **Save**\.
 
-## Editing Access Settings for Your SMB File Share<a name="edit-smb-access-settings"></a>
+## Editing Gateway Level Access Settings for Your SMB File Share<a name="edit-smb-access-settings"></a>
 
 You can set the security level for your gateway, set access for AD user and give guests access to your file share\.
 
@@ -239,13 +240,13 @@ You can set the security level for your gateway, set access for AD user and give
 + [Using Active Directory to Authenticate Users](#enable-ad-settings)
 + [Providing Guest Access to Your File Share](#guest-access)
 
-**To edit access settings for your SBM file share**
+**To edit gateway level access settings for your SBM file share**
 
 1. Open the AWS Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
 
 1. Choose the gateway that you want to use to join the domain\.
 
-1. For**Actions**, choose **Edit SMB settings** to open the **Edit SMB settings** dialog box and choose the action you want to perform\.
+1. For **Actions**, choose **Edit SMB settings** to open the **Edit SMB settings** dialog box and choose the action you want to perform\.
 
 ### Setting a Security Level for Your Gateway<a name="security-strategy"></a>
 
@@ -253,14 +254,15 @@ By using a file gateway, you can specify a security level for your gateway\. By 
 
 **To configure security level**
 
-
-
-1. In the SMB security settings section, choose **Set security level**\.   
+1. In the **SMB security settings** section, choose **Set security level**\.   
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/security-strategy.png)
 
 1. For **Security level**, choose one of the following:
-   + **Enforce encryption** – if you choose this option, file gateway only allows connections from SMBv3 clients that have encryption enabled\. This option is highly recommended for environments that handle sensitive data\. 
-   + **Enforce signing** – if you choose this option, file gateway only allows connections from SMBv2 or SMBv3 clients that have signing enabled\. 
+**Note**  
+This setting is called SMBSecurityStrategy in the API Reference\.  
+A higher security level can affect performance\.
+   + **Enforce encryption** – if you choose this option, file gateway only allows connections from SMBv3 clients that have encryption enabled\. This option is highly recommended for environments that handle sensitive data\. This option works with SMB clients on Microsoft Windows 8, Windows Server 2012, or newer\. 
+   + **Enforce signing** – if you choose this option, file gateway only allows connections from SMBv2 or SMBv3 clients that have signing enabled\. This option works with SMB clients on Microsoft Windows Vista, Windows Server 2008, or newer\. 
    + **Client negotiated** – if you choose this option, requests are established based on what is negotiated by the client\. This option is recommended when you want to maximize compatibility across different clients in your environment\.
 **Note**  
 For gateways activated before June 20, 2019, the default security level is **Client negotiated**\.  
@@ -283,16 +285,16 @@ You can also enable access control lists \(ACLs\) on your SMB file share\. For i
 
 1. Choose **Gateways**, and on the **Gateway** page, choose the box next to the file gateway that you want to enable Active Directory authentication for\.
 
-1. For**Actions**, choose **Edit SMB settings** to open the **Edit SMB settings** dialog box\.  
+1. For **Actions**, choose **Edit SMB settings** to open the **Edit SMB settings** dialog box\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/smb-join-domain.png)
 
-1. In the **Active Directory settings** section, choose **Join domain**\.
+1. In the **Active Directory settings** section, for **Domain name**, provide the domain that you want the gateway to join\. You can join a domain by using its IP address or its organizational unit\. An *organizational unit* is an Active Directory subdivision that can hold users, groups, computers, and other organizational units\.
 **Note**  
 If your gateway can't join an Active Directory directory, try joining with the directory's IP address by using the [JoinDomain](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_JoinDomain.html) API operation\.
+**Note**  
+**Active Directory status** shows **Detached** when a gateway has never joined a domain\.
 
-1. For **Domain name**, provide the domain that you want the gateway to join\. You can join a domain by using its IP address or its organizational unit\. An *organizational unit* is an Active Directory subdivision that can hold users, groups, computers, and other organizational units\.
-
-1. Provide the domain user and the domain password, and then choose **Save**\. 
+1. Provide the domain user and the domain password, and then choose **Save**\.
 
    A message at the top of the **Gateways** section of your console indicates that your gateway successfully joined your AD domain\.
 
@@ -329,6 +331,39 @@ If you want to provide only guest access, your file gateway doesn't have to be p
 1. For **Actions**, choose **Edit SMB settings**\.
 
 1. In the **Guest access settings** section, choose **Set guest password**, provide the password, and then choose **Save**\. 
+
+## Editing Your SMB File Share Settings<a name="edit-smbfileshare-settings"></a>
+
+After you have created an SMB file share, you might need to edit settings such as the storage class, object metadada and Windows ACL\.
+
+**To edit SMB file share settings**
+
+1. Open the AWS Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
+
+1. Choose File share and choose the file share that you want to edit settings for\.
+
+1. For **Actions**, choose **Edit SMB settings** to open the **Edit SMB settings** dialog box\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/smb-filesshare-setting.png)
+
+1. For **Storage class for new objects**, choose a storage class to use for new objects created in your Amazon S3 bucket:
+   + Choose **S3 Standard** to store your frequently accessed object data redundantly in multiple Availability Zones that are geographically separated\.
+   + Choose **S3 Standard\-IA** to store your infrequently accessed object data redundantly in multiple Availability Zones that are geographically separated\.
+   + Choose **S3 One Zone\-IA** to store your infrequently accessed object data in a single Availability Zone\.
+**Note**  
+To encrypt objects in your SMB file share using AWS KMS, use the AWS CLI or Storage Gateway API\. For more information, see [create\-nfs\-file\-share](https://docs.aws.amazon.com/cli/latest/reference/storagegateway/create-nfs-file-share.html) in the *AWS CLI Command Reference* and [CreateNFSFileShare](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_CreateNFSFileShare.html) in the *AWS Storage Gateway API Reference*\.
+
+   For more information, see [Storage Classes](https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro) in the *Amazon Simple Storage Service Developer Guide*\.
+
+1. For **Object metadata**, choose the metadata you want to use:
+   + Choose **Guess MIME type** to enable guessing of the MIME type for uploaded objects based on file extensions\.
+   + Choose **Give bucket owner full control** to give full control to the owner of the S3 bucket that maps to the file NFS file share\. For more information on using your file share to access objects in a bucket owned by another account, see [Using a File Share for Cross\-Account Access](#cross-account-access)\.
+   + Choose **Enable requester pays** if you are using this file share on a bucket that requires the requester or reader instead of bucket owner to pay for access charges\. For more information, see [Requester Pays Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html)\.
+   + For Export as, choose **Read\-write** \(the default\) or **Read\-only**\. Choose **Close** to enforce your authentication settings\.
+   + For **File/directory access controlled by**, choose one of the following:
+     + Choose **Windows Access Control List** to set fine\-grained permissions on files and folders in your SMB file share\. For more information, see [Using Microsoft Windows ACLs to Control Access to an SMB File Share](smb-acl.md)\.
+     + Choose **POSIX permissions** to use POSIX permissions to control access to files and directories that are stored through an NFS or SMB file share\.
+
+1. When you are done, choose **Save**\.
 
 ## Refreshing Objects in Your Amazon S3 Bucket<a name="refresh-cache"></a>
 

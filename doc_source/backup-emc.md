@@ -2,7 +2,7 @@
 
 You can back up your data to virtual tapes, archive the tapes and manage your virtual tape library \(VTL\) devices by using Dell EMC NetWorker version 8\.x or 9\.x\. In this topic, you can find basic documentation on how to configure the Dell EMC NetWorker software to work with a tape gateway and perform a backup, including how to configure storage devices, write data to a tape, archive a tape and restore data from a tape\. This documentation uses the Dell NetWorker V9\.x as an example\.
 
-For detailed information about how to install and use the Dell EMC NetWorker software, see the *[EMC NetWorker Administration Guide](http://www.emc.com/collateral/TechnicalDocument/docu53903.pdf)*\.
+For detailed information about how to install and use the Dell EMC NetWorker software, see the *[Dell EMC NetWorker Administration Guide](https://www.dellemc.com/en-us/collaterals/unauth/technical-guides-support-information/products/data-protection/docu91933.pdf)*\.
 
 For more information about compatible backup applications, see [Supported Third\-Party Backup Applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
 
@@ -17,7 +17,7 @@ For more information about compatible backup applications, see [Supported Third\
 
 After you have connected your virtual tape library \(VTL\) devices to your Microsoft Windows client, you configure Dell EMC NetWorker to recognize your devices\. For information about how to connect VTL devices to the Windows client, see [Connecting Your VTL Devices](GettingStarted-create-tape-gateway.md#GettingStartedAccessTapesVTL)\.
 
-Dell EMC NetWorker doesn't automatically recognize tape gateway devices\. To expose your VTL devices to the NetWorker software and get the software to discover them, you manually configure the software\. Following, we assume that you have correctly installed the Dell EMC NetWorker software and that you are familiar with the Dell EMC NetWorker Management Console\. For more information about the Dell EMC NetWorker Management Console, see the NetWorker Management Console interface section of the *[ EMC NetWorker Administration Guide](http://www.emc.com/collateral/TechnicalDocument/docu53903.pdf)\.* 
+Dell EMC NetWorker doesn't automatically recognize tape gateway devices\. To expose your VTL devices to the NetWorker software and get the software to discover them, you manually configure the software\. Following, we assume that you have correctly installed the Dell EMC NetWorker software and that you are familiar with the Dell EMC NetWorker Management Console\. For more information about the Dell EMC NetWorker Management Console, see the NetWorker Management Console interface section of the *[Dell EMC NetWorker Administration Guide](https://www.dellemc.com/en-us/collaterals/unauth/technical-guides-support-information/products/data-protection/docu91933.pdf)*\.
 
 The following screenshot shows the Dell EMC NetWorker V9\.x Management Console\. 
 
@@ -72,7 +72,7 @@ Backing up data to a tape is a two\-step process\.
 
 1. Label the tapes you want to back up your data to, create the target media pool, and add the tapes to the pool\.
 
-   You create a media pool and write data to a virtual tape by using the same procedures you do with physical tapes\. For detailed information, see the Backing Up Data section of the [Dell EMC NetWorker Administration Guide](http://www.emc.com/collateral/TechnicalDocument/docu53903.pdf)\.
+   You create a media pool and write data to a virtual tape by using the same procedures you do with physical tapes\. For detailed information, see the Backing Up Data section of the *[Dell EMC NetWorker Administration Guide](https://www.dellemc.com/en-us/collaterals/unauth/technical-guides-support-information/products/data-protection/docu91933.pdf)*\.
 
 1. Write data to the tape\. You back up data by using the Dell EMC NetWorker User application instead of the Dell EMC NetWorker Management Console\. The Dell EMC NetWorker User application installs as part of the NetWorker installation\.
 
@@ -105,7 +105,7 @@ Restoring your archived data is a two\-step process:
 
 1. Retrieve the archived tape a tape gateway\. For instructions, see [Retrieving Archived Tapes](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
 
-1. Use the Dell EMC NetWorker software to restore the data\. You do this by creating a restoring a folder file, as you do when restoring data from physical tapes\. For instructions, see the [ Using the NetWorker User program](http://www.emc.com/collateral/TechnicalDocument/docu53903.pdf) section of the *EMC NetWorker Administration Guide\.*
+1. Use the Dell EMC NetWorker software to restore the data\. You do this by creating a restoring a folder file, as you do when restoring data from physical tapes\. For instructions, see the Using the NetWorker User program section of the *[Dell EMC NetWorker Administration Guide](https://www.dellemc.com/en-us/collaterals/unauth/technical-guides-support-information/products/data-protection/docu91933.pdf)*\.
 
 **Next Step**
 

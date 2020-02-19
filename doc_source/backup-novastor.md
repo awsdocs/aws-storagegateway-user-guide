@@ -1,6 +1,6 @@
 # Testing Your Setup by Using NovaStor DataCenter/Network<a name="backup-novastor"></a>
 
-You can back up your data to virtual tapes, archive the tapes, and manage your virtual tape library \(VTL\) devices by using NovaStor DataCenter/Network version 6\.4 or 7\.1\. In this topic, you can find basic documentation on how to configure the NovaStor DataCenter/Network version 7\.1 backup application for a tape gateway and perform backup and restore operations\. For detailed information about how to use NovaStor DataCenter/Network version 7\.1, see [Documentation NovaStor DataCenter/Network](http://www.novastor.com/help-html/dc/en/Introduction.html)\.
+You can back up your data to virtual tapes, archive the tapes, and manage your virtual tape library \(VTL\) devices by using NovaStor DataCenter/Network version 6\.4 or 7\.1\. In this topic, you can find basic documentation on how to configure the NovaStor DataCenter/Network version 7\.1 backup application for a tape gateway and perform backup and restore operations\. For detailed information about how to use NovaStor DataCenter/Network version 7\.1, see [Documentation NovaStor DataCenter/Network](https://dcmanual.novastor.com/help-html/dc/en/index.html)\.
 
 ## Setting Up NovaStor DataCenter/Network<a name="setting-up"></a>
 
@@ -21,7 +21,7 @@ You can prevent the issue by creating the workaround before you start configurin
 
 1. In the **Storage Targets** menu, open the context menu \(right\-click\) for **Media Management Servers**, choose **New**, and choose **OK** to create and prepopulate a **storage** node\. 
 
-   If you see an error message that says `External Program did not exit correctly`, resolve the issue before you continue\. This issue requires a workaround\. For information about how to resolve this issue, see [Resolving an "External Program Did Not Exit Correctly" Error](#novastor-workaround) in the NovaStor documentation\.
+   If you see an error message that says `External Program did not exit correctly`, resolve the issue before you continue\. This issue requires a workaround\. For information about how to resolve this issue, see [Resolving an "External Program Did Not Exit Correctly" Error](#novastor-workaround)\.
 **Important**  
 This error occurs because the element assignment range from AWS Storage Gateway for storage drives and tape drives exceeds the number that NovaStor DataCenter/Network allows\.
 
@@ -110,7 +110,7 @@ For an import, NovaStor DataCenter/Network recognizes tape media that are export
 
 ## Backing Up Data to Tape<a name="novastor-backup-data"></a>
 
-You create a backup job and write data to a virtual tape by using the same procedures that you do with physical tapes\. For detailed information about how to back up data using the NovaStor software, see [Start Backup Job](http://www.novastor.com/help-html/dc/en/StartBackupJob.html) in the NovaStor documentation\.
+You create a backup job and write data to a virtual tape by using the same procedures that you do with physical tapes\. For detailed information about how to back up data using the NovaStor software, see [Documentation NovaStor DataCenter/Network](https://dcmanual.novastor.com/help-html/dc/en/StartBackupJob.html)\.
 
 ## Archiving a Tape<a name="novastor-archive-tape"></a>
 
@@ -138,11 +138,11 @@ Restoring your archived data is a two\-step process\.
 
 1. Retrieve the archived tape from archive to a tape gateway\. For instructions, see [Retrieving Archived Tapes](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
 
-1. Use the NovaStor DataCenter/Network software to restore the data\. You do this by refreshing the mail slot and moving each tape you want to retrieve into an empty slot, as you do when restoring data from physical tapes\. For instructions, see [Restore the Example](http://www.novastor.com/help-html/dc/en/RestoretheExample.html) in the NovaStor documentation\.
+1. Use the NovaStor DataCenter/Network software to restore the data\. You do this by refreshing the mail slot and moving each tape you want to retrieve into an empty slot, as you do when restoring data from physical tapes\. For information about restoring data, see [Documentation NovaStor DataCenter/Network](https://dcmanual.novastor.com/help-html/dc/en/RestoretheExample.html)\.
 
 ## Writing Several Backup Jobs to a Tape Drive at the Same Time<a name="novastor-muliplexing"></a>
 
-In the NovaStor software, you can write several jobs to a tape drive at the same time using the multiplexing feature\. This feature is available when a multiplexer is available for a media pool\. For information about how to use multiplexing, see [Define Backup Destination and Schedule](http://www.novastor.com/help-html/dc/en/DefineBackupDestinationandSchedu.html) in the NovaStor documentation\.
+In the NovaStor software, you can write several jobs to a tape drive at the same time using the multiplexing feature\. This feature is available when a multiplexer is available for a media pool\. For information about how to use multiplexing, see [Documentation NovaStor DataCenter/Network](https://dcmanual.novastor.com/help-html/dc/en/DefineBackupDestinationandSchedu.html)\.
 
 ## Resolving an "External Program Did Not Exit Correctly" Error<a name="novastor-workaround"></a>
 

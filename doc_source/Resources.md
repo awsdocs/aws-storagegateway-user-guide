@@ -1,6 +1,6 @@
 # Additional AWS Storage Gateway Resources<a name="Resources"></a>
 
-In this section, you can find information about AWS and third\-party software, tools, and resources that can help you set up or manage your gateway, and also about AWS Storage Gateway limits\.
+In this section, you can find information about AWS and third\-party software, tools, and resources that can help you set up or manage your gateway, and also about AWS Storage Gateway quotas\.
 
 **Topics**
 + [Host Setup](resource-vm-setup.md)
@@ -14,5 +14,5 @@ In this section, you can find information about AWS and third\-party software, t
 + [Understanding AWS Storage Gateway Resources and Resource IDs](storage-gateway-resource-id.md)
 + [Tagging Storage Gateway Resources](tagging-resources-common.md)
 + [Working with Open\-Source Components for AWS Storage Gateway](AboutAWSStorageGatewaySoftware.md)
-+ [AWS Storage Gateway Limits](resource-gateway-limits.md)
++ [AWS Storage Gateway Quotas](resource-gateway-limits.md)
 + [Using Storage Classes](storage-classes.md)

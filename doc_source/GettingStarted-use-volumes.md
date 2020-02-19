@@ -184,7 +184,7 @@ You verify the setup for a gateway by taking a snapshot backup of your volume an
 **Note**  
 Restoring data from Amazon Elastic Block Store \(Amazon EBS\) volumes that are encrypted is not supported\.
 
-**To create a snapshot of a storage volume on Microsoft Windows**
+**To create an Amazon EBS snapshot of a storage volume on Microsoft Windows**
 
 1. On your Windows computer, copy some data to your mapped storage volume\.
 
@@ -196,19 +196,20 @@ Restoring data from Amazon Elastic Block Store \(Amazon EBS\) volumes that are e
 
    This gateway should have only one storage volume\. Choose the volume displays its properties\.
 
-1. For **Actions**, choose **Create Snapshot** to create a snapshot of the volume\.
+1. For **Actions**, choose **Create EBS snapshot** to create a snapshot of the volume\.
 
    Depending on the amount of data on the disk and the upload bandwidth, it might take a few seconds to complete the snapshot\. Note the volume ID for the volume from which you create a snapshot\. You use the ID to find the snapshot\.
 
-1. In the **Create Snapshot** dialog box, provide a description for your snapshot, and then choose **Create Snapshot**\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/create-snapshot.png)
+1. In the **Create EBS Snapshot** dialog box, provide a description for your snapshot\.
 
-   Your snapshot is stored as an Amazon EBS snapshot\. Take note of your snapshot ID\.   
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/snapshotId.png)
+1. \(Optional\) For **Tags**, enter a key and value to add tags to the snapshot\. A tag is a case\-sensitive key\-value pair that helps you manage, filter, and search for your snapshots\. 
 
-   The number of snapshots created for your volume is displayed in the snapshot column\.
+1. Choose **Create Snapshot**\. Your snapshot is stored as an Amazon EBS snapshot\. Note your snapshot ID\. The number of snapshots created for your volume is displayed in the snapshot column\.
 
-1. For **Snapshot**, choose the link for the volume you created the snapshot for to see your EBS snapshot on the Amazon EC2 console\.
+1. In the **EBS snapshots** column, choose the link for the volume that you created the snapshot for to see your EBS snapshot on the Amazon EC2 console\.
+
+**To restore a snapshot to another volume**  
+See [Creating a Volume](GettingStartedCreateVolumes.md)\.
 
 ## Where Do I Go from Here?<a name="GettingStartedWhatsNextStep3"></a>
 
@@ -222,7 +223,7 @@ Other sections of this guide include information about how to do the following:
 + To learn more about storage volumes and how to manage them, see [Managing Your Gateway](managing-gateway-common.md)\.
 + To troubleshoot gateway problems, see [Troubleshooting Your Gateway](Troubleshooting-common.md)\.
 + To optimize your gateway, see [Optimizing Gateway Performance](Performance.md#Optimizing-common)\.
-+ To learn about Storage Gateway metrics and how you can monitor how your gateway performs, see [Monitoring Your Gateway and Resources](Main_monitoring-gateways-common.md)\)\.
++ To learn about Storage Gateway metrics and how you can monitor how your gateway performs, see [Monitoring Storage Gateway](Main_monitoring-gateways-common.md)\.
 + To learn more about configuring your gateway's iSCSI targets to store data, see [Connecting to Your Volumes to a Windows Client](initiator-connection-common.md#ConfiguringiSCSIClient)\.
 
 To learn about sizing your volume gateway's storage for real\-world workloads and cleaning up resources you don't need, see the following sections\.

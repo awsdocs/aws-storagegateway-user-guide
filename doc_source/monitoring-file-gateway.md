@@ -1,10 +1,65 @@
-# Monitoring Your File Share<a name="monitoring-file-gateway"></a>
+# Monitoring Your File Gateway<a name="monitoring-file-gateway"></a>
 
-You can monitor your file share by using Amazon CloudWatch metrics and use Amazon CloudWatch Events to get notified when your file operations are done\. For information about file gateway type metrics, see [Monitoring Your Gateway and Resources](https://docs.aws.amazon.com/storagegateway/latest/userguide/Main_monitoring-gateways-common.html)\.
+You can monitor your file gateway and associated resources by using Amazon CloudWatch metrics and use Amazon CloudWatch Events to get notified when your file operations are done\. For information about file gateway type metrics, see [Monitoring Your Gateway and Resources](https://docs.aws.amazon.com/storagegateway/latest/userguide/Main_monitoring-gateways-common.html)\.
 
 **Topics**
++ [Getting File Gateway Health Logs with CloudWatch Log Groups](#cw-log-groups)
 + [Getting Notified About File Operations](#get-notification)
 + [Understanding File Share Metrics](#monitoring-fileshare)
+
+## Getting File Gateway Health Logs with CloudWatch Log Groups<a name="cw-log-groups"></a>
+
+You can use Amazon CloudWatch Logs to get information about the health of your file gateway and related resources\. You can use the logs to monitor your gateway for errors that it encounters\. In addition, you can use Amazon CloudWatch subscription filters to automate processing of the log information in real\-time\. For more information see, [Real\-time Processing of Log Data with Subscriptions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Subscriptions.html) in the *Amazon CloudWatch User Guide\.*
+
+For example, you can configure a CloudWatch Log Group to monitor your gateway and get notified when your file gateway fails to upload files to an S3 bucket\. You can either configure the group when you are activating the gateway or after your gateway is activated and up and running\. For information about how to configure a CloudWatch Log Group when activating a gateway, see [Configuring Amazon CloudWatch Logging](create-gateway-file.md#configure-loging-file)\. For general information about CloudWatch Log Groups, see [ Working with Log Groups and Log Streams](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html) in the *Amazon CloudWatch User Guide\.*
+
+The following is an example of an error reported by file gateway\.
+
+```
+{
+    "severity": "ERROR",
+    "bucket": "bucket-smb-share2",
+    "roleArn": "arn:aws:iam::123456789012:role/my-bucket",
+    "source": "share-E1A2B34C",
+    "type": "InaccessibleStorageClass",
+    "operation": "S3Upload",
+    "key": "myFolder/myFile.text",
+    "gateway": "sgw-B1D123D4",
+    "timestamp": "1565740862516"
+}
+```
+
+This error means that file gateway is unable to upload the object `myFolder/myFile.text` to S3 because it has transitioned out of the Amazon S3 Standard storage class to either Amazon S3 Glacier or S3 Glacier Deep Archive storage class\.
+
+In the preceding gateway health log, these items specify the given information:
++ `source: share-E1A2B34C` indicates the file share that encountered this error\.
++ `"type": "InaccessibleStorageClass"` indicates the type of error that occurred\. In this case, this error was encountered when the gateway was trying to upload the specified object to Amazon S3 or read from Amazon S3\. However, in this case the object has transitioned to Amazon S3 Glacier\. The value of `"type"` can be any error that the file gateway encounters\. For a list of possible errors, see [Troubleshooting File Gateway Issues](troubleshoot-logging-errors.md)\.
++  `"operation": "S3Upload" `indicates that this error occurred when the gateway was trying to upload this object to S3\.
++ `"key": "myFolder/myFile.text"` indicates the object that caused the failure\.
++ `gateway": "sgw-B1D123D4` indicates the file gateway that encountered this error\.
++ `"timestamp": "1565740862516"` indicate the time that the error occurred\.
+
+ For information about how to troubleshoot and fix these types of errors, see [Troubleshooting File Gateway Issues](troubleshoot-logging-errors.md)\.
+
+### Configuring a CloudWatch Log Group After Your Gateway is Activated<a name="creat-cwlogroup"></a>
+
+The following procedure shows you how to configure a CloudWatch Log Group after your gateway is activated\.
+
+**To configure a CloudWatch Log Group to work with your file gateway**
+
+1. Sign in to the AWS Management Console and open the AWS Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
+
+1. Choose **Gateways** and choose the gateway that you want to configure the CloudWatch Log Group for\. 
+
+1. For **Actions**, choose **Edit gateway information** or in the **Details** tab, next to **Logging**, under **Not Enabled**, choose **Configure log group** to open the **Edit gateway information** dialog box\. 
+
+1. For **Gateway Log Group**, choose the log group that you want to use\. If you don't have a log group, choose the **Create new Log Group** link to create one\. You are directed to the CloudWatch Logs console where you can create the log group\. If you create a new Log Group, choose the refresh button to view the new log group in the drop down list\.
+
+1. When you are done, choose **Save**\.
+
+1. To see the logs for your gateway, choose the gateway and choose the **Details** tab\.
+
+For information about how to troubleshoot errors, see [Troubleshooting File Gateway Issues](troubleshoot-logging-errors.md)\.
 
 ## Getting Notified About File Operations<a name="get-notification"></a>
 
@@ -41,7 +96,7 @@ The following example shows a rule that triggers the specified event type in the
 }
 ```
 
-For information about how to use CloudWatch Events to trigger rules, see [Creating a CloudWatch Events Rule That Triggers on an Event](http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/Create-CloudWatch-Events-Rule.html) in the *Amazon CloudWatch Events User Guide*\.
+For information about how to use CloudWatch Events to trigger rules, see [Creating a CloudWatch Events Rule That Triggers on an Event](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/Create-CloudWatch-Events-Rule.html) in the *Amazon CloudWatch Events User Guide*\.
 
 ### Getting File Upload Notification<a name="get-upload-notification"></a>
 
@@ -113,12 +168,12 @@ The following example shows a refresh cache notification that is sent to you thr
 		"arn:aws:storagegateway:us-east-2:123456789011:gateway/sgw-712345DA"
 	],
 	"detail": {
-		"event-type": "refresh-complete",
-		"notification-id": "1c14106b-a18a-4890-9d47-a1a755ef5e47",
-		"started": "2018-02-06T21:34:42Z",
-		"completed": "2018-02-06T21:34:53Z"
-	},
-	"folderList": ["/"]
+        "event-type": "refresh-complete",
+        "notification-id": "1c14106b-a18a-4890-9d47-a1a755ef5e47",
+        "started": "2018-02-06T21:34:42Z",
+        "completed": "2018-02-06T21:34:53Z",
+        "folderList": ["/"]
+    },
 }
 ```
 
@@ -140,7 +195,7 @@ The following example shows a refresh cache notification that is sent to you thr
 
 ## Understanding File Share Metrics<a name="monitoring-fileshare"></a>
 
-You can find information following about the Storage Gateway metrics that cover file shares\. Each file share has a set of metrics associated with it\. Some file share\-specific metrics have the same name as certain gateway\-specific metrics\. These metrics represent the same kinds of measurements but are scoped to the file share instead\. Always specify whether you want to work with either a gateway or a file share metric before working with a metric\. Specifically, when working with file share metrics, you must specify the `File share ID` that identifies the file share for which you are interested in viewing metrics\. For more information, see [Using Amazon CloudWatch Metrics](GatewayMetrics-common.md#UsingCloudWatchConsole-common)\.
+You can find information following about the Storage Gateway metrics that cover file shares\. Each file share has a set of metrics associated with it\. Some file share\-specific metrics have the same name as certain gateway\-specific metrics\. These metrics represent the same kinds of measurements but are scoped to the file share instead\. Always specify whether you want to work with either a gateway or a file share metric before working with a metric\. Specifically, when working with file share metrics, you must specify the `File share ID` that identifies the file share for which you are interested in viewing metrics\. For more information, see [Using Amazon CloudWatch Metrics](monitoring-volume-gateway.md#UsingCloudWatchConsole-common)\.
 
 The following table describes the Storage Gateway metrics that you can use to get information about your file shares\. 
 

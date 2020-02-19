@@ -1,6 +1,6 @@
 # Creating Your Gateway<a name="create-gateways"></a>
 
-To create your gateway, open the [AWS Storage Gateway Management Console](http://console.aws.amazon.com/storagegateway/home) and choose the AWS Region that you want to create your gateway in\. If you haven't created a gateway in this AWS Region, the Storage Gateway service homepage is displayed\.
+To create your gateway, open the [AWS Storage Gateway Management Console](https://console.aws.amazon.com/storagegateway/home) and choose the AWS Region that you want to create your gateway in\. If you haven't created a gateway in this AWS Region, the Storage Gateway service homepage is displayed\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/StartPage.png)
 

@@ -1,6 +1,6 @@
 # Performing Tasks on the VM Local Console \(File Gateway\)<a name="manage-on-premises-fgw"></a>
 
-For a file gateway deployed on\-premises, you can perform the following maintenance tasks using the VM host's local console\. These tasks are common to VMware and Microsoft Hyper\-V hypervisors\.
+For a file gateway deployed on\-premises, you can perform the following maintenance tasks using the VM host's local console\. These tasks are common to VMware, Microsoft Hyper\-V, and Linux Kernel\-based Virtual Machine \(KVM\) hypervisors\.
 
 **Topics**
 + [Logging In to the File Gateway Local Console](#LocalConsole-login-fgw)
@@ -25,7 +25,7 @@ We recommend changing the default password\. You do this by running the `passwd`
 
 ### Setting the Local Console Password from the Storage Gateway Console<a name="set-password-fgw"></a>
 
-When you log in to the local console for the first time, you log in to the VM with the default credentials\. For all types of gateways, you use default credentials\. For volume and tape gateways, the user name is `sguser` and the password is `sgpassword`\. For file gateways, the user name is `admin` and the password is `password`\. 
+When you log in to the local console for the first time, you log in to the VM with the default credentials\. For all types of gateways, you use default credentials\. The user name is `admin` and the password is `password`\.
 
 We recommend that you always set a new password immediately after you create your new gateway\. You can set this password from the AWS Storage Gateway console rather than the local console if you want\. You don't need to know the default password to set a new password\.
 
@@ -57,6 +57,7 @@ If your gateway must use a proxy server to communicate to the internet, then you
 1. Log in to your gateway's local console:
    + For more information on logging in to the VMware ESXi local console, see [Accessing the Gateway Local Console with VMware ESXi](accessing-local-console.md#MaintenanceConsoleWindowVMware-common)\.
    + For more information on logging in to the Microsoft Hyper\-V local console, see [Access the Gateway Local Console with Microsoft Hyper\-V](accessing-local-console.md#MaintenanceConsoleWindowHyperV-common)\.
+   + For more information on logging in to the local console for the Linux Kernel\-Based Virtual Machine \(KVM\), see [Accessing the Gateway Local Console with Linux KVM](accessing-local-console.md#MaintenanceConsoleWindowKVM-common)\.
 
 1. On the **AWS Appliance Activation \- Configuration** main menu, enter **1** to begin configuring the HTTP proxy\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/local-console-file-0.png)
@@ -78,6 +79,7 @@ The default network configuration for the gateway is Dynamic Host Configuration 
 1. Log in to your gateway's local console:
    + For more information on logging in to the VMware ESXi local console, see [Accessing the Gateway Local Console with VMware ESXi](accessing-local-console.md#MaintenanceConsoleWindowVMware-common)\.
    + For more information on logging in to the Microsoft Hyper\-V local console, see [Access the Gateway Local Console with Microsoft Hyper\-V](accessing-local-console.md#MaintenanceConsoleWindowHyperV-common)\.
+   + For more information on logging in to the KVM local console, see [Accessing the Gateway Local Console with Linux KVM](accessing-local-console.md#MaintenanceConsoleWindowKVM-common)\.
 
 1. On the **AWS Appliance Activation \- Configuration** main menu, enter **2** to begin configuring your network\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/local-console-file-0.png)
@@ -95,6 +97,7 @@ You can use your gateway's local console to test your internet connection\. This
 1. Log in to your gateway's local console:
    + For more information on logging in to the VMware ESXi local console, see [Accessing the Gateway Local Console with VMware ESXi](accessing-local-console.md#MaintenanceConsoleWindowVMware-common)\.
    + For more information on logging in to the Microsoft Hyper\-V local console, see [Access the Gateway Local Console with Microsoft Hyper\-V](accessing-local-console.md#MaintenanceConsoleWindowHyperV-common)\.
+   + For more information on logging in to the KVM local console, see [Accessing the Gateway Local Console with Linux KVM](accessing-local-console.md#MaintenanceConsoleWindowKVM-common)\.
 
 1. On the **AWS Appliance Activation \- Configuration** main menu, enter **3** to begin testing network connectivity\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/local-console-file-0.png)
@@ -108,7 +111,7 @@ You can use your gateway's local console to test your internet connection\. This
    1. **VPC \(PrivateLink\)** if you want to test a VPC endpoint\.
    + If you selected **Public**, the console displays the available AWS Regions for Storage Gateway\.
 
-     Choose the AWS Region that you want to test\. For example, us\-east\-2\. For supported AWS Regions and a list of AWS service endpoints you can use with Storage Gateway, see [Regions and Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region) in the *AWS General Reference*\.
+     Choose the AWS Region that you want to test\. For example, us\-east\-2\. For supported AWS Regions and a list of AWS service endpoints you can use with Storage Gateway, see [AWS Storage Gateway Endpoints and Quotas](https://docs.aws.amazon.com/general/latest/gr/sg.html) in the *AWS General Reference*\.
 
      Each endpoint in the selected AWS Region displays either a **PASSED** or **FAILED** message, as shown following\.
    + If you selected **VPC \(PrivateLink\)**, each VPC endpoint \(DNS/IP\) in the AWS Region displays either a **PASSED** or **FAILED** message, as shown following\.
@@ -127,6 +130,7 @@ When your gateway starts, it checks its virtual CPU cores, root volume size, and
 1. Log in to your gateway's local console:
    + For more information on logging in to the VMware ESXi console, see [Accessing the Gateway Local Console with VMware ESXi](accessing-local-console.md#MaintenanceConsoleWindowVMware-common)\.
    + For more information on logging in to the Microsoft Hyper\-V local console, see [Access the Gateway Local Console with Microsoft Hyper\-V](accessing-local-console.md#MaintenanceConsoleWindowHyperV-common)\.
+   + For more information on logging in to the KVM local console, see [Accessing the Gateway Local Console with Linux KVM](accessing-local-console.md#MaintenanceConsoleWindowKVM-common)\.
 
 1. In the **AWS Appliance Activation \- Configuration** main menu, enter **4** to view the results of a system resource check\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/local-console-file-0.png)
@@ -145,6 +149,7 @@ You can view and edit Network Time Protocol \(NTP\) server configurations and sy
 1. Log in to your gateway's local console:
    + For more information on logging in to the VMware ESXi local console, see [Accessing the Gateway Local Console with VMware ESXi](accessing-local-console.md#MaintenanceConsoleWindowVMware-common)\.
    + For more information on logging in to the Microsoft Hyper\-V local console, see [Access the Gateway Local Console with Microsoft Hyper\-V](accessing-local-console.md#MaintenanceConsoleWindowHyperV-common)\.
+   + For more information on logging in to the KVM local console, see [Accessing the Gateway Local Console with Linux KVM](accessing-local-console.md#MaintenanceConsoleWindowKVM-common)\.
 
 1. In the **AWS Appliance Activation \- Configuration** main menu, enter **5** to manage your system's time\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/local-console-file-0.png)
@@ -162,6 +167,7 @@ The VM local console in Storage Gateway helps provide a secure environment for c
 1. Log in to your gateway's local console:
    + For more information on logging in to the VMware ESXi local console, see [Accessing the Gateway Local Console with VMware ESXi](accessing-local-console.md#MaintenanceConsoleWindowVMware-common)\.
    + For more information on logging in to the Microsoft Hyper\-V local console, see [Access the Gateway Local Console with Microsoft Hyper\-V](accessing-local-console.md#MaintenanceConsoleWindowHyperV-common)\.
+   + For more information on logging in to the KVM local console, see [Accessing the Gateway Local Console with Linux KVM](accessing-local-console.md#MaintenanceConsoleWindowKVM-common)\.
 
 1. On the **AWS Appliance Activation \- Configuration** main menu, enter **6** for **Command Prompt**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/local-console-file-0.png)
@@ -185,7 +191,9 @@ By default, AWS Storage Gateway is configured to use the E1000 network adapter t
 
 ### Configuring Your Gateway to Use the VMXNET3 Network Adapter<a name="NICChanging-fgw"></a>
 
-AWS Storage Gateway supports the E1000 network adapter type in both VMware ESXi and Microsoft Hyper\-V Hypervisor hosts\. However, the VMXNET3 \(10 GbE\) network adapter type is supported in VMware ESXi hypervisor only\. If your gateway is hosted on a VMware ESXi hypervisor, you can reconfigure your gateway to use the VMXNET3 \(10 GbE\) adapter enter\. For more information on this adapter, see the [VMware website](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=1001805)\.
+AWS Storage Gateway supports the E1000 network adapter type in both VMware ESXi and Microsoft Hyper\-V hypervisor hosts\. However, the VMXNET3 \(10 GbE\) network adapter type is supported in VMware ESXi hypervisor only\. If your gateway is hosted on a VMware ESXi hypervisor, you can reconfigure your gateway to use the VMXNET3 \(10 GbE\) adapter enter\. For more information on this adapter, see the [VMware website](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=1001805)\.
+
+For KVM hypervisor hosts, AWS Storage Gateway supports the use of `virtio` network device drivers\. Use of the E1000 network adapter type for KVM hosts isn't supported\.
 
 **Important**  
 To select VMXNET3, your guest operating system enter must be **Other Linux64**\. 

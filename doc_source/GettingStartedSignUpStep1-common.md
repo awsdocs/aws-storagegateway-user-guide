@@ -10,4 +10,4 @@ To use AWS Storage Gateway, you need an AWS account that gives you access to all
 
    Part of the sign\-up procedure involves receiving a phone call and entering a verification code on the phone keypad\.
 
-For information about pricing, see [AWS Storage Gateway Pricing](http://aws.amazon.com/storagegateway/pricing) on the AWS Storage Gateway detail page\. 
+For information about pricing, see [Pricing](http://aws.amazon.com/storagegateway/pricing) on the AWS Storage Gateway details page\.
