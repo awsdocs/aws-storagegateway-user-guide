@@ -1,6 +1,9 @@
 # Data Encryption Using AWS KMS<a name="encryption"></a>
 
-AWS Storage Gateway uses SSL/TLS \(Secure Socket Layers/Transport Layer Security\) to encrypt data that is transferred between your gateway appliance and AWS storage\. By default, Storage Gateway uses Amazon S3\-Managed Encryption Keys \(SSE\-S3\) to server\-side encrypt all data it stores in Amazon S3\. You have an option to use the Storage Gateway API to configure the different gateway types to encrypt data stored in the cloud using the AWS Key Management Service \(KMS\)\.
+AWS Storage Gateway uses SSL/TLS \(Secure Socket Layers/Transport Layer Security\) to encrypt data that is transferred between your gateway appliance and AWS storage\. By default, Storage Gateway uses Amazon S3\-Managed Encryption Keys \(SSE\-S3\) to server\-side encrypt all data it stores in Amazon S3\. You have an option to use the Storage Gateway API to configure your gateway to encrypt data stored in the cloud using server\-side encryption with AWS Key Management Service \(SSE\-KMS\) customer master keys \(CMKs\)\.
+
+**Important**  
+When you use an AWS KMS CMK for server\-side encryption, you must choose a symmetric CMK\. Storage Gateway does not support asymmetric CMKs\. For more information, see [Using Symmetric and Asymmetric Keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html) in the *AWS Key Management Service Developer Guide*\.
 
 **Encrypting a File Share**  
 For a file share, you can configure your gateway to encrypt your objects with AWS KMS–managed keys by using SSE\-KMS\. For information on using the Storage Gateway API to encrypt data written to a file share, see [CreateNFSFileShare](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_CreateNFSFileShare.html) in the *AWS Storage Gateway API Reference*\.

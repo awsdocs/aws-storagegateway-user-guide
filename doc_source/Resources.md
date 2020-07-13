@@ -14,5 +14,5 @@ In this section, you can find information about AWS and third\-party software, t
 + [Understanding AWS Storage Gateway Resources and Resource IDs](storage-gateway-resource-id.md)
 + [Tagging Storage Gateway Resources](tagging-resources-common.md)
 + [Working with Open\-Source Components for AWS Storage Gateway](AboutAWSStorageGatewaySoftware.md)
-+ [AWS Storage Gateway Quotas](resource-gateway-limits.md)
++ [AWS Storage Gateway quotas](resource-gateway-limits.md)
 + [Using Storage Classes](storage-classes.md)

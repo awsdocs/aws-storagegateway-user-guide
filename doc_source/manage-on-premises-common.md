@@ -24,7 +24,7 @@ When the VM is ready for you to log in, the login screen is displayed\. If this 
 
   Otherwise, use your credentials to log in\.
 **Note**  
-If your gateway has not been updated to a newer version yet, the user name is `sguser` and the password is `sgpassword`\. If you reset your password and your gateway is updated to a newer version, your the user name will change to admin but the password will be maintained\.
+If your volume or tape gateway has not been updated to a newer version yet, the user name is `sguser` and the password is `sgpassword`\. If you reset your password and your gateway is updated to a newer version, your the user name will change to admin but the password will be maintained\.
 
 After you log in, you see the **Storage Gateway Configuration** main menu, as shown in the following screenshot\.
 
@@ -70,7 +70,7 @@ Volume gateways and tape gateways support configuration of a Socket Secure versi
 **Note**  
 The only proxy configurations AWS Storage Gateway supports are SOCKS5 and HTTP\.
 
-If your gateway must use a proxy server to communicate to the internet, then you need to configure the SOCKS or HTTP proxy settings for your gateway\. You do this by specifying an IP address and port number for the host running your proxy\. After you do so, AWS Storage Gateway routes all HTTP traffic through your proxy server\. For information about network requirements for your gateway, see [Network and Firewall Requirements](Requirements.md#networks)\.
+If your gateway must use a proxy server to communicate to the internet, then you need to configure the SOCKS or HTTP proxy settings for your gateway\. You do this by specifying an IP address and port number for the host running your proxy\. After you do so, AWS Storage Gateway routes all HTTP traffic through your proxy server\. For information about network requirements for your gateway, see [Network and firewall requirements](Requirements.md#networks)\.
 
 The following procedure shows you how to configure SOCKS proxy for volume gateway and tape gateway\. For instructions on how to configure HTTP proxy for file gateway, see [To configure an HTTP proxy for a file gateway](#http-proxy)\.<a name="socks-proxy"></a>
 
@@ -145,7 +145,7 @@ You can use your gateway's local console to test your internet connection\. This
    Each endpoint in the selected region displays either a PASSED or FAILED message, as shown following\.    
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/manage-on-premises-common.html)
 
-For information about network and firewall requirements, see [Network and Firewall Requirements](Requirements.md#networks)\.
+For information about network and firewall requirements, see [Network and firewall requirements](Requirements.md#networks)\.
 
 ## Synchronizing Your Gateway VM Time<a name="MaintenanceTimeSync-common"></a>
 

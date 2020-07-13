@@ -4,7 +4,7 @@ You can back up your data to virtual tapes, archive the tapes and manage your vi
 
 For detailed information about how to install and use the Dell EMC NetWorker software, see the *[Dell EMC NetWorker Administration Guide](https://www.dellemc.com/en-us/collaterals/unauth/technical-guides-support-information/products/data-protection/docu91933.pdf)*\.
 
-For more information about compatible backup applications, see [Supported Third\-Party Backup Applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
+For more information about compatible backup applications, see [Supported third\-party backup applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
 
 **Topics**
 + [Configuring Dell EMC NetWorker to Work with VTL Devices](#emc-configure-software)

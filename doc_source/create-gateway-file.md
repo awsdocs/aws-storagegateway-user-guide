@@ -1,35 +1,35 @@
-# Creating a Gateway<a name="create-gateway-file"></a>
+# Creating a gateway<a name="create-gateway-file"></a>
 
-In this section, you can find instructions about how to download, deploy, and activate your file gateway\. 
+In this section, you can find instructions about how to create, deploy, and activate a file gateway\.
 
 **Topics**
-+ [Choosing a Gateway Type](#GettingStartedSelectGatewayType-file)
-+ [Choosing a Host Platform and Downloading the VM](#hosting-options-file)
-+ [Choosing a Service Endpoint](#GettingStarted-service-endpoint-file)
-+ [Connecting to Your Gateway](#GettingStartedBeginActivateGateway-file)
-+ [Activating Your Gateway](#GettingStartedActivateGateway-file)
-+ [Configuring Local Disks](#configure-local-storage-alarms-file)
-+ [Configuring Amazon CloudWatch Logging](#configure-loging-file)
-+ [Verify VMware High Availability \(VMware HA Clusters Only\)](#verify-ha)
++ [Choosing a gateway type](#GettingStartedSelectGatewayType-file)
++ [Choosing a host platform and downloading the VM](#hosting-options-file)
++ [Choosing a service endpoint](#GettingStarted-service-endpoint-file)
++ [Connecting to the gateway](#GettingStartedBeginActivateGateway-file)
++ [Activating the gateway](#GettingStartedActivateGateway-file)
++ [Configuring local disks](#configure-local-storage-alarms-file)
++ [Configuring Amazon CloudWatch logging](#configure-loging-file)
++ [Verifying VMware High Availability \(VMware HA clusters only\)](#verify-ha)
 
-## Choosing a Gateway Type<a name="GettingStartedSelectGatewayType-file"></a>
+## Choosing a gateway type<a name="GettingStartedSelectGatewayType-file"></a>
 
-With a file gateway, you store and retrieve objects in Amazon S3 with a local cache for low latency access to your most recently used data\. 
+With a file gateway, you store and retrieve objects in Amazon S3 with a local cache for low latency access to your most recently used data\.
 
 **To choose a gateway type**
 
-1. Open the AWS Management Console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/home), and choose the AWS Region that you want to create your gateway in\.
+1. Open the AWS Management Console at [https://console\.aws\.amazon\.com/storagegateway/home/](https://console.aws.amazon.com/storagegateway/home/), and choose the AWS Region that you want to create your gateway in\.
 
    If you have previously created a gateway in this AWS Region, the console shows your gateway\. Otherwise, the service homepage appears\.
 
 1. If you haven't created a gateway in the AWS Region that you chose, choose **Get started**\. If you already have a gateway in the AWS Region that you chose, choose **Gateways** from the navigation pane, and then choose **Create gateway**\.
 
-1. On the **Select gateway type** page, choose **File gateway**, and then choose **Next**\.   
+1. On the **Select gateway type** page, choose **File gateway**, and then choose **Next**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/file-gateway.png)
 
-## Choosing a Host Platform and Downloading the VM<a name="hosting-options-file"></a>
+## Choosing a host platform and downloading the VM<a name="hosting-options-file"></a>
 
-If you create your gateway on\-premises, you deploy the hardware appliance, or download and deploy a gateway VM, and then activate the gateway\. If you create your gateway on an Amazon EC2 instance, you launch an Amazon Machine Image \(AMI\) that contains the gateway VM image and then activate the gateway\. For information about supported host platforms, see [Supported Hypervisors and Host Requirements](Requirements.md#requirements-host)\.
+If you create your gateway on\-premises, you deploy the hardware appliance, or download and deploy a gateway VM, and then activate the gateway\. If you create your gateway on an Amazon EC2 instance, you launch an Amazon Machine Image \(AMI\) that contains the gateway VM image and then activate the gateway\. For information about supported host platforms, see [Supported hypervisors and host requirements](Requirements.md#requirements-host)\.
 
 **Note**  
 You can run only file, cached volume, and tape gateways on an Amazon EC2 instance\.
@@ -49,7 +49,7 @@ The \.zip file is over 500 MB in size and might take some time to download, depe
 
      For Amazon EC2, you create an instance from the provided AMI\.
 
-1. If you choose a hypervisor option, deploy the downloaded image to your hypervisor\. Add at least one local disk for your cache and one local disk for your upload buffer during the deployment\. A file gateway requires only one local disk for a cache\. For information about local disk requirements, see [Hardware and Storage Requirements](Requirements.md#requirements-hardware-storage)\.
+1. If you choose a hypervisor option, deploy the downloaded image to your hypervisor\. Add at least one local disk for your cache and one local disk for your upload buffer during the deployment\. A file gateway requires only one local disk for a cache\. For information about local disk requirements, see [Hardware and storage requirements](Requirements.md#requirements-hardware-storage)\.
 
    Depending your hypervisor, set certain options:
    + If you choose VMware, do the following:
@@ -73,24 +73,27 @@ The \.zip file is over 500 MB in size and might take some time to download, depe
 **Note**  
 For VMware, Microsoft Hyper\-V, and KVM, synchronizing the VM time with the host time is required for successful gateway activation\. Make sure that your host clock is set to the correct time and synchronize it with a Network Time Protocol \(NTP\) server\. 
 
-For information about deploying your gateway to an Amazon EC2 host, see [Deploy Your Gateway to an Amazon EC2 Host](ec2-gateway-file.md)\.
+For information about deploying your gateway to an Amazon EC2 host, see [Deploying a file gateway on an Amazon EC2 host](ec2-gateway-file.md)\.
 
-## Choosing a Service Endpoint<a name="GettingStarted-service-endpoint-file"></a>
+## Choosing a service endpoint<a name="GettingStarted-service-endpoint-file"></a>
 
-You can activate your gateway using a public endpoint and have your gateway communicate with AWS storage services over the public internet\. Or you can activate your gateway using a virtual private cloud \(VPC\) endpoint, which is private\. If you use a VPC endpoint, all communication from your gateway to AWS services occurs through the VPC endpoint in your VPC in AWS\. 
+You can activate your gateway using a public endpoint and have your gateway communicate with AWS storage services over the public internet\. Or you can activate your gateway using a virtual private cloud \(VPC\) endpoint, which is private\. If you use a VPC endpoint, all communication from your gateway to AWS services occurs through the VPC endpoint in your VPC in AWS\.
 
 **To choose a service endpoint**
 
 1. For **Endpoint type**, choose from the following options:
-   + To have your gateway access AWS services over the public internet, choose **Public**\. 
-   + To have your gateway access AWS services through the VPC endpoint in your VPC, choose **VPC**\. 
+   + To have your gateway access AWS services over the public internet, choose **Public**\.
+   + To have your gateway access AWS services over the public internet that complies with Federal Information Processing Standards \(FIPS\), choose **FIPS**\.
+   + To have your gateway access AWS services through the VPC endpoint in your VPC, choose **VPC**\.
+**Note**  
+The FIPS service endpoint is only available in the AWS GovCloud \(US\) Regions\. For more information about FIPS, see [Federal Information Processing Standard \(FIPS\) 140\-2](http://aws.amazon.com/compliance/fips/)\.
 
    This procedure assumes that you are activating your gateway with a public endpoint\. For information about how to activate a gateway using a VPC endpoint, see [Activating a Gateway in a Virtual Private Cloud](gateway-private-link.md)\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/choose-endpoint-public.png)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/choose-endpoint-type.png)
 
 1. Choose **Next** to connect you gateway and activate your gateway\.
 
-## Connecting to Your Gateway<a name="GettingStartedBeginActivateGateway-file"></a>
+## Connecting to the gateway<a name="GettingStartedBeginActivateGateway-file"></a>
 
 To connect to your gateway, first get the IP address of your gateway VM\. You use this IP address to activate your gateway\. For gateways deployed and activated on an on\-premises host, you can get the IP address from your gateway VM local console or your hypervisor client\. For gateways deployed and activated on an Amazon EC2 instance, you can get the IP address from the Amazon EC2 console\.
 
@@ -127,7 +130,7 @@ For activation, you can use the public or private IP address assigned to a gatew
 
 For detailed information about how to get a gateway IP address, see [Connecting to Your Gateway](getting-ip-address.md)\.
 
-## Activating Your Gateway<a name="GettingStartedActivateGateway-file"></a>
+## Activating the gateway<a name="GettingStartedActivateGateway-file"></a>
 
 The gateway type, endpoint type, and AWS Region that you selected are shown on the activation page\. The activation page appears after you associate your gateway with your AWS account, as described preceding\.
 
@@ -138,24 +141,24 @@ The gateway type, endpoint type, and AWS Region that you selected are shown on t
    + **Endpoint type** specifies the type of endpoint that you selected for your gateway\.
    + **AWS Region** specifies the AWS Region where your gateway will be activated and where your data will be stored\. If **Endpoint type** is **VPC**, the AWS Region should be same as the Region where your VPC endpoint is located\.
    + **Gateway Time Zone** specifies the time zone to use for your gateway\.
-   + **Gateway Name** identifies your gateway\. You use this name to manage your gateway in the console; you can change it after the gateway is activated\. This name must be unique to your account\. 
+   + **Gateway Name** identifies your gateway\. You use this name to manage your gateway in the console; you can change it after the gateway is activated\. This name must be unique to your account\.
 
-     The following screenshot shows the activation page for a file gateway\.   
+     The following screenshot shows the activation page for a file gateway\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/activate-gateway.png)
 
-1. \(Optional\) In the **Add tags** section, enter a key and value to add tags to your gateway\. A tag is a case\-sensitive key\-value pair that helps you manage, filter, and search for your gateway\. 
+1. \(Optional\) In the **Add tags** section, enter a key and value to add tags to your gateway\. A tag is a case\-sensitive key\-value pair that helps you manage, filter, and search for your gateway\.
 
 1. Choose **Activate gateway**\.
 
-If activation isn't successful, see [Troubleshooting Your Gateway](Troubleshooting-common.md) for possible solutions\.
+If activation isn't successful, see [Troubleshooting your gateway](troubleshooting-gateway-issues.md) for possible solutions\.
 
-## Configuring Local Disks<a name="configure-local-storage-alarms-file"></a>
+## Configuring local disks<a name="configure-local-storage-alarms-file"></a>
 
 When you deployed the VM, you allocated local disks for your gateway\. Now you configure your gateway to use these disks\. For information about using ephemeral storage, see [Using Ephemeral Storage With EC2 Gateways](ManagingLocalStorage-common.md#ephemeral-disk-cache)\.<a name="local-storage-cached-file"></a>
 
 **To configure local disks**
 
-1. On the **Configure local disks** page, identify the disks that you added and decide which ones to allocate for cached storage\. For information about disk size limits, see [Recommended Local Disk Sizes For Your Gateway](resource-gateway-limits.md#disk-sizes)\.  
+1. On the **Configure local disks** page, identify the disks that you added and decide which ones to allocate for cached storage\. For information about disk size limits, see [Recommended local disk sizes for your gateway](resource-gateway-limits.md#disk-sizes)\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/configure-local-storage-file.png)
 
 1. Choose **Cache** for the disk that you want to configure as cache storage\.
@@ -164,7 +167,7 @@ When you deployed the VM, you allocated local disks for your gateway\. Now you c
 
 1. Choose **Configure Logging** to save your configuration settings\. You are redirected to the Gateway Log Group wizard\.
 
-## Configuring Amazon CloudWatch Logging<a name="configure-loging-file"></a>
+## Configuring Amazon CloudWatch logging<a name="configure-loging-file"></a>
 
 To notify you about the health of your file gateway and its resources, you can configure an Amazon CloudWatch log group\. For more information, see [Getting File Gateway Health Logs with CloudWatch Log Groups](monitoring-file-gateway.md#cw-log-groups)\.
 
@@ -176,7 +179,7 @@ To notify you about the health of your file gateway and its resources, you can c
 
 1. If your gateway is deployed on a VMware host that is enabled for VMware High Availability \(HA\) cluster, you're prompted to verify and test the VMware HA configuration\. In this case, choose **Verify VMware HA**\. Otherwise, choose **Save and Continue**\.
 
-## Verify VMware High Availability \(VMware HA Clusters Only\)<a name="verify-ha"></a>
+## Verifying VMware High Availability \(VMware HA clusters only\)<a name="verify-ha"></a>
 
 If your gateway is not deployed on a VMware host that is enabled for VMware High Availability \(HA\), you can skip this section\.
 
@@ -194,4 +197,4 @@ For information about how to configure your gateway for VMware HA, see [Using VM
 
 **Next Step**
 
-[Creating a File Share](GettingStartedCreateFileShare.md)
+[Creating a file share](GettingStartedCreateFileShare.md)

@@ -4,7 +4,7 @@ When you initially configured your gateway to run as an Amazon EC2 instance, you
 
 Before you add more storage to the gateway, you should review how to size your upload buffer and cache storage based on your application needs for a gateway\. To do so, see [Determining the Size of Upload Buffer to Allocate](ManagingLocalStorage-common.md#CachedLocalDiskUploadBufferSizing-common) and [Determining the Size of Cache Storage to Allocate](ManagingLocalStorage-common.md#CachedLocalDiskCacheSizing-common)\.
 
-There are quotas on the maximum storage you can allocate as an upload buffer and cache storage\. You can attach as many Amazon EBS volumes to your instance as you want, but you can only configure these volumes as upload buffer and cache storage space up to these storage quotas\. For more information, see [AWS Storage Gateway Quotas](resource-gateway-limits.md)\.<a name="EC2GatewayAddBlockStorage-common"></a>
+There are quotas on the maximum storage you can allocate as an upload buffer and cache storage\. You can attach as many Amazon EBS volumes to your instance as you want, but you can only configure these volumes as upload buffer and cache storage space up to these storage quotas\. For more information, see [AWS Storage Gateway quotas](resource-gateway-limits.md)\.<a name="EC2GatewayAddBlockStorage-common"></a>
 
 **To add an Amazon EBS volume and configure it for your gateway**
 

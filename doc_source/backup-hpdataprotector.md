@@ -1,6 +1,6 @@
 # Testing Your Setup by Using Micro Focus \(HPE\) Data Protector<a name="backup-hpdataprotector"></a>
 
-You can back up your data to virtual tapes, archive the tapes, and manage your virtual tape library \(VTL\) devices by using Micro Focus \(HPE\) Data Protector v9\.x\. In this topic, you can find basic documentation on how to configure the Micro Focus \(HPE\) Data Protector software for a tape gateway and perform a backup and restore operation\. For detailed information about how to use the Micro Focus \(HPE\) Data Protector software, see the Hewlett Packard documentation\. For more information about compatible backup applications, see [Supported Third\-Party Backup Applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
+You can back up your data to virtual tapes, archive the tapes, and manage your virtual tape library \(VTL\) devices by using Micro Focus \(HPE\) Data Protector v9\.x\. In this topic, you can find basic documentation on how to configure the Micro Focus \(HPE\) Data Protector software for a tape gateway and perform a backup and restore operation\. For detailed information about how to use the Micro Focus \(HPE\) Data Protector software, see the Hewlett Packard documentation\. For more information about compatible backup applications, see [Supported third\-party backup applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
 
 **Topics**
 + [Configuring Micro Focus \(HPE\) Data Protector to Work with VTL Devices](#hpdataprotector-configure-software)

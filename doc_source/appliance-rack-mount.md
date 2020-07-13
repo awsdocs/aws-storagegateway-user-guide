@@ -9,7 +9,7 @@ To install your hardware appliance, you need the following components:
 
 **To connect the hardware appliance to power**
 **Note**  
-Before you perform the following procedure, make sure that you meet all of the requirements for the AWS Storage Gateway Hardware Appliance as described in [Networking and Firewall Requirements for the AWS Storage Gateway Hardware Appliance](Requirements.md#appliance-network-requirements)\.
+Before you perform the following procedure, make sure that you meet all of the requirements for the AWS Storage Gateway Hardware Appliance as described in [Networking and firewall requirements for the AWS Storage Gateway Hardware Appliance](Requirements.md#appliance-network-requirements)\.
 
 1. Plug in a power connection to each of the two power supplies\. It's possible to plug in to only one power connection, but we recommend power connections to both power supplies\.
 

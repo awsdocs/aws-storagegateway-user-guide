@@ -42,7 +42,7 @@ Follow these instructions to create a VPC endpoint\. If you already have a VPC e
 
 1. For **VPC**, choose your VPC and note its Availability Zones and subnets\.
 
-1. Verify that **Enable Private DNS Name** is selected\.
+1. Verify that **Enable Private DNS Name** is not selected\.
 
 1. For **Security group**, choose the security group that you want to use for your VPC\. You can accept the default security group\. Verify that all of the following TCP ports are allowed in your security group: 
    + TCP 443
@@ -78,7 +78,7 @@ If you are creating file gateway, you need to create an endpoint for Amazon S3 a
 
 ### Choosing a Host Platform and Downloading the VM<a name="hosting-options-file-vpc"></a>
 
-If you create your gateway on\-premises, you deploy the hardware appliance, or download and deploy a gateway VM, and then activate the gateway\. If you create your gateway on an Amazon EC2 instance, you launch an Amazon Machine Image \(AMI\) that contains the gateway VM image and then activate the gateway\. For information about supported host platforms, see [Supported Hypervisors and Host Requirements](Requirements.md#requirements-host)\.
+If you create your gateway on\-premises, you deploy the hardware appliance, or download and deploy a gateway VM, and then activate the gateway\. If you create your gateway on an Amazon EC2 instance, you launch an Amazon Machine Image \(AMI\) that contains the gateway VM image and then activate the gateway\. For information about supported host platforms, see [Supported hypervisors and host requirements](Requirements.md#requirements-host)\.
 
 **Note**  
 You can run only file, cached volume, and tape gateways on an Amazon EC2 instance\.
@@ -98,7 +98,7 @@ The \.zip file is over 500 MB in size and might take some time to download, depe
 
      For Amazon EC2, you create an instance from the provided AMI\.
 
-1. If you choose a hypervisor option, deploy the downloaded image to your hypervisor\. Add at least one local disk for your cache and one local disk for your upload buffer during the deployment\. A file gateway requires only one local disk for a cache\. For information about local disk requirements, see [Hardware and Storage Requirements](Requirements.md#requirements-hardware-storage)\.
+1. If you choose a hypervisor option, deploy the downloaded image to your hypervisor\. Add at least one local disk for your cache and one local disk for your upload buffer during the deployment\. A file gateway requires only one local disk for a cache\. For information about local disk requirements, see [Hardware and storage requirements](Requirements.md#requirements-hardware-storage)\.
 
    Depending your hypervisor, set certain options:
    + If you choose VMware, do the following:
@@ -128,8 +128,7 @@ For information about deploying your gateway to an Amazon EC2 host, see [Deploy 
 
 You can activate your gateway using a private VPC endpoint\. If you use a VPC endpoint, all communication from your gateway to AWS services occurs through the VPC endpoint in your VPC in AWS\. 
 
-1. In the console, you can select a service endpoint for your gateway after selecting the host platform\.  For **Endpoint type**, choose **VPC**\. If you don't have a VPC endpoint, choose **Create a VPC endpoint** to create one\. A VPC endpoint allows your gateway to communicate with AWS services only through your VPC in AWS without going over the public internet\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/choose-endpoint-vpc.png)
+1. In the console, you can select a service endpoint for your gateway after selecting the host platform\.  For **Endpoint type**, choose **VPC**\. If you don't have a VPC endpoint, choose **Create a VPC endpoint** to create one\. A VPC endpoint allows your gateway to communicate with AWS services only through your VPC in AWS without going over the public internet\.
 
    This procedure assumes that you are activating your gateway using a VPC endpoint\. For more information about how to activate a gateway using a public endpoint, see [Creating Your Gateway](create-gateways.md)\.
 
@@ -299,7 +298,7 @@ The gateway type, endpoint type, and AWS Region you selected are shown on the ac
 
 1. Choose **Activate gateway**\.
 
-1. If activation is not successful, see [Troubleshooting Your Gateway](Troubleshooting-common.md) for possible solutions\.
+1. If activation is not successful, see [Troubleshooting your gateway](troubleshooting-gateway-issues.md) for possible solutions\.
 
 **To associate your gateway with your AWS account**
 
@@ -333,7 +332,7 @@ When you deployed the VM, you allocated local disks for your gateway\. Now you c
 
 **To configure local disks**
 
-1. On the **Configure local disks** page, identify the disks you added and decide which ones you want to allocate for cached storage\. For information about disk size quotas, see [Recommended Local Disk Sizes For Your Gateway](resource-gateway-limits.md#disk-sizes)\.  
+1. On the **Configure local disks** page, identify the disks you added and decide which ones you want to allocate for cached storage\. For information about disk size quotas, see [Recommended local disk sizes for your gateway](resource-gateway-limits.md#disk-sizes)\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/configure-local-storage-file.png)
 
 1. Choose **Cache** for the disk you want to configure as cache storage\.
@@ -354,8 +353,11 @@ client-cp.storagegateway.region.amazonaws.com:443
 proxy-app.storagegateway.region.amazonaws.com:443
 dp-1.storagegateway.region.amazonaws.com:443
 storagegateway.region.amazonaws.com:443 (Required for making API calls)
-region.s3.amazonaws.com (Required only for File Gateway)
+s3.region.amazonaws.com (Required only for File Gateway)
 ```
+
+**Important**  
+Depending on your gateway's AWS Region, replace *region* in the endpoint with the corresponding region string\. For example, if you create a gateway in the US West \(Oregon\) region, the endpoint looks like this: `storagegateway.us-west-2.amazonaws.com:443`\.
 
 When Storage Gateway is communicating through the VPC endpoint, it communicates with the AWS services through multiple ports on the Storage Gateway VPC endpoint and port 443 on the Amazon S3 private endpoint\.
 + TCP ports on Storage Gateway VPC endpoint\.
@@ -366,6 +368,6 @@ When Storage Gateway is communicating through the VPC endpoint, it communicates 
 You are now ready to create resources for your gateway\.
 
 **Next Step**
-+ File gateway: [Creating a File Share](GettingStartedCreateFileShare.md)
++ File gateway: [Creating a file share](GettingStartedCreateFileShare.md)
 + Volume gateway: [Creating a Volume](GettingStartedCreateVolumes.md)
 + Tape gateway: [Creating Tapes](GettingStartedCreateTapes.md)

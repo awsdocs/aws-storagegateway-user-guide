@@ -50,7 +50,7 @@ The password can consist of any character on the keyboard and can be 1–512 cha
 **Note**  
 The only proxy configuration that file gateways support is HTTP\.
 
-If your gateway must use a proxy server to communicate to the internet, then you need to configure the HTTP proxy settings for your gateway\. You do this by specifying an IP address and port number for the host running your proxy\. After you do so, AWS Storage Gateway routes all HTTP traffic through your proxy server\. For information about network requirements for your gateway, see [Network and Firewall Requirements](Requirements.md#networks)\.<a name="http-proxy-fgw"></a>
+If your gateway must use a proxy server to communicate to the internet, then you need to configure the HTTP proxy settings for your gateway\. You do this by specifying an IP address and port number for the host running your proxy\. After you do so, AWS Storage Gateway routes all HTTP traffic through your proxy server\. For information about network requirements for your gateway, see [Network and firewall requirements](Requirements.md#networks)\.<a name="http-proxy-fgw"></a>
 
 **To configure an HTTP proxy for a file gateway**
 
@@ -119,7 +119,7 @@ You can use your gateway's local console to test your internet connection\. This
 1.     
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/manage-on-premises-fgw.html)
 
-For information about network and firewall requirements, see [Network and Firewall Requirements](Requirements.md#networks)\.
+For information about network and firewall requirements, see [Network and firewall requirements](Requirements.md#networks)\.
 
 ## Viewing Your Gateway System Resource Status<a name="system-resource-check-fgw"></a>
 

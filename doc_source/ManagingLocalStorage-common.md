@@ -62,13 +62,13 @@ For example, assume that your business applications write text data to your gate
 1. ((40 MB/sec) - (12 MB/sec * 2)) * (12 hours * 3600 seconds/hour) = 691200 megabytes
 ```
 
-You can initially use this approximation to determine the disk size that you want to allocate to the gateway as upload buffer space\. Add more upload buffer space as needed using the Storage Gateway console\. Also, you can use the Amazon CloudWatch operational metrics to monitor upload buffer usage and determine additional storage requirements\. For information on metrics and setting the alarms, see [Monitoring the Upload Buffer](Main_monitoring-gateways-common.md#PerfUploadBuffer-common)\.
+You can initially use this approximation to determine the disk size that you want to allocate to the gateway as upload buffer space\. Add more upload buffer space as needed using the Storage Gateway console\. Also, you can use the Amazon CloudWatch operational metrics to monitor upload buffer usage and determine additional storage requirements\. For information on metrics and setting the alarms, see [Monitoring the upload buffer](Main_monitoring-gateways-common.md#PerfUploadBuffer-common)\.
 
 ## Determining the Size of Cache Storage to Allocate<a name="CachedLocalDiskCacheSizing-common"></a>
 
 Your gateway uses its cache storage to provide low\-latency access to your recently accessed data\. The cache storage acts as the on\-premises durable store for data that is pending upload to Amazon S3 from the upload buffer\. Generally speaking, you size the cache storage at 1\.1 times the upload buffer size\. For more information about how to estimate your cache storage size, see [Determining the Size of Upload Buffer to Allocate](#CachedLocalDiskUploadBufferSizing-common)\.
 
-You can initially use this approximation to provision disks for the cache storage\. You can then use Amazon CloudWatch operational metrics to monitor the cache storage usage and provision more storage as needed using the console\. For information on using the metrics and setting up alarms, see [Monitoring Cache Storage](Main_monitoring-gateways-common.md#PerfCache-common)\.
+You can initially use this approximation to provision disks for the cache storage\. You can then use Amazon CloudWatch operational metrics to monitor the cache storage usage and provision more storage as needed using the console\. For information on using the metrics and setting up alarms, see [Monitoring cache storage](Main_monitoring-gateways-common.md#PerfCache-common)\.
 
 ## Adding an Upload Buffer or Cache Storage<a name="ConfiguringLocalDiskStorage"></a>
 

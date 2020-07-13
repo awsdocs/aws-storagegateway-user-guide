@@ -221,7 +221,7 @@ After you finish the exercise, consider the following:
 
 Other sections of this guide include information about how to do the following:
 + To learn more about storage volumes and how to manage them, see [Managing Your Gateway](managing-gateway-common.md)\.
-+ To troubleshoot gateway problems, see [Troubleshooting Your Gateway](Troubleshooting-common.md)\.
++ To troubleshoot gateway problems, see [Troubleshooting your gateway](troubleshooting-gateway-issues.md)\.
 + To optimize your gateway, see [Optimizing Gateway Performance](Performance.md#Optimizing-common)\.
 + To learn about Storage Gateway metrics and how you can monitor how your gateway performs, see [Monitoring Storage Gateway](Main_monitoring-gateways-common.md)\.
 + To learn more about configuring your gateway's iSCSI targets to store data, see [Connecting to Your Volumes to a Windows Client](initiator-connection-common.md#ConfiguringiSCSIClient)\.

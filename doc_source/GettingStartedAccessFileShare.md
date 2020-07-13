@@ -1,4 +1,4 @@
-# Mounting Your NFS File Share on Your Client<a name="GettingStartedAccessFileShare"></a>
+# Mounting your NFS file share on your client<a name="GettingStartedAccessFileShare"></a>
 
 Now you mount your NFS file share on a drive on your client and map it to your Amazon S3 bucket\.
 
@@ -29,4 +29,4 @@ If you are using Windows clients, check your `mount` options after mounting by r
 
 **Next Step**
 
-[Testing Your File Gateway](GettingStartedTestFileShare.md)
+[Testing your file gateway](GettingStartedTestFileShare.md)

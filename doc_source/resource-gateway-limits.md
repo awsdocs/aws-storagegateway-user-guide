@@ -1,42 +1,42 @@
-# AWS Storage Gateway Quotas<a name="resource-gateway-limits"></a>
+# AWS Storage Gateway quotas<a name="resource-gateway-limits"></a>
 
 In this topic, you can find information about file share, volume, tape quotas, configuration, and performance limits for Storage Gateway\.
 
 **Topics**
-+ [Quotas for File Shares](#resource-file-limits)
-+ [Quotas for Volumes](#resource-volume-limits)
-+ [Quotas for Tapes](#resource-tape-limits)
-+ [Recommended Local Disk Sizes For Your Gateway](#disk-sizes)
++ [Quotas for file shares](#resource-file-limits)
++ [Quotas for volumes](#resource-volume-limits)
++ [Quotas for tapes](#resource-tape-limits)
++ [Recommended local disk sizes for your gateway](#disk-sizes)
 
-## Quotas for File Shares<a name="resource-file-limits"></a>
+## Quotas for file shares<a name="resource-file-limits"></a>
 
 The following table lists quotas for file shares\.
 
 
-| Description | File Gateway | 
+| Description | File gateway | 
 | --- | --- | 
 | Maximum number of file shares per Amazon S3 bucket\. There is a one\-to\-one mapping between a file share and an S3 bucket | 1 | 
 | Maximum number of file shares per gateway | 10 | 
 | The maximum size of an individual file, which is the maximum size of an individual object in Amazon S3  If you write a file larger than 5 TB, you get a "file too large" error message and only the first 5 TB of the file is uploaded\.   | 5 TB | 
-| Maximum path length Clients are not allowed to create a path exceeding this length, and doing so results in an error\. This limit applies to both protocols supported by file gateways, NFS and SMB\.  | 1024 bytes | 
+| Maximum path length  Clients are not allowed to create a path exceeding this length, and doing so results in an error\. This limit applies to both protocols supported by file gateways, NFS and SMB\.  | 1024 bytes | 
 
-## Quotas for Volumes<a name="resource-volume-limits"></a>
+## Quotas for volumes<a name="resource-volume-limits"></a>
 
 The following table lists quotas for volumes\.
 
 
-| Description | Cached Volumes | Stored Volumes | 
+| Description | Cached volumes | Stored volumes | 
 | --- | --- | --- | 
 | Maximum size of a volume  If you create a snapshot from a cached volume that is more than 16 TiB in size, you can restore it to a Storage Gateway volume but not to an Amazon Elastic Block Store \(Amazon EBS\) volume\.   | 32 TiB | 16 TiB | 
 | Maximum number of volumes per gateway | 32 | 32 | 
 | Total size of all volumes for a gateway | 1,024 TiB | 512 TiB | 
 
-## Quotas for Tapes<a name="resource-tape-limits"></a>
+## Quotas for tapes<a name="resource-tape-limits"></a>
 
 The following table lists quotas for tapes\.
 
 
-| Description | Tape Gateway | 
+| Description | Tape gateway | 
 | --- | --- | 
 | Minimum size of a virtual tape | 100 GiB | 
 | Maximum size of a virtual tape | 5 TiB | 
@@ -45,14 +45,14 @@ The following table lists quotas for tapes\.
 | Maximum number of virtual tapes in archive | No limit | 
 | Total size of all tapes in a archive | No limit | 
 
-## Recommended Local Disk Sizes For Your Gateway<a name="disk-sizes"></a>
+## Recommended local disk sizes for your gateway<a name="disk-sizes"></a>
 
 The following table recommends sizes for local disk storage for your deployed gateway\. 
 
 
 | Gateway Type | Cache \(Minimum\) | Cache \(Maximum\) | Upload Buffer \(Minimum\) | Upload Buffer \(Maximum\) | Other Required Local Disks | 
 | --- | --- | --- | --- | --- | --- | 
-| File gateway | 150 GiB | 16 TiB | — | — | — | 
+| File gateway | 150 GiB | 64 TiB | — | — | — | 
 | Cached volume gateway | 150 GiB | 16 TiB | 150 GiB |  2 TiB  | — | 
 | Stored volume gateway | — | — | 150 GiB |  2 TiB  | 1 or more for stored volume or volumes | 
 | Tape gateway | 150 GiB | 16 TiB | 150 GiB | 2 TiB | — | 

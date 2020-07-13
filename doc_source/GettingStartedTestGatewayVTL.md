@@ -33,4 +33,4 @@ Unless otherwise stated, all backup applications were qualified on Microsoft Win
 + [Testing Your Setup by Using Veritas Backup Exec](backup-BackupExec.md)
 + [Testing Your Setup by Using Veritas NetBackup](backup_netbackup-vtl.md)
 
-For more information about compatible backup applications, see [Supported Third\-Party Backup Applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
+For more information about compatible backup applications, see [Supported third\-party backup applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.

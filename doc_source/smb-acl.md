@@ -19,11 +19,11 @@ Take the following steps to enable Windows ACLs on a new SMB file share\.
 
 **To enable Windows ACLs when creating a new SMB file share**
 
-1. Create a file gateway if you don't already have one\. For more information, see [Creating a File Gateway](create-file-gateway.md)\. 
+1. Create a file gateway if you don't already have one\. For more information, see [Creating a file gateway](create-file-gateway.md)\. 
 
-1. If the gateway is not joined to a domain, add it to a domain\. For more information, see [Using Active Directory to Authenticate Users](managing-gateway-file.md#enable-ad-settings)\. 
+1. If the gateway is not joined to a domain, add it to a domain\. For more information, see [Using Active Directory to authenticate users](managing-gateway-file.md#enable-ad-settings)\. 
 
-1. Create an SMB file share\. For more information, see [Creating a File Share](GettingStartedCreateFileShare.md)\. 
+1. Create an SMB file share\. For more information, see [Creating a file share](GettingStartedCreateFileShare.md)\. 
 
 1. Enable Windows ACL on the file share from the Storage Gateway console\.
 

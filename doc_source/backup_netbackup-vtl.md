@@ -6,7 +6,7 @@ You can back up your data to virtual tapes, archive the tapes, and manage your v
 
 The procedure for using these versions of Backup Exec with a tape gateway is similar\. For detailed information about how to use NetBackup, see the [Veritas Services and Operations Readiness Tools \(SORT\)](https://sort.veritas.com/documents) on the Veritas website\. For Veritas support information on hardware compatibility, see the [NetBackup 7\.0 \- 7\.6\.x Hardware Compatibility List](https://sort.veritas.com/DocPortal/pdf/NB_76_HCL), [NetBackup 8\.0 \- 8\.1\.x Hardware Compatibility List](https://www.veritas.com/content/support/en_US/doc/NB_80_HCL), or [NetBackup 8\.2 \- 8\.x\.x Hardware Compatibility List](https://www.veritas.com/content/support/en_US/doc/NB_82_HCL) on the Veritas website\.
 
-For more information about compatible backup applications, see [Supported Third\-Party Backup Applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
+For more information about compatible backup applications, see [Supported third\-party backup applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
 
 **Topics**
 + [Configuring NetBackup Storage Devices](#configure-netback-storage-devices)

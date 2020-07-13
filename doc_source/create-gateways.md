@@ -7,7 +7,7 @@ To create your gateway, open the [AWS Storage Gateway Management Console](https:
 Choose **Get started** to open the **Create gateway** page\. On this page, you choose a gateway type\. If you have a gateway in the current AWS Region, the console shows your gateway in the console\.
 
 **Topics**
-+ [Creating a File Gateway](create-file-gateway.md)
++ [Creating a file gateway](create-file-gateway.md)
 + [Creating a Volume Gateway](create-volume-gateway-volume.md)
 + [Creating a Tape Gateway](create-tape-gateway.md)
 + [Activating a Gateway in a Virtual Private Cloud](gateway-private-link.md)

@@ -9,11 +9,11 @@ You can deploy and activate a tape or volume gateway on an Amazon EC2 instance\.
 1. Choose **Launch instance** to launch a storage gateway EC2 AMI\. You are redirected to the EC2 community AMI page, where you can choose an instance type\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/host-ec2-file.png)
 
-1. On the **Choose an Instance Type** page, choose the hardware configuration of your instance\. AWS Storage Gateway is supported on instance types that meet certain minimum requirements\. We recommend starting with the m4xlarge instance type, which meets the minimum requirements for your gateway to function properly\. For more information, see [Hardware Requirements for On\-Premises VMs](Requirements.md#requirements-hardware)\. 
+1. On the **Choose an Instance Type** page, choose the hardware configuration of your instance\. AWS Storage Gateway is supported on instance types that meet certain minimum requirements\. We recommend starting with the m4xlarge instance type, which meets the minimum requirements for your gateway to function properly\. For more information, see [Hardware requirements for on\-premises VMs](Requirements.md#requirements-hardware)\. 
 
    You can resize your instance after you launch, if necessary\. For more information, see [Resizing Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-resize.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 **Note**  
-Certain instance types, particularly i3 EC2, use NVMe SSD disks\. These can cause problems when you start or stop a gateway; for example, you can lose data from the cache\. Monitor the `CachePercentDirty` Amazon CloudWatch metric, and only start or stop your system when that metric is `0`\. To learn more about monitoring metrics for your gateway, see [Storage Gateway Metrics and Dimensions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/awssg-metricscollected.html) in the CloudWatch documentation\. For more information, see [Requirements for Amazon EC2 Instance Types](Requirements.md#requirements-hardware-ec2)\.
+Certain instance types, particularly i3 EC2, use NVMe SSD disks\. These can cause problems when you start or stop a gateway; for example, you can lose data from the cache\. Monitor the `CachePercentDirty` Amazon CloudWatch metric, and only start or stop your system when that metric is `0`\. To learn more about monitoring metrics for your gateway, see [Storage Gateway Metrics and Dimensions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/awssg-metricscollected.html) in the CloudWatch documentation\. For more information, see [Requirements for Amazon EC2 instance types](Requirements.md#requirements-hardware-ec2)\.
 
 1. Choose **Next: Configure Instance Details**\.
 
@@ -36,7 +36,7 @@ When adding cache or upload buffer to an existing gateway, it's important to cre
 
 1. On the **Configure Security Group** page, add firewall rules to specific traffic to reach your instance\. You can create a new security group or choose an existing security group\. 
 **Important**  
-Besides the Storage Gateway activation and Secure Shell \(SSH\) access ports, NFS clients require access to additional ports\. For detailed information, see [Network and Firewall Requirements](Requirements.md#networks)\. 
+Besides the Storage Gateway activation and Secure Shell \(SSH\) access ports, NFS clients require access to additional ports\. For detailed information, see [Network and firewall requirements](Requirements.md#networks)\. 
 
 1. Choose **Review and Launch** to review your configuration\.
 

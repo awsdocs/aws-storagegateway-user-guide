@@ -8,7 +8,7 @@ You can back up your data to virtual tapes, archive the tapes, and manage your v
 
 The procedure for using these versions of Backup Exec with a tape gateway is the same\. See the [Veritas support website](https://www.veritas.com/support/) for detailed information about how to use Backup Exec, including how to create secure backups with Backup Exec, software and hardware compatibility lists, and administrator guides for Backup Exec\.
 
-For more information about supported backup applications, see [Supported Third\-Party Backup Applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
+For more information about supported backup applications, see [Supported third\-party backup applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
 
 **Topics**
 + [Configuring Storage in Backup Exec](#BE-configure-storage)

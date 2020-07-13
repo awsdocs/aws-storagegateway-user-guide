@@ -7,7 +7,7 @@ You can use AWS\-wide condition keys in your Storage Gateway policies to express
 **Note**  
 To specify an action, use the `storagegateway:` prefix followed by the API operation name \(for example, `storagegateway:ActivateGateway`\)\. For each Storage Gateway action, you can specify a wildcard character \(\*\) as the resource\.
 
-If you see an expand arrow \(**↗**\) in the upper\-right corner of the table, you can open the table in a new window\. To close the window, choose the close button \(**X**\) in the lower\-right corner\.
+Use the scroll bars to see the rest of the table\.
 
 For a list of Storage Gateway resources with their ARN formats, see [AWS Storage Gateway Resources and Operations](managing-access-overview.md#access-control-specify-sg-actions)\.
 

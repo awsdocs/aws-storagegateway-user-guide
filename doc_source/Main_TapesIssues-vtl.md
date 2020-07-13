@@ -1,4 +1,4 @@
-# Troubleshooting Virtual Tape Issues<a name="Main_TapesIssues-vtl"></a>
+# Troubleshooting virtual tape issues<a name="Main_TapesIssues-vtl"></a>
 
 You can find information following about actions to take if you experience unexpected issues with your virtual tapes\.
 
@@ -127,4 +127,4 @@ If you use ephemeral disks as cache disks for your gateway or mount your cache d
 
 ## High Availability Health Notifications<a name="troubleshooting-ha-notifications"></a>
 
-When running your gateway on the VMware vSphere High Availability \(HA\) platform, you may receive health notifications\. For more information about health notifications, see [Troubleshooting High Availability Issues](troubleshooting-ha-issues.md)\.
+When running your gateway on the VMware vSphere High Availability \(HA\) platform, you may receive health notifications\. For more information about health notifications, see [Troubleshooting high availability issues](troubleshooting-ha-issues.md)\.

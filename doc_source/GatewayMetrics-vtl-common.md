@@ -16,7 +16,7 @@ You can use Amazon CloudWatch Logs to get information about the health of your t
 
 For example, suppose that your gateway is deployed in a cluster enabled with VMware HA and you need to know about any errors\. You can configure a CloudWatch log group to monitor your gateway and get notified when your gateway encounters an error\. You can either configure the group when you are activating the gateway or after your gateway is activated and up and running\. For information about how to configure a CloudWatch log group when activating a gateway, see [Configuring Amazon CloudWatch Logging](create-gateway-vtl.md#configure-logging-tape)\. For general information about CloudWatch log groups, see [Working with Log Groups and Log Streams](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html) in the *Amazon CloudWatch User Guide\.*
 
-For information about how to troubleshoot and fix these types of errors, see [Troubleshooting File Gateway Issues](troubleshoot-logging-errors.md)\.
+For information about how to troubleshoot and fix these types of errors, see [Troubleshooting virtual tape issues](Main_TapesIssues-vtl.md)\.
 
 The following procedure shows you how to configure a CloudWatch log group after your gateway is activated\. 
 
@@ -31,6 +31,19 @@ The following procedure shows you how to configure a CloudWatch log group after 
 1. For **Gateway Log Group**, choose the log group that you want to use\. If you don't have a log group, choose the **Create new Log Group** link to create one\. You are directed to the CloudWatch Logs console where you can create the log group\. If you create a new log group, choose the refresh button to view the new log group in the list\.
 
 1. When you are done, choose **Save**\.
+
+Following is an example of a tape gateway event message that is sent to CloudWatch\. This example shows a `TapeStatusTransition` message\.
+
+```
+    {
+    "severity": "INFO",
+    "source": "FZTT16FCF5",
+    "type": "TapeStatusTransition",
+    "gateway": "sgw-C51DFEAC",
+    "timestamp": "1581553463831",
+    "newStatus": "RETRIEVED"
+    }
+```
 
 To see the logs for your gateway, choose the gateway and choose the **Details** tab\.
 
@@ -65,7 +78,7 @@ The following table describes the Storage Gateway metrics that you can use to ge
 
 | Metric | Description | 
 | --- | --- | 
-| CachePercentDirty |  The tape's contribution to the overall percentage of the gateway's cache that isn't persisted to AWS\. The sample is taken at the end of the reporting period\. Use the `CachePercentDirty` metric of the gateway to view the overall percentage of the gateway's cache that isn't persisted to AWS\. For more information, see [Understanding Gateway Metrics](Main_monitoring-gateways-common.md#MonitoringGateways-common)\. Units: Percent  | 
+| CachePercentDirty |  The tape's contribution to the overall percentage of the gateway's cache that isn't persisted to AWS\. The sample is taken at the end of the reporting period\. Use the `CachePercentDirty` metric of the gateway to view the overall percentage of the gateway's cache that isn't persisted to AWS\. For more information, see [Understanding gateway metrics](Main_monitoring-gateways-common.md#MonitoringGateways-common)\. Units: Percent  | 
 | ClientTraffic |  The amount of bytes the tape sent and received from on\-premises clients\. That is, the total amount of `ReadBytes` and `WriteBytes` from client applications\. Units: bytes  | 
 | CloudTraffic |  The amount of bytes uploaded and downloaded from the cloud to the tape\. Units: bytes  | 
 | CpuUsage |  The percentage of allocated CPU compute units that are currently used by the tape\.  Units: Percent  | 

@@ -1,4 +1,4 @@
-# Troubleshooting Volume Issues<a name="troubleshoot-volume-issues"></a>
+# Troubleshooting volume issues<a name="troubleshoot-volume-issues"></a>
 
 You can find information about the most typical issues you might encounter when working with volumes, and actions that we suggest that you take to fix them\.
 
@@ -39,7 +39,7 @@ AWS Storage Gateway provides recovery points for each volume in a cached volume 
 
 In some cases, the AWS Storage Gateway console might indicate that your volume has a status of PASSTHROUGH\. A volume can have PASSTHROUGH status for several reasons\. Some reasons require action, and some do not\. 
 
-An example of when you should take action if your volume has the PASS THROUGH status is when your gateway has run out of upload buffer space\. To verify if your upload buffer was exceeded in the past, you can view the `UploadBufferPercentUsed` metric in the Amazon CloudWatch console; for more information, see [Monitoring the Upload Buffer](Main_monitoring-gateways-common.md#PerfUploadBuffer-common)\. If your gateway has the PASS THROUGH status because it has run out of upload buffer space, you should allocate more upload buffer space to your gateway\. Adding more buffer space will cause your volume to transition from PASS THROUGH to BOOTSTRAPPING to AVAILABLE automatically\. While the volume has the BOOTSTRAPPING status, the gateway reads data off the volume's disk, uploads this data to Amazon S3, and catches up as needed\. When the gateway has caught up and saved the volume data to Amazon S3, the volume status becomes AVAILABLE and snapshots can be started again\. Note that when your volume has the PASS THROUGH or BOOTSTRAPPING status, you can continue to read and write data from the volume disk\. For more information about adding more upload buffer space, see [Determining the Size of Upload Buffer to Allocate](ManagingLocalStorage-common.md#CachedLocalDiskUploadBufferSizing-common)\.
+An example of when you should take action if your volume has the PASS THROUGH status is when your gateway has run out of upload buffer space\. To verify if your upload buffer was exceeded in the past, you can view the `UploadBufferPercentUsed` metric in the Amazon CloudWatch console; for more information, see [Monitoring the upload buffer](Main_monitoring-gateways-common.md#PerfUploadBuffer-common)\. If your gateway has the PASS THROUGH status because it has run out of upload buffer space, you should allocate more upload buffer space to your gateway\. Adding more buffer space will cause your volume to transition from PASS THROUGH to BOOTSTRAPPING to AVAILABLE automatically\. While the volume has the BOOTSTRAPPING status, the gateway reads data off the volume's disk, uploads this data to Amazon S3, and catches up as needed\. When the gateway has caught up and saved the volume data to Amazon S3, the volume status becomes AVAILABLE and snapshots can be started again\. Note that when your volume has the PASS THROUGH or BOOTSTRAPPING status, you can continue to read and write data from the volume disk\. For more information about adding more upload buffer space, see [Determining the Size of Upload Buffer to Allocate](ManagingLocalStorage-common.md#CachedLocalDiskUploadBufferSizing-common)\.
 
 To take action before the upload buffer is exceeded, you can set a threshold alarm on a gateway's upload buffer\. For more information, see [To set an upper threshold alarm for a gateway's upload buffer](Main_monitoring-gateways-common.md#GatewayAlarm1-common)\. 
 
@@ -61,7 +61,7 @@ If you want to change the iSCSI target name of your volume, you must delete the 
 
 ## Your Scheduled Volume Snapshot Did Not Occur<a name="troubleshoot-volume-issues.NoSnapshot"></a>
 
-If your scheduled snapshot of a volume did not occur, check whether your volume has the PASSTHROUGH status, or if the gateway's upload buffer was filled just prior to the scheduled snapshot time\. You can check the `UploadBufferPercentUsed` metric for the gateway in the Amazon CloudWatch console and create an alarm for this metric\. For more information, see [Monitoring the Upload Buffer](Main_monitoring-gateways-common.md#PerfUploadBuffer-common) and [To set an upper threshold alarm for a gateway's upload buffer](Main_monitoring-gateways-common.md#GatewayAlarm1-common)\.
+If your scheduled snapshot of a volume did not occur, check whether your volume has the PASSTHROUGH status, or if the gateway's upload buffer was filled just prior to the scheduled snapshot time\. You can check the `UploadBufferPercentUsed` metric for the gateway in the Amazon CloudWatch console and create an alarm for this metric\. For more information, see [Monitoring the upload buffer](Main_monitoring-gateways-common.md#PerfUploadBuffer-common) and [To set an upper threshold alarm for a gateway's upload buffer](Main_monitoring-gateways-common.md#GatewayAlarm1-common)\.
 
 ## You Need to Remove or Replace a Disk That Has Failed<a name="troubleshoot-volume-issues.RemoveVolume"></a>
 
@@ -96,4 +96,4 @@ When the volume returns to AVAILABLE status, create a new snapshot of the volume
 
 ## High Availability Health Notifications<a name="troubleshooting-ha-notifications"></a>
 
-When running your gateway on the VMware vSphere High Availability \(HA\) platform, you may receive health notifications\. For more information about health notifications, see [Troubleshooting High Availability Issues](troubleshooting-ha-issues.md)\.
+When running your gateway on the VMware vSphere High Availability \(HA\) platform, you may receive health notifications\. For more information about health notifications, see [Troubleshooting high availability issues](troubleshooting-ha-issues.md)\.

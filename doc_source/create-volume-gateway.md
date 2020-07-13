@@ -31,7 +31,7 @@ With a volume gateway, you can create storage volumes in the AWS Cloud that your
 
 ## Choosing a Host Platform and Downloading the VM<a name="hosting-options-volume"></a>
 
-If you create your gateway on\-premises, you deploy the hardware appliance, or download and deploy a gateway VM, and then activate the gateway\. If you create your gateway on an Amazon EC2 instance, you launch an Amazon Machine Image \(AMI\) that contains the gateway VM image and then activate the gateway\. For information about supported host platforms, see [Supported Hypervisors and Host Requirements](Requirements.md#requirements-host)\.
+If you create your gateway on\-premises, you deploy the hardware appliance, or download and deploy a gateway VM, and then activate the gateway\. If you create your gateway on an Amazon EC2 instance, you launch an Amazon Machine Image \(AMI\) that contains the gateway VM image and then activate the gateway\. For information about supported host platforms, see [Supported hypervisors and host requirements](Requirements.md#requirements-host)\.
 
 **Note**  
 You can run only file, cached volume, and tape gateways on an Amazon EC2 instance\.
@@ -51,7 +51,7 @@ The \.zip file is over 500 MB in size and might take some time to download, depe
 
      For Amazon EC2, you create an instance from the provided AMI\.
 
-1. If you choose a hypervisor option, deploy the downloaded image to your hypervisor\. Add at least one local disk for your cache and one local disk for your upload buffer during the deployment\. A file gateway requires only one local disk for a cache\. For information about local disk requirements, see [Hardware and Storage Requirements](Requirements.md#requirements-hardware-storage)\.
+1. If you choose a hypervisor option, deploy the downloaded image to your hypervisor\. Add at least one local disk for your cache and one local disk for your upload buffer during the deployment\. A file gateway requires only one local disk for a cache\. For information about local disk requirements, see [Hardware and storage requirements](Requirements.md#requirements-hardware-storage)\.
 
    Depending your hypervisor, set certain options:
    + If you choose VMware, do the following:
@@ -79,18 +79,19 @@ For information about deploying your gateway to an Amazon EC2 host, see [Deploy 
 
 ## Choosing a Service Endpoint<a name="GettingStarted-service-endpoint-volume"></a>
 
-You can activate your gateway using a public endpoint and have your gateway communicate with AWS storage services over the public internet or activate it using a private VPC endpoint\. If you use a VPC endpoint, all communication from your gateway to AWS services occurs through the VPC endpoint in your VPC in AWS\. 
+You can activate your gateway using a public endpoint and have your gateway communicate with AWS storage services over the public internet\. Or you can activate your gateway using a virtual private cloud \(VPC\) endpoint, which is private\. If you use a VPC endpoint, all communication from your gateway to AWS services occurs through the VPC endpoint in your VPC in AWS\.
 
 **To choose a service endpoint**
 
-1. For **Endpoint type** you have the following options:  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/choose-endpoint-public.png)
+1. For **Endpoint type**, choose from the following options:
+   + To have your gateway access AWS services over the public internet, choose **Public**\.
+   + To have your gateway access AWS services over the public internet that complies with Federal Information Processing Standards \(FIPS\), choose **FIPS**\.
+   + To have your gateway access AWS services through the VPC endpoint in your VPC, choose **VPC**\.
+**Note**  
+The FIPS service endpoint is only available in the AWS GovCloud \(US\) Regions\. For more information about FIPS, see [Federal Information Processing Standard \(FIPS\) 140\-2](http://aws.amazon.com/compliance/fips/)\.
 
-   To make your gateway access AWS services over the public internet, choose **Public**\. 
-
-   To make your gateway access AWS services through the VPC endpoint in your VPC, choose **VPC**\. 
-
-   This walkthorough assumes that you are activating your gateway with a public endpoint\. For Information about how to activate a gateway using a VPC, endpoint see [Activating a Gateway in a Virtual Private Cloud](gateway-private-link.md)\.
+   This procedure assumes that you are activating your gateway with a public endpoint\. For information about how to activate a gateway using a VPC endpoint, see [Activating a Gateway in a Virtual Private Cloud](gateway-private-link.md)\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/choose-endpoint-type.png)
 
 1. Choose **Next** to connect to your gateway and activate it\.
 
@@ -153,7 +154,7 @@ The gateway type, endpoint type, and AWS Region you selected are shown on the ac
 
 When the gateway is successfully activated, the AWS Storage Gateway console displays the **Configure local disks** page\. 
 
-If activation fails, check that the IP address you entered is correct\. If the IP address is correct, confirm that your network is configured to let your browser access the gateway VM\. For other possible solutions, see [Troubleshooting Your Gateway](Troubleshooting-common.md)\.
+If activation fails, check that the IP address you entered is correct\. If the IP address is correct, confirm that your network is configured to let your browser access the gateway VM\. For other possible solutions, see [Troubleshooting your gateway](troubleshooting-gateway-issues.md)\.
 
 ## Configuring Local Disks<a name="configure-local-storage-alarms-volume"></a>
 
@@ -167,7 +168,7 @@ When adding a cache or upload buffer to an existing gateway, make sure to create
 
 **To configure local disks**
 
-1. On the **Configure local disks** page, identify the disks you allocated and decide which ones you want to use for an upload buffer and cached storage\. For information about disk size quotas, see [Recommended Local Disk Sizes For Your Gateway](resource-gateway-limits.md#disk-sizes)\.  
+1. On the **Configure local disks** page, identify the disks you allocated and decide which ones you want to use for an upload buffer and cached storage\. For information about disk size quotas, see [Recommended local disk sizes for your gateway](resource-gateway-limits.md#disk-sizes)\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/configure-local-storage.png)
 
 1. From the list next to your upload buffer disk, choose **Upload Buffer**\.

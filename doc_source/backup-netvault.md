@@ -7,7 +7,7 @@ You can back up your data to virtual tapes, archive the tapes, and manage your v
 
 In this topic, you can find basic documentation on how to configure the Quest NetVault Backup application for a tape gateway and perform a backup and restore operation\. 
 
-For additional setup information, see [Backing up to Amazon AWS with Quest NetVault Backup](https://www.scribd.com/document/294138486/backing-up-to-amazon-aws-with-dell-netvault-backup-technical-brief-75488-pdf) on the Quest \(formerly Dell\) website\. For detailed information about how to use the Quest NetVault Backup application, see the Quest NetVault Backup 10\.0\.1 – Administration Guide\. For more information about compatible backup applications, see [Supported Third\-Party Backup Applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
+For additional setup information, see [Backing up to Amazon AWS with Quest NetVault Backup](https://www.scribd.com/document/294138486/backing-up-to-amazon-aws-with-dell-netvault-backup-technical-brief-75488-pdf) on the Quest \(formerly Dell\) website\. For detailed information about how to use the Quest NetVault Backup application, see the Quest NetVault Backup 10\.0\.1 – Administration Guide\. For more information about compatible backup applications, see [Supported third\-party backup applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
 
 **Topics**
 + [Configuring Quest NetVault Backup to Work with VTL Devices](#netvault-configure-software)

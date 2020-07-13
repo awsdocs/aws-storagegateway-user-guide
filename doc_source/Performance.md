@@ -36,18 +36,17 @@ Your performance might vary based on your host platform configuration and networ
 In this section, you can find configuration guidance for provisioning hardware for your tape gateway VM\. The Amazon EC2 instance sizes and types that are listed in the table are examples, and are provided for reference\.
 
 
-| Configuration | Read/Write from/to Cache | Read/Write from/to Cloud | 
-| --- | --- | --- | 
-|  | Write Gbps  | Read Gbps  | Write Gbps  | Read Gbps  | 
-|  Host Platform: Amazon EC2 instance—c5\.4xlarge  Root disk: 80 GB, io1 SSD, 4000 IOPs Cache disk: 450 GB, io1 SSD, 2000 IOPs Upload buffer disk: 450 GB, io1 SSD, 2000 IOPs CPU: 16 vCPU \| RAM: 32 GB Network bandwidth to cloud: 5 Gbps  | 2\.3  | 3\.2  | 1\.2  | 1\.7  | 
-|  Host platform: [Storage Gateway Hardware Appliance](https://www.amazon.com/dp/B079RBVX3M) Cache disk: 2\.5 TB Upload buffer disk: 2 TB CPU: 20 cores \| RAM: 128 GB Network bandwidth to cloud: 5 Gbps  | 1\.4  | 4\.3  | 1\.4  | 1\.4  | 
-|  Root disk: 80 GB, io1 SSD, 4000 IOPs Cache disk: 450 GB NVMe Upload buffer disk: 450 GB NVMe CPU: 36 vCPU \| RAM: 72 GB Network bandwidth to cloud: 5 Gbps  | 2\.7  | 3\.9  | 1\.3  | 2\.0  | 
+| Configuration | Write Throughput Gbps | Read from Cache Throughput Gbps | Read from AWS Cloud Throughput Gbps | 
+| --- | --- | --- | --- | 
+|  Host Platform: Amazon EC2 instance— c5\.4xlarge  Root disk: 80 GB, io1 SSD, 4000 IOPs Cache disk: 50 GB, io1 SSD, 2000 IOPs Upload buffer disk: 450 GB, io1 SSD, 2000 IOPs CPU: 16 vCPU \| RAM: 32 GB Network bandwidth to cloud: 10 Gbps  | 2\.3  | 4\.0  | 1\.7  | 
+|  Host platform: [Storage Gateway Hardware Appliance](https://www.amazon.com/dp/B079RBVX3M) Cache disk: 2\.5 TB Upload buffer disk: 2 TB  CPU: 20 cores \| RAM: 128 GB  Network bandwidth to cloud: 10 Gbps   | 2\.3  | 4\.2  | 1\.4  | 
+|  Host platform: Amazon EC2instance— c5d\.9xlarge  Root disk: 80 GB, io1 SSD, 4000 IOPs Cache disk: 900 GB NVMe disk Upload buffer disk: 900 GB NVMe disk  CPU: 36 vCPU \| RAM: 72 GB Network bandwidth to cloud: 10 Gbps  | 5\.2  | 8\.2  | 2\.0  | 
 
 **Note**  
-This performance was achieved by using1 MB block size and 4 tape drives simultaneously\.  
-Your performance may vary based on your host platform configuration and network bandwidth\.
+This performance was achieved by using a 1 MB block size and three tape drives simultaneously\.  
+Your performance might vary based on your host platform configuration and network bandwidth\.
 
-For additional information, see [Use a Larger Block Size for Tape Drives](#block-size) and [Optimize the Performance of Virtual Tape Drives in the Backup Software](#optimize-virtual-tape-drive)\.
+ To improve write and read throughput performance of your tape gateway, see [Optimize iSCSI Settings](#optimize-iSCSI), [Use a Larger Block Size for Tape Drives](#block-size), and [Optimize the Performance of Virtual Tape Drives in the Backup Software](#optimize-virtual-tape-drive)\. 
 
 ## Optimizing Gateway Performance<a name="Optimizing-common"></a>
 
@@ -82,6 +81,13 @@ When you provision gateway disks, we strongly recommend that you don't provision
 
 **Change the volumes configuration**  
 For volumes gateways, if you find that adding more volumes to a gateway reduces the throughput to the gateway, consider adding the volumes to a separate gateway\. In particular, if a volume is used for a high\-throughput application, consider creating a separate gateway for the high\-throughput application\. However, as a general rule, you should not use one gateway for all of your high\-throughput applications and another gateway for all of your low\-throughput applications\. To measure your volume throughput, use the `ReadBytes` and `WriteBytes` metrics\. For more information on these metrics, see [Measuring Performance Between Your Application and Gateway](monitoring-volume-gateway.md#PerfAppGateway-common)\.
+
+### Optimize iSCSI Settings<a name="optimize-iSCSI"></a>
+
+ You can optimize iSCSI settings on your iSCSI initiator to achieve higher I/O performance\. We recommend choosing 256 KiB for `MaxReceiveDataSegmentLength` and `FirstBurstLength`, and 1 MiB for `MaxBurstLength`\. For more information about configuring iSCSI settings, see [Customizing iSCSI Settings](initiator-connection-common.md#recommendediSCSISettings)\. 
+
+**Note**  
+These recommended settings can enable overall better performance\. However, the specific iSCSI settings that are needed to optimize performance vary depending on which backup software you use\. For details, see your backup software documentation\. 
 
 ### Use a Larger Block Size for Tape Drives<a name="block-size"></a>
 
@@ -157,7 +163,7 @@ Use the following procedure to download the \.ova image\.
 
 **To download the \.ova image for your gateway type**
 + Download the \.ova image for your gateway type from one of the following:
-  + File gateway – [Creating a Gateway](create-gateway-file.md)
+  + File gateway – [Creating a gateway](create-gateway-file.md)
   + Volume gateway – [Creating a Gateway](create-volume-gateway.md)
   + Tape gateway – [Creating a Gateway](create-gateway-vtl.md)
 
@@ -192,7 +198,7 @@ After the \.ova for your gateway is deployed, activate your gateway\. The instru
 
 **To activate your gateway**
 +  Choose activation instructions based on your gateway type:
-  + File gateway – [Creating a Gateway](create-gateway-file.md)
+  + File gateway – [Creating a gateway](create-gateway-file.md)
   + Volume gateway – [Creating a Gateway](create-volume-gateway.md)
   + Tape gateway – [Creating a Gateway](create-gateway-vtl.md)
 

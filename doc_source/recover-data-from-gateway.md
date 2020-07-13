@@ -1,39 +1,39 @@
-# Best Practices for Recovering Your Data<a name="recover-data-from-gateway"></a>
+# Best practices for recovering your data<a name="recover-data-from-gateway"></a>
 
 Although it is rare, your gateway might encounter an unrecoverable failure\. Such a failure can occur in your virtual machine \(VM\), the gateway itself, the local storage, or elsewhere\. If a failure occurs, we recommend that you follow the instructions in the appropriate section following to recover your data\.
 
 **Important**  
-AWS Storage Gateway doesn’t support recovering a gateway VM from a snapshot that is created by your hypervisor or from your Amazon EC2 ami\. If your gateway VM malfunctions, activate a new gateway and recover your data to that gateway using the instructions following\.
+AWS Storage Gateway doesn’t support recovering a gateway VM from a snapshot that is created by your hypervisor or from your Amazon EC2 Amazon Machine Image \(AMI\)\. If your gateway VM malfunctions, activate a new gateway and recover your data to that gateway using the instructions following\.
 
 **Topics**
-+ [Recovering from an Unexpected Virtual Machine Shutdown](#recover-from-gateway-shutdown)
-+ [Recovering Your Data from a Malfunctioning Gateway or VM](#recover-from-gateway)
-+ [Retrieving Your Data from an Irrecoverable Volume](#recover-from-volume)
-+ [Recovering Your Data from an Irrecoverable Tape](#recover-from-tape)
-+ [Recovering Your Data from a Malfunctioning Cache Disk](#recover-from-cahe-disk)
-+ [Recovering Your Data from a Corrupted File System](#recover-corrupt-file-system)
-+ [Recovering Your Data From an Inaccessible Data Center](#disaster-recovery)
++ [Recovering from an unexpected virtual machine shutdown](#recover-from-gateway-shutdown)
++ [Recovering your data from a malfunctioning gateway or VM](#recover-from-gateway)
++ [Recovering your data from an irrecoverable volume](#recover-from-volume)
++ [Recovering your data from an irrecoverable tape](#recover-from-tape)
++ [Recovering your data from a malfunctioning cache disk](#recover-from-cahe-disk)
++ [Recovering your data from a corrupted file system](#recover-corrupt-file-system)
++ [Recovering your data from an inaccessible data center](#disaster-recovery)
 
-## Recovering from an Unexpected Virtual Machine Shutdown<a name="recover-from-gateway-shutdown"></a>
+## Recovering from an unexpected virtual machine shutdown<a name="recover-from-gateway-shutdown"></a>
 
 If your VM shuts down unexpectedly, for example during a power outage, your gateway becomes unreachable\. When power and network connectivity are restored, your gateway becomes reachable and starts to function normally\. Following are some steps you can take at that point to help recover your data:
 + If an outage causes network connectivity issues, you can troubleshoot the issue\. For information about how to test network connectivity, see [Testing Your Gateway Connection to the Internet](manage-on-premises-common.md#MaintenanceTestGatewayConnectivity-common)\.
 +  For cached volumes and tapes setups, when your gateway becomes reachable, your volumes or tapes go into BOOTSTRAPPING status\. This functionality ensures that your locally stored data continues to be synchronized with AWS\. For more information on this status, see [Understanding Volume Statuses and Transitions](managing-volumes.md#StorageVolumeStatuses)\.
 + If your gateway malfunctions and issues occur with your volumes or tapes as a result of an unexpected shutdown, you can recover your data\. For information about how to recover your data, see the sections following that apply to your scenario\.
 
-## Recovering Your Data from a Malfunctioning Gateway or VM<a name="recover-from-gateway"></a>
+## Recovering your data from a malfunctioning gateway or VM<a name="recover-from-gateway"></a>
 
 If your gateway or virtual machine malfunctions, you can recover data that has been uploaded to AWS and stored on a volume in Amazon S3\. For cached volumes gateways, you recover data from a recovery snapshot\. For stored volumes gateways, you can recover data from your most recent Amazon EBS snapshot of the volume\. For tape gateways, you recover one or more tapes from a recovery point to a new tape gateway\.
 
 If your cached volumes gateway becomes unreachable, you can use the following steps to recover your data from a recovery snapshot:
 
-1. In the AWS Management Console, choose the malfunctioning gateway, choose the volume you want to recover, and then create a recovery snapshot from it\. 
+1. In the AWS Management Console, choose the malfunctioning gateway, choose the volume you want to recover, and then create a recovery snapshot from it\.
 
 1. Deploy and activate a new volume gateway\. Or, if you have an existing functioning volume gateway, you can use that gateway to recover your volume data\.
 
 1. Find the snapshot you created and restore it to a new volume on the functioning gateway\.
 
-1. Mount the new volume as an iSCSI device on your on\-premises application server\. 
+1. Mount the new volume as an iSCSI device on your on\-premises application server\.
 
 For detailed information on how to recover cached volumes data from a recovery snapshot, see [Your Cached Gateway is Unreachable And You Want to Recover Your Data](troubleshoot-volume-issues.md#RecoverySnapshotTroubleshooting)\.
 
@@ -49,11 +49,11 @@ If your tape gateway or the hypervisor host encounters an unrecoverable failure,
 
 For detailed information on how to recover the tapes from a malfunctioning tape gateway to another tape gateway, see [You Need to Recover a Virtual Tape from a Malfunctioning Tape Gateway](Main_TapesIssues-vtl.md#creating-recovery-tape-vtl)\.
 
-## Retrieving Your Data from an Irrecoverable Volume<a name="recover-from-volume"></a>
+## Recovering your data from an irrecoverable volume<a name="recover-from-volume"></a>
 
 If the status of your volume is IRRECOVERABLE, you can no longer use this volume\.
 
-For stored volumes, you can retrieve your data from the irrecoverable volume to a new volume by using the following steps: 
+For stored volumes, you can retrieve your data from the irrecoverable volume to a new volume by using the following steps:
 
 1. Create a new volume from the disk that was used to create the irrecoverable volume\.
 
@@ -67,15 +67,15 @@ For cached volumes, we recommend using the last recovery point to clone a new vo
 
 For detailed information about how to retrieve your data from an irrecoverable volume to a new volume, see [The Console Says That Your Volume Is Irrecoverable](troubleshoot-volume-issues.md#troubleshoot-volume-issues.VolumeIrrecoverable)\.
 
-## Recovering Your Data from an Irrecoverable Tape<a name="recover-from-tape"></a>
+## Recovering your data from an irrecoverable tape<a name="recover-from-tape"></a>
 
-If your tape encounters a failure and the status of the tape is IRRECOVERABLE, we recommend you use one of the following options to recover your data or resolve the failure depending on your situation: 
+If your tape encounters a failure and the status of the tape is IRRECOVERABLE, we recommend you use one of the following options to recover your data or resolve the failure depending on your situation:
 + If you need the data on the irrecoverable tape, you can recover the tape to a new gateway\.
 + If you don't need the data on the tape, and the tape has never been archived, you can simply delete the tape from your tape gateway\.
 
    For detailed information about how to recover your data or resolve the failure if your tape is IRRECOVERABLE, see [Troubleshooting Irrecoverable Tapes](Main_TapesIssues-vtl.md#IrrecoverableTapes)\.
 
-## Recovering Your Data from a Malfunctioning Cache Disk<a name="recover-from-cahe-disk"></a>
+## Recovering your data from a malfunctioning cache disk<a name="recover-from-cahe-disk"></a>
 
 If your cache disk encounters a failure, we recommend you use the following steps to recover your data depending on your situation:
 + If the malfunction occurred because a cache disk was removed from your host, shut down the gateway, re\-add the disk, and restart the gateway\.
@@ -83,7 +83,7 @@ If your cache disk encounters a failure, we recommend you use the following step
 
 For detailed information, see [You Need to Recover a Virtual Tape from a Malfunctioning Cache Disk](Main_TapesIssues-vtl.md#recover-from-failed-disk)\.
 
-## Recovering Your Data from a Corrupted File System<a name="recover-corrupt-file-system"></a>
+## Recovering your data from a corrupted file system<a name="recover-corrupt-file-system"></a>
 
 If your file system gets corrupted, you can use the **fsck** command to check your file system for errors and repair it\. If you can repair the file system, you can then recover your data from the volumes on the file system, as described following:
 
@@ -91,9 +91,9 @@ If your file system gets corrupted, you can use the **fsck** command to check yo
 **Note**  
 You use this snapshot as a fallback if your file system can't be repaired or the snapshot creation process can't be completed successfully\.
 
-   For information about how to create a recovery snapshot, see [Your Cached Gateway is Unreachable And You Want to Recover Your Data](troubleshoot-volume-issues.md#RecoverySnapshotTroubleshooting)\. 
+   For information about how to create a recovery snapshot, see [Your Cached Gateway is Unreachable And You Want to Recover Your Data](troubleshoot-volume-issues.md#RecoverySnapshotTroubleshooting)\.
 
-1. Use the **fsck** command to check your file system for errors and attempt a repair\. 
+1. Use the **fsck** command to check your file system for errors and attempt a repair\.
 
 1. Restart your gateway VM\.
 
@@ -117,7 +117,7 @@ You use this snapshot as a fallback if your file system can't be repaired or the
 
 You can continue to use the original volume as\-is, or you can create a new gateway with a new volume based on either the recovery snapshot or the completed snapshot\. Alternatively, you can create a new volume from any of your completed snapshots from this volume\.
 
-## Recovering Your Data From an Inaccessible Data Center<a name="disaster-recovery"></a>
+## Recovering your data from an inaccessible data center<a name="disaster-recovery"></a>
 
 If your gateway or data center becomes inaccessible for some reason, you can recover your data to another gateway in a different data center or recover to a gateway hosted on an Amazon EC2 instance\. If you don't have access to another data center, we recommend creating the gateway on an Amazon EC2 instance\. The steps you follow depends on the gateway type you are covering the data from\.
 
@@ -145,10 +145,10 @@ Gateway stored volumes can't be hosted on Amazon EC2 instance\.
 
 **To recover data from a file gateway in an inaccessible data center**
 
-For file gateway, you map a new file share to the Amazon S3 that contains the data you want to recover\.
+For file gateway, you map a new file share to the Amazon S3 bucket that contains the data you want to recover\.
 
-1. Create and activate a new file gateway on an Amazon EC2 host\. For more information, see [Deploying a File Gateway on an Amazon EC2 Host](ec2-gateway-file.md)\.
+1. Create and activate a new file gateway on an Amazon EC2 host\. For more information, see [Deploying a file gateway on an Amazon EC2 host](ec2-gateway-file.md)\.
 
-1. Create a new file share on the EC2 gateway you created\. For more information, see [Creating a File Share](GettingStartedCreateFileShare.md)\.
+1. Create a new file share on the EC2 gateway you created\. For more information, see [Creating a file share](GettingStartedCreateFileShare.md)\.
 
-1. Mount your file share on your client and map it to the Amazon S3 bucket that contains the data that you want to recover\. For more information, see [Using Your File Share](getting-started-use-fileshare.md)\. 
+1. Mount your file share on your client and map it to the S3 bucket that contains the data that you want to recover\. For more information, see [Using your file share](getting-started-use-fileshare.md)\.

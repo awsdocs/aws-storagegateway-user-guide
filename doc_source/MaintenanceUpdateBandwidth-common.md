@@ -62,7 +62,7 @@ public class UpdateBandwidthExample {
 
         // Create a storage gateway client
         sgClient = new AWSStorageGatewayClient(new PropertiesCredentials(
-                ListDeleteVolumeSnapshotsExample.class.getResourceAsStream("AwsCredentials.properties")));    
+                UpdateBandwidthExample.class.getResourceAsStream("AwsCredentials.properties")));    
         sgClient.setEndpoint(serviceURL);
         
         UpdateBandwidth(gatewayARN, uploadRate, downloadRate);

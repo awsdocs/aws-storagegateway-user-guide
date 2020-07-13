@@ -2,7 +2,7 @@
 
 You can back up your data to virtual tapes, archive the tapes, and manage your virtual tape library \(VTL\) devices by using Microsoft System Center 2012 R2 or 2016 Data Protection Manager \(DPM\)\. In this topic, you can find basic documentation on how to configure the DPM backup application for a tape gateway and perform a backup and restore operation\. 
 
-For detailed information about how to use DPM, see the [DPM documentation](http://technet.microsoft.com/en-us/library/hh758173.aspx) on the Microsoft System Center website\. For more information about compatible backup applications, see [Supported Third\-Party Backup Applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
+For detailed information about how to use DPM, see the [DPM documentation](http://technet.microsoft.com/en-us/library/hh758173.aspx) on the Microsoft System Center website\. For more information about compatible backup applications, see [Supported third\-party backup applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
 
 **Topics**
 + [Configuring DPM to Recognize VTL Devices](#dpm-configure-software)

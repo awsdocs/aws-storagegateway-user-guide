@@ -237,7 +237,7 @@ For gateways that are deployed on an Amazon EC2 instance, accessing the gateway 
 
 ## Customizing iSCSI Settings<a name="recommendediSCSISettings"></a>
 
-After setting up your initiator, we highly recommend that you customize your iSCSI settings to prevent the initiator from disconnecting from targets\.
+After you set up your initiator, we highly recommend that you customize your iSCSI settings to prevent the initiator from disconnecting from targets\.
 
 By increasing the iSCSI timeout values as shown in the following steps, you make your application better at dealing with write operations that take a long time and other transient issues such as network interruptions\.
 
@@ -291,6 +291,14 @@ Make sure you are working in the **CurrentControlSet** subkey and not another co
 
       This value represents a hold time of 600 seconds\. The example following shows the **MaxRequestHoldTime** DWORD value with a value of 600\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/iscsi-windows-registry-20.png)
+
+1. You can increase the maximum amount of data that can be sent in iSCSI packets by modifying the following parameters:
+   + **FirstBurstLength** controls the maximum amount of data that can be transmitted in an unsolicited write request\. Set this value to **65536** if the original value is smaller\.
+   + **MaxBurstLength** is similar to **FirstBurstLength**, but it sets the maximum amount of data that can be transmitted in solicited write sequences\. Set this value to **262144** if the original value is smaller\.
+   + **MaxRecvDataSegmentLength** controls the maximum data segment size that is associated with a single protocol data unit \(PDU\)\. Set this value to **65536** if the original value is smaller\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/registry_selected.png)
+**Note**  
+Different backup software can be optimized to work best using different iSCSI settings\. To verify which values for these parameters will provide the best performance, see the documentation for your backup software\.
 
 1. Increase the disk timeout value, as shown following:
 
@@ -375,6 +383,26 @@ The `iscsid.conf` settings must be made before discovering the gateway\. If you 
    1. Set the *\[timeout\]* value to 600\.
 
       This value represents a timeout of 600 seconds\.
+
+1. Increase the maximum values for the amount of data that can be transmitted in each response\.
+
+   1. Open the `/etc/iscsi/iscsid.conf` file and find the following lines\.
+
+      ```
+      node.session.iscsi.FirstBurstLength = [replacement_first_burst_length_value] 
+      node.session.iscsi.MaxBurstLength = [replacement_max_burst_length_value]
+      node.conn[0].iscsi.MaxRecvDataSegmentLength = [replacement_segment_length_value]
+      ```
+
+   1. We recommend the following values to achieve better performance\. Your backup software might be optimized to use different values, so see your backup software documentation for best results\.
+
+      Set the *\[replacement\_first\_burst\_length\_value\]* value to 262144 if the original value is smaller\.
+
+      Set the *\[replacement\_max\_burst\_length\_value\]* value to 1048576 if the original value is smaller\.
+
+      Set the *\[replacement\_segment\_length\_value\]* value to 262144 if the original value is smaller\.
+**Note**  
+Different backup software can be optimized to work best using different iSCSI settings\. To verify which values for these parameters will provide the best performance, see the documentation for your backup software\.
 
 1. Restart your system to ensure that the new configuration values take effect\.
 

@@ -1,4 +1,4 @@
-# Mounting Your SMB File Share on Your Client<a name="using-smb-fileshare"></a>
+# Mounting your SMB file share on your client<a name="using-smb-fileshare"></a>
 
 Now you mount your SMB file share and map to a drive accessible to your client\. The console's file gateway section shows the supported mount commands that you can use for SMB clients\. Following, you can find some additional options to try\.
 
@@ -28,7 +28,7 @@ If you are a guest user, make sure that you have the guest user account password
 
    **net use *\[WindowsDriveLetter\]*: \\\\$*\[Gateway IP Address\]*\\$*\[path\]* /user:$*\[Gateway ID\]*\\smbguest**
 
-**To mount an SMB file share on Windows using CmdKey:**
+**To mount an SMB file share on Windows using CmdKey**
 
 1. Press the Windows key and type **cmd** to view the command prompt menu item\.
 
@@ -52,7 +52,7 @@ You might need to remount your file share after a reboot of your client\.
   
 
 
-1. In the **Map Network Drive** dialog box, choose a drive letter for **Drive**\. 
+1. In the **Map Network Drive** dialog box, choose a drive letter for **Drive**\.
 
 1. For **Folder**, type **\\\\*\[File Gateway IP\]*\\*\[SMB File Share Name\]***, or choose **Browse** to select your SMB file share from the dialog box\.
 
@@ -73,15 +73,15 @@ You can edit file share settings, edit allowed and denied users and groups, and 
 1. On the **File Share** page, select the check box by the SMB file share that you want to modify\.
 
 1. For Actions, choose the action that you want:
-   + Choose **Edit file share settings** to modify share access\. 
+   + Choose **Edit file share settings** to modify share access\.
    + Choose **Edit allowed/denied users** to add or delete users and groups, and then type the allowed and denied users and groups into the **Allowed Users**, **Denied Users**, **Allowed Groups**, and **Denied Groups** boxes\. Use the **Add Entry** buttons to create new access rights, and the **\(X\)** button to remove access\.
 
 1. When you're finished, choose **Save**\.
 
-   When you enter allowed users and groups, you are creating a whitelist\. Without a whitelist, all authenticated Microsoft AD users can access the SMB file share\. Any users and groups that are marked as denied are added to a blacklist and can't access the SMB file share\. In instances where a user or group is on both the blacklist and whitelist, the blacklist takes precedence\.
+   When you enter allowed users and groups, you are creating an allow list\. Without an allow list, all authenticated Microsoft AD users can access the SMB file share\. Any users and groups that are marked as denied are added to a deny list and can't access the SMB file share\. In instances where a user or group is on both the deny list and allow list, the deny list takes precedence\.
 
    You can enable Access Control Lists\(ACLs\) on your SMB file share\. For information about how to enable ACLs, see [Using Microsoft Windows ACLs to Control Access to an SMB File Share](smb-acl.md)\.
 
 **Next Step**
 
-[Testing Your File Gateway](GettingStartedTestFileShare.md)
+[Testing your file gateway](GettingStartedTestFileShare.md)
