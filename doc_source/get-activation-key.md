@@ -66,3 +66,7 @@ function Get-ActivationKey {
   }
 }
 ```
+
+> If activating from inside a secure (non internet enabled) VPC then you will need to add an extra parameter and argument to the URL.
+> 
+> ``` &vpcEndpoint=$theVPCEndpoint ```
