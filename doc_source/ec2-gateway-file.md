@@ -22,7 +22,7 @@ Certain instance types, particularly i3 EC2, use NVMe SSD disks\. These can caus
 
 1. Choose **Next: Add Storage**\.
 
-1. On the **Step 4: Add Storage** page, choose **Add New Volume** to add storage to your file gateway instance\. You need at least one Amazon EBS volume to configure for cache storage\.
+1. On the **Step 4: Add Storage** page, choose **Add New Volume** to add a second volume to use as a cache for your file gateway instance\. In addition to your boot volume, you need at least one additional Amazon EBS volume to configure for cache storage\.
 
    The following table recommends sizes for local disk storage for your deployed gateway\.     
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/ec2-gateway-file.html)
