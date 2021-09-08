@@ -1,17 +1,14 @@
-# Managing Gateway Updates Using the AWS Storage Gateway Console<a name="MaintenanceManagingUpdate-common"></a>
+# Managing Gateway Updates Using the Storage Gateway Console<a name="MaintenanceManagingUpdate-common"></a>
 
-AWS Storage Gateway periodically releases important software updates for your gateway\. Either you can manually apply updates on the AWS Storage Gateway Management Console, or the updates are automatically applied during the configured maintenance schedule\. Although Storage Gateway checks for updates every minute, it only goes through maintenance and restarts if there are updates\. 
+Storage Gateway periodically releases important software updates for your gateway\. Either you can manually apply updates on the Storage Gateway Management Console, or the updates are automatically applied during the configured maintenance schedule\. Although Storage Gateway checks for updates every minute, it only goes through maintenance and restarts if there are updates\. 
 
 Before any update is applied to your gateway, AWS notifies you with a message on the Storage Gateway console and your AWS Personal Health Dashboard\. For more information, see [AWS Personal Health Dashboard](http://aws.amazon.com/premiumsupport/phd/)\. The VM doesn't reboot, but the gateway is unavailable for a short period while it's being updated and restarted\.
 
 When you deploy and activate your gateway, a default weekly maintenance schedule is set\. You can modify the maintenance schedule at any time\. When updates are available, the **Details** tab displays a maintenance message\. You can see the date and time that the last successful update was applied to your gateway on the **Details** tab\.
 
-**Important**  
-You can minimize the chance of any disruption to your applications due to the gateway restart by increasing the timeouts of your iSCSI initiator\. For more information about increasing iSCSI initiator timeouts for Windows and Linux, see [Customizing Your Windows iSCSI Settings](initiator-connection-common.md#CustomizeWindowsiSCSISettings) and [Customizing Your Linux iSCSI Settings](initiator-connection-common.md#CustomizeLinuxiSCSISettings)\.
-
 **To modify the maintenance schedule**
 
-1. Open the AWS Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
+1. Open the Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
 
 1. On the navigation pane, choose **Gateways**, and choose the gateway that you want to modify the update schedule for\.
 
@@ -23,6 +20,6 @@ You can minimize the chance of any disruption to your applications due to the ga
 
    If you choose **Monthly**, modify the values for **Day of the month** and **Time**\. If you choose this option and you get an error, it means your gateway is an older version and has not been upgraded to a newer version yet\.
 **Note**  
-The day of the month component of the maintenance start time is represented as an ordinal number from 1 to 28, where 1 represents the first day of the month and 28 represents the last day of the month\.
+The maximum value that can be set for day of the month is 28\. If 28 is selected, the maintenance start time will be on the 28th day of every month\.
 
    Your maintenance start time appears on the **Details** tab for the gateway next time that you open the **Details** tab\.

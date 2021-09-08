@@ -9,18 +9,26 @@ For a gateway deployed on VMware ESXi, setting the hypervisor host time and sync
    + For more information on logging in to the Microsoft Hyper\-V local console, see [Access the Gateway Local Console with Microsoft Hyper\-V](accessing-local-console.md#MaintenanceConsoleWindowHyperV-common)\.
    + For more information on logging in to the local console for Linux Kernel\-based Virtuam Machine \(KVM\), see [Accessing the Gateway Local Console with Linux KVM](accessing-local-console.md#MaintenanceConsoleWindowKVM-common)\.
 
-1. On the **AWS Storage Gateway Configuration** main menu, enter **4** for **System Time Management**\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/LocalConsoleLogin.png)
+1. On the **Storage Gateway Configuration** main menu, enter **4** for **System Time Management**\.
 
-1. On the **System Time Management** menu, enter **1** for **View and Synchronize System Time**\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/hyperv-timesync01.png)
+      
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/filegateway/latest/files3/images/LocalConsoleLogin.png)
+
+1. On the **System Time Management** menu, enter **1** for **View and Synchronize System Time**\.
+
+      
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/filegateway/latest/files3/images/hyperv-timesync01.png)
 
 1. If the result indicates that you should synchronize your VM's time to the NTP time, enter **y**\. Otherwise, enter **n**\.
 
    If you enter **y** to synchronize, the synchronization might take a few moments\.
 
-   The following screenshot shows a VM that doesn't require time synchronization\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/hyperv-timesync02.png)
+   The following screenshot shows a VM that doesn't require time synchronization\.
 
-   The following screenshot shows a VM that does require time synchronization\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/hyperv-timesync03.png)
+      
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/filegateway/latest/files3/images/hyperv-timesync02.png)
+
+   The following screenshot shows a VM that does require time synchronization\.
+
+      
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/filegateway/latest/files3/images/hyperv-timesync03.png)

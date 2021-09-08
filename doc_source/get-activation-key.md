@@ -13,7 +13,7 @@ The URL returned by the redirect in the response contains a query string paramet
 
 If you haven't already done so, you must install and configure the AWS CLI\. To do this, follow these instructions in the *AWS Command Line Interface User Guide:*
 + [ Installing the AWS Command Line Interface](https://docs.aws.amazon.com/cli/latest/userguide/installing.html)
-+ [ Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
++ [ Configuring the AWS Command Line Interface](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
 
 The following example shows you how to use the AWS CLI to fetch the HTTP response, parse HTTP headers and get the activation key\.
 

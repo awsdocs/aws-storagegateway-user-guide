@@ -1,11 +1,11 @@
-# Maintaining Your Gateway<a name="maintaining-gateway"></a>
+# Maintaining your gateway<a name="maintaining-gateway"></a>
 
-Maintaining your gateway includes tasks such as configuring cache storage and upload buffer space, and doing general maintenance your gateway's performance\. These tasks are common to all gateway types\. If you haven't created a gateway, see [Creating Your Gateway](create-gateways.md)\.
+Maintaining your gateway includes tasks such as configuring cache storage and upload buffer space, and doing general maintenance your gateway's performance\. These tasks are common to all gateway types\.
 
 **Topics**
-+ [Shutting Down Your Gateway VM](MaintenanceShutDown-common.md)
-+ [Managing Local Disks for Your AWS Storage Gateway](ManagingLocalStorage-common.md)
++ [Shutting down your gateway VM](MaintenanceShutDown-common.md)
++ [Managing local disks for your Storage Gateway](ManagingLocalStorage-common.md)
 + [Managing Bandwidth for Your Gateway](MaintenanceUpdateBandwidth-common.md)
-+ [Managing Gateway Updates Using the AWS Storage Gateway Console](MaintenanceManagingUpdate-common.md)
++ [Managing Gateway Updates Using the Storage Gateway Console](MaintenanceManagingUpdate-common.md)
 + [Performing Maintenance Tasks on the Local Console](manage-on-premises.md)
-+ [Deleting Your Gateway by Using the AWS Storage Gateway Console and Removing Associated Resources](deleting-gateway-common.md)
++ [Deleting Your Gateway by Using the Storage Gateway Console and Removing Associated Resources](deleting-gateway-common.md)

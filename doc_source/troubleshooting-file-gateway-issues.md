@@ -98,7 +98,7 @@ You get an `AvailabilityMonitorTest` notification when you [run a test](Performa
 
 ## Error: RoleTrustRelationshipInvalid<a name="misconfig-trust"></a>
 
-You get this error when the IAM role for a file share has a misconfigured IAM trust relationship \(that is, the IAM role does not trust the Storage Gateway principal named `storagegateway.amazonaws.com`\)\. As a result, the file gateway would not be able to get the credentials to execute any operations on the S3 bucket that backs the file share\.
+You get this error when the IAM role for a file share has a misconfigured IAM trust relationship \(that is, the IAM role does not trust the Storage Gateway principal named `storagegateway.amazonaws.com`\)\. As a result, the file gateway would not be able to get the credentials to run any operations on the S3 bucket that backs the file share\.
 
 **To resolve an RoleTrustRelationshipInvalid error**
 + Use the IAM console or IAM API to include `storagegateway.amazonaws.com` as a principal that is trusted by your file share's IAMrole\. For information about IAM role, see [Tutorial: delegate access across AWS accounts using IAM roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)\.
@@ -117,7 +117,9 @@ You can find information following about actions to address issues in using Amaz
 
 If your file gateway reacts slowly when you run the ls command or browse directories, check the `IndexFetch` and `IndexEviction` CloudWatch metrics:
 + If the `IndexFetch` metric is greater than 0 when you run an `ls` command or browse directories, your file gateway started without information on the contents of the directory affected and had to access Amazon S3\. Subsequent efforts to list the contents of that directory should go faster\.
-+ If the `IndexEviction` metric is greater than 0, it means that your file gateway has reached the limit of what it can manage in its cache at that time\. In this case, your file gateway has to free some storage space from the least recently accessed directory to list a new directory\. If this occurs frequently and there is a performance impact, contact AWS Support\. Discuss with AWS Support the contents of the related S3 bucket and recommendations to improve performance based on your use case\.
++ If the `IndexEviction` metric is greater than 0, it means that your file gateway has reached the limit of what it can manage in its cache at that time\. In this case, your file gateway has to free some storage space from the least recently accessed directory to list a new directory\. If this occurs frequently and there is a performance impact, contact AWS Support\. 
+
+  Discuss with AWS Support the contents of the related S3 bucket and recommendations to improve performance based on your use case\.
 
 ### Your gateway isn't responding<a name="gateway-not-responding"></a>
 
@@ -136,5 +138,7 @@ If your file gateway is slow transferring data to Amazon S3, do the following:
 ### Your gateway backup job fails or there are errors when writing to your gateway<a name="backup-job-fails"></a>
 
 If your file gateway backup job fails or there are errors when writing to your file gateway, do the following:
-+ If the `CachePercentDirty` metric is 90 percent or greater, your file gateway can't accept new writes to disk because there is not enough available space on the cache disk\. To see how fast your file gateway is uploading to Amazon S3, view the `CloudBytesUploaded` metric\. Compare that metric with the `WriteBytes` metric, which shows how fast the client is writing files to your file gateway\. If your file gateway is writing faster than it can upload to Amazon S3, add more cache disks to cover the size of the backup job at a minimum\. Or, increase the upload bandwidth\.
-+ If a backup job fails but the `CachePercentDirty` metric is less than 80 percent, your file gateway might be hitting a client\-side session timeout\. For SMB, you can increase this timeout using the PowerShell command `Set-SmbClientConfiguration -SessionTimeout 300`\. Running this command sets the timeout to 300 seconds\. For NFS, make sure that the client is mounted using a hard mount instead of a soft mount\.
++ If the `CachePercentDirty` metric is 90 percent or greater, your file gateway can't accept new writes to disk because there is not enough available space on the cache disk\. To see how fast your file gateway is uploading to Amazon FSx or Amazon S3, view the `CloudBytesUploaded` metric\. Compare that metric with the `WriteBytes` metric, which shows how fast the client is writing files to your file gateway\. If your file gateway is writing faster than it can upload to Amazon FSx or Amazon S3, add more cache disks to cover the size of the backup job at a minimum\. Or, increase the upload bandwidth\.
++ If a backup job fails but the `CachePercentDirty` metric is less than 80 percent, your file gateway might be hitting a client\-side session timeout\. For SMB, you can increase this timeout using the PowerShell command `Set-SmbClientConfiguration -SessionTimeout 300`\. Running this command sets the timeout to 300 seconds\.
+
+  For NFS, make sure that the client is mounted using a hard mount instead of a soft mount\.

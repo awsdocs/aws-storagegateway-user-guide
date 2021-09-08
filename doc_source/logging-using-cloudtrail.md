@@ -1,10 +1,10 @@
-# Logging and Monitoring in AWS Storage Gateway<a name="logging-using-cloudtrail"></a>
+# Logging and monitoring in Storage Gateway<a name="logging-using-cloudtrail"></a>
 
-AWS Storage Gateway is integrated with AWS CloudTrail, a service that provides a record of actions taken by a user, role, or an AWS service in Storage Gateway\. CloudTrail captures all API calls for Storage Gateway as events\. The calls captured include calls from the Storage Gateway console and code calls to the Storage Gateway API operations\. If you create a trail, you can enable continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for Storage Gateway\. If you don't configure a trail, you can still view the most recent events in the CloudTrail console in **Event history**\. Using the information collected by CloudTrail, you can determine the request that was made to Storage Gateway, the IP address from which the request was made, who made the request, when it was made, and additional details\. 
+Storage Gateway is integrated with AWS CloudTrail, a service that provides a record of actions taken by a user, role, or an AWS service in Storage Gateway\. CloudTrail captures all API calls for Storage Gateway as events\. The calls captured include calls from the Storage Gateway console and code calls to the Storage Gateway API operations\. If you create a trail, you can enable continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for Storage Gateway\. If you don't configure a trail, you can still view the most recent events in the CloudTrail console in **Event history**\. Using the information collected by CloudTrail, you can determine the request that was made to Storage Gateway, the IP address from which the request was made, who made the request, when it was made, and additional details\. 
 
 To learn more about CloudTrail, see the [AWS CloudTrail User Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/)\.
 
-## Storage Gateway Information in CloudTrail<a name="storage-gateway-info-in-cloudtrail"></a>
+## Storage Gateway information in CloudTrail<a name="storage-gateway-info-in-cloudtrail"></a>
 
 CloudTrail is enabled on your AWS account when you create the account\. When activity occurs in Storage Gateway, that activity is recorded in a CloudTrail event along with other AWS service events in **Event history**\. You can view, search, and download recent events in your AWS account\. For more information, see [Viewing Events with CloudTrail Event History](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html)\. 
 
@@ -23,7 +23,7 @@ Every event or log entry contains information about who generated the request\. 
 
 For more information, see the [CloudTrail userIdentity Element](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html)\.
 
-## Understanding Storage Gateway Log File Entries<a name="understanding-service-name-entries"></a>
+## Understanding Storage Gateway log file entries<a name="understanding-service-name-entries"></a>
 
 A trail is a configuration that enables delivery of events as log files to an Amazon S3 bucket that you specify\. CloudTrail log files contain one or more log entries\. An event represents a single request from any source and includes information about the requested action, the date and time of the action, request parameters, and so on\. CloudTrail log files aren't an ordered stack trace of the public API calls, so they don't appear in any specific order\. 
 
