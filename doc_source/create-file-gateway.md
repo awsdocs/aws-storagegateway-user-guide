@@ -1,6 +1,8 @@
-# Getting started with Storage Gateway<a name="create-file-gateway"></a>
+# Creating a file gateway<a name="create-file-gateway"></a>
 
- In this section, you can find instructions about how to create and activate a file gateway in Storage Gateway\. Before you get started, make sure that your setup meets the required prerequisites and other requirements described in [Setting up for Amazon S3 File Gateway](setting-up.md)\. 
+ In this section, you can find instructions about how to create and use a file gateway\.
 
 **Topics**
-+ [Create and activate an Amazon S3 File Gateway](create-gateway-file.md)
++ [Creating a gateway](create-gateway-file.md)
++ [Creating a file share](GettingStartedCreateFileShare.md)
++ [Using your file share](getting-started-use-fileshare.md)

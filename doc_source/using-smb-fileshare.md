@@ -1,4 +1,4 @@
-# Mount your SMB file share on your client<a name="using-smb-fileshare"></a>
+# Mounting your SMB file share on your client<a name="using-smb-fileshare"></a>
 
 Now you mount your SMB file share and map to a drive accessible to your client\. The console's file gateway section shows the supported mount commands that you can use for SMB clients\. Following, you can find some additional options to try\.
 
@@ -48,7 +48,7 @@ You might need to remount your file share after a reboot of your client\.
 1. Press the Windows key and type **File Explorer** in the **Search Windows** box, or press **Win\+E**\.
 
 1. In the navigation pane, choose **This PC**, then choose **Map Network Drive** for **Map Network Drive** in the **Computer** tab, as shown in the following screenshot\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/filegateway/latest/files3/images/map-on-windows-explorer.png)  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/map-on-windows-explorer.png)  
   
 
 
@@ -66,7 +66,7 @@ You can edit file share settings, edit allowed and denied users and groups, and 
 
 **To modify your SMB file share's properties**
 
-1. Open the Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
+1. Open the AWS Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
 
 1. On the navigation pane, choose **File Shares**\.
 
@@ -80,8 +80,8 @@ You can edit file share settings, edit allowed and denied users and groups, and 
 
    When you enter allowed users and groups, you are creating an allow list\. Without an allow list, all authenticated Microsoft AD users can access the SMB file share\. Any users and groups that are marked as denied are added to a deny list and can't access the SMB file share\. In instances where a user or group is on both the deny list and allow list, the deny list takes precedence\.
 
-   You can enable Access Control Lists\(ACLs\) on your SMB file share\. For information about how to enable ACLs, see [Using Microsoft Windows ACLs to control access to an SMB file share](smb-acl.md)\.
+   You can enable Access Control Lists\(ACLs\) on your SMB file share\. For information about how to enable ACLs, see [Using Microsoft Windows ACLs to Control Access to an SMB File Share](smb-acl.md)\.
 
 **Next Step**
 
-[Test your S3 File](GettingStartedTestFileShare.md)
+[Testing your file gateway](GettingStartedTestFileShare.md)

@@ -1,28 +1,20 @@
-# Rack\-mounting your hardware appliance and connecting it to power<a name="appliance-rack-mount"></a>
+# Rack\-Mounting Your Hardware Appliance and Connecting It to Power<a name="appliance-rack-mount"></a>
 
-After you unbox your Storage Gateway Hardware Appliance, follow the instructions contained in the box to rack\-mount the server\. Your appliance has a 1U form factor and fits in a standard International Electrotechnical Commission \(IEC\) compliant 19\-inch rack\.
+After you unbox your AWS Storage Gateway Hardware Appliance, follow the instructions contained in the box to rack\-mount the server\. Your appliance has a 1U form factor and fits into a 19\-inch rack to the International Electrotechnical Commission \(IEC\) industry standard, as described on the [19\-inch rack](https://en.wikipedia.org/wiki/19-inch_rack) Wikipedia page\.
 
 To install your hardware appliance, you need the following components:
 + Power cables: one required, two recommended\.
-+ Supported network cabling \(depending on which Network Interface Card \(NIC\) is included in the hardware appliance\)\. Twinax Copper DAC, SFP\+ optical module \(Intel compatible\) or SFP to Base\-T copper transceiver\.
++ Category 6 \(Cat6\) Ethernet cable\. A Category 5 \(Cat5\) Ethernet cable limits your throughput\.
 + Keyboard and monitor, or a keyboard, video, and mouse \(KVM\) switch solution\.
-
-## Hardware appliance dimensions<a name="appliance-dimensions"></a>
-
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/filegateway/latest/files3/images/hardware-dimensions.png)
-
-
-
-
 
 **To connect the hardware appliance to power**
 **Note**  
-Before you perform the following procedure, make sure that you meet all of the requirements for the Storage Gateway Hardware Appliance as described in [Networking and firewall requirements for the Storage Gateway Hardware Appliance](Requirements.md#appliance-network-requirements)\.
+Before you perform the following procedure, make sure that you meet all of the requirements for the AWS Storage Gateway Hardware Appliance as described in [Networking and firewall requirements for the AWS Storage Gateway Hardware Appliance](Requirements.md#appliance-network-requirements)\.
 
 1. Plug in a power connection to each of the two power supplies\. It's possible to plug in to only one power connection, but we recommend power connections to both power supplies\.
 
    In the following image, you can see the hardware appliance with the different connections\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/filegateway/latest/files3/images/ApplianceBack.png)  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/ApplianceBack.png)  
   
 
 
@@ -33,7 +25,7 @@ The hardware appliance doesn't support VLAN trunking\. Set up the switch port to
 1. Plug in the keyboard and monitor\.
 
 1. Power on the server by pressing the **Power** button on the front panel, as shown in the following image\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/filegateway/latest/files3/images/appliance-front.jpeg)  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/ApplianceFront.png)  
   
 
 
@@ -47,7 +39,7 @@ To work with the hardware console, enter text from the keyboard and use the `Up`
 
 1. For **Confirm**, re\-enter your password, and then choose **Save Password**\.
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/filegateway/latest/files3/images/ApplianceSetPassword.png)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/ApplianceSetPassword.png)
 
 
 
@@ -55,12 +47,12 @@ To work with the hardware console, enter text from the keyboard and use the `Up`
 
 At this point, you are in the hardware console, shown following\.
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/filegateway/latest/files3/images/ApplianceHardwareConsole.png)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/ApplianceHardwareConsole.png)
 
 
 
 
 
-**Next step**
+**Next Step**
 
-[Configuring network parameters](appliance-configure-network.md)
+[Configuring Network Parameters](appliance-configure-network.md)

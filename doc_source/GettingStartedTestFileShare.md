@@ -1,4 +1,4 @@
-# Test your S3 File<a name="GettingStartedTestFileShare"></a>
+# Testing your file gateway<a name="GettingStartedTestFileShare"></a>
 
  You can copy files and folders to your mapped drive\. The files automatically upload to your Amazon S3 bucket\.
 

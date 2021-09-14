@@ -1,4 +1,4 @@
-# Using Microsoft Windows ACLs to control access to an SMB file share<a name="smb-acl"></a>
+# Using Microsoft Windows ACLs to Control Access to an SMB File Share<a name="smb-acl"></a>
 
 In this section, you can find information about how to use Microsoft Windows access control lists \(ACLs\) on SMB file shares enabled with Microsoft Active Directory \(AD\)\. By using Windows ACLs, you can set fine\-grained permissions on files and folders in your SMB file share\. 
 
@@ -13,21 +13,21 @@ Following are some important characteristics of Windows ACLs on SMB file shares:
 
 You can enable Windows ACLs when you create a new SMB file share by using the [CreateSMBFileShare](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_CreateSMBFileShare.html) API operation\. Or you can enable Windows ACLs on an existing SMB file share by using the [UpdateSMBFileShare](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_UpdateSMBFileShare.html) API operation\.
 
-## Enabling Windows ACLs on a new SMB file share<a name="enable-acl-new-fileshare"></a>
+## Enabling Windows ACLs on a New SMB File Share<a name="enable-acl-new-fileshare"></a>
 
 Take the following steps to enable Windows ACLs on a new SMB file share\.
 
 **To enable Windows ACLs when creating a new SMB file share**
 
-1. Create a file gateway if you don't already have one\. For more information, see \. 
+1. Create a file gateway if you don't already have one\. For more information, see [Creating a file gateway](create-file-gateway.md)\. 
 
-1. If the gateway is not joined to a domain, add it to a domain\. For more information, see \. 
+1. If the gateway is not joined to a domain, add it to a domain\. For more information, see [Using Active Directory to authenticate users](managing-gateway-file.md#enable-ad-settings)\. 
 
-1. Create an SMB file share\.  
+1. Create an SMB file share\. For more information, see [Creating a file share](GettingStartedCreateFileShare.md)\. 
 
 1. Enable Windows ACL on the file share from the Storage Gateway console\.
 
-   To use the Storage Gateway console, do the following:
+   To use the Storage Gateway Console, do the following:
 
    1. Choose the file share and choose **Edit file share**\.
 
@@ -47,11 +47,11 @@ You can enable inheritance for file shares created after May 8, 2019\.
 
 If you enable inheritance and update the permissions recursively, Storage Gateway updates all the objects in the S3 bucket\. Depending on the number of objects in the bucket, the update can take a while to complete\. 
 
-## Enabling Windows ACLs on an existing SMB file share<a name="enable-acl-existing-fileshare"></a>
+## Enabling Windows ACLs on an Existing SMB File Share<a name="enable-acl-existing-fileshare"></a>
 
 Take the following steps to enable Windows ACLs on an existing SMB file share that has POSIX permissions\.
 
-**To enable Windows ACLs on an existing SMB file share using the Storage Gateway console**
+**To enable Windows ACLs on an existing SMB file share using the Storage Gateway Console**
 
 1. Choose the file share and choose **Edit file share**\.
 
@@ -63,12 +63,12 @@ We don't recommend setting the ACLs at the root level, because if you do this an
 
 If you enable inheritance and update the permissions recursively, Storage Gateway updates all the objects in the S3 bucket\. Depending on the number of objects in the bucket, the update can take a while to complete\. 
 
-## Limitations when using Windows ACLs<a name="acl-limits"></a>
+## Limitations When Using Windows ACLs<a name="acl-limits"></a>
 
 Keep the following limitations in mind when using Windows ACLs to control access to SMB file shares:
 + Windows ACLs are only supported on file shares that are enabled for Active Directory when you use Windows SMB clients to access the file shares\.
 + File gateways support a maximum of 10 ACL entries for each file and directory\.
-+ File gateways don't support `Audit` and `Alarm` entries, which are system access control list \(SACL\) entries\. File gateways support `Allow` and `Deny` entries, which are discretionary access control list \(DACL\) entries\. 
++ File gateways don't support `Audit` and `Alarm` entries, which are system access\-control list \(SACL\) entries\. File gateways support `Allow` and `Deny` entries, which are discretionary access control list \(DACL\) entries\. 
 + The root ACL settings of SMB file shares are only on the gateway, and the settings are persisted across gateway updates and restarts\. 
 **Note**  
 If you configure the ACLs on the root instead of the parent folder under the root, the ACL permissions aren't persisted in Amazon S3\.

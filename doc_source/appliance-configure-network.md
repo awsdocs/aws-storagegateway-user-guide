@@ -1,20 +1,20 @@
-# Configuring network parameters<a name="appliance-configure-network"></a>
+# Configuring Network Parameters<a name="appliance-configure-network"></a>
 
-After the server boots up, you can enter your first password in the hardware console as described in [Rack\-mounting your hardware appliance and connecting it to power](appliance-rack-mount.md)\.
+After the server boots up, you can enter your first password in the hardware console as described in [Rack\-Mounting Your Hardware Appliance and Connecting It to Power](appliance-rack-mount.md)\. 
 
 Next, on the hardware console take the following steps to configure network parameters so your hardware appliance can connect to AWS\.
 
 **To set a network address**
 
 1. Choose **Configure Network** and press the `Enter` key\. The **Configure Network** screen shown following appears\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/filegateway/latest/files3/images/ApplianceConfigureNetwork.png)  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/ApplianceConfigureNetwork.png)  
   
 
 
-1. For **IP Address**, enter a valid IPv4 address from one of the following sources:
+1. For **IP Address**, enter a valid IPv4 address from one of the following sources: 
    + Use the IPv4 address assigned by your Dynamic Host Configuration Protocol \(DHCP\) server to your physical network port\.
 
-     If you do so, note this IPv4 address for later use in the activation step\.
+     If you do so, note this IPv4 address for later use in the activation step\. 
    + Assign a static IPv4 address\. To do so, choose **Static** in the `em1` section and press `Enter` to view the Configure Static IP screen shown following\.
 
      The `em1` section is at upper left section in the group of port settings\.
@@ -22,7 +22,7 @@ Next, on the hardware console take the following steps to configure network para
    After you have entered a valid IPv4 address, press the `Down arrow` or `Tab`\.
 **Note**  
 If you configure any other interface, it must provide the same always\-on connection to the AWS endpoints listed in the requirements\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/filegateway/latest/files3/images/ApplianceStaticIP.png)  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/ApplianceStaticIP.png)  
   
 
 
@@ -42,6 +42,6 @@ If you configure any other interface, it must provide the same always\-on connec
 
 1. Choose **Logout** to return to the Login screen\.
 
-**Next step**
+**Next Step**
 
-[Activating your hardware appliance](appliance-activation.md)
+[Activating Your Hardware Appliance](appliance-activation.md)
