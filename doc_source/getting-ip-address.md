@@ -1,3 +1,9 @@
+--------
+
+Amazon S3 File Gateway documentation has been moved to [What is Amazon S3 File Gateway](https://docs.aws.amazon.com/filegateway/latest/files3/WhatIsStorageGateway.html)
+
+--------
+
 # Connecting to Your Gateway<a name="getting-ip-address"></a>
 
 After you choose a host and deploy your gateway VM, you connect and activate your gateway\. To do this, you need the IP address of your gateway VM\. You get the IP address from your gateway's local console\. You log in to the local console and get the IP address from the top of the console page\.
@@ -8,7 +14,7 @@ For gateways deployed on\-premises, you can also get the IP address from your hy
 + Linux Kernel\-based Virtual Machine \(KVM\) host: [Accessing the Gateway Local Console with Linux KVM](accessing-local-console.md#MaintenanceConsoleWindowKVM-common)
 + EC2 host: [Getting an IP Address from an Amazon EC2 Host](#get-ip-from-ec2)
 
-When you locate the IP address, take note of it\. Then return to the AWS Storage Gateway console and type the IP address into the console\.
+When you locate the IP address, take note of it\. Then return to the Storage Gateway console and type the IP address into the console\.
 
 ## Getting an IP Address from an Amazon EC2 Host<a name="get-ip-from-ec2"></a>
 
@@ -22,7 +28,7 @@ You can also get the IP address from the Amazon EC2 Management Console\. We reco
 
 1. In the navigation pane, choose **Instances**, and then select the EC2 instance that your gateway is deployed on\.
 
-1. Choose the **Description** tab at the bottom, and then note the public IP\. You use this IP address to connect to the gateway\. Return to the AWS Storage Gateway console and type in the IP address\.
+1. Choose the **Description** tab at the bottom, and then note the public IP\. You use this IP address to connect to the gateway\. Return to the Storage Gateway console and type in the IP address\.
 
 If you want to use the elastic IP address for activation, use the procedure following\.
 
@@ -32,7 +38,7 @@ If you want to use the elastic IP address for activation, use the procedure foll
 
 1. In the navigation pane, choose **Instances**, and then select the EC2 instance that your gateway is deployed on\.
 
-1. Choose the **Description** tab at the bottom, and then note the **Elastic IP** value\. You use this elastic IP address to connect to the gateway\. Return to the AWS Storage Gateway console and type in the elastic IP address\.
+1. Choose the **Description** tab at the bottom, and then note the **Elastic IP** value\. You use this elastic IP address to connect to the gateway\. Return to the Storage Gateway console and type in the elastic IP address\.
 
 1. After your gateway is activated, choose the gateway that you just activated, and then choose the **VTL devices** tab in the bottom panel\.
 

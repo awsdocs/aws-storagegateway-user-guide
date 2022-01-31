@@ -1,24 +1,17 @@
+--------
+
+Amazon S3 File Gateway documentation has been moved to [What is Amazon S3 File Gateway](https://docs.aws.amazon.com/filegateway/latest/files3/WhatIsStorageGateway.html)
+
+--------
+
 # AWS Storage Gateway quotas<a name="resource-gateway-limits"></a>
 
-In this topic, you can find information about file share, volume, tape quotas, configuration, and performance limits for Storage Gateway\.
+In this topic, you can find information about volume and tape quotas, configuration, and performance limits for Storage Gateway\.
 
 **Topics**
-+ [Quotas for file shares](#resource-file-limits)
 + [Quotas for volumes](#resource-volume-limits)
 + [Quotas for tapes](#resource-tape-limits)
 + [Recommended local disk sizes for your gateway](#disk-sizes)
-
-## Quotas for file shares<a name="resource-file-limits"></a>
-
-The following table lists quotas for file shares\.
-
-
-| Description | File gateway | 
-| --- | --- | 
-| Maximum number of file shares per Amazon S3 bucket\. There is a one\-to\-one mapping between a file share and an S3 bucket | 1 | 
-| Maximum number of file shares per gateway | 10 | 
-| The maximum size of an individual file, which is the maximum size of an individual object in Amazon S3  If you write a file larger than 5 TB, you get a "file too large" error message and only the first 5 TB of the file is uploaded\.   | 5 TB | 
-| Maximum path length  Clients are not allowed to create a path exceeding this length, and doing so results in an error\. This limit applies to both protocols supported by file gateways, NFS and SMB\.  | 1024 bytes | 
 
 ## Quotas for volumes<a name="resource-volume-limits"></a>
 
@@ -52,10 +45,9 @@ The following table recommends sizes for local disk storage for your deployed ga
 
 | Gateway Type | Cache \(Minimum\) | Cache \(Maximum\) | Upload Buffer \(Minimum\) | Upload Buffer \(Maximum\) | Other Required Local Disks | 
 | --- | --- | --- | --- | --- | --- | 
-| File gateway | 150 GiB | 64 TiB | — | — | — | 
-| Cached volume gateway | 150 GiB | 16 TiB | 150 GiB |  2 TiB  | — | 
+| Cached volume gateway | 150 GiB | 64 TiB | 150 GiB |  2 TiB  | — | 
 | Stored volume gateway | — | — | 150 GiB |  2 TiB  | 1 or more for stored volume or volumes | 
-| Tape gateway | 150 GiB | 16 TiB | 150 GiB | 2 TiB | — | 
+| Tape gateway | 150 GiB | 64 TiB | 150 GiB | 2 TiB | — | 
 
 **Note**  
 You can configure one or more local drives for your cache and upload buffer, up to the maximum capacity\.  

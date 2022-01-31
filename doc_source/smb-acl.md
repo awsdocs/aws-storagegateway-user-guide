@@ -1,3 +1,9 @@
+--------
+
+Amazon S3 File Gateway documentation has been moved to [What is Amazon S3 File Gateway](https://docs.aws.amazon.com/filegateway/latest/files3/WhatIsStorageGateway.html)
+
+--------
+
 # Using Microsoft Windows ACLs to Control Access to an SMB File Share<a name="smb-acl"></a>
 
 In this section, you can find information about how to use Microsoft Windows access control lists \(ACLs\) on SMB file shares enabled with Microsoft Active Directory \(AD\)\. By using Windows ACLs, you can set fine\-grained permissions on files and folders in your SMB file share\. 
@@ -23,7 +29,7 @@ Take the following steps to enable Windows ACLs on a new SMB file share\.
 
 1. If the gateway is not joined to a domain, add it to a domain\. For more information, see [Using Active Directory to authenticate users](managing-gateway-file.md#enable-ad-settings)\. 
 
-1. Create an SMB file share\. For more information, see [Creating a file share](GettingStartedCreateFileShare.md)\. 
+1. Create an SMB file share\. For more information, see [Create a file share](https://docs.aws.amazon.com/filegateway/latest/files3/GettingStartedCreateFileShare.html)\. 
 
 1. Enable Windows ACL on the file share from the Storage Gateway console\.
 

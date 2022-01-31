@@ -1,9 +1,15 @@
+--------
+
+Amazon S3 File Gateway documentation has been moved to [What is Amazon S3 File Gateway](https://docs.aws.amazon.com/filegateway/latest/files3/WhatIsStorageGateway.html)
+
+--------
+
 # Using Identity\-Based Policies \(IAM Policies\) for Storage Gateway<a name="using-identity-based-policies"></a>
 
 This topic provides examples of identity\-based policies in which an account administrator can attach permissions policies to IAM identities \(that is, users, groups, and roles\)\. 
 
 **Important**  
-We recommend that you first review the introductory topics that explain the basic concepts and options available for you to manage access to your Storage Gateway resources\. For more information, see [Overview of Managing Access Permissions to Your AWS Storage Gateway](managing-access-overview.md)\. 
+We recommend that you first review the introductory topics that explain the basic concepts and options available for you to manage access to your Storage Gateway resources\. For more information, see [Overview of Managing Access Permissions to Your Storage Gateway](managing-access-overview.md)\. 
 
 The sections in this topic cover the following:
 + [Permissions Required to Use the Storage Gateway Console](#additional-console-required-permissions)
@@ -23,7 +29,7 @@ The following shows an example of a permissions policy\.
                 "storagegateway:ActivateGateway",
                 "storagegateway:ListGateways"
             ],
-            "Resource": "arn:aws:storagegateway:us-west-2:account-id:gateway/*"
+            "Resource": "*"
         },
         {
             "Sid": "AllowsSpecifiedEC2ActionsOnAllGateways",
@@ -39,11 +45,11 @@ The following shows an example of a permissions policy\.
 ```
 
 The policy has two statements \(note the `Action` and `Resource` elements in both the statements\):
-+ The first statement grants permissions for two Storage Gateway actions \(`storagegateway:ActivateGateway` and `storagegateway:ListGateways`\) on a gateway resource using the *Amazon Resource Name \(ARN\)* for the gateway\. The ARN specifies a wildcard character \(\*\) because you don't know the gateway ID until after you create a gateway\. 
++ The first statement grants permissions for two Storage Gateway actions \(`storagegateway:ActivateGateway` and `storagegateway:ListGateways`\) on a gateway resource\. 
+
+  The wildcard character \(\*\) means that this statement can match any resource\. In this case, the statement allows the `storagegateway:ActivateGateway` and `storagegateway:ListGateways` actions on any gateway\. The wildcard character is used here because you don't know the resource ID until after you create the gateway\. For information about how to use a wildcard character \(\*\) in a policy, see [Example 2: Allow Read\-Only Access to a Gateway](#sg-example2)\.
 **Note**  
 ARNs uniquely identify AWS resources\. For more information, see [Amazon Resource Names \(ARNs\) and AWS Service Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) in the *AWS General Reference*\.
-
-  The wildcard character \(\*\) at the end of the gateway ARN means that this statement can match any gateway ID\. In this case, the statement allows the `storagegateway:ActivateGateway` and `storagegateway:ListGateways` actions on any gateway in the specified AWS Region, `us-west-2`, and the specified ID identifies the account that is owner of the gateway resource\. For information about how to use a wildcard character \(\*\) in a policy, see [Example 2: Allow Read\-Only Access to a Gateway](#sg-example2)\.
 
   To limit permissions for a particular action to a specific gateway only, create a separate statement for that action in the policy and specify the gateway ID in that statement\. 
 
@@ -81,8 +87,12 @@ To set up the minimum permissions required to navigate the Storage Gateway conso
 AWS addresses many common use cases by providing standalone IAM policies that are created and administered by AWS\. Managed policies grant necessary permissions for common use cases so you can avoid having to investigate what permissions are needed\. For more information about AWS managed policies, see [AWS Managed Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) in the *IAM User Guide*\.
 
 The following AWS managed policies, which you can attach to users in your account, are specific to Storage Gateway:
+
+ 
 + **AWSStorageGatewayReadOnlyAccess** – Grants read\-only access to AWS Storage Gateway resources\. 
 + **AWSStorageGatewayFullAccess** – Grants full access to AWS Storage Gateway resources\. 
+
+ 
 
 **Note**  
 You can review these permissions policies by signing in to the IAM console and searching for specific policies there\.
@@ -165,6 +175,8 @@ The policy also allows the `DescribeSnapshots` Amazon EC2 action\. For more info
 
 In the preceding policy, instead of a using a wildcard character \(\*\), you can scope resources covered by the policy to a specific gateway, as shown in the following example\. The policy then allows the actions only on the specific gateway\.
 
+ 
+
 ```
 "Resource": [
               "arn:aws:storagegateway:us-west-2:123456789012:gateway/gateway-id/", 
@@ -173,6 +185,8 @@ In the preceding policy, instead of a using a wildcard character \(\*\), you can
 ```
 
 Within a gateway, you can further restrict the scope of the resources to only the gateway volumes, as shown in the following example: 
+
+ 
 
 ```
 "Resource": "arn:aws:storagegateway:us-west-2:123456789012:gateway/gateway-id/volume/*" 
@@ -219,6 +233,8 @@ The following policy allows all actions on a specific gateway\. The user is rest
 ```
 
 The preceding policy works if the user to which the policy is attached uses either the API or an AWS SDK to access the gateway\. However, if the user is going to use the Storage Gateway console, you must also grant permissions to allow the `ListGateways` action, as shown in the following example:
+
+ 
 
 ```
 {
@@ -275,7 +291,9 @@ The following policy allows a user to perform all actions to a specific volume o
 }
 ```
 
-The preceding policy works if the user to whom the policy is attached uses either the API or an AWS SDK to access the volume\. However, if this user is going to use the AWS Storage Gateway console, you must also grant permissions to allow the `ListGateways` action, as shown in the following example:
+The preceding policy works if the user to whom the policy is attached uses either the API or an AWS SDK to access the volume\. However, if this user is going to use the Storage Gateway console, you must also grant permissions to allow the `ListGateways` action, as shown in the following example:
+
+ 
 
 ```
 {
@@ -329,4 +347,4 @@ The following policy allows a user to perform all Storage Gateway actions on gat
 }
 ```
 
-The preceding policy works if the user to whom the policy is attached uses either the API or an AWS SDK to access the gateway\. However, if this user plans to use the AWS Storage Gateway console, you must grant additional permissions as described in [Example 3: Allow Access to a Specific Gateway](#sg-example3)\.
+The preceding policy works if the user to whom the policy is attached uses either the API or an AWS SDK to access the gateway\. However, if this user plans to use the Storage Gateway console, you must grant additional permissions as described in [Example 3: Allow Access to a Specific Gateway](#sg-example3)\.

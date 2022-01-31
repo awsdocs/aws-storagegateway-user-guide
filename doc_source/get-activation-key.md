@@ -1,8 +1,14 @@
+--------
+
+Amazon S3 File Gateway documentation has been moved to [What is Amazon S3 File Gateway](https://docs.aws.amazon.com/filegateway/latest/files3/WhatIsStorageGateway.html)
+
+--------
+
 # Getting an Activation Key for Your Gateway<a name="get-activation-key"></a>
 
-To get an activation key for your gateway, you make a web request to the gateway VM and it returns a redirect that contains the activation key\. This activation key is passed as one of the parameters to the `ActivateGateway` API action to specify the configuration of your gateway\. The request you make to the gateway VM contains the AWS Region in which activation occurs\. 
+To get an activation key for your gateway, you make a web request to the gateway VM and it returns a redirect that contains the activation key\. This activation key is passed as one of the parameters to the `ActivateGateway` API action to specify the configuration of your gateway\. For more information, see [ActivateGateway](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_ActivateGateway.html) in the *Storage Gateway API Reference*\.
 
-The URL returned by the redirect in the response contains a query string parameter called `activationkey`\. This query string parameter is your activation key\. The format of the query string looks like the following: ` http://gateway_ip_address/?activationRegion=activation_region`\.
+The request you make to the gateway VM contains the AWS Region in which activation occurs\. The URL returned by the redirect in the response contains a query string parameter called `activationkey`\. This query string parameter is your activation key\. The format of the query string looks like the following: ` http://gateway_ip_address/?activationRegion=activation_region`\.
 
 **Topics**
 + [AWS CLI](#get-activation-key-cli)
@@ -13,7 +19,7 @@ The URL returned by the redirect in the response contains a query string paramet
 
 If you haven't already done so, you must install and configure the AWS CLI\. To do this, follow these instructions in the *AWS Command Line Interface User Guide:*
 + [ Installing the AWS Command Line Interface](https://docs.aws.amazon.com/cli/latest/userguide/installing.html)
-+ [ Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
++ [ Configuring the AWS Command Line Interface](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
 
 The following example shows you how to use the AWS CLI to fetch the HTTP response, parse HTTP headers and get the activation key\.
 

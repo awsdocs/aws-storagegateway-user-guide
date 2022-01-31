@@ -1,6 +1,12 @@
+--------
+
+Amazon S3 File Gateway documentation has been moved to [What is Amazon S3 File Gateway](https://docs.aws.amazon.com/filegateway/latest/files3/WhatIsStorageGateway.html)
+
+--------
+
 # Testing Your Setup by Using NovaStor DataCenter/Network<a name="backup-novastor"></a>
 
-You can back up your data to virtual tapes, archive the tapes, and manage your virtual tape library \(VTL\) devices by using NovaStor DataCenter/Network version 6\.4 or 7\.1\. In this topic, you can find basic documentation on how to configure the NovaStor DataCenter/Network version 7\.1 backup application for a tape gateway and perform backup and restore operations\. For detailed information about how to use NovaStor DataCenter/Network version 7\.1, see [Documentation NovaStor DataCenter/Network](https://dcmanual.novastor.com/help-html/dc/en/index.html)\.
+You can back up your data to virtual tapes, archive the tapes, and manage your virtual tape library \(VTL\) devices by using NovaStor DataCenter/Network version 6\.4 or 7\.1\. In this topic, you can find basic documentation on how to configure the NovaStor DataCenter/Network version 7\.1 backup application for a Tape Gateway and perform backup and restore operations\. For detailed information about how to use NovaStor DataCenter/Network version 7\.1, see [Documentation NovaStor DataCenter/Network](https://dcmanual.novastor.com/help-html/dc/en/index.html)\.
 
 ## Setting Up NovaStor DataCenter/Network<a name="setting-up"></a>
 
@@ -24,6 +30,8 @@ You can prevent the issue by creating the workaround before you start configurin
    If you see an error message that says `External Program did not exit correctly`, resolve the issue before you continue\. This issue requires a workaround\. For information about how to resolve this issue, see [Resolving an "External Program Did Not Exit Correctly" Error](#novastor-workaround)\.
 **Important**  
 This error occurs because the element assignment range from AWS Storage Gateway for storage drives and tape drives exceeds the number that NovaStor DataCenter/Network allows\.
+
+   
 
 1. Open the context \(right\-click\) menu for the **storage** node that was created, and choose **New Library**\.
 
@@ -96,7 +104,7 @@ NovaStor DataCenter/Network can use import/export slots if they are part of the 
 
 For an export, NovaStor DataCenter/Network must know which tapes are going to be physically taken out of the library\. 
 
-For an import, NovaStor DataCenter/Network recognizes tape media that are exported in the tape library and offers to import them all, either from a data slot or an export slot\. Your tape gateway archives tapes in the offline storage \(GLACIER or DEEP\_ARCHIVE\)\.
+For an import, NovaStor DataCenter/Network recognizes tape media that are exported in the tape library and offers to import them all, either from a data slot or an export slot\. Your tape gateway archives tapes in the offline storage \(S3 Glacier Flexible Retrieval or S3 Glacier Deep Archive\)\.
 
 **To configure media import and export**
 
@@ -106,7 +114,7 @@ For an import, NovaStor DataCenter/Network recognizes tape media that are export
 
 1. Open the context \(right\-click\) menu for the white area, and choose **Add** to open a new panel\.
 
-1. In the panel, type **S3 Glacier** or **S3 Glacier Deep Archive** and add an optional description in the text box\.
+1. In the panel, type **S3 Glacier Flexible Retrieval** or **S3 Glacier Deep Archive** and add an optional description in the text box\.
 
 ## Backing Up Data to Tape<a name="novastor-backup-data"></a>
 
@@ -114,7 +122,7 @@ You create a backup job and write data to a virtual tape by using the same proce
 
 ## Archiving a Tape<a name="novastor-archive-tape"></a>
 
-When you archive a tape, a tape gateway ejects the tape from the tape drive to the storage slot\. It then exports the tape from the slot to the archive by using your backup application—that is, NovaStor DataCenter/Network\.
+When you archive a tape, a Tape Gateway ejects the tape from the tape drive to the storage slot\. It then exports the tape from the slot to the archive by using your backup application—that is, NovaStor DataCenter/Network\.
 
 **To archive a tape**
 
@@ -136,17 +144,19 @@ Restoring your archived data is a two\-step process\.
 
 **To restore data from an archived tape**
 
-1. Retrieve the archived tape from archive to a tape gateway\. For instructions, see [Retrieving Archived Tapes](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
+1. Retrieve the archived tape from archive to a Tape Gateway\. For instructions, see [Retrieving Archived Tapes](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
 
 1. Use the NovaStor DataCenter/Network software to restore the data\. You do this by refreshing the mail slot and moving each tape you want to retrieve into an empty slot, as you do when restoring data from physical tapes\. For information about restoring data, see [Documentation NovaStor DataCenter/Network](https://dcmanual.novastor.com/help-html/dc/en/RestoretheExample.html)\.
 
 ## Writing Several Backup Jobs to a Tape Drive at the Same Time<a name="novastor-muliplexing"></a>
 
+
+
 In the NovaStor software, you can write several jobs to a tape drive at the same time using the multiplexing feature\. This feature is available when a multiplexer is available for a media pool\. For information about how to use multiplexing, see [Documentation NovaStor DataCenter/Network](https://dcmanual.novastor.com/help-html/dc/en/DefineBackupDestinationandSchedu.html)\.
 
 ## Resolving an "External Program Did Not Exit Correctly" Error<a name="novastor-workaround"></a>
 
-When configuring your VTL devices to work with NovaStor DataCenter/Network version 6\.4 or 7\.1, you might see an error message that reads `External Program did not exit correctly`\. This error occurs because the element assignment range from AWS Storage Gateway for storage drives and tape drives exceeds the number that NovaStor DataCenter/Network allows\. 
+When configuring your VTL devices to work with NovaStor DataCenter/Network version 6\.4 or 7\.1, you might see an error message that reads `External Program did not exit correctly`\. This error occurs because the element assignment range from Storage Gateway for storage drives and tape drives exceeds the number that NovaStor DataCenter/Network allows\. 
 
 Storage Gateway returns 3200 storage and import/export slots, which is more than the 2400 limit that NovaStor DataCenter/Network allows\. To resolve this issue, you add a configuration file that enables the NovaStor software to limit the number of storage and import/export slots and preconfigures the element assignment range\. 
 

@@ -1,6 +1,12 @@
+--------
+
+Amazon S3 File Gateway documentation has been moved to [What is Amazon S3 File Gateway](https://docs.aws.amazon.com/filegateway/latest/files3/WhatIsStorageGateway.html)
+
+--------
+
 # Testing Your Setup by Using Microsoft System Center Data Protection Manager<a name="backup-DPM"></a>
 
-You can back up your data to virtual tapes, archive the tapes, and manage your virtual tape library \(VTL\) devices by using Microsoft System Center 2012 R2 or 2016 Data Protection Manager \(DPM\)\. In this topic, you can find basic documentation on how to configure the DPM backup application for a tape gateway and perform a backup and restore operation\. 
+You can back up your data to virtual tapes, archive the tapes, and manage your virtual tape library \(VTL\) devices by using Microsoft System Center 2012 R2 or 2016 Data Protection Manager \(DPM\)\. In this topic, you can find basic documentation on how to configure the DPM backup application for a Tape Gateway and perform a backup and restore operation\. 
 
 For detailed information about how to use DPM, see the [DPM documentation](http://technet.microsoft.com/en-us/library/hh758173.aspx) on the Microsoft System Center website\. For more information about compatible backup applications, see [Supported third\-party backup applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
 
@@ -15,7 +21,7 @@ For detailed information about how to use DPM, see the [DPM documentation](http:
 
 After you have connected the virtual tape library \(VTL\) devices to the Windows client, you configure DPM to recognize your devices\. For information about how to connect VTL devices to the Windows client, see [Connecting Your VTL Devices](GettingStarted-create-tape-gateway.md#GettingStartedAccessTapesVTL)\.
 
-By default, the DPM server does not recognize tape gateway devices\. To configure the server to work with the tape gateway devices, you perform the following tasks:
+By default, the DPM server does not recognize Tape Gateway devices\. To configure the server to work with the Tape Gateway devices, you perform the following tasks:
 
 1. Update the device drivers for the VTL devices to expose them to the DPM server\.
 
@@ -60,7 +66,7 @@ If this file exists, the DPMDriveMappingTool overwrites it\. If you want to pres
 
 ## Importing a Tape into DPM<a name="dpm-Import-tapes"></a>
 
-You are now ready to import tapes from your tape gateway into the DPM backup application library\.
+You are now ready to import tapes from your Tape Gateway into the DPM backup application library\.
 
 **To import tapes into the DPM backup application library**
 
@@ -85,13 +91,13 @@ If the tapes don’t display barcodes correctly, you need to change the media ch
 
 ## Writing Data to a Tape in DPM<a name="dpm-write-data-to-tape"></a>
 
-You write data to a tape gateway virtual tape by using the same protection procedures and policies you do with physical tapes\. You create a protection group and add the data you want to back up, and then back up the data by creating a recovery point\. For detailed information about how to use DPM, see the [DPM documentation](http://technet.microsoft.com/en-us/library/jj628070.aspx) on the Microsoft System Center website\.
+You write data to a Tape Gateway virtual tape by using the same protection procedures and policies you do with physical tapes\. You create a protection group and add the data you want to back up, and then back up the data by creating a recovery point\. For detailed information about how to use DPM, see the [DPM documentation](http://technet.microsoft.com/en-us/library/jj628070.aspx) on the Microsoft System Center website\.
 
 By default, the capacity of a tape is 30GB\. When you backup data that is larger than a tape's capacity, a device I/O error occurs\. If the position where the error occurred is larger than the size of the tape, Microsoft DPM treats the error as an indication of end of tape\. If the position where the error occurred is less than the size of the tape, the backup job fails\. To resolve the issue, change the `TapeSize` value in the registry entry to match the size of your tape\. For information about how to do this, see [Error ID: 30101](https://technet.microsoft.com/en-us/library/ff634181.aspx) at the Microsoft System Center\.
 
 ## Archiving a Tape by Using DPM<a name="dpm-archive-tape"></a>
 
-When you archive a tape, tape gateway moves the tape from the DPM tape library to offline storage\. You begin tape archival by removing the tape from the slot using your backup application—that is, DPM\.
+When you archive a tape, Tape Gateway moves the tape from the DPM tape library to offline storage\. You begin tape archival by removing the tape from the slot using your backup application—that is, DPM\.
 
 **To archive a tape in DPM**
 
@@ -100,7 +106,7 @@ When you archive a tape, tape gateway moves the tape from the DPM tape library t
 
 1. In the dialog box that appears, choose **Yes**\. Doing this ejects the tape from the medium changer's storage slot and moves the tape into one of the gateway's I/E slots\. When a tape is moved into the gateway's I/E slot, it is immediately sent for archiving\.
 
-1. On the AWS Storage Gateway console, choose your gateway, and then choose **VTL Tape Cartridges** and verify the status of the virtual tape you are archiving\. 
+1. On the Storage Gateway console, choose your gateway, and then choose **VTL Tape Cartridges** and verify the status of the virtual tape you are archiving\. 
 
    The archiving process can take some time to complete\. The initial status of the tape is shown as **IN TRANSIT TO VTS**\. When archiving starts, the status changes to **ARCHIVING**\. When archiving is completed, the tape is no longer listed in the VTL\.
 
@@ -110,7 +116,7 @@ Restoring your archived data is a two\-step process\.
 
 **To restore data from an archived tape**
 
-1. Retrieve the archived tape from archive to a tape gateway\. For instructions, see [Retrieving Archived Tapes](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
+1. Retrieve the archived tape from archive to a Tape Gateway\. For instructions, see [Retrieving Archived Tapes](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
 
 1. Use the DPM backup application to restore the data\. You do this by creating a recovery point, as you do when restoring data from physical tapes\. For instructions, see [Recovering Client Computer Data](http://technet.microsoft.com/en-us/library/hh757887.aspx) on the DPM website\.
 

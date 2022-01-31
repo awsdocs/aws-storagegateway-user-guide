@@ -1,6 +1,12 @@
+--------
+
+Amazon S3 File Gateway documentation has been moved to [What is Amazon S3 File Gateway](https://docs.aws.amazon.com/filegateway/latest/files3/WhatIsStorageGateway.html)
+
+--------
+
 # Testing Your Setup by Using Micro Focus \(HPE\) Data Protector<a name="backup-hpdataprotector"></a>
 
-You can back up your data to virtual tapes, archive the tapes, and manage your virtual tape library \(VTL\) devices by using Micro Focus \(HPE\) Data Protector v9\.x\. In this topic, you can find basic documentation on how to configure the Micro Focus \(HPE\) Data Protector software for a tape gateway and perform a backup and restore operation\. For detailed information about how to use the Micro Focus \(HPE\) Data Protector software, see the Hewlett Packard documentation\. For more information about compatible backup applications, see [Supported third\-party backup applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
+You can back up your data to virtual tapes, archive the tapes, and manage your virtual tape library \(VTL\) devices by using Micro Focus \(HPE\) Data Protector v9\.x\. In this topic, you can find basic documentation on how to configure the Micro Focus \(HPE\) Data Protector software for a Tape Gateway and perform a backup and restore operation\. For detailed information about how to use the Micro Focus \(HPE\) Data Protector software, see the Hewlett Packard documentation\. For more information about compatible backup applications, see [Supported third\-party backup applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
 
 **Topics**
 + [Configuring Micro Focus \(HPE\) Data Protector to Work with VTL Devices](#hpdataprotector-configure-software)
@@ -14,7 +20,7 @@ You can back up your data to virtual tapes, archive the tapes, and manage your v
 
 After you have connected the virtual tape library \(VTL\) devices to the client, you configure Micro Focus \(HPE\) Data Protector to recognize your devices\. For information about how to connect VTL devices to the client, see [Connecting Your VTL Devices](GettingStarted-create-tape-gateway.md#GettingStartedAccessTapesVTL)\.
 
-The Micro Focus \(HPE\) Data Protector software doesn't automatically recognize tape gateway devices\. To have the software recognize these devices, manually add the devices and then discover the VTL devices, as described following\.
+The Micro Focus \(HPE\) Data Protector software doesn't automatically recognize Tape Gateway devices\. To have the software recognize these devices, manually add the devices and then discover the VTL devices, as described following\.
 
 **To add the VTL devices**
 
@@ -170,7 +176,7 @@ If the host system contains a database system, you can choose it as your target 
 
 ## Archiving a Tape<a name="hpdataprotector-archive-tape"></a>
 
-When you archive a tape, tape gateway moves the tape from the tape library to the offline storage\. Before you eject and archive a tape, you might want to check the content on it\. 
+When you archive a tape, Tape Gateway moves the tape from the tape library to the offline storage\. Before you eject and archive a tape, you might want to check the content on it\. 
 
 **To check a tape's content before archiving it**
 
@@ -184,9 +190,9 @@ When you have chosen a tape to archive, use the following procedure\.
 
 1. Open the context \(right\-click\) menu for that tape, and choose **Eject**\. 
 
-1. On the AWS Storage Gateway console, choose your gateway, and then choose **VTL Tape Cartridges** and verify the status of the virtual tape you are archiving\. 
+1. On the Storage Gateway console, choose your gateway, and then choose **VTL Tape Cartridges** and verify the status of the virtual tape you are archiving\. 
 
-After the tape is ejected, it will be automatically archived in the offline storage \(GLACIER or DEEP\_ARCHIVE\)\. The archiving process can take some time to complete\. The initial status of the tape is shown as **IN TRANSIT TO VTS**\. When archiving starts, the status changes to **ARCHIVING**\. When archiving is completed, the tape is no longer listed in the VTL but is archived in GLACIER or DEEP\_ARCHIVE\. 
+After the tape is ejected, it will be automatically archived in the offline storage \(S3 Glacier Flexible Retrieval or S3 Glacier Deep Archive\)\. The archiving process can take some time to complete\. The initial status of the tape is shown as **IN TRANSIT TO VTS**\. When archiving starts, the status changes to **ARCHIVING**\. When archiving is completed, the tape is no longer listed in the VTL but is archived in S3 Glacier Flexible Retrieval or S3 Glacier Deep Archive\. 
 
 ## Restoring Data from a Tape<a name="hpdataprotector-restore-tape"></a>
 
@@ -194,7 +200,7 @@ Restoring your archived data is a two\-step process\.
 
 **To restore data from an archived tape**
 
-1. Retrieve the archived tape to a tape gateway\. For instructions, see [Retrieving Archived Tapes](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
+1. Retrieve the archived tape to a Tape Gateway\. For instructions, see [Retrieving Archived Tapes](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
 
 1. Use HPE Data Protector to restore the data\. This process is the same as restoring data from physical tapes\. 
 

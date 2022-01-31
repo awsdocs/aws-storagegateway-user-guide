@@ -1,10 +1,16 @@
-# Configuring CHAP Authentication for Your Volumes<a name="GettingStartedConfigureChap"></a>
+--------
 
-In AWS Storage Gateway, your iSCSI initiators connect to your volumes as iSCSI targets\. Storage Gateway uses Challenge\-Handshake Authentication Protocol \(CHAP\) to authenticate iSCSI and initiator connections\. CHAP provides protection against playback attacks by requiring authentication to access storage volume targets\. For each volume target, you can define one or more CHAP credentials\. You can view and edit these credentials for the different initiators in the Configure CHAP credentials dialog box\.
+Amazon S3 File Gateway documentation has been moved to [What is Amazon S3 File Gateway](https://docs.aws.amazon.com/filegateway/latest/files3/WhatIsStorageGateway.html)
+
+--------
+
+# Configuring CHAP authentication for your volumes<a name="GettingStartedConfigureChap"></a>
+
+In Storage Gateway, your iSCSI initiators connect to your volumes as iSCSI targets\. Storage Gateway uses Challenge\-Handshake Authentication Protocol \(CHAP\) to authenticate iSCSI and initiator connections\. CHAP provides protection against playback attacks by requiring authentication to access storage volume targets\. For each volume target, you can define one or more CHAP credentials\. You can view and edit these credentials for the different initiators in the Configure CHAP credentials dialog box\.
 
 **To configure CHAP credentials**
 
-1. In the AWS Storage Gateway Console, choose **Volumes** and select the volume for which you want to configure CHAP credentials\.
+1. In the Storage Gateway Console, choose **Volumes** and select the volume for which you want to configure CHAP credentials\.
 
 1. For **Actions**, choose **Configure CHAP authentication**\.
 
@@ -14,11 +20,11 @@ In AWS Storage Gateway, your iSCSI initiators connect to your volumes as iSCSI t
 
 1. For **Target secret**, provide the secret phrase you want used to authenticate your target for mutual CHAP\. The target secret phrase must be at least 12 characters and at most 16 characters long\.
 
-1. Choose **Save** to save your entries\. 
+1. Choose **Save** to save your entries\.
 
 To view or update CHAP credentials, you must have the necessary IAM role permissions to that allows you to perform that operation\.
 
-## Viewing and Editing CHAP Credentials<a name="edit-chap-volume"></a>
+## Viewing and editing CHAP credentials<a name="edit-chap-volume"></a>
 
 You can add, remove or update CHAP credentials for each user\. To view or edit CHAP credentials, you must have the necessary IAM role permissions that allows you to perform that operation and the gateway the initiator target is attached to must be a functioning gateway\.
 
@@ -26,7 +32,7 @@ You can add, remove or update CHAP credentials for each user\. To view or edit C
 
 **To add CHAP credentials**
 
-1. In the AWS Storage Gateway Console, choose **Volumes** and select the volume for which you want to add CHAP credentials\.
+1. In the Storage Gateway Console, choose **Volumes** and select the volume for which you want to add CHAP credentials\.
 
 1. For **Actions**, choose **Configure CHAP authentication**\.
 
@@ -34,7 +40,7 @@ You can add, remove or update CHAP credentials for each user\. To view or edit C
 
 **To remove CHAP credentials**
 
-1. In the AWS Storage Gateway Console, choose **Volumes** and select the volume for which you want to remove CHAP credentials\.
+1. In the Storage Gateway Console, choose **Volumes** and select the volume for which you want to remove CHAP credentials\.
 
 1. For **Actions**, choose **Configure CHAP authentication**\.
 
@@ -42,7 +48,7 @@ You can add, remove or update CHAP credentials for each user\. To view or edit C
 
 **To update CHAP credentials**
 
-1. In the AWS Storage Gateway Console, choose **Volumes** and select the volume for which you want to update CHAP\.
+1. In the Storage Gateway Console, choose **Volumes** and select the volume for which you want to update CHAP\.
 
 1. For **Actions**, choose **Configure CHAP authentication**\.
 

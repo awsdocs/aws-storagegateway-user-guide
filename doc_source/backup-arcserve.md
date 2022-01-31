@@ -1,6 +1,12 @@
+--------
+
+Amazon S3 File Gateway documentation has been moved to [What is Amazon S3 File Gateway](https://docs.aws.amazon.com/filegateway/latest/files3/WhatIsStorageGateway.html)
+
+--------
+
 # Testing Your Setup by Using Arcserve Backup r17\.0<a name="backup-arcserve"></a>
 
-You can back up your data to virtual tapes, archive the tapes, and manage your virtual tape library \(VTL\) devices by using Arcserve Backup r17\.0\. In this topic, you can find basic documentation to configure Arcserve Backup with a tape gateway and perform a backup and restore operation\. For detailed information about to use Arcserve Backup r17\.0, see [Arcserve Backup r17 documentation](https://documentation.arcserve.com/Arcserve-Backup/Available/R17/ENU/Bookshelf_Files/HTML/admingde/index.htm) in the *Arcserve Administration Guide\. *
+You can back up your data to virtual tapes, archive the tapes, and manage your virtual tape library \(VTL\) devices by using Arcserve Backup r17\.0\. In this topic, you can find basic documentation to configure Arcserve Backup with a Tape Gateway and perform a backup and restore operation\. For detailed information about to use Arcserve Backup r17\.0, see [Arcserve Backup r17 documentation](https://documentation.arcserve.com/Arcserve-Backup/Available/R17/ENU/Bookshelf_Files/HTML/admingde/index.htm) in the *Arcserve Administration Guide\. *
 
 The following screenshot shows the Arcserve menus\.
 
@@ -71,7 +77,7 @@ When your tapes have been loaded into Arcserve, you can back up data\. The backu
 
 ## Archiving a Tape<a name="archServe-archive-tape"></a>
 
-When you archive a tape, your tape gateway moves the tape from the tape library to the offline storage\. Before you eject and archive a tape, you might want to check the content on it\.
+When you archive a tape, your Tape Gateway moves the tape from the tape library to the offline storage\. Before you eject and archive a tape, you might want to check the content on it\.
 
 **To archive a tape**
 
@@ -85,7 +91,7 @@ When you archive a tape, your tape gateway moves the tape from the tape library 
 
 1. Assign a mail slot to load the tape\. The status in the Storage Gateway console changes to **Archive**\. The archive process might take some time\.
 
-The archiving process can take some time to complete\. The initial status of the tape appears as **IN TRANSIT TO VTS**\. When archiving starts, the status changes to **ARCHIVING**\. When archiving is completed, the tape is no longer listed in the VTL but is archived in S3 Glacier or S3 Glacier Deep Archive\.
+The archiving process can take some time to complete\. The initial status of the tape appears as **IN TRANSIT TO VTS**\. When archiving starts, the status changes to **ARCHIVING**\. When archiving is completed, the tape is no longer listed in the VTL but is archived in S3 Glacier Flexible Retrieval or S3 Glacier Deep Archive\.
 
 ## Restoring Data from a Tape<a name="archServe-restore-tape"></a>
 
@@ -93,7 +99,7 @@ Restoring your archived data is a two\-step process\.
 
 **To restore data from an archived tape**
 
-1. Retrieve the archived tape to a tape gateway\. For instructions, see [Retrieving Archived Tapes](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
+1. Retrieve the archived tape to a Tape Gateway\. For instructions, see [Retrieving Archived Tapes](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
 
 1. Use Arcserve to restore the data\. This process is the same as restoring data from physical tapes\. For instructions, see the [Arcserve Backup r17 documentation](https://documentation.arcserve.com/Arcserve-Backup/Available/R17/ENU/Bookshelf_Files/HTML/admingde/index.htm)\. 
 

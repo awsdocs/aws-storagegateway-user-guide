@@ -1,3 +1,9 @@
+--------
+
+Amazon S3 File Gateway documentation has been moved to [What is Amazon S3 File Gateway](https://docs.aws.amazon.com/filegateway/latest/files3/WhatIsStorageGateway.html)
+
+--------
+
 # Performing Tasks on the VM Local Console \(Volume and Tape Gateways\)<a name="manage-on-premises-common"></a>
 
 For a gateway deployed on\-premises, you can perform the following maintenance tasks using the VM host's local console\. These tasks are common to VMware, Hyper\-V, and Linux Kernel\-based Virtual Machine \(KVM\) hosts\.
@@ -17,6 +23,8 @@ For a gateway deployed on\-premises, you can perform the following maintenance t
 
 When the VM is ready for you to log in, the login screen is displayed\. If this is your first time logging in to the local console, you use the default user name and password to log in\. These default login credentials give you access to menus where you can configure gateway network settings and change the password from the local console\. Storage Gateway enables you to set your own password from the AWS Storage Gateway console instead of changing the password from the local console\. You don't need to know the default password to set a new password\. For more information, see [Setting the Local Console Password from the Storage Gateway Console](#set-password)\.
 
+ 
+
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GatewayMaintenance_75.png)<a name="MaintenanceConsoleWindowMenu-common"></a>
 
 **To log in to the gateway's local console**
@@ -27,6 +35,8 @@ When the VM is ready for you to log in, the login screen is displayed\. If this 
 If your volume or tape gateway has not been updated to a newer version yet, the user name is `sguser` and the password is `sgpassword`\. If you reset your password and your gateway is updated to a newer version, your the user name will change to admin but the password will be maintained\.
 
 After you log in, you see the **Storage Gateway Configuration** main menu, as shown in the following screenshot\.
+
+ 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/LocalConsoleLogin.png)
 
@@ -53,13 +63,13 @@ When you log in to the local console for the first time, you log in to the VM wi
 
 **To set the local console password on the Storage Gateway console**
 
-1. Open the AWS Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
+1. Open the Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
 
 1. On the navigation pane, choose **Gateways** then choose the gateway for which you want to set a new password\.
 
 1. For **Actions**, choose **Set Local Console Password**\.
 
-1. In the **Set Local Console Password** dialog box, type a new password, confirm the password and then choose **Save**\. Your new password replaces the default password\. AWS Storage Gateway does not save the password but rather safely transmits it to the VM\.
+1. In the **Set Local Console Password** dialog box, type a new password, confirm the password and then choose **Save**\. Your new password replaces the default password\. Storage Gateway does not save the password but rather safely transmits it to the VM\.
 **Note**  
 The password can consist of any character on the keyboard and can be 1 to 512 characters long\.
 
@@ -68,11 +78,11 @@ The password can consist of any character on the keyboard and can be 1 to 512 ch
 Volume gateways and tape gateways support configuration of a Socket Secure version 5 \(SOCKS5\) proxy between your on\-premises gateway and AWS\. File gateways support configuration of an HyperText Transfer Protocol \(HTTP\) proxy\. 
 
 **Note**  
-The only proxy configurations AWS Storage Gateway supports are SOCKS5 and HTTP\.
+The only proxy configurations Storage Gateway supports are SOCKS5 and HTTP\.
 
-If your gateway must use a proxy server to communicate to the internet, then you need to configure the SOCKS or HTTP proxy settings for your gateway\. You do this by specifying an IP address and port number for the host running your proxy\. After you do so, AWS Storage Gateway routes all HTTP traffic through your proxy server\. For information about network requirements for your gateway, see [Network and firewall requirements](Requirements.md#networks)\.
+If your gateway must use a proxy server to communicate to the internet, then you need to configure the SOCKS or HTTP proxy settings for your gateway\. You do this by specifying an IP address and port number for the host running your proxy\. After you do so, Storage Gateway routes all HTTP traffic through your proxy server\. For information about network requirements for your gateway, see [Network and firewall requirements](Requirements.md#networks)\.
 
-The following procedure shows you how to configure SOCKS proxy for volume gateway and tape gateway\. For instructions on how to configure HTTP proxy for file gateway, see [To configure an HTTP proxy for a file gateway](#http-proxy)\.<a name="socks-proxy"></a>
+The following procedure shows you how to configure SOCKS proxy for volume gateway and Tape Gateway\. For instructions on how to configure HTTP proxy for file gateway, see [To configure an HTTP proxy for a file gateway](#http-proxy)\.<a name="socks-proxy"></a>
 
 **To configure a SOCKS5 proxy for volume and tape gateways**
 
@@ -81,14 +91,18 @@ The following procedure shows you how to configure SOCKS proxy for volume gatewa
    + Microsoft Hyper\-V – for more information, see [Access the Gateway Local Console with Microsoft Hyper\-V](accessing-local-console.md#MaintenanceConsoleWindowHyperV-common)\.
    + KVM – for more information, see [Accessing the Gateway Local Console with Linux KVM](accessing-local-console.md#MaintenanceConsoleWindowKVM-common)\.
 
-1. On the **AWS Storage Gateway Configuration** main menu, type **1** to begin configuring the SOCKS proxy\.  
+1. On the **Storage Gateway Configuration** main menu, type **1** to begin configuring the SOCKS proxy\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/LocalConsoleLogin.png)
 
-1. Choose one of the following options on the **AWS Storage Gateway SOCKS Proxy Configuration** menu\.  
+1. Choose one of the following options on the **Storage Gateway SOCKS Proxy Configuration** menu\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GatewayMaintenance_77.png)    
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/manage-on-premises-common.html)
 
-The following procedure shows you how to configure an HTTP proxy for a file gateway\. For instructions on how to configure SOCKS proxy for a volume gateway or tape gateway, see [To configure a SOCKS5 proxy for volume and tape gateways](#socks-proxy)\.<a name="http-proxy"></a>
+The following procedure shows you how to configure an HTTP proxy for a file gateway\. For instructions on how to configure SOCKS proxy for a volume gateway or Tape Gateway, see [To configure a SOCKS5 proxy for volume and tape gateways](#socks-proxy)\.<a name="http-proxy"></a>
 
 **To configure an HTTP proxy for a file gateway**
 
@@ -97,10 +111,14 @@ The following procedure shows you how to configure an HTTP proxy for a file gate
    + Microsoft Hyper\-V – for more information, see [Access the Gateway Local Console with Microsoft Hyper\-V](accessing-local-console.md#MaintenanceConsoleWindowHyperV-common)\.
    + KVM – for more information, see [Accessing the Gateway Local Console with Linux KVM](accessing-local-console.md#MaintenanceConsoleWindowKVM-common)\.
 
-1. On the **AWS Storage Gateway Configuration** main menu, type **1** to begin configuring the HTTP proxy\.  
+1. On the **Storage Gateway Configuration** main menu, type **1** to begin configuring the HTTP proxy\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/LocalConsoleLogin-file.png)
 
-1. Choose one of the following options on the **AWS Storage Gateway HTTP Proxy Configuration** menu:  
+1. Choose one of the following options on the **Storage Gateway HTTP Proxy Configuration** menu:
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GatewayHttpProxy.png)    
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/manage-on-premises-common.html)
 
@@ -117,10 +135,14 @@ The default network configuration for the gateway is Dynamic Host Configuration 
    + Microsoft Hyper\-V – for more information, see [Access the Gateway Local Console with Microsoft Hyper\-V](accessing-local-console.md#MaintenanceConsoleWindowHyperV-common)\.
    + KVM – for more information, see [Accessing the Gateway Local Console with Linux KVM](accessing-local-console.md#MaintenanceConsoleWindowKVM-common)\.
 
-1. On the **AWS Storage Gateway Configuration** main menu, type option **2** to begin configuring a static IP address\.  
+1. On the **Storage Gateway Configuration** main menu, type option **2** to begin configuring a static IP address\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/LocalConsoleLogin.png)
 
-1. Choose one of the following options on the **AWS Storage Gateway Network Configuration** menu:  
+1. Choose one of the following options on the **Storage Gateway Network Configuration** menu:
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GatewayMaintenance_80.png)    
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/manage-on-premises-common.html)
 
@@ -135,7 +157,9 @@ You can use your gateway's local console to test your internet connection\. This
    + Microsoft Hyper\-V – for more information, see [Access the Gateway Local Console with Microsoft Hyper\-V](accessing-local-console.md#MaintenanceConsoleWindowHyperV-common)\.
    + KVM – for more information, see [Accessing the Gateway Local Console with Linux KVM](accessing-local-console.md#MaintenanceConsoleWindowKVM-common)\.
 
-1. On the **AWS Storage Gateway Configuration** main menu, type option **3** to begin testing network connectivity\.  
+1. On the **Storage Gateway Configuration** main menu, type option **3** to begin testing network connectivity\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/LocalConsoleLogin.png)
 
    The console displays the available regions\.
@@ -166,13 +190,19 @@ The AWS Storage Gateway console helps provide a secure environment for configuri
    + Microsoft Hyper\-V – for more information, see [Access the Gateway Local Console with Microsoft Hyper\-V](accessing-local-console.md#MaintenanceConsoleWindowHyperV-common)\.
    + Linux KVM – for more information, see [Accessing the Gateway Local Console with Linux KVM](accessing-local-console.md#MaintenanceConsoleWindowKVM-common)\.
 
-1. On the **AWS Storage Gateway Configuration** main menu, type option **5** for **Gateway Console**\.  
+1. On the **Storage Gateway Configuration** main menu, type option **5** for **Gateway Console**\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/LocalConsoleLogin.png)
 
-1. On the AWS Storage Gateway console, type **h**, and then press the **Return** key\.  
+1. On the AWS Storage Gateway console, type **h**, and then press the **Return** key\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/SGLocalConsole.png)
 
-   The console displays the **Available Commands** menu with the available commands and after the menu a **Gateway Console** prompt, as shown in the following screenshot\.  
+   The console displays the **Available Commands** menu with the available commands and after the menu a **Gateway Console** prompt, as shown in the following screenshot\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/AvailableLocalConsoleCommands.png)
 
 1. To learn about a command, type **man** \+ ***command name*** at the **Gateway Console** prompt\.
@@ -188,7 +218,9 @@ When your gateway starts, it checks its virtual CPU cores, root volume size, and
    + Microsoft Hyper\-V – for more information, see [Access the Gateway Local Console with Microsoft Hyper\-V](accessing-local-console.md#MaintenanceConsoleWindowHyperV-common)\.
    + Linux KVM – for more information, see [Accessing the Gateway Local Console with Linux KVM](accessing-local-console.md#MaintenanceConsoleWindowKVM-common)\.
 
-1. In the **AWS Storage Gateway Configuration** main menu, type **6** to view the results of a system resource check\.  
+1. In the **Storage Gateway Configuration** main menu, type **6** to view the results of a system resource check\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/LocalConsoleLogin.png)
 
    The console displays an **\[OK**\], **\[WARNING\]**, or **\[FAIL\]** message for each resource as described in the table following\.    
@@ -196,12 +228,14 @@ When your gateway starts, it checks its virtual CPU cores, root volume size, and
 
    The console also displays the number of errors and warnings next to the resource check menu option\.
 
-   The following screenshot shows a **\[FAIL\]** message and the accompanying error message\.  
+   The following screenshot shows a **\[FAIL\]** message and the accompanying error message\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/new-gateway-console-error.png)
 
 ## Configuring Network Adapters for Your Gateway<a name="NICConfiguring-common"></a>
 
-By default, AWS Storage Gateway is configured to use the E1000 network adapter type, but you can reconfigure your gateway to use the VMXNET3 \(10 GbE\) network adapter\. You can also configure Storage Gateway so it can be accessed by more than one IP address\. You do this by configuring your gateway to use more than one network adapter\.
+By default, Storage Gateway is configured to use the E1000 network adapter type, but you can reconfigure your gateway to use the VMXNET3 \(10 GbE\) network adapter\. You can also configure Storage Gateway so it can be accessed by more than one IP address\. You do this by configuring your gateway to use more than one network adapter\.
 
 **Topics**
 + [Configuring Your Gateway to Use the VMXNET3 Network Adapter](#NICChanging-common)
@@ -209,7 +243,7 @@ By default, AWS Storage Gateway is configured to use the E1000 network adapter t
 
 ### Configuring Your Gateway to Use the VMXNET3 Network Adapter<a name="NICChanging-common"></a>
 
-AWS Storage Gateway supports the E1000 network adapter type in both VMware ESXi and Microsoft Hyper\-V hypervisor hosts\. However, the VMXNET3 \(10 GbE\) network adapter type is supported in VMware ESXi hypervisor only\. If your gateway is hosted on a VMware ESXi hypervisor, you can reconfigure your gateway to use the VMXNET3 \(10 GbE\) adapter type\. For more information on this adapter, see the [VMware website](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=1001805)\.
+Storage Gateway supports the E1000 network adapter type in both VMware ESXi and Microsoft Hyper\-V hypervisor hosts\. However, the VMXNET3 \(10 GbE\) network adapter type is supported in VMware ESXi hypervisor only\. If your gateway is hosted on a VMware ESXi hypervisor, you can reconfigure your gateway to use the VMXNET3 \(10 GbE\) adapter type\. For more information on this adapter, see the [VMware website](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=1001805)\.
 
 **Important**  
 To select VMXNET3, your guest operating system type must be **Other Linux64**\. 
@@ -232,7 +266,9 @@ Details on how to perform each step follow\.
 
 1. In the **Virtual Machine Properties** window, choose the **Hardware** tab\.
 
-1. For **Hardware**, choose **Network adapter**\. Notice that the current adapter is E1000 in the **Adapter Type** section\. You will replace this adapter with the VMXNET3 adapter\.  
+1. For **Hardware**, choose **Network adapter**\. Notice that the current adapter is E1000 in the **Adapter Type** section\. You will replace this adapter with the VMXNET3 adapter\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/VerifyAdapterType.png)
 
 1. Choose the E1000 network adapter, and then choose **Remove**\. In this example, the E1000 network adapter is **Network adapter 1**\. 
@@ -255,28 +291,36 @@ After your gateway restarts, reconfigure the adapter you just added to make sure
 
 **To configure the adapter for the network**
 
-1. In the VSphere client, choose the **Console** tab to start the local console\. You will use the default login credentials to log in to the gateway's local console for this configuration task\. For information about how to log in using the default credentials, see [Logging in to the Local Console Using Default Credentials](#LocalConsole-login-common)\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GatewayMaintenance_75.png)  
+1. In the VSphere client, choose the **Console** tab to start the local console\. You will use the default login credentials to log in to the gateway's local console for this configuration task\. For information about how to log in using the default credentials, see [Logging in to the Local Console Using Default Credentials](#LocalConsole-login-common)\.
+
+      
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GatewayMaintenance_75.png)
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/LocalConsoleLogin.png)
 
 1. At the prompt, type **2** to select **Network Configuration**, and then press **Enter** to open the network configuration menu\.
 
 1. At the prompt, type **4** to select **Reset to DHCP**, and then type **y** \(for yes\) at the prompt to reset the adapter you just added to use Dynamic Host Configuration Protocol \(DHCP\)\. You can type **5** to set all adapters to DHCP\.
 
-1. At the **Enter the adapter** prompt, type **eth0**, and then press **Enter** to continue\. The only adapter available is **eth0**\.  
+1. At the **Enter the adapter** prompt, type **eth0**, and then press **Enter** to continue\. The only adapter available is **eth0**\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/ResetDHCP.png)
 
-   If your gateway is already activated, you must shut it down and restart it from the AWS Storage Gateway Management Console\. After the gateway restarts, you must test network connectivity to the internet\. For information about how to test network connectivity, see [Testing Your Gateway Connection to the Internet](#MaintenanceTestGatewayConnectivity-common)\.
+   If your gateway is already activated, you must shut it down and restart it from the Storage Gateway Management Console\. After the gateway restarts, you must test network connectivity to the internet\. For information about how to test network connectivity, see [Testing Your Gateway Connection to the Internet](#MaintenanceTestGatewayConnectivity-common)\.
 
 ### Configuring Your Gateway for Multiple NICs<a name="MaintenanceMultiNIC-common"></a>
 
 If you configure your gateway to use multiple network adapters \(NICs\), it can be accessed by more than one IP address\. You might want to do this in the following situations:
+
+ 
 + ****Maximizing throughput**** – You might want to maximize throughput to a gateway when network adapters are a bottleneck\.
 + ****Application separation**** – You might need to separate how your applications write to a gateway's volumes\. For example, you might choose to have a critical storage application exclusively use one particular adapter defined for your gateway\.
 + ****Network constraints**** – Your application environment might require that you keep your iSCSI targets and the initiators that connect to them in an isolated network that is different from the network by which the gateway communicates with AWS\.
 
 In a typical multiple\-adapter use case, one adapter is configured as the route by which the gateway communicates with AWS \(that is, as the default gateway\)\. Except for this one adapter, initiators must be in the same subnet as the adapter that contains the iSCSI targets to which they connect\. Otherwise, communication with the intended targets might not be possible\. If a target is configured on the same adapter that is used for communication with AWS, then iSCSI traffic for that target and AWS traffic will flow through the same adapter\.
 
- When you configure one adapter to connect to the AWS Storage gateway console and then add a second adapter, storage gateway automatically configures the route table to use the second adapter as the preferred route\. For instructions on how to configure multiple\-adapters, see the following sections\. 
+ When you configure one adapter to connect to the Storage Gateway console and then add a second adapter, storage gateway automatically configures the route table to use the second adapter as the preferred route\. For instructions on how to configure multiple\-adapters, see the following sections\. 
 + [Configuring Your Gateway for Multiple NICs in a VMware ESXi Host](configure-multi-nic.md#MaintenanceMultiNIC-vmaware)
 + [Configuring Your Gateway for Multiple NICs in Microsoft Hyper\-V Host](configure-multi-nic.md#MaintenanceMultiNIC-hyperv)

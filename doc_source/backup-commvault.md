@@ -1,3 +1,9 @@
+--------
+
+Amazon S3 File Gateway documentation has been moved to [What is Amazon S3 File Gateway](https://docs.aws.amazon.com/filegateway/latest/files3/WhatIsStorageGateway.html)
+
+--------
+
 # Testing Your Setup by Using Commvault<a name="backup-commvault"></a>
 
 You can back up your data to virtual tapes, archive the tapes, and manage your virtual tape library \(VTL\) devices by using Commvault version 11\. In this topic, you can find basic documentation on how to configure the Commvault backup application for a tape gateway, perform a backup archive, and retrieve your data from archived tapes\. For detailed information about how to use Commvault, see the [Commvault documentation](http://documentation.commvault.com/commvault/v11/article?p=getting_started/c_quick_start_overview.htm) on the Commvault website\.
@@ -97,7 +103,7 @@ You create a backup job and write data to a virtual tape by using the same proce
 
 ## Archiving a Tape in Commvault<a name="commvault-archive-tape"></a>
 
-You start the archiving process by ejecting the tape\. When you archive a tape, tape gateway moves the tape from the tape library to offline storage\. Before you eject and archive a tape, you might want to first check the content on the tape\. 
+You start the archiving process by ejecting the tape\. When you archive a tape, Tape Gateway moves the tape from the tape library to offline storage\. Before you eject and archive a tape, you might want to first check the content on the tape\. 
 
 **To archive a tape**
 

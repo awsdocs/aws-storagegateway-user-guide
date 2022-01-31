@@ -1,3 +1,9 @@
+--------
+
+Amazon S3 File Gateway documentation has been moved to [What is Amazon S3 File Gateway](https://docs.aws.amazon.com/filegateway/latest/files3/WhatIsStorageGateway.html)
+
+--------
+
 # Managing Your Volume Gateway<a name="managing-volumes"></a>
 
 Following, you can find information about how to manage your volume gateway resources\.
@@ -26,15 +32,15 @@ All cached volume data and snapshot data is stored in Amazon S3 and is encrypted
 
 ## Adding a Volume<a name="ApplicationStorageVolumesCached-Adding"></a>
 
-As your application needs grow, you might need to add more volumes to your gateway\. As you add more volumes, you must consider the size of the cache storage and upload buffer you allocated to the gateway\. The gateway must have sufficient buffer and cache space for new volumes\. For more information, see [Determining the Size of Upload Buffer to Allocate](ManagingLocalStorage-common.md#CachedLocalDiskUploadBufferSizing-common)\. 
+As your application needs grow, you might need to add more volumes to your gateway\. As you add more volumes, you must consider the size of the cache storage and upload buffer you allocated to the gateway\. The gateway must have sufficient buffer and cache space for new volumes\. For more information, see [Determining the size of upload buffer to allocate](ManagingLocalStorage-common.md#CachedLocalDiskUploadBufferSizing-common)\. 
 
-You can add volumes using the AWS Storage Gateway console or AWS Storage Gateway API\. For information on using the AWS Storage Gateway API to add volumes, see [CreateCachediSCSIVolume](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_CreateCachediSCSIVolume.html)\. For instructions on how to add a volume using the AWS Storage Gateway console, see [Creating a Volume](GettingStartedCreateVolumes.md)\.
+You can add volumes using the Storage Gateway console or Storage Gateway API\. For information on using the Storage Gateway API to add volumes, see [CreateCachediSCSIVolume](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_CreateCachediSCSIVolume.html)\. For instructions on how to add a volume using the Storage Gateway console, see [Creating a volume](GettingStartedCreateVolumes.md)\.
 
 ## Expanding the Size of a Volume<a name="volume-size-increase"></a>
 
 As your application needs grow, you might want to expand your volume instead of adding more volumes to your gateway\. In this case, you can do one of the following:
-+ Create a snapshot of the volume you want to expand and then use the snapshot to create a new volume of a larger size\. For information about how to create a snapshot, see [Creating a One\-Time Snapshot](#CreatingSnapshot)\. For information about how to use a snapshot to create a new volume, see [Creating a Volume](GettingStartedCreateVolumes.md)\. 
-+ Use the cached volume you want to expand to clone a new volume of a larger size\. For information about how to clone a volume, see [Cloning a Volume](#clone-volume)\. For information about how to create a volume, see [Creating a Volume](GettingStartedCreateVolumes.md)\. 
++ Create a snapshot of the volume you want to expand and then use the snapshot to create a new volume of a larger size\. For information about how to create a snapshot, see [Creating a One\-Time Snapshot](#CreatingSnapshot)\. For information about how to use a snapshot to create a new volume, see [Creating a volume](GettingStartedCreateVolumes.md)\. 
++ Use the cached volume you want to expand to clone a new volume of a larger size\. For information about how to clone a volume, see [Cloning a Volume](#clone-volume)\. For information about how to create a volume, see [Creating a volume](GettingStartedCreateVolumes.md)\. 
 
 ## Cloning a Volume<a name="clone-volume"></a>
 
@@ -44,7 +50,7 @@ You can create a new volume from any existing cached volume in the same AWS Regi
 
 Cloning from an existing volume is faster and more cost\-effective than creating an Amazon EBS snapshot\. Cloning does a byte\-to\-byte copy of your data from the source volume to the new volume, using the most recent recovery point from the source volume\. Storage Gateway automatically creates recovery points for your cached volumes\. To see when the last recovery point was created, check the `TimeSinceLastRecoveryPoint` metric in Amazon CloudWatch\. 
 
-The cloned volume is independent of the source volume\. That is, changes made to either volume after cloning have no effect on the other\. For example, if you delete the source volume, it has no effect on the cloned volume\. You can clone a source volume while initiators are connected and it is in active use\. Doing so doesn't affect the performance of the source volume\. For information about how to clone a volume, see [Creating a Volume](GettingStartedCreateVolumes.md)\.
+The cloned volume is independent of the source volume\. That is, changes made to either volume after cloning have no effect on the other\. For example, if you delete the source volume, it has no effect on the cloned volume\. You can clone a source volume while initiators are connected and it is in active use\. Doing so doesn't affect the performance of the source volume\. For information about how to clone a volume, see [Creating a volume](GettingStartedCreateVolumes.md)\.
 
  You can also use the cloning process in recovery scenarios\. For more information, see [Your Cached Gateway is Unreachable And You Want to Recover Your Data](troubleshoot-volume-issues.md#RecoverySnapshotTroubleshooting)\.
 
@@ -54,15 +60,17 @@ The following procedure shows you how to clone a volume from a volume recovery p
 
 **To clone and use a volume from an unreachable gateway**
 
-1. Open the AWS Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
+1. Open the Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
 
-1. On the AWS Storage Gateway console, choose **Create volume**\.
+1. On the Storage Gateway console, choose **Create volume**\.
 
 1. In the **Create volume** dialog box, choose a gateway for **Gateway**\. 
 
 1. For **Capacity**, type the capacity for your volume\. The capacity must be at least the same size as the source volume\.
 
-1. Choose **Clone from last recovery point** and select a volume ID for **Source volume**\. The source volume can be any cached volume in the selected AWS Region\.   
+1. Choose **Clone from last recovery point** and select a volume ID for **Source volume**\. The source volume can be any cached volume in the selected AWS Region\. 
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/clone-volume.png)
 
 1. Type a name for **iSCSI target name**\.
@@ -85,30 +93,32 @@ The following procedure shows you how to create a snapshot from a volume recover
 
 **To create and use a recovery snapshot of a volume from an unreachable gateway**
 
-1. Open the AWS Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
+1. Open the Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
 
 1. In the navigation pane, choose **Gateways**\.
 
 1. Choose the unreachable gateway, and then choose the **Details** tab\.
 
-   A recovery snapshot message is displayed in the tab\.  
+   A recovery snapshot message is displayed in the tab\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/recorvery-snapshot-message.png)
 
 1. Choose **Create recovery snapshot** to open the **Create recovery snapshot** dialog box\.
 
 1. From the list of volumes displayed, choose the volume you want to recover, and then choose **Create snapshots**\.
 
-   AWS Storage Gateway initiates the snapshot process\.
+   Storage Gateway initiates the snapshot process\.
 
 1. Find and restore the snapshot\.
 
 ## Viewing Volume Usage<a name="volume-usage"></a>
 
-When you write data to a volume, you can view the amount of data stored on the volume in the AWS Storage Gateway Management Console\. The **Details** tab for each volume shows the volume usage information\.
+When you write data to a volume, you can view the amount of data stored on the volume in the Storage Gateway Management Console\. The **Details** tab for each volume shows the volume usage information\.
 
 **To view amount of data written to a volume**
 
-1. Open the AWS Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
+1. Open the Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
 
 1. In the navigation pane, choose **Volumes** and then choose the volume you are interested in\.
 
@@ -122,17 +132,19 @@ These values are not available for volumes created before May 13, 2015, until yo
 
 ## Deleting a Volume<a name="ApplicationStorageVolumesCached-Removing"></a>
 
-You might need to delete a volume as your application needs change—for example, if you migrate your application to use a larger storage volume\. Before you delete a volume, make sure that there are no applications currently writing to the volume\. Also, make sure that there are no snapshots in progress for the volume\. If a snapshot schedule is defined for the volume, you can check it on the **Snapshot Schedules** tab of the AWS Storage Gateway console\. For more information, see [Editing a Snapshot Schedule](#SchedulingSnapshot)\. 
+You might need to delete a volume as your application needs change—for example, if you migrate your application to use a larger storage volume\. Before you delete a volume, make sure that there are no applications currently writing to the volume\. Also, make sure that there are no snapshots in progress for the volume\. If a snapshot schedule is defined for the volume, you can check it on the **Snapshot Schedules** tab of the Storage Gateway console\. For more information, see [Editing a Snapshot Schedule](#SchedulingSnapshot)\. 
 
-You can delete volumes using the AWS Storage Gateway console or the AWS Storage Gateway API\. For information on using the AWS Storage Gateway API to remove volumes, see [Delete Volume](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_DeleteVolume.html)\. The following procedure demonstrates using the console\. 
+You can delete volumes using the Storage Gateway console or the Storage Gateway API\. For information on using the Storage Gateway API to remove volumes, see [Delete Volume](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_DeleteVolume.html)\. The following procedure demonstrates using the console\. 
 
 Before you delete a volume, back up your data or take a snapshot of your critical data\. For stored volumes, your local disks aren't erased\. After you delete a volume, you can't get it back\.<a name="CachedRemovingAStorageVolume"></a>
 
 **To remove a volume**
 
-1. Open the AWS Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
+1. Open the Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
 
-1. On the **Volumes** tab, choose the volume and choose the confirmation box\. Make sure that the volume listed is the volume you intend to delete\.  
+1. On the **Volumes** tab, choose the volume and choose the confirmation box\. Make sure that the volume listed is the volume you intend to delete\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/delete-volume.png)
 
 1. Choose **Delete** to delete the volume\.
@@ -146,7 +158,7 @@ By detaching and attaching a volume, you can do the following:
 + Refresh the underlying hardware for your server\.
 + Move your volumes between hypervisor types\.
 
-When you detach a volume, your gateway uploads and stores the volume data and metadata to the AWS Storage Gateway service in AWS\. You can easily attach a detached volume to a gateway on any supported host platform later\. 
+When you detach a volume, your gateway uploads and stores the volume data and metadata to the Storage Gateway service in AWS\. You can easily attach a detached volume to a gateway on any supported host platform later\. 
 
 **Note**  
 A detached volume is billed at the standard volume storage rate until you delete it\. For information about how to reduce your bill, see [Reducing the Amount of Billed Storage on a Volume](#reduce-bill-volume)\.
@@ -167,7 +179,7 @@ The following steps show you how to detach and attach a volume using the Storage
 
 **To detach a volume from a gateway**
 
-1. Open the AWS Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
+1. Open the Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
 
 1. On the navigation pane, choose **Volumes**\.
 
@@ -181,7 +193,7 @@ You can now attach the volume to a different gateway\.
 
 **To attach a volume to a gateway**
 
-1. Open the AWS Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
+1. Open the Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
 
 1. On the navigation pane, choose **Volumes**\. The status of each volume that is detached shows as **Detached**\.
 
@@ -199,7 +211,7 @@ You can now attach the volume to a different gateway\.
 
 ## Reducing the Amount of Billed Storage on a Volume<a name="reduce-bill-volume"></a>
 
-Deleting files from your file system doesn't necessarily delete data from the underlying block device or reduce the amount of data stored on your volume\. If you want to reduce the amount of billed storage on your volume, we recommend overwriting your files with zeros to compress the storage to a negligible amount of actual storage\. AWS Storage Gateway charges for volume usage based on compressed storage\. 
+Deleting files from your file system doesn't necessarily delete data from the underlying block device or reduce the amount of data stored on your volume\. If you want to reduce the amount of billed storage on your volume, we recommend overwriting your files with zeros to compress the storage to a negligible amount of actual storage\. Storage Gateway charges for volume usage based on compressed storage\. 
 
 **Note**  
 If you use a delete tool that overwrites the data on your volume with random data, your usage will not be reduced\. This is because the random data is not compressible\.
@@ -210,7 +222,7 @@ In addition to scheduled snapshots, for volume gateways you can take one\-time, 
 
 **To take a one\-time snapshot of your storage volume**
 
-1. Open the AWS Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
+1. Open the Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
 
 1. In the navigation pane, choose **Volumes**, and then choose the volume you want to create the snapshot from\.
 
@@ -235,7 +247,7 @@ By using the following steps, you can edit the snapshot schedule for a volume\.
 
 **To edit the snapshot schedule for a volume**
 
-1. Open the AWS Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
+1. Open the Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
 
 1. In the navigation pane, choose **Volumes**, and then choose the volume the snapshot was created from\.
 
@@ -254,15 +266,15 @@ You can delete a snapshot of your storage volume\. For example, you might want t
 
 On the Amazon EBS console, you can delete snapshots one at a time\. For information about how to delete snapshots using the Amazon EBS console, see [Deleting an Amazon EBS Snapshot](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-snapshot.html) in the *Amazon EC2 User Guide\.* 
 
- To delete multiple snapshots at a time, you can use one of the AWS SDKs that supports AWS Storage Gateway operations\. For examples, see [Deleting Snapshots by Using the AWS SDK for Java](#DeletingSnapshotsUsingJava), [Deleting Snapshots by Using the AWS SDK for \.NET](#DeletingSnapshotsUsingDotNet), and [Deleting Snapshots by Using the AWS Tools for Windows PowerShell](#DeletingSnapshotsUsingPowerShell)\.
+ To delete multiple snapshots at a time, you can use one of the AWS SDKs that supports Storage Gateway operations\. For examples, see [Deleting Snapshots by Using the AWS SDK for Java](#DeletingSnapshotsUsingJava), [Deleting Snapshots by Using the AWS SDK for \.NET](#DeletingSnapshotsUsingDotNet), and [Deleting Snapshots by Using the AWS Tools for Windows PowerShell](#DeletingSnapshotsUsingPowerShell)\.
 
 ### Deleting Snapshots by Using the AWS SDK for Java<a name="DeletingSnapshotsUsingJava"></a>
 
 To delete many snapshots associated with a volume, you can use a programmatic approach\. The example following demonstrates how to delete snapshots using the AWS SDK for Java\. To use the example code, you should be familiar with running a Java console application\. For more information, see [Getting Started](https://docs.aws.amazon.com/AWSSdkDocsJava/latest/DeveloperGuide/java-dg-setup.html) in the *AWS SDK for Java Developer Guide*\. If you need to just delete a few snapshots, use the console as described in [Deleting a Snapshot](#DeletingASnapshot)\.
 
 **Example : Deleting Snapshots by Using the AWS SDK for Java**  
-The following Java code example lists the snapshots for each volume of a gateway and whether the snapshot start time is before or after a specified date\. It uses the AWS SDK for Java API for AWS Storage Gateway and Amazon EC2\. The Amazon EC2 API includes operations for working with snapshots\.   
-Update the code to provide the service endpoint, your gateway Amazon Resource Name \(ARN\), and the number of days back you want to save snapshots\. Snapshots taken before this cutoff are deleted\. You also need to specify the Boolean value `viewOnly`, which indicates whether you want to view the snapshots to be deleted or to actually perform the snapshot deletions\. Run the code first with just the view option \(that is, with `viewOnly` set to `true`\) to see what the code deletes\. For a list of AWS service endpoints you can use with AWS Storage Gateway, see [AWS Storage Gateway Endpoints and Quotas](https://docs.aws.amazon.com/general/latest/gr/sg.html) in the *AWS General Reference*\.   
+The following Java code example lists the snapshots for each volume of a gateway and whether the snapshot start time is before or after a specified date\. It uses the AWS SDK for Java API for Storage Gateway and Amazon EC2\. The Amazon EC2 API includes operations for working with snapshots\.   
+Update the code to provide the service endpoint, your gateway Amazon Resource Name \(ARN\), and the number of days back you want to save snapshots\. Snapshots taken before this cutoff are deleted\. You also need to specify the Boolean value `viewOnly`, which indicates whether you want to view the snapshots to be deleted or to actually perform the snapshot deletions\. Run the code first with just the view option \(that is, with `viewOnly` set to `true`\) to see what the code deletes\. For a list of AWS service endpoints you can use with Storage Gateway, see [AWS Storage Gateway Endpoints and Quotas](https://docs.aws.amazon.com/general/latest/gr/sg.html) in the *AWS General Reference*\.   
 
 ```
 import java.io.IOException;
@@ -404,9 +416,9 @@ public class ListDeleteVolumeSnapshotsExample {
 To delete many snapshots associated with a volume, you can use a programmatic approach\. The following example demonstrates how to delete snapshots using the AWS SDK for \.NET version 2 and 3\. To use the example code, you should be familiar with running a \.NET console application\. For more information, see [Getting Started](https://docs.aws.amazon.com/AWSSdkDocsNET/latest/DeveloperGuide/net-dg-setup.html) in the *AWS SDK for \.NET Developer Guide*\. If you need to just delete a few snapshots, use the console as described in [Deleting a Snapshot](#DeletingASnapshot)\.
 
 **Example : Deleting Snapshots by Using the AWS SDK for \.NET**  
-In the following C\# code example, an AWS Identity and Access Management \(IAM\) user can list the snapshots for each volume of a gateway\. The user can then determine whether the snapshot start time is before or after a specified date \(retention period\) and delete snapshots that have passed the retention period\. The example uses the AWS SDK for \.NET API for AWS Storage Gateway and Amazon EC2\. The Amazon EC2 API includes operations for working with snapshots\.   
+In the following C\# code example, an AWS Identity and Access Management \(IAM\) user can list the snapshots for each volume of a gateway\. The user can then determine whether the snapshot start time is before or after a specified date \(retention period\) and delete snapshots that have passed the retention period\. The example uses the AWS SDK for \.NET API for Storage Gateway and Amazon EC2\. The Amazon EC2 API includes operations for working with snapshots\.   
 The following code example uses the AWS SDK for \.NET version 2 and 3\. You can migrate older versions of \.NET to the newer version\. For more information, see [Migrating Your Code to the Latest Version of the AWS SDK for \.NET](https://docs.aws.amazon.com/AWSSdkDocsNET/latest/DeveloperGuide/net-dg-migration-guide-v2.html#net-dg-migrate-v2-new)\.  
-Update the code to provide the service endpoint, your gateway Amazon Resource Name \(ARN\), and the number of days back you want to save snapshots\. Snapshots taken before this cutoff are deleted\. You also need to specify the Boolean value `viewOnly`, which indicates whether you want to view the snapshots to be deleted or to actually perform the snapshot deletions\. Run the code first with just the view option \(that is, with `viewOnly` set to `true`\) to see what the code deletes\. For a list of AWS service endpoints you can use with AWS Storage Gateway, see [AWS Storage Gateway Endpoints and Quotas](https://docs.aws.amazon.com/general/latest/gr/sg.html) in the *AWS General Reference*\.   
+Update the code to provide the service endpoint, your gateway Amazon Resource Name \(ARN\), and the number of days back you want to save snapshots\. Snapshots taken before this cutoff are deleted\. You also need to specify the Boolean value `viewOnly`, which indicates whether you want to view the snapshots to be deleted or to actually perform the snapshot deletions\. Run the code first with just the view option \(that is, with `viewOnly` set to `true`\) to see what the code deletes\. For a list of AWS service endpoints you can use with Storage Gateway, see [AWS Storage Gateway Endpoints and Quotas](https://docs.aws.amazon.com/general/latest/gr/sg.html) in the *AWS General Reference*\.   
  First, you create an IAM user and attach the minimum IAM policy to the IAM user\. Then you schedule automated snapshots for your gateway\.   
 The following code creates the minimum policy that allows an IAM user to delete snapshots\. In this example, the policy is named **sgw\-delete\-snapshot**\.  
 
@@ -461,9 +473,9 @@ namespace DeleteStorageGatewaySnapshotNS
         static String AwsAccessKey = "AKIA................";
         
         /* IAM SecretKey */
-        static String AwsSecretKey = "***********************";
+        static String AwsSecretKey = "*******************************";
         
-        /* AWS Account number, 12 digits, no hyphen */
+        /* Account number, 12 digits, no hyphen */
         static String OwnerID = "123456789012";
         
         /* Your Gateway ARN. Use a Storage Gateway ID, sgw-XXXXXXXX* */ 
@@ -472,7 +484,7 @@ namespace DeleteStorageGatewaySnapshotNS
         /* Snapshot status: "completed", "pending", "error" */                                                                                                      
         static String SnapshotStatus = "completed";
         
-        /* AWS Region where your gateway is activated */ 
+        /* Region where your gateway is activated */ 
         static String AwsRegion = "ap-southeast-2";
         
         /* Minimum age of snapshots before they are deleted (retention policy) */
@@ -646,7 +658,7 @@ namespace DeleteStorageGatewaySnapshotNS
 To delete many snapshots associated with a volume, you can use a programmatic approach\. The example following demonstrates how to delete snapshots using the AWS Tools for Windows PowerShell\. To use the example script, you should be familiar with running a PowerShell script\. For more information, see [Getting Started](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-started.html) in the *AWS Tools for Windows PowerShell*\. If you need to delete just a few snapshots, use the console as described in [Deleting a Snapshot](#DeletingASnapshot)\.
 
 **Example : Deleting Snapshots by Using the AWS Tools for Windows PowerShell**  
-The following PowerShell script example lists the snapshots for each volume of a gateway and whether the snapshot start time is before or after a specified date\. It uses the AWS Tools for Windows PowerShell cmdlets for AWS Storage Gateway and Amazon EC2\. The Amazon EC2 API includes operations for working with snapshots\.  
+The following PowerShell script example lists the snapshots for each volume of a gateway and whether the snapshot start time is before or after a specified date\. It uses the AWS Tools for Windows PowerShell cmdlets for Storage Gateway and Amazon EC2\. The Amazon EC2 API includes operations for working with snapshots\.  
 You need to update the script and provide your gateway Amazon Resource Name \(ARN\) and the number of days back you want to save snapshots\. Snapshots taken before this cutoff are deleted\. You also need to specify the Boolean value `viewOnly`, which indicates whether you want to view the snapshots to be deleted or to actually perform the snapshot deletions\. Run the code first with just the view option \(that is, with `viewOnly` set to `true`\) to see what the code deletes\.   
 
 ```
@@ -656,7 +668,7 @@ You need to update the script and provide your gateway Amazon Resource Name \(AR
     
 .NOTES
     PREREQUISITES:
-    1) AWS Tools for PowerShell from https://aws.amazon.com/powershell/
+    1) AWS Tools for Windows PowerShell from https://aws.amazon.com/powershell/
     2) Credentials and AWS Region stored in session using Initialize-AWSDefault.
     For more info see, https://docs.aws.amazon.com/powershell/latest/userguide/specifying-your-aws-credentials.html 
 
@@ -718,7 +730,7 @@ foreach ($volume in $volumesResult)
 
 ## Understanding Volume Statuses and Transitions<a name="StorageVolumeStatuses"></a>
 
-Each volume has an associated status that tells you at a glance what the health of the volume is\. Most of the time, the status indicates that the volume is functioning normally and that no action is needed on your part\. In some cases, the status indicates a problem with the volume that might or might not require action on your part\. You can find information following to help you decide when you need to act\. You can see volume status on the AWS Storage Gateway console or by using one of the Storage Gateway API operations, for example [DescribeCachediSCSIVolumes](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_DescribeCachediSCSIVolumes.html) or [DescribeStorediSCSIVolumes](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_DescribeStorediSCSIVolumes.html)\.
+Each volume has an associated status that tells you at a glance what the health of the volume is\. Most of the time, the status indicates that the volume is functioning normally and that no action is needed on your part\. In some cases, the status indicates a problem with the volume that might or might not require action on your part\. You can find information following to help you decide when you need to act\. You can see volume status on the Storage Gateway console or by using one of the Storage Gateway API operations, for example [DescribeCachediSCSIVolumes](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_DescribeCachediSCSIVolumes.html) or [DescribeStorediSCSIVolumes](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_DescribeStorediSCSIVolumes.html)\.
 
 **Topics**
 + [Understanding Volume Status](#StorageVolumeStatuses2)
@@ -741,9 +753,9 @@ In the following table, you can find a description of each storage volume status
 | <a name="VolumeStatusDELETING"></a><a name="VolumeStatusDELETING.title"></a>Deleting |  The volume is currently being deleted\. The **Deleting** status is transitional\. No action is required\.  | 
 | <a name="VolumeStatusIRRECOVERABLE"></a><a name="VolumeStatusIRRECOVERABLE.title"></a>Irrecoverable |  An error occurred from which the volume cannot recover\. For information on what to do in this situation, see [Troubleshooting volume issues](troubleshoot-volume-issues.md)\.  | 
 | <a name="VolumeStatusPASSTHROUGH"></a><a name="VolumeStatusPASSTHROUGH.title"></a>Pass Through |  Data maintained locally is out of sync with data stored in AWS\. Data written to a volume while the volume is in **Pass Through** status remains in the cache until the volume status is **Bootstrapping**\. This data starts to upload to AWS when **Bootstrapping** status begins\.  The **Pass Through** status can occur for several reasons, listed following:[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/managing-volumes.html)  | 
-| <a name="VolumeStatusRESTORING"></a><a name="VolumeStatusRESTORING.title"></a>Restoring |  The volume is being restored from an existing snapshot\. This status applies only for stored volumes\. For more information, see [How AWS Storage Gateway Works \(Architecture\)](StorageGatewayConcepts.md)\. If you restore two storage volumes at the same time, both storage volumes show **Restoring** as their status\. Each storage volume changes to the **Available** status automatically when it is finished being created\. You can read and write to a storage volume and take a snapshot of it while it has the **Restoring** status\.  | 
-| Restoring Pass Through |  The volume is being restored from an existing snapshot and has encountered an upload buffer issue\. This status applies only for stored volumes\. For more information, see [How AWS Storage Gateway Works \(Architecture\)](StorageGatewayConcepts.md)\. One reason that can cause the **Restoring Pass Through** status is if your gateway has run out of upload buffer space\. Your applications can continue to read from and write data to your storage volumes while they have the **Restoring Pass Through** status\. However, you can't take snapshots of a storage volume during the **Restoring Pass Through** status period\. For information about what action to take when your storage volume has the **Restoring Pass Through** status because upload buffer capacity has been exceeded, see [Troubleshooting volume issues](troubleshoot-volume-issues.md)\.  Infrequently, the **Restoring Pass Through** status can indicate that a disk allocated for an upload buffer has failed\. For information about what action to take in this scenario, see [Troubleshooting volume issues](troubleshoot-volume-issues.md)\.  | 
-| <a name="VolumeStatusUPLOADBUFFERNOTCONFIGURED"></a><a name="VolumeStatusUPLOADBUFFERNOTCONFIGURED.title"></a>Upload Buffer Not Configured |  You can't create or use the volume because the gateway doesn't have an upload buffer configured\. For information on how to add upload buffer capacity for volumes in a cached volume setup, see [Determining the Size of Upload Buffer to Allocate](ManagingLocalStorage-common.md#CachedLocalDiskUploadBufferSizing-common)\. For information on how to add upload buffer capacity for volumes in a stored volume setup, see [Determining the Size of Upload Buffer to Allocate](ManagingLocalStorage-common.md#CachedLocalDiskUploadBufferSizing-common)\.  | 
+| <a name="VolumeStatusRESTORING"></a><a name="VolumeStatusRESTORING.title"></a>Restoring |  The volume is being restored from an existing snapshot\. This status applies only for stored volumes\. For more information, see [How Storage Gateway works \(architecture\)](StorageGatewayConcepts.md)\. If you restore two storage volumes at the same time, both storage volumes show **Restoring** as their status\. Each storage volume changes to the **Available** status automatically when it is finished being created\. You can read and write to a storage volume and take a snapshot of it while it has the **Restoring** status\.  | 
+| Restoring Pass Through |  The volume is being restored from an existing snapshot and has encountered an upload buffer issue\. This status applies only for stored volumes\. For more information, see [How Storage Gateway works \(architecture\)](StorageGatewayConcepts.md)\. One reason that can cause the **Restoring Pass Through** status is if your gateway has run out of upload buffer space\. Your applications can continue to read from and write data to your storage volumes while they have the **Restoring Pass Through** status\. However, you can't take snapshots of a storage volume during the **Restoring Pass Through** status period\. For information about what action to take when your storage volume has the **Restoring Pass Through** status because upload buffer capacity has been exceeded, see [Troubleshooting volume issues](troubleshoot-volume-issues.md)\.  Infrequently, the **Restoring Pass Through** status can indicate that a disk allocated for an upload buffer has failed\. For information about what action to take in this scenario, see [Troubleshooting volume issues](troubleshoot-volume-issues.md)\.  | 
+| <a name="VolumeStatusUPLOADBUFFERNOTCONFIGURED"></a><a name="VolumeStatusUPLOADBUFFERNOTCONFIGURED.title"></a>Upload Buffer Not Configured |  You can't create or use the volume because the gateway doesn't have an upload buffer configured\. For information on how to add upload buffer capacity for volumes in a cached volume setup, see [Determining the size of upload buffer to allocate](ManagingLocalStorage-common.md#CachedLocalDiskUploadBufferSizing-common)\. For information on how to add upload buffer capacity for volumes in a stored volume setup, see [Determining the size of upload buffer to allocate](ManagingLocalStorage-common.md#CachedLocalDiskUploadBufferSizing-common)\.  | 
 
 ### Understanding Attachment Status<a name="VolumeAttachStatuses"></a>
 
@@ -766,10 +778,12 @@ The diagram doesn't show the **Upload Buffer Not Configured** status or the **De
 | Color | Volume Status | 
 | --- | --- | 
 | Green | The gateway is operating normally\. The volume status is Available or eventually becomes Available\. | 
-| Yellow | The volume has the Pass Through status, which indicates there is a potential issue with the storage volume\. If this status appears because the upload buffer space is filled, then in some cases buffer space becomes available again\. At that point, the storage volume self\-corrects to the Available status\. In other cases, you might have to add more upload buffer space to your gateway to allow the storage volume status to become Available\. For information on how to troubleshoot a case when upload buffer capacity has been exceeded, see [Troubleshooting volume issues](troubleshoot-volume-issues.md)\. For information on how to add upload buffer capacity, see [Determining the Size of Upload Buffer to Allocate](ManagingLocalStorage-common.md#CachedLocalDiskUploadBufferSizing-common)\. | 
+| Yellow | The volume has the Pass Through status, which indicates there is a potential issue with the storage volume\. If this status appears because the upload buffer space is filled, then in some cases buffer space becomes available again\. At that point, the storage volume self\-corrects to the Available status\. In other cases, you might have to add more upload buffer space to your gateway to allow the storage volume status to become Available\. For information on how to troubleshoot a case when upload buffer capacity has been exceeded, see [Troubleshooting volume issues](troubleshoot-volume-issues.md)\. For information on how to add upload buffer capacity, see [Determining the size of upload buffer to allocate](ManagingLocalStorage-common.md#CachedLocalDiskUploadBufferSizing-common)\. | 
 | Red | The storage volume has the Irrecoverable status\. In this case, you should delete the volume\. For information on how to do this, see [To remove a volume](#CachedRemovingAStorageVolume)\. | 
 
 In the diagram, a transition between two states is depicted with a labeled line\. For example, the transition from the **Creating** status to the **Available** status is labeled as *Create Basic Volume or Create Volume from Snapshot*\. This transition represents creating a cached volume\. For more information about creating storage volumes, see [Adding a Volume](#ApplicationStorageVolumesCached-Adding)\.
+
+ 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/VolumeStateDiagramCachedVolume-diagram.png)
 
@@ -786,10 +800,12 @@ The diagram doesn't show the **Upload Buffer Not Configured** status or the **De
 | Color | Volume Status | 
 | --- | --- | 
 | Green | The gateway is operating normally\. The volume status is Available or eventually becomes Available\. | 
-| Yellow | When you are creating a storage volume and preserving data, then the path from the Creating status to the Pass Through status occurs if another volume is bootstrapping\. In this case, the volume with the Pass Through status goes to the Bootstrapping status and then to the Available status when the first volume is finished bootstrapping\. Other than the specific scenario mentioned, yellow \(Pass Through status\) indicates that there is a potential issue with the storage volume, the most common one being an upload buffer issue\. If upload buffer capacity has been exceeded, then in some cases buffer space becomes available again\. At that point, the storage volume self\-corrects to the Available status\. In other cases, you might have to add more upload buffer capacity to your gateway to return the storage volume to the Available status\. For information on how to troubleshoot a case when upload buffer capacity has been exceeded, see [Troubleshooting volume issues](troubleshoot-volume-issues.md)\. For information on how to add upload buffer capacity, see [Determining the Size of Upload Buffer to Allocate](ManagingLocalStorage-common.md#CachedLocalDiskUploadBufferSizing-common)\. | 
+| Yellow | When you are creating a storage volume and preserving data, then the path from the Creating status to the Pass Through status occurs if another volume is bootstrapping\. In this case, the volume with the Pass Through status goes to the Bootstrapping status and then to the Available status when the first volume is finished bootstrapping\. Other than the specific scenario mentioned, yellow \(Pass Through status\) indicates that there is a potential issue with the storage volume, the most common one being an upload buffer issue\. If upload buffer capacity has been exceeded, then in some cases buffer space becomes available again\. At that point, the storage volume self\-corrects to the Available status\. In other cases, you might have to add more upload buffer capacity to your gateway to return the storage volume to the Available status\. For information on how to troubleshoot a case when upload buffer capacity has been exceeded, see [Troubleshooting volume issues](troubleshoot-volume-issues.md)\. For information on how to add upload buffer capacity, see [Determining the size of upload buffer to allocate](ManagingLocalStorage-common.md#CachedLocalDiskUploadBufferSizing-common)\. | 
 | Red | The storage volume has the Irrecoverable status\. In this case, you should delete the volume\. For information on how to do this, see [Deleting a Volume](#ApplicationStorageVolumesCached-Removing)\. | 
 
 In the following diagram, a transition between two states is depicted with a labeled line\. For example, the transition from the **Creating** status to the **Available** status is labeled as *Create Basic Volume*\. This transition represents creating a storage volume without preserving data or creating the volume from a snapshot\.
+
+ 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/VolumeStateDiagram-diagram.png)
 

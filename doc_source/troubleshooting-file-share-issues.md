@@ -1,3 +1,9 @@
+--------
+
+Amazon S3 File Gateway documentation has been moved to [What is Amazon S3 File Gateway](https://docs.aws.amazon.com/filegateway/latest/files3/WhatIsStorageGateway.html)
+
+--------
+
 # Troubleshooting file share issues<a name="troubleshooting-file-share-issues"></a>
 
 You can find information following about actions to take if you experience unexpected issues with your file share\.
@@ -11,7 +17,9 @@ You can find information following about actions to take if you experience unexp
 + [Can't change the default encryption to use SSE\-KMS to encrypt objects stored in my S3 bucket](#encryption-issues)
 + [Changes made directly in an S3 bucket with object versioning enabled may affect what you see in your file share](#s3-object-versioning-file-share-issue)
 + [When writing to an S3 bucket with object versioning enabled, the file gateway may create multiple versions of an S3 object](#s3-object-versioning-file-gateway-issue)
++ [Changes to an S3 bucket are not reflected in Storage Gateway](#s3-changes-issue)
 + [ACL permissions aren't working as expected](#smb-acl-issues)
++ [Your gateway is losing network connectivity to AWS](#smb-acl-issues)
 + [Your gateway performance declined after you performed a recursive operation](#recursive-operation-issues)
 
 ## Your file share is stuck in CREATING status<a name="creating-state"></a>
@@ -20,9 +28,9 @@ When your file share is being created, the status is CREATING\. The status trans
 
 1. Open the Amazon S3 console at [https://console\.aws\.amazon\.com/s3/](https://console.aws.amazon.com/s3/)\.
 
-1. Make sure the S3 bucket that you mapped your file share to exists\. If the bucket doesn’t exist, create it\. After you create the bucket, the file share status transitions to AVAILABLE\. For information about how to create an S3 bucket, see [Create a bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html) in the *Amazon Simple Storage Service Console User Guide*\.
+1. Make sure the S3 bucket that you mapped your file share to exists\. If the bucket doesn’t exist, create it\. After you create the bucket, the file share status transitions to AVAILABLE\. For information about how to create an S3 bucket, see [Create a bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html) in the *Amazon Simple Storage Service User Guide*\.
 
-1. Make sure your bucket name complies with the rules for bucket naming in Amazon S3\. For more information, see [Rules for bucket naming](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules) in the *Amazon Simple Storage Service Developer Guide*\.
+1. Make sure your bucket name complies with the rules for bucket naming in Amazon S3\. For more information, see [Rules for bucket naming](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules) in the *Amazon Simple Storage Service User Guide*\.
 
 1. Make sure the IAM role you used to access the S3 bucket has the correct permissions and verify that the S3 bucket is listed as a resource in the IAM policy\. For more information, see [Granting access to an Amazon S3 bucket](managing-gateway-file.md#grant-access-s3)\.
 
@@ -37,8 +45,6 @@ When your file share is being created, the status is CREATING\. The status trans
 SMB file shares have the following restrictions:
 
 1. When the same client attempts to mount both an Active Directory and Guest access SMB file share the following error message is displayed: `Multiple connections to a server or shared resource by the same user, using more than one user name, are not allowed. Disconnect all previous connections to the server or shared resource and try again.`
-
-1. A Windows user cannot remain connected to two Guest Access SMB file shares, and may be disconnected when a new Guest Access connection is established\.
 
 1. A Windows client can't mount both a Guest Access and an Active Directory SMB file share that is exported by the same gateway\.
 
@@ -60,7 +66,7 @@ If you can't upload files into your S3 bucket, do the following:
 
 If you change the default encryption and make SSE\-KMS \(server\-side encryption with AWS KMS–managed keys\) the default for your S3 bucket, objects that a file gateway stores in the bucket are not encrypted with SSE\-KMS\. By default, a file gateway uses server\-side encryption managed with Amazon S3 \(SSE\-S3\) when it writes data to an S3 bucket\. Changing the default won't automatically change your encryption\.
 
-To change the encryption to use SSE\-KMS with your own AWS KMS key, you must enable SSE\-KMS encryption\. To do so, you provide the Amazon Resource Name \(ARN\) of the KMS key when you create your file share\. You can also update KMS settings for your file share by using the `UpdateNFSFileShare` or `UpdateSMBFileShare` API operation\. This update applies to objects stored in the S3 buckets after the update\. For more information, see [Data Encryption Using AWS KMS](encryption.md)\.
+To change the encryption to use SSE\-KMS with your own AWS KMS key, you must enable SSE\-KMS encryption\. To do so, you provide the Amazon Resource Name \(ARN\) of the KMS key when you create your file share\. You can also update KMS settings for your file share by using the `UpdateNFSFileShare` or `UpdateSMBFileShare` API operation\. This update applies to objects stored in the S3 buckets after the update\. For more information, see [Data encryption using AWS KMS](encryption.md)\.
 
 ## Changes made directly in an S3 bucket with object versioning enabled may affect what you see in your file share<a name="s3-object-versioning-file-share-issue"></a>
 
@@ -95,11 +101,35 @@ If you enable object versioning after installing a file gateway, all unique obje
 
 After you enable object versioning, your S3 bucket can't be returned to a nonversioned state\. You can, however, suspend versioning\. When you suspend versioning, a new object is assigned an ID\. If the same named object exists with an `ID=”NULL”` value, the older version is overwritten\. However, any version that contains a non\-`NULL` ID is retained\. Timestamps identify the new object as the current one, and that is the one that appears in the NFS file system\.
 
+## Changes to an S3 bucket are not reflected in Storage Gateway<a name="s3-changes-issue"></a>
+
+Storage Gateway updates the file share cache automatically when you write files to the cache locally using the file share\. However, Storage Gateway doesn't automatically update the cache when you upload a file directly to Amazon S3\. When you do this, you must perform a `RefreshCache` operation to see the changes on the file share\. If you have more than one file share, then you must run the `RefreshCache` operation on each file share\.
+
+You can refresh the cache using the Storage Gateway console and the AWS Command Line Interface \(AWS CLI\):
++  To refresh the cache using the Storage Gateway console, see Refreshing objects in your Amazon S3 bucket\. 
++  To refresh the cache using the AWS CLI: 
+
+  1. Run the command `aws storagegateway list-file-shares`
+
+  1. Copy the Amazon Resource Number \(ARN\) of the file share with the cache that you want to refresh\.
+
+  1. Run the `refresh-cache` command with your ARN as the value for `--file-share-arn`:
+
+     `aws storagegateway refresh-cache --file-share-arn arn:aws:storagegateway:eu-west-1:12345678910:share/share-FFDEE12`
+
+ To automate the `RefreshCache` operation, see [ How can I automate the RefreshCache operation on Storage Gateway?](https://aws.amazon.com/premiumsupport/knowledge-center/storage-gateway-automate-refreshcache/) 
+
 ## ACL permissions aren't working as expected<a name="smb-acl-issues"></a>
 
 If access control list \(ACL\) permissions aren't working as you expect with your SMB file share, you can perform a test\. 
 
 To do this, first test the permissions on a Microsoft Windows file server or a local Windows file share\. Then compare the behavior to your gateway's file share\.
+
+## Your gateway is losing network connectivity to AWS<a name="smb-acl-issues"></a>
+
+Your gateway connects to AWS to asynchronously transfer data back and forth based on requests from your file share clients\. If the gateway loses network connectivity, your applications connecting to the gateway will continue to operate using data locally stored in your gateway's cache\. However, when the cache becomes full with data still to be written to S3 \(CacheDirty=100\), your file share will turn into a read\-only mount and new Write requests will receive an error\. In case of read requests that cannot be serviced from the data in the local cache will result in an read error\.
+
+Once network connectively is established, any data written to the gateway will be uploaded to AWS and the gateway will resume normal operation\. Overall the gateway is resilient to temporary loss of network connectivity, but is not designed as an offline storage appliance\. 
 
 ## Your gateway performance declined after you performed a recursive operation<a name="recursive-operation-issues"></a>
 

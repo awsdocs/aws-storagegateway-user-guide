@@ -1,13 +1,18 @@
+--------
+
+Amazon S3 File Gateway documentation has been moved to [What is Amazon S3 File Gateway](https://docs.aws.amazon.com/filegateway/latest/files3/WhatIsStorageGateway.html)
+
+--------
+
 # Testing Your Setup by Using Quest NetVault Backup<a name="backup-netvault"></a>
 
 You can back up your data to virtual tapes, archive the tapes, and manage your virtual tape library \(VTL\) devices by using the following Quest \(formerly Dell\) NetVault Backup versions:
-+ Quest NetVault Backup 10\.0
-+ Quest NetVault Backup 11\.x
-+ Quest NetVault Backup 12\.x
++ Quest NetVault Backup 12\.4
++ Quest NetVault Backup 13\.x
 
-In this topic, you can find basic documentation on how to configure the Quest NetVault Backup application for a tape gateway and perform a backup and restore operation\. 
+In this topic, you can find basic documentation on how to configure the Quest NetVault Backup application for a Tape Gateway and perform a backup and restore operation\. 
 
-For additional setup information, see [Backing up to Amazon AWS with Quest NetVault Backup](https://www.scribd.com/document/294138486/backing-up-to-amazon-aws-with-dell-netvault-backup-technical-brief-75488-pdf) on the Quest \(formerly Dell\) website\. For detailed information about how to use the Quest NetVault Backup application, see the Quest NetVault Backup 10\.0\.1 – Administration Guide\. For more information about compatible backup applications, see [Supported third\-party backup applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
+For detailed information about how to use the Quest NetVault Backup application, see the Quest NetVault Backup – Administration Guide\. For more information about compatible backup applications, see [Supported third\-party backup applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
 
 **Topics**
 + [Configuring Quest NetVault Backup to Work with VTL Devices](#netvault-configure-software)
@@ -19,7 +24,7 @@ For additional setup information, see [Backing up to Amazon AWS with Quest NetVa
 
 After you have connected the virtual tape library \(VTL\) devices to the Windows client, you configure Quest NetVault Backup to recognize your devices\. For information about how to connect VTL devices to the Windows client, see [Connecting Your VTL Devices](GettingStarted-create-tape-gateway.md#GettingStartedAccessTapesVTL)\.
 
-The Quest NetVault Backup application doesn't automatically recognize tape gateway devices\. You must manually add the devices to expose them to the Quest NetVault Backup application and then discover the VTL devices\.
+The Quest NetVault Backup application doesn't automatically recognize Tape Gateway devices\. You must manually add the devices to expose them to the Quest NetVault Backup application and then discover the VTL devices\.
 
 ### Adding VTL Devices<a name="netvault-add-devices"></a>
 
@@ -55,11 +60,11 @@ When you add a drive to a bay, the drive and bay numbers must match\. For exampl
 
 ## Backing Up Data to a Tape in the Quest NetVault Backup<a name="netvault-write-data-to-tape"></a>
 
-You create a backup job and write data to a virtual tape by using the same procedures you do with physical tapes\. For detailed information about how to back up data, see the [Quest NetVault Backup 12\.4 \- Administration Guide](https://support.quest.com/technical-documents/netvault-backup/12.4/administration-guide)\.
+You create a backup job and write data to a virtual tape by using the same procedures you do with physical tapes\. For detailed information about how to back up data, see the [Quest NetVault Backup \- Administration Guide](https://support.quest.com/technical-documents/netvault-backup/12.4/administration-guide)\.
 
 ## Archiving a Tape by Using the Quest NetVault Backup<a name="netvault-archive-tape"></a>
 
-When you archive a tape, a tape gateway ejects the tape from the tape drive to the storage slot\. It then exports the tape from the slot to the archive by using your backup application—that is, the Quest NetVault Backup\.
+When you archive a tape, a Tape Gateway ejects the tape from the tape drive to the storage slot\. It then exports the tape from the slot to the archive by using your backup application—that is, the Quest NetVault Backup\.
 
 **To archive a tape in Quest NetVault Backup**
 
@@ -83,9 +88,9 @@ Restoring your archived data is a two\-step process\.
 
 **To restore data from an archived tape**
 
-1. Retrieve the archived tape from archive to a tape gateway\. For instructions, see [Retrieving Archived Tapes](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
+1. Retrieve the archived tape from archive to a Tape Gateway\. For instructions, see [Retrieving Archived Tapes](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
 
-1. Use the Quest NetVault Backup application to restore the data\. You do this by creating a restoring a folder file, as you do when restoring data from physical tapes\. For instructions on creating a restore job, see [Quest NetVault Backup 12\.4 \- Administration Guide](https://support.quest.com/technical-documents/netvault-backup/12.4/administration-guide)\.
+1. Use the Quest NetVault Backup application to restore the data\. You do this by creating a restoring a folder file, as you do when restoring data from physical tapes\. For instructions on creating a restore job, see [Quest NetVault Backup \- Administration Guide](https://support.quest.com/technical-documents/netvault-backup/12.4/administration-guide)\.
 
 **Next Step**
 

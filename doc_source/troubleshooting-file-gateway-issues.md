@@ -1,3 +1,9 @@
+--------
+
+Amazon S3 File Gateway documentation has been moved to [What is Amazon S3 File Gateway](https://docs.aws.amazon.com/filegateway/latest/files3/WhatIsStorageGateway.html)
+
+--------
+
 # Troubleshooting file gateway issues<a name="troubleshooting-file-gateway-issues"></a>
 
 You can configure your file gateway with an Amazon CloudWatch log group when you run VMware vSphere High Availability \(HA\)\. If you do, you receive notifications about your file gateway's health status and about errors that the file gateway encounters\. You can find information about these error and health notifications in CloudWatch Logs\.
@@ -20,10 +26,10 @@ In the following sections, you can find information that can help you understand
 
 You can get an `InaccessibleStorageClass` error when an object has moved out of the Amazon S3 Standard storage class\.
 
-Here, usually your file gateway encounters the error when it tries to either upload the specified object to S3 bucket or read the object from S3 bucket\. With this error, generally the object has moved to Amazon S3 Glacier and is in either the S3 Glacier or S3 Glacier Deep Archive storage class\.
+Here, usually your file gateway encounters the error when it tries to either upload the specified object to S3 bucket or read the object from S3 bucket\. With this error, generally the object has moved to Amazon S3 Glacier and is in either the S3 Glacier Flexible Retrieval or S3 Glacier Deep Archive storage class\.
 
 **To resolve an InaccessibleStorageClass error**
-+ Move the object from the S3 Glacier or S3 Glacier Deep Archive storage class back to S3\.
++ Move the object from the S3 Glacier Flexible Retrieval or S3 Glacier Deep Archive storage class back to S3\.
 
   If you move the object to the S3 bucket to fix an upload error, the file is eventually uploaded\. If you move the object to the S3 bucket to fix a read error, the file gateway's SMB or NFS client can then read the file\.
 
@@ -32,7 +38,7 @@ Here, usually your file gateway encounters the error when it tries to either upl
 You can get an `S3AccessDenied` error for a file share's Amazon S3 bucket access AWS Identity and Access Management \(IAM\) role\. In this case, the S3 bucket access IAM role that is specified by `roleArn` in the error doesn't allow the operation involved\. The operation isn't allowed because of the permissions for the objects in the directory specified by the Amazon S3 prefix\.
 
 **To resolve an S3AccessDenied error**
-+ Modify the Amazon S3 access policy that is attached to `roleArn` in the file gateway health log to allow permissions for the Amazon S3 operation\. Make sure that the access policy allows permission for the operation that caused the error\. Also, allow permission for the directory specified in the log for `prefix`\. For information about Amazon S3 permissions, see [Specifying permissions in a policy](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html) in *Amazon Simple Storage Service Developer Guide\.*
++ Modify the Amazon S3 access policy that is attached to `roleArn` in the file gateway health log to allow permissions for the Amazon S3 operation\. Make sure that the access policy allows permission for the operation that caused the error\. Also, allow permission for the directory specified in the log for `prefix`\. For information about Amazon S3 permissions, see [Specifying permissions in a policy](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html) in *Amazon Simple Storage Service User Guide\.*
 
   These operations can cause an `S3AccessDenied` error to occur:
   + `S3HeadObject`
@@ -98,10 +104,10 @@ You get an `AvailabilityMonitorTest` notification when you [run a test](Performa
 
 ## Error: RoleTrustRelationshipInvalid<a name="misconfig-trust"></a>
 
-You get this error when the IAM role for a file share has a misconfigured IAM trust relationship \(that is, the IAM role does not trust the Storage Gateway principal named `storagegateway.amazonaws.com`\)\. As a result, the file gateway would not be able to get the credentials to execute any operations on the S3 bucket that backs the file share\.
+You get this error when the IAM role for a file share has a misconfigured IAM trust relationship \(that is, the IAM role does not trust the Storage Gateway principal named `storagegateway.amazonaws.com`\)\. As a result, the file gateway would not be able to get the credentials to run any operations on the S3 bucket that backs the file share\.
 
 **To resolve an RoleTrustRelationshipInvalid error**
-+ Use the IAM console or IAM API to include `storagegateway.amazonaws.com` as a principal that is trusted by your file share's IAMrole\. For information about IAM role, see [Tutorial: delegate access across AWS accounts using IAM roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)\.
++ Use the IAM console or IAM API to include `storagegateway.amazonaws.com` as a principal that is trusted by your file share's IAMrole\. For information about IAM role, see [Tutorial: delegate access across Amazon Web Services accounts using IAM roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)\.
 
 ## Troubleshooting with CloudWatch metrics<a name="troubleshooting-with-cw-metrics"></a>
 

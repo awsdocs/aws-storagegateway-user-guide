@@ -1,12 +1,16 @@
+--------
+
+Amazon S3 File Gateway documentation has been moved to [What is Amazon S3 File Gateway](https://docs.aws.amazon.com/filegateway/latest/files3/WhatIsStorageGateway.html)
+
+--------
+
 # Tagging Storage Gateway Resources<a name="tagging-resources-common"></a>
 
-In AWS Storage Gateway, you can use tags to manage your resources\. Tags let you add metadata to your resources and categorize your resources to make them easier to manage\. Each tag consists of a key\-value pair, which you define\. You can add tags to gateways, volumes, and virtual tapes\. You can search and filter these resources based on the tags you add\.
+In Storage Gateway, you can use tags to manage your resources\. Tags let you add metadata to your resources and categorize your resources to make them easier to manage\. Each tag consists of a key\-value pair, which you define\. You can add tags to gateways, volumes, and virtual tapes\. You can search and filter these resources based on the tags you add\.
 
 As an example, you can use tags to identify Storage Gateway resources used by each department in your organization\. You might tag gateways and volumes used by your accounting department like this: \(`key=department` and `value=accounting`\)\. You can then filter with this tag to identify all gateways and volumes used by your accounting department and use the information to determine cost\. For more information, see [Using Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html) and [Working with Tag Editor](https://docs.aws.amazon.com/ARG/latest/userguide/tag-editor.html)\.
 
 If you archive a virtual tape that is tagged, the tape maintains its tags in the archive\. Similarly, if you retrieve a tape from the archive to another gateway, the tags are maintained in the new gateway\. 
-
-For file gateway, you can use tags to control access to resources\. For information about how to do this, see [Using Tags to Control Access to Your Gateway and Resources](restrict-fgw-access.md)\.
 
 Tags don’t have any semantic meaning but rather are interpreted as strings of characters\.
 
@@ -22,7 +26,7 @@ You can work with tags by using the Storage Gateway console, the Storage Gateway
 
 **To add a tag**
 
-1. Open the AWS Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
+1. Open the Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
 
 1. In the navigation pane, choose the resource you want to tag\. 
 
@@ -42,7 +46,7 @@ You can leave the **Value** box blank\.
 
 **To edit a tag**
 
-1. Open the AWS Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
+1. Open the Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
 
 1. Choose the resource whose tag you want to edit\.
 
@@ -54,14 +58,10 @@ You can leave the **Value** box blank\.
 
 **To delete a tag**
 
-1. Open the AWS Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
+1. Open the Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
 
 1. Choose the resource whose tag you want to delete\.
 
 1. Choose **Tags**, and then choose **Add/edit tags** to open the **Add/edit tags** dialog box\.
 
 1. Choose the **X** icon next to the tag you want to delete, and then choose **Save**\. 
-
-## See Also<a name="see-also-tags"></a>
-
-[Using Tags to Control Access to Your Gateway and Resources](restrict-fgw-access.md)

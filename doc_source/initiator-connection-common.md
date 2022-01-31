@@ -1,3 +1,9 @@
+--------
+
+Amazon S3 File Gateway documentation has been moved to [What is Amazon S3 File Gateway](https://docs.aws.amazon.com/filegateway/latest/files3/WhatIsStorageGateway.html)
+
+--------
+
 # Connecting iSCSI Initiators<a name="initiator-connection-common"></a>
 
 When managing your gateway, you work with volumes or virtual tape library \(VTL\) devices that are exposed as Internet Small Computer System Interface \(iSCSI\) targets\. For volume gateways, the iSCSI targets are volumes\. For tape gateways, the targets are VTL devices\. As part of this work, you do such tasks as connecting to those targets, customizing iSCSI settings, connecting from a Red Hat Linux client, and configuring Challenge\-Handshake Authentication Protocol \(CHAP\)\. 
@@ -12,16 +18,16 @@ When managing your gateway, you work with volumes or virtual tape library \(VTL\
 The iSCSI standard is an Internet Protocol \(IP\)–based storage networking standard for initiating and managing connections between IP\-based storage devices and clients\. The following list defines some of the terms that are used to describe the iSCSI connection and the components involved\. 
 
 **iSCSI initiator **  
-The client component of an iSCSI network\. The initiator sends requests to the iSCSI target\. Initiators can be implemented in software or hardware\. AWS Storage Gateway only supports software initiators\.
+The client component of an iSCSI network\. The initiator sends requests to the iSCSI target\. Initiators can be implemented in software or hardware\. Storage Gateway only supports software initiators\.
 
 **iSCSI target**  
 The server component of the iSCSI network that receives and responds to requests from initiators\. Each of your volumes is exposed as an iSCSI target\. Connect only one iSCSI initiator to each iSCSI target\.
 
 **Microsoft iSCSI initiator**  
-The software program on Microsoft Windows computers that enables you to connect a client computer \(that is, the computer running the application whose data you want to write to the gateway\) to an external iSCSI\-based array \(that is, the gateway\)\. The connection is made using the host computer's Ethernet network adapter card\. The Microsoft iSCSI initiator is already installed on Windows Server 2008 R2, Windows 7, Windows Server 2008, and Windows Vista\. On these operating systems, you don't need to install the initiator\. 
+The software program on Microsoft Windows computers that enables you to connect a client computer \(that is, the computer running the application whose data you want to write to the gateway\) to an external iSCSI\-based array \(that is, the gateway\)\. The connection is made using the host computer's Ethernet network adapter card\. The Microsoft iSCSI initiator has been validated with Storage Gateway on Windows 8\.1, Windows 10, Windows Server 2012 R2, Windows Server 2016, and Windows Server 2019\. The initiator is built into these operating systems\. 
 
 **Red Hat iSCSI initiator**  
-The iscsi\-initiator\-utils Resource Package Manager \(RPM\) package provides you with an iSCSI initiator implemented in software for Red Hat Linux\. The package includes a server daemon for the iSCSI protocol\.
+The `iscsi-initiator-utils` Resource Package Manager \(RPM\) package provides you with an iSCSI initiator implemented in software for Red Hat Linux\. The package includes a server daemon for the iSCSI protocol\.
 
 Each type of gateway can connect to iSCSI devices, and you can customize those connections, as described following\.
 
@@ -32,7 +38,9 @@ A volume gateway exposes volumes you have created for the gateway as iSCSI targe
 **Note**  
 To connect to your volume target, your gateway must have an upload buffer configured\. If an upload buffer is not configured for your gateway, then the status of your volumes is displayed as UPLOAD BUFFER NOT CONFIGURED\. To configure an upload buffer for a gateway in a stored volumes setup, see [To add and configure upload buffer or cache storage](ManagingLocalStorage-common.md#GatewayWorkingStorageCachedTaskBuffer)\. To configure an upload buffer for a gateway in a cached volumes setup, see [To add and configure upload buffer or cache storage](ManagingLocalStorage-common.md#GatewayWorkingStorageCachedTaskBuffer)\. 
 
-The following diagram highlights the iSCSI target in the larger picture of the AWS Storage Gateway architecture\. For more information, see [How AWS Storage Gateway Works \(Architecture\)](StorageGatewayConcepts.md)\.
+The following diagram highlights the iSCSI target in the larger picture of the Storage Gateway architecture\. For more information, see [How Storage Gateway works \(architecture\)](StorageGatewayConcepts.md)\.
+
+ 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/ArchitectureDiagram_HighlightediSCSI-diagram.png)
 
@@ -49,71 +57,95 @@ Your gateway exposes your volume as an iSCSI target with a name you specify, pre
 
 **To connect your Windows client to a storage volume**
 
-1. On the **Start** menu of your Windows client computer, type **iscsicpl\.exe** in the **Search Programs and files** box, locate the iSCSI initiator program, and then run it\.
+1. On the **Start** menu of your Windows client computer, enter **iscsicpl\.exe** in the **Search Programs and files** box, locate the iSCSI initiator program, and then run it\.
 **Note**  
 You must have administrator rights on the client computer to run the iSCSI initiator\.
 
-1. If prompted, choose **Yes** to start the Microsoft iSCSI initiator service\.  
+1. If prompted, choose **Yes** to start the Microsoft iSCSI initiator service\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GSClientConfigure_09.png)
 
-1. In the **iSCSI Initiator Properties** dialog box, choose the **Discovery** tab, and then choose the **Discovery Portal** button\.  
+1. In the **iSCSI Initiator Properties** dialog box, choose the **Discovery** tab, and then choose **Discover Portal**\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GSClientConfigure_10.png)
 
-1. In the **Discover Target Portal** dialog box, type the IP address of your iSCSI target for **IP address or DNS name**, and then choose **OK**\. To get the IP address of your gateway, check the **Gateway** tab on the AWS Storage Gateway console\. If you deployed your gateway on an Amazon EC2 instance, you can find the public IP or DNS address in the **Description** tab on the Amazon EC2 console\.  
+1. In the **Discover Target Portal** dialog box, enter the IP address of your iSCSI target for **IP address or DNS name**, and then choose **OK**\. To get the IP address of your gateway, check the **Gateway** tab on the Storage Gateway console\. If you deployed your gateway on an Amazon EC2 instance, you can find the public IP or DNS address in the **Description** tab on the Amazon EC2 console\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GSClientConfigure_20.png)
 
-   The IP address now appears in the **Target portals** list on the **Discovery** tab\.  
+   The IP address now appears in the **Target portals** list on the **Discovery** tab\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GSClientConfigure_30.png)
 
 1. Connect the new target portal to the storage volume target on the gateway:
 
    1. Choose the **Targets** tab\.
 
-      The new target portal is shown with an inactive status\. The target name shown should be the same as the name that you specified for your storage volume in step 1\.  
+      The new target portal is shown with an inactive status\. The target name shown should be the same as the name that you specified for your storage volume in step 1\.
+
+         
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GSClientConfigure_33.png)
 
    1. Select the target, and then choose **Connect**\. 
 
-      If the target name is not populated already, type the name of the target as shown in step 1 in the **Connect to Target** dialog box, select the check box next to **Add this connection to the list of Favorite Targets**, and then choose **OK**\.   
+      If the target name is not populated already, enter the name of the target as shown in step 1\. In the **Connect to Target** dialog box, select **Add this connection to the list of Favorite Targets**, and then choose **OK**\. 
+
+         
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GSClientConfigure_34.png)
 
-   1. In the **Targets** tab, ensure that the target **Status** has the value **Connected** indicating the target is connected, and then choose **OK**\.  
+   1. In the **Targets** tab, ensure that the target **Status** has the value **Connected**, indicating the target is connected, and then choose **OK**\.
+
+         
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GSClientConfigure_35-small.png)
 
-You can now initialize and format this storage volume for Windows so you can begin saving data on it\. You do this by using the Windows Disk Management tool\. 
+You can now initialize and format this storage volume for Windows so that you can begin saving data on it\. You do this by using the Windows Disk Management tool\. 
 
 **Note**  
 Although it is not required for this exercise, we highly recommend that you customize your iSCSI settings for a real\-world application as discussed in [Customizing Your Windows iSCSI Settings](#CustomizeWindowsiSCSISettings)\.
 
 ## Connecting Your VTL Devices to a Windows client<a name="ConfiguringiSCSIClient-vtl"></a>
 
-A tape gateway exposes several tape drives and a media changer, referred to collectively as VTL devices, as iSCSI targets\. For more information, see [Requirements](Requirements.md)\. 
+A Tape Gateway exposes several tape drives and a media changer, referred to collectively as VTL devices, as iSCSI targets\. For more information, see [Requirements](Requirements.md)\. 
 
 **Note**  
 You connect only one application to each iSCSI target\. 
 
-The following diagram highlights the iSCSI target in the larger picture of the AWS Storage Gateway architecture\. For more information on AWS Storage Gateway architecture, see [Tape Gateways](StorageGatewayConcepts.md#storage-gateway-vtl-concepts)\.
+The following diagram highlights the iSCSI target in the larger picture of the Storage Gateway architecture\. For more information on Storage Gateway architecture, see [Tape gateways](StorageGatewayConcepts.md#storage-gateway-vtl-concepts)\.
+
+ 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/Gateway-VTL-iSCSI-vtl-diagram.png)
 
 **To connect your Windows client to the VTL devices**
 
-1. On the **Start** menu of your Windows client computer, type **iscsicpl\.exe** in the **Search Programs and files** box, locate the iSCSI initiator program, and then run it\.
+1. On the **Start** menu of your Windows client computer, enter **iscsicpl\.exe** in the **Search Programs and files** box, locate the iSCSI initiator program, and then run it\.
 **Note**  
 You must have administrator rights on the client computer to run the iSCSI initiator\.
 
-1. If prompted, choose **Yes** to start the Microsoft iSCSI initiator service\.  
+1. If prompted, choose **Yes** to start the Microsoft iSCSI initiator service\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GSClientConfigure_09.png)
 
-1. In the **iSCSI Initiator Properties** dialog box, choose the **Discovery** tab, and then choose **Discover Portal**\.  
+1. In the **iSCSI Initiator Properties** dialog box, choose the **Discovery** tab, and then choose **Discover Portal**\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GSClientConfigure_10.png)
 
-1. In the **Discover Target Portal** dialog box, type the IP address of your tape gateway for **IP address or DNS name**, and then choose **OK**\. To get the IP address of your gateway, check the **Gateway** tab on the AWS Storage Gateway console\. If you deployed your gateway on an Amazon EC2 instance, you can find the public IP or DNS address in the **Description** tab on the Amazon EC2 console\.  
+1. In the **Discover Target Portal** dialog box, enter the IP address of your Tape Gateway for **IP address or DNS name**, and then choose **OK**\. To get the IP address of your gateway, check the **Gateway** tab on the Storage Gateway console\. If you deployed your gateway on an Amazon EC2 instance, you can find the public IP or DNS address in the **Description** tab on the Amazon EC2 console\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GSClientConfigure_20.png)
 
-1. Choose the **Targets** tab, and then choose **Refresh**\. All 10 tape drives and the medium changer appear in the **Discovered targets** box\. The status for the targets is **Inactive**\.
+1. Choose the **Targets** tab, and then choose **Refresh**\. All 10 tape drives and the media changer appear in the **Discovered targets** box\. The status for the targets is **Inactive**\.
 
-   The following screenshot shows the discovered targets\.  
+   The following screenshot shows the discovered targets\.
+
+     
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/iscsciInitiatorDiscoveryVTL.png)
 
 1. Select the first device and choose **Connect**\. You connect the devices one at a time\. 
@@ -124,30 +156,40 @@ You must have administrator rights on the client computer to run the iSCSI initi
 
 On a Windows client, the driver provider for the tape drive must be Microsoft\. Use the following procedure to verify the driver provider, and update the driver and provider if necessary\. 
 
-**To verify the driver provider and if necessary update the provider and driver on a Windows client**
+**To verify the driver provider and \(if necessary\) update the provider and driver on a Windows client**
 
 1. On your Windows client, start Device Manager\.
 
-1. Expand **Tape drives**, choose the context \(right\-click\) menu for a tape drive, and choose **Properties**\.  
+1. Expand **Tape drives**, choose the context \(right\-click\) menu for a tape drive, and choose **Properties**\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/TapeDriveDriverProvider10.png)
 
-1. In the **Driver** tab of the **Device Properties** dialog box, verify **Driver Provider** is Microsoft\.  
+1. In the **Driver** tab of the **Device Properties** dialog box, verify that **Driver Provider** is **Microsoft**\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/TapeDriveDriverProvider20.png)
 
-1. If **Driver Provider** is not Microsoft, set the value as follows:
+1. If **Driver Provider** is not **Microsoft**, set the value as follows:
 
    1. Choose **Update Driver**\.
 
-   1. In the **Update Driver Software** dialog box, choose **Browse my computer for driver software**\.  
+   1. In the **Update Driver Software** dialog box, choose **Browse my computer for driver software**\.
+
+         
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/TapeDriveDriverProvider30.png)
 
-   1. In the **Update Driver Software** dialog box, choose **Let me pick from a list of device drivers on my computer**\.  
+   1. In the **Update Driver Software** dialog box, choose **Let me pick from a list of device drivers on my computer**\.
+
+         
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/TapeDriveDriverProvider40.png)
 
-   1. Select **LTO Tape drive** and choose **Next**\.   
+   1. Select **LTO Tape drive** and choose **Next**\. 
+
+         
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/TapeDriveDriverProvider50.png)
 
-   1. Choose **Close** to close the **Update Driver Software** window, and verify that the **Driver Provider** value is now set to Microsoft\.
+   1. Choose **Close** to close the **Update Driver Software** window, and verify that the **Driver Provider** value is now set to **Microsoft**\.
 
 1.  Repeat steps 4\.1 through 4\.5 to update all the tape drives\.
 
@@ -155,11 +197,11 @@ On a Windows client, the driver provider for the tape drive must be Microsoft\. 
 
 **Topics**
 
-When using Red Hat Enterprise Linux \(RHEL\), you use the iscsi\-initiator\-utils RPM package to connect to your gateway iSCSI targets \(volumes or VTL devices\)\. 
+When using Red Hat Enterprise Linux \(RHEL\), you use the `iscsi-initiator-utils` RPM package to connect to your gateway iSCSI targets \(volumes or VTL devices\)\. 
 
 **To connect a Linux client to the iSCSI targets**
 
-1. Install the iscsi\-initiator\-utils RPM package, if it isn't already installed on your client\. 
+1. Install the `iscsi-initiator-utils` RPM package, if it isn't already installed on your client\. 
 
    You can use the following command to install the package\.
 
@@ -183,7 +225,7 @@ When using Red Hat Enterprise Linux \(RHEL\), you use the iscsi\-initiator\-util
       sudo service iscsid status
       ```
 
-   1. If the status command doesn't return a status of *running*, then start the daemon using one of the following commands\.
+   1. If the status command doesn't return a status of *running*, start the daemon using one of the following commands\.
 
       For RHEL 5 or 6, use the following command\.
 
@@ -191,7 +233,7 @@ When using Red Hat Enterprise Linux \(RHEL\), you use the iscsi\-initiator\-util
       sudo /etc/init.d/iscsi start
       ```
 
-      For RHEL 7, use the following command\. For RHEL 7, you usually don't need to explicitly start the iscsid service\.
+      For RHEL 7, use the following command\. For RHEL 7, you usually don't need to explicitly start the `iscsid` service\.
 
       ```
       sudo service iscsid start
@@ -203,21 +245,21 @@ When using Red Hat Enterprise Linux \(RHEL\), you use the iscsi\-initiator\-util
    sudo /sbin/iscsiadm --mode discovery --type sendtargets --portal [GATEWAY_IP]:3260
    ```
 
-   Substitute your gateway's IP address for the *\[GATEWAY\_IP\]* variable in the preceding command\. You can find the gateway IP in the **iSCSI Target Info** properties of a volume on the AWS Storage Gateway console\. 
+   Substitute your gateway's IP address for the *\[GATEWAY\_IP\]* variable in the preceding command\. You can find the gateway IP in the **iSCSI Target Info** properties of a volume on the Storage Gateway console\. 
 
    The output of the discovery command will look like the following example output\.
 
    For volume gateways: `[GATEWAY_IP]:3260, 1 iqn.1997-05.com.amazon:myvolume `
 
-   For tape gateways: `iqn.1997-05.com.amazon:[GATEWAY_IP]-tapedrive-01`
+   For Tape Gateways: `iqn.1997-05.com.amazon:[GATEWAY_IP]-tapedrive-01`
 
-   Your iSCSI qualified name \(IQN\) will be different than what is shown preceding, because IQN values are unique to an organization\. The name of the target is the name that you specified when you created the volume\. You can also find this target name in the **iSCSI Target Info** properties pane when you select a volume on the AWS Storage Gateway console\.
+   Your iSCSI qualified name \(IQN\) will be different than what is shown preceding, because IQN values are unique to an organization\. The name of the target is the name that you specified when you created the volume\. You can also find this target name in the **iSCSI Target Info** properties pane when you select a volume on the Storage Gateway console\.
 
 1. To connect to a target, use the following command\.
 
    Note that you need to specify the correct *\[GATEWAY\_IP\]* and IQN in the connect command\.
 **Warning**  
-For gateways that are deployed on an Amazon EC2 instance, accessing the gateway over a public internet connection is not supported\. The elastic IP address of the Amazon EC2 instance cannot be used as the target address\. 
+For gateways that are deployed on an Amazon EC2 instance, accessing the gateway over a public internet connection is not supported\. The Elastic IP address of the Amazon EC2 instance cannot be used as the target address\. 
 
    ```
    sudo /sbin/iscsiadm --mode node --targetname iqn.1997-05.com.amazon:[ISCSI_TARGET_NAME] --portal [GATEWAY_IP]:3260,1 --login
@@ -233,7 +275,7 @@ For gateways that are deployed on an Amazon EC2 instance, accessing the gateway 
 
    `lrwxrwxrwx. 1 root root 9 Apr 16 19:31 ip-[GATEWAY_IP]:3260-iscsi-iqn.1997-05.com.amazon:myvolume-lun-0 -> ../../sda`
 
-   We highly recommend that after you set up your initiator you customize your iSCSI settings as discussed in [Customizing Your Linux iSCSI Settings](#CustomizeLinuxiSCSISettings)\.
+   *For volume gateways only*: We highly recommend that after you set up your initiator, you customize your iSCSI settings as discussed in [Customizing Your Linux iSCSI Settings](#CustomizeLinuxiSCSISettings)\.
 
 ## Customizing iSCSI Settings<a name="recommendediSCSISettings"></a>
 
@@ -247,14 +289,15 @@ Before making changes to the registry, you should make a backup copy of the regi
 **Topics**
 + [Customizing Your Windows iSCSI Settings](#CustomizeWindowsiSCSISettings)
 + [Customizing Your Linux iSCSI Settings](#CustomizeLinuxiSCSISettings)
++ [Customizing Your Linux Disk Timeout Settings for Volume Gateways](#CustomizeLinuxDiskTimeoutSettings)
 
 ### Customizing Your Windows iSCSI Settings<a name="CustomizeWindowsiSCSISettings"></a>
 
 When using a Windows client, you use the Microsoft iSCSI initiator to connect to your gateway volume\. For instructions on how to connect to your volumes, see [Connecting Your Volumes to Your Client](GettingStarted-use-volumes.md#GettingStartedAccessVolumes)\.
 
-For a tape gateway setup, connecting to your VTL devices by using a Microsoft iSCSI initiator is a two\-step process: 
+For a Tape Gateway setup, connecting to your VTL devices by using a Microsoft iSCSI initiator is a two\-step process: 
 
-1. Connect your tape gateway devices to your Windows client\.
+1. Connect your Tape Gateway devices to your Windows client\.
 
 1. If you are using a backup application, configure the application to use the devices\.
 
@@ -267,8 +310,12 @@ The Getting Started example setup provides instructions for both these steps\. I
    1. Start Registry Editor \(`Regedit.exe`\)\.
 
    1. Navigate to the globally unique identifier \(GUID\) key for the device class that contains iSCSI controller settings, shown following\.
+
+       
 **Warning**  
-Make sure you are working in the **CurrentControlSet** subkey and not another control set such as **ControlSet001** or **ControlSet002**\.
+Make sure that you are working in the **CurrentControlSet** subkey and not another control set, such as **ControlSet001** or **ControlSet002**\.
+
+       
 
       ```
       HKEY_Local_Machine\SYSTEM\CurrentControlSet\Control\Class\{4D36E97B-E325-11CE-BFC1-08002BE10318}
@@ -278,24 +325,32 @@ Make sure you are working in the **CurrentControlSet** subkey and not another co
 
       The key is represented by a four\-digit number, such as `0000`\. 
 
+       
+
       ```
       HKEY_Local_Machine\SYSTEM\CurrentControlSet\Control\Class\{4D36E97B-E325-11CE-BFC1-08002BE10318}\[<Instance Number]
       ```
 
-      Depending on what is installed on your computer, the Microsoft iSCSI initiator might not be the subkey `0000`\. You can ensure that you have selected the correct subkey by verifying that the string `DriverDesc` has the value `Microsoft iSCSI Initiator`, as shown in the following example\.  
+      Depending on what is installed on your computer, the Microsoft iSCSI initiator might not be the subkey `0000`\. You can ensure that you have selected the correct subkey by verifying that the string `DriverDesc` has the value `Microsoft iSCSI Initiator`, as shown in the following example\.
+
+         
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/iscsi-windows-registry-10.png)
 
    1. To show the iSCSI settings, choose the **Parameters** subkey\.
 
-   1. Open the context \(right\-click\) menu for the **MaxRequestHoldTime** DWORD \(32\-bit\) value, choose **Modify**, and then change the value to 600\.
+   1. Open the context \(right\-click\) menu for the **MaxRequestHoldTime** DWORD \(32\-bit\) value, choose **Modify**, and then change the value to **600**\.
 
-      This value represents a hold time of 600 seconds\. The example following shows the **MaxRequestHoldTime** DWORD value with a value of 600\.  
+      This value represents a hold time of 600 seconds\. The example following shows the **MaxRequestHoldTime** DWORD value with a value of 600\.
+
+         
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/iscsi-windows-registry-20.png)
 
 1. You can increase the maximum amount of data that can be sent in iSCSI packets by modifying the following parameters:
-   + **FirstBurstLength** controls the maximum amount of data that can be transmitted in an unsolicited write request\. Set this value to **65536** if the original value is smaller\.
-   + **MaxBurstLength** is similar to **FirstBurstLength**, but it sets the maximum amount of data that can be transmitted in solicited write sequences\. Set this value to **262144** if the original value is smaller\.
-   + **MaxRecvDataSegmentLength** controls the maximum data segment size that is associated with a single protocol data unit \(PDU\)\. Set this value to **65536** if the original value is smaller\.  
+   + **FirstBurstLength** controls the maximum amount of data that can be transmitted in an unsolicited write request\. Set this value to **262144** if the original value is smaller\.
+   + **MaxBurstLength** is similar to **FirstBurstLength**, but it sets the maximum amount of data that can be transmitted in solicited write sequences\. Set this value to **1048576** if the original value is smaller\.
+   + **MaxRecvDataSegmentLength** controls the maximum data segment size that is associated with a single protocol data unit \(PDU\)\. Set this value to **262144** if the original value is smaller\.
+
+     
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/registry_selected.png)
 **Note**  
 Different backup software can be optimized to work best using different iSCSI settings\. To verify which values for these parameters will provide the best performance, see the documentation for your backup software\.
@@ -310,9 +365,11 @@ Different backup software can be optimized to work best using different iSCSI se
       HKEY_Local_Machine\SYSTEM\CurrentControlSet\Services\Disk
       ```
 
-   1. Open the context \(right\-click\) menu for the **TimeOutValue** DWORD \(32\-bit\) value, choose **Modify**, and then change the value to 600\.
+   1. Open the context \(right\-click\) menu for the **TimeOutValue** DWORD \(32\-bit\) value, choose **Modify**, and then change the value to **600**\.
 
-      This value represents a timeout of 600 seconds\. The example following shows the **TimeOutValue** DWORD value with a value of 600\.  
+      This value represents a timeout of 600 seconds\. The example following shows the **TimeOutValue** DWORD value with a value of 600\.
+
+         
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/iscsi-windows-registry-30.png)
 
 1. To ensure that the new configuration values take effect, restart your system\.
@@ -321,7 +378,7 @@ Different backup software can be optimized to work best using different iSCSI se
 
 ### Customizing Your Linux iSCSI Settings<a name="CustomizeLinuxiSCSISettings"></a>
 
-After setting up your initiator, we highly recommend that you customize your iSCSI settings to prevent the initiator from disconnecting from targets\. By increasing the iSCSI timeout values as shown following, you make your application better at dealing with write operations that take a long time and other transient issues such as network interruptions\.
+After setting up the initiator for your gateway, we highly recommend that you customize your iSCSI settings to prevent the initiator from disconnecting from targets\. By increasing the iSCSI timeout values as shown following, you make your application better at dealing with write operations that take a long time and other transient issues such as network interruptions\.
 
 **Note**  
 Commands might be slightly different for other types of Linux\. The following examples are based on Red Hat Linux\.
@@ -338,51 +395,22 @@ Commands might be slightly different for other types of Linux\. The following ex
       node.conn[0].timeo.noop_out_timeout = [noop_out_timeout_value]
       ```
 
-   1. Set the *\[replacement\_timeout\_value\]* value to 600\. 
+   1. Set the *\[replacement\_timeout\_value\]* value to **600**\. 
 
-      Set the *\[noop\_out\_interval\_value\]* value to 60\.
+      Set the *\[noop\_out\_interval\_value\]* value to **60**\.
 
-      Set the *\[noop\_out\_timeout\_value\]* value to 600\. 
+      Set the *\[noop\_out\_timeout\_value\]* value to **600**\. 
 
       All three values are in seconds\.
+
+       
 **Note**  
 The `iscsid.conf` settings must be made before discovering the gateway\. If you have already discovered your gateway or logged in to the target, or both, you can delete the entry from the discovery database using the following command\. Then you can rediscover or log in again to pick up the new configuration\.  
+   
 
       ```
       iscsiadm -m discoverydb -t sendtargets -p [GATEWAY_IP]:3260 -o delete
       ```
-
-1. Increase the disk timeout value in the rules file\.
-
-   1. If you are using the RHEL 5 initiator, open the `/etc/udev/rules.d/50-udev.rules` file and find the following line\.
-
-      ```
-      ACTION=="add", SUBSYSTEM=="scsi" , SYSFS{type}=="0|7|14", \ 
-      RUN+="/bin/sh -c 'echo [timeout] > /sys$$DEVPATH/timeout'"
-      ```
-
-      This rules file does not exist in RHEL 6 or 7 initiators, so you must create it using the following rule\.
-
-      ```
-      ACTION=="add", SUBSYSTEMS=="scsi" , ATTRS{model}=="Storage Gateway", 
-      RUN+="/bin/sh -c 'echo [timeout] > /sys$$DEVPATH/timeout'"
-      ```
-
-      To modify the timeout value in RHEL 6, use the following command and then add the lines of code shown preceding\. 
-
-      ```
-      sudo vim /etc/udev/rules.d/50-udev.rules
-      ```
-
-      To modify the timeout value in RHEL 7, use the following command and then add the lines of code shown preceding\. 
-
-      ```
-      sudo su -c "echo 600 > /sys/block/[device name]/device/timeout"
-      ```
-
-   1. Set the *\[timeout\]* value to 600\.
-
-      This value represents a timeout of 600 seconds\.
 
 1. Increase the maximum values for the amount of data that can be transmitted in each response\.
 
@@ -396,17 +424,59 @@ The `iscsid.conf` settings must be made before discovering the gateway\. If you 
 
    1. We recommend the following values to achieve better performance\. Your backup software might be optimized to use different values, so see your backup software documentation for best results\.
 
-      Set the *\[replacement\_first\_burst\_length\_value\]* value to 262144 if the original value is smaller\.
+      Set the *\[replacement\_first\_burst\_length\_value\]* value to **262144** if the original value is smaller\.
 
-      Set the *\[replacement\_max\_burst\_length\_value\]* value to 1048576 if the original value is smaller\.
+      Set the *\[replacement\_max\_burst\_length\_value\]* value to **1048576** if the original value is smaller\.
 
-      Set the *\[replacement\_segment\_length\_value\]* value to 262144 if the original value is smaller\.
+      Set the *\[replacement\_segment\_length\_value\]* value to **262144** if the original value is smaller\.
 **Note**  
 Different backup software can be optimized to work best using different iSCSI settings\. To verify which values for these parameters will provide the best performance, see the documentation for your backup software\.
 
 1. Restart your system to ensure that the new configuration values take effect\.
 
-   Before restarting, you must make sure that the results of all write operations to your volumes are flushed\. To do this, unmount storage volumes before restarting\.
+   Before restarting, make sure that the results of all write operations to your tapes are flushed\. To do this, unmount tapes before restarting\.
+
+### Customizing Your Linux Disk Timeout Settings for Volume Gateways<a name="CustomizeLinuxDiskTimeoutSettings"></a>
+
+If you are using a volume gateway, you can customize the following Linux disk timeout settings in addition to the iSCSI settings described in the preceding section\.
+
+**To customize your Linux disk timeout settings**
+
+1. Increase the disk timeout value in the rules file\.
+
+   1. If you are using the RHEL 5 initiator, open the `/etc/udev/rules.d/50-udev.rules` file, and find the following line\.
+
+      ```
+      ACTION=="add", SUBSYSTEM=="scsi" , SYSFS{type}=="0|7|14", \ 
+      RUN+="/bin/sh -c 'echo [timeout] > /sys$$DEVPATH/timeout'"
+      ```
+
+      This rules file does not exist in RHEL 6 or 7 initiators, so you must create it using the following rule\.
+
+      ```
+      ACTION=="add", SUBSYSTEMS=="scsi" , ATTRS{model}=="Storage Gateway", 
+      RUN+="/bin/sh -c 'echo [timeout] > /sys$$DEVPATH/timeout'"
+      ```
+
+      To modify the timeout value in RHEL 6, use the following command, and then add the lines of code shown preceding\. 
+
+      ```
+      sudo vim /etc/udev/rules.d/50-udev.rules
+      ```
+
+      To modify the timeout value in RHEL 7, use the following command, and then add the lines of code shown preceding\. 
+
+      ```
+      sudo su -c "echo 600 > /sys/block/[device name]/device/timeout"
+      ```
+
+   1. Set the *\[timeout\]* value to **600**\.
+
+      This value represents a timeout of 600 seconds\.
+
+1. Restart your system to ensure that the new configuration values take effect\.
+
+   Before restarting, make sure that the results of all write operations to your volumes are flushed\. To do this, unmount storage volumes before restarting\.
 
 1. You can test the configuration by using the following command\. 
 
@@ -418,40 +488,44 @@ Different backup software can be optimized to work best using different iSCSI se
 
 ## Configuring CHAP Authentication for Your iSCSI Targets<a name="ConfiguringiSCSIClientInitiatorCHAP"></a>
 
-AWS Storage Gateway supports authentication between your gateway and iSCSI initiators by using Challenge\-Handshake Authentication Protocol \(CHAP\)\. CHAP provides protection against playback attacks by periodically verifying the identity of an iSCSI initiator as authenticated to access a volume and VTL device target\. 
+Storage Gateway supports authentication between your gateway and iSCSI initiators by using Challenge\-Handshake Authentication Protocol \(CHAP\)\. CHAP provides protection against playback attacks by periodically verifying the identity of an iSCSI initiator as authenticated to access a volume and VTL device target\. 
 
-To set up CHAP, you must configure it both on the AWS Storage Gateway console and in the iSCSI initiator software that you use to connect to the target\. Storage Gateway uses mutual CHAP, which is when the initiator authenticates the target and the target authenticates the initiator\.
+**Note**  
+CHAP configuration is optional but highly recommended\.
+
+To set up CHAP, you must configure it both on the Storage Gateway console and in the iSCSI initiator software that you use to connect to the target\. Storage Gateway uses mutual CHAP, which is when the initiator authenticates the target and the target authenticates the initiator\.
 
 **To set up mutual CHAP for your targets**
 
-1. Configure CHAP on the AWS Storage Gateway console, as discussed in [To configure CHAP for a volume target on the AWS Storage Gateway console](#ConfiguringiSCSIClientInitiatorCHAPConsole)\.
+1. Configure CHAP on the Storage Gateway console, as discussed in [To configure CHAP for a volume target on the Storage Gateway console](#ConfiguringiSCSIClientInitiatorCHAPConsole)\.
 
 1. In your client initiator software, complete the CHAP configuration:
    + To configure mutual CHAP on a Windows client, see [To configure mutual CHAP on a Windows client](#ConfiguringiSCSIClientInitiatorCHAPWindows)\.
    + To configure mutual CHAP on a Red Hat Linux client, see [To configure mutual CHAP on a Red Hat Linux client](#ConfiguringiSCSIClientInitiatorCHAPLinux)\.<a name="ConfiguringiSCSIClientInitiatorCHAPConsole"></a>
 
-**To configure CHAP for a volume target on the AWS Storage Gateway console**
+**To configure CHAP for a volume target on the Storage Gateway console**
 
 In this procedure, you specify two secret keys that are used to read and write to a volume\. These same keys are used in the procedure to configure the client initiator\.
 
-1. On the AWS Storage Gateway console, choose **Volumes** in the navigation pane\.
+1. On the Storage Gateway console, choose **Volumes** in the navigation pane\.
 
 1. For **Actions**, choose **Configure CHAP Authentication**\.
 
-1. Provide the requested information in the **Configure CHAP Authentication** dialog box, shown in the screenshot following:  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/configure-chap.png)
+1. Provide the requested information in the **Configure CHAP Authentication** dialog box\.
 
-   1. For **Initiator Name**, type the name of your iSCSI initiator\.
+   1. For **Initiator Name**, enter the name of your iSCSI initiator\. This name is an Amazon iSCSI qualified name \(IQN\) that is prepended by `iqn.1997-05.com.amazon:` followed by the target name\. The following is an example\.
+
+      `iqn.1997-05.com.amazon:your-volume-name`
 
       You can find the initiator name by using your iSCSI initiator software\. For example, for Windows clients, the name is the value on the **Configuration** tab of the iSCSI initiator\. For more information, see [To configure mutual CHAP on a Windows client](#ConfiguringiSCSIClientInitiatorCHAPWindows)\.
 **Note**  
 To change an initiator name, you must first disable CHAP, change the initiator name in your iSCSI initiator software, and then enable CHAP with the new name\.
 
-   1. For **Secret used to Authenticate Initiator**, type the secret requested\.
+   1. For **Secret used to Authenticate Initiator**, enter the secret requested\.
 
       This secret must be a minimum of 12 characters and a maximum of 16 characters long\. This value is the secret key that the initiator \(that is, the Windows client\) must know to participate in CHAP with the target\.
 
-   1. For **Secret used to Authenticate Target \(Mutual CHAP\)**, type the secret requested\.
+   1. For **Secret used to Authenticate Target \(Mutual CHAP\)**, enter the secret requested\.
 
       This secret must be a minimum of 12 characters and a maximum of 16 characters long\. This value is the secret key that the target must know to participate in CHAP with the initiator\.
 **Note**  
@@ -462,7 +536,7 @@ The secret used to authenticate the target must be different than the secret to 
 1. Choose the **Details** tab and confirm that **iSCSI CHAP authentication** is set to **true**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/chaps-volume-true.png)
 
-**To configure CHAP for a VTL device target on the AWS Storage Gateway console**
+**To configure CHAP for a VTL device target on the Storage Gateway console**
 
 In this procedure, you specify two secret keys that are used to read and write to a virtual tape\. These same keys are used in the procedure to configure the client initiator\.
 
@@ -470,22 +544,23 @@ In this procedure, you specify two secret keys that are used to read and write t
 
 1. Choose your gateway, and then choose the **VTL Devices** tab to display all your VTL devices\.
 
-1. Choose the device you want to configure CHAP for\.
+1. Choose the device that you want to configure CHAP for\.
 
-1. Provide the requested information in the **Configure CHAP Authentication** dialog box, shown in the screenshot following:  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/configure-chap.png)
+1. Provide the requested information in the **Configure CHAP Authentication** dialog box\.
 
-   1. For **Initiator Name**, type the name of your iSCSI initiator\.
+   1. For **Initiator Name**, enter the name of your iSCSI initiator\. This name is an Amazon iSCSI qualified name \(IQN\) that is prepended by `iqn.1997-05.com.amazon:` followed by the target name\. The following is an example\.
+
+      `iqn.1997-05.com.amazon:your-tape-device-name`
 
       You can find the initiator name by using your iSCSI initiator software\. For example, for Windows clients, the name is the value on the **Configuration** tab of the iSCSI initiator\. For more information, see [To configure mutual CHAP on a Windows client](#ConfiguringiSCSIClientInitiatorCHAPWindows)\.
 **Note**  
 To change an initiator name, you must first disable CHAP, change the initiator name in your iSCSI initiator software, and then enable CHAP with the new name\.
 
-   1. For **Secret used to Authenticate Initiator**, type the secret requested\.
+   1. For **Secret used to Authenticate Initiator**, enter the secret requested\.
 
       This secret must be a minimum of 12 characters and a maximum of 16 characters long\. This value is the secret key that the initiator \(that is, the Windows client\) must know to participate in CHAP with the target\.
 
-   1. For **Secret used to Authenticate Target \(Mutual CHAP\)**, type the secret requested\.
+   1. For **Secret used to Authenticate Target \(Mutual CHAP\)**, enter the secret requested\.
 
       This secret must be a minimum of 12 characters and a maximum of 16 characters long\. This value is the secret key that the target must know to participate in CHAP with the initiator\.
 **Note**  
@@ -499,47 +574,59 @@ The secret used to authenticate the target must be different than the secret to 
 
 In this procedure, you configure CHAP in the Microsoft iSCSI initiator using the same keys that you used to configure CHAP for the volume on the console\.
 
-1. If the iSCSI initiator is not already started, on the **Start** menu of your Windows client computer, choose **Run**, type **iscsicpl\.exe**, and then choose **OK** to run the program\.
+1. If the iSCSI initiator is not already started, on the **Start** menu of your Windows client computer, choose **Run**, enter **iscsicpl\.exe**, and then choose **OK** to run the program\.
 
 1. Configure mutual CHAP configuration for the initiator \(that is, the Windows client\):
 
-   1. Choose the **Configuration** tab\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/ConfigureChap_20.png)
+   1. Choose the **Configuration** tab\.
+
+       
 **Note**  
-The **Initiator Name** value is unique to your initiator and company\. The name shown preceding is the value that you used in the **Configure CHAP Authentication** dialog box of the AWS Storage Gateway console\.  
+The **Initiator Name** value is unique to your initiator and company\. The name shown preceding is the value that you used in the **Configure CHAP Authentication** dialog box of the Storage Gateway console\.  
 The name shown in the example image is for demonstration purposes only\.
 
    1. Choose **CHAP**\.
 
-   1. In the **iSCSI Initiator Mutual Chap Secret** dialog box, type the mutual CHAP secret value\.  
+   1. In the **iSCSI Initiator Mutual Chap Secret** dialog box, enter the mutual CHAP secret value\.
+
+         
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/ConfigureChap_25.png)
 
-      In this dialog box, you enter the secret that the initiator \(the Windows client\) uses to authenticate the target \(the storage volume\)\. This secret allows the target to read and write to the initiator\. This secret is the same as the secret typed into the **Secret used to Authenticate Target \(Mutual CHAP\)** box in the **Configure CHAP Authentication** dialog box\. For more information, see [Configuring CHAP Authentication for Your iSCSI Targets](#ConfiguringiSCSIClientInitiatorCHAP)\.
+      In this dialog box, you enter the secret that the initiator \(the Windows client\) uses to authenticate the target \(the storage volume\)\. This secret allows the target to read and write to the initiator\. This secret is the same as the secret entered into the **Secret used to Authenticate Target \(Mutual CHAP\)** box in the **Configure CHAP Authentication** dialog box\. For more information, see [Configuring CHAP Authentication for Your iSCSI Targets](#ConfiguringiSCSIClientInitiatorCHAP)\.
 
-   1. If the key that you typed is less than 12 characters or more than 16 characters long, an **Initiator CHAP secret** error dialog box appears\.
+   1. If the key that you entered is fewer than 12 characters or more than 16 characters long, an **Initiator CHAP secret** error dialog box appears\.
 
-      Choose **OK**, and then type the key again\.  
+      Choose **OK**, and then enter the key again\.
+
+         
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/ConfigureChap_27.png)
 
 1. Configure the target with the initiator's secret to complete the mutual CHAP configuration\.
 
-   1. Choose the **Targets** tab\.  
+   1. Choose the **Targets** tab\.
+
+         
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/ConfigureChap_29.png)
 
    1. If the target that you want to configure for CHAP is currently connected, disconnect the target by selecting it and choosing **Disconnect**\.
 
-   1. Select the target that you want to configure for CHAP, and then choose **Connect**\.  
+   1. Select the target that you want to configure for CHAP, and then choose **Connect**\.
+
+         
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/ConfigureChap_30.png)
 
-   1. In the **Connect to Target** dialog box, choose **Advanced**\.  
+   1. In the **Connect to Target** dialog box, choose **Advanced**\.
+
+         
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/ConfigureChap_35.png)
 
-   1. In the **Advanced Settings** dialog box, configure CHAP\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/ConfigureChap_45.png)
+   1. In the **Advanced Settings** dialog box, configure CHAP\.
+
+       
 
       1. Select **Enable CHAP log on**\.
 
-      1. Type the secret that is required to authenticate the initiator\. This secret is the same as the secret typed into the **Secret used to Authenticate Initiator** box in the **Configure CHAP Authentication** dialog box\. For more information, see [Configuring CHAP Authentication for Your iSCSI Targets](#ConfiguringiSCSIClientInitiatorCHAP)\.
+      1. Enter the secret that is required to authenticate the initiator\. This secret is the same as the secret entered into the **Secret used to Authenticate Initiator** box in the **Configure CHAP Authentication** dialog box\. For more information, see [Configuring CHAP Authentication for Your iSCSI Targets](#ConfiguringiSCSIClientInitiatorCHAP)\.
 
       1. Select **Perform mutual authentication**\.
 
@@ -547,12 +634,14 @@ The name shown in the example image is for demonstration purposes only\.
 
    1. In the **Connect to Target** dialog box, choose **OK**\. 
 
-1. If you provided the correct secret key, the target shows a status of **Connected**\.  
+1. If you provided the correct secret key, the target shows a status of **Connected**\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/ConfigureChap_50.png)<a name="ConfiguringiSCSIClientInitiatorCHAPLinux"></a>
 
 **To configure mutual CHAP on a Red Hat Linux client**
 
-In this procedure, you configure CHAP in the Linux iSCSI initiator using the same keys that you used to configure CHAP for the volume on the AWS Storage Gateway console\.
+In this procedure, you configure CHAP in the Linux iSCSI initiator using the same keys that you used to configure CHAP for the volume on the Storage Gateway console\.
 
 1. Ensure that the iSCSI daemon is running and that you have already connected to a target\. If you have not completed these two tasks, see [Connecting to a Microsoft Windows Client](GettingStarted-create-tape-gateway.md#iscsi-vtl-windows)\.
 

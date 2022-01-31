@@ -1,6 +1,12 @@
-# Configuring Network Parameters<a name="appliance-configure-network"></a>
+--------
 
-After the server boots up, you can enter your first password in the hardware console as described in [Rack\-Mounting Your Hardware Appliance and Connecting It to Power](appliance-rack-mount.md)\. 
+Amazon S3 File Gateway documentation has been moved to [What is Amazon S3 File Gateway](https://docs.aws.amazon.com/filegateway/latest/files3/WhatIsStorageGateway.html)
+
+--------
+
+# Configuring network parameters<a name="appliance-configure-network"></a>
+
+After the server boots up, you can enter your first password in the hardware console as described in [Rack\-mounting your hardware appliance and connecting it to power](appliance-rack-mount.md)\.
 
 Next, on the hardware console take the following steps to configure network parameters so your hardware appliance can connect to AWS\.
 
@@ -11,10 +17,10 @@ Next, on the hardware console take the following steps to configure network para
   
 
 
-1. For **IP Address**, enter a valid IPv4 address from one of the following sources: 
+1. For **IP Address**, enter a valid IPv4 address from one of the following sources:
    + Use the IPv4 address assigned by your Dynamic Host Configuration Protocol \(DHCP\) server to your physical network port\.
 
-     If you do so, note this IPv4 address for later use in the activation step\. 
+     If you do so, note this IPv4 address for later use in the activation step\.
    + Assign a static IPv4 address\. To do so, choose **Static** in the `em1` section and press `Enter` to view the Configure Static IP screen shown following\.
 
      The `em1` section is at upper left section in the group of port settings\.
@@ -42,6 +48,6 @@ If you configure any other interface, it must provide the same always\-on connec
 
 1. Choose **Logout** to return to the Login screen\.
 
-**Next Step**
+**Next step**
 
-[Activating Your Hardware Appliance](appliance-activation.md)
+[Activating your hardware appliance](appliance-activation.md)

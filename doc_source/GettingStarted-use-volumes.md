@@ -1,3 +1,9 @@
+--------
+
+Amazon S3 File Gateway documentation has been moved to [What is Amazon S3 File Gateway](https://docs.aws.amazon.com/filegateway/latest/files3/WhatIsStorageGateway.html)
+
+--------
+
 # Using Your Volume<a name="GettingStarted-use-volumes"></a>
 
 Following, you can find instructions about how to use your volume\. To use your volume, you first connect it to your client as an iSCSI target, then initialize and format it\.
@@ -13,7 +19,7 @@ Following, you can find instructions about how to use your volume\. To use your 
 You use the iSCSI initiator in your client to connect to your volumes\. At the end of the following procedure, the volumes become available as local devices on your client\.
 
 **Important**  
-With AWS Storage Gateway, you can connect multiple hosts to the same volume if the hosts coordinate access by using Windows Server Failover Clustering \(WSFC\)\. You can't connect multiple hosts to the same volume without using WSFC, for example by sharing a nonclustered NTFS/ext4 file system\. 
+With Storage Gateway, you can connect multiple hosts to the same volume if the hosts coordinate access by using Windows Server Failover Clustering \(WSFC\)\. You can't connect multiple hosts to the same volume without using WSFC, for example by sharing a nonclustered NTFS/ext4 file system\. 
 
 **Topics**
 + [Connecting to a Microsoft Windows Client](#issci-windows)
@@ -75,7 +81,7 @@ The following procedure shows a summary of the steps that you follow to connect 
 
    For volume gateways: `[GATEWAY_IP]:3260, 1 iqn.1997-05.com.amazon:myvolume `
 
-   For tape gateways: `iqn.1997-05.com.amazon:[GATEWAY_IP]-tapedrive-01`
+   For Tape Gateways: `iqn.1997-05.com.amazon:[GATEWAY_IP]-tapedrive-01`
 
 1. Connect to a target\. 
 
@@ -179,6 +185,8 @@ You test your volume gateway setup by performing the following tasks:
 
 1. Restore the snapshot to another volume\.
 
+
+
 You verify the setup for a gateway by taking a snapshot backup of your volume and storing the snapshot in AWS\. You then restore the snapshot to a new volume\. Your gateway copies the data from the specified snapshot in AWS to the new volume\.
 
 **Note**  
@@ -190,7 +198,7 @@ Restoring data from Amazon Elastic Block Store \(Amazon EBS\) volumes that are e
 
    The amount of data copied doesn't matter for this demonstration\. A small file is enough to demonstrate the restore process\.
 
-1. In the navigation pane of the AWS Storage Gateway console, choose **Volumes**\.
+1. In the navigation pane of the Storage Gateway console, choose **Volumes**\.
 
 1. Choose the storage volume that you created for the gateway\.
 
@@ -208,8 +216,10 @@ Restoring data from Amazon Elastic Block Store \(Amazon EBS\) volumes that are e
 
 1. In the **EBS snapshots** column, choose the link for the volume that you created the snapshot for to see your EBS snapshot on the Amazon EC2 console\.
 
+
+
 **To restore a snapshot to another volume**  
-See [Creating a Volume](GettingStartedCreateVolumes.md)\.
+See [Creating a volume](GettingStartedCreateVolumes.md)\.
 
 ## Where Do I Go from Here?<a name="GettingStartedWhatsNextStep3"></a>
 
@@ -239,18 +249,18 @@ By this point, you have a simple, working gateway\. However, the assumptions use
 Following, you can find how to do both of these tasks\. If you activated a gateway for cached volumes, you also need to size your cache storage for real\-world workloads\.
 
 **To size your upload buffer and cache storage for a gateway\-cached setup**
-+ Use the formula shown in [Determining the Size of Upload Buffer to Allocate](ManagingLocalStorage-common.md#CachedLocalDiskUploadBufferSizing-common) for sizing the upload buffer\. We strongly recommend that you allocate at least 150 GiB for the upload buffer\. If the upload buffer formula yields a value less than 150 GiB, use 150 GiB as your allocated upload buffer\.
++ Use the formula shown in [Determining the size of upload buffer to allocate](ManagingLocalStorage-common.md#CachedLocalDiskUploadBufferSizing-common) for sizing the upload buffer\. We strongly recommend that you allocate at least 150 GiB for the upload buffer\. If the upload buffer formula yields a value less than 150 GiB, use 150 GiB as your allocated upload buffer\.
 
   The upload buffer formula takes into account the difference between throughput from your application to your gateway and throughput from your gateway to AWS, multiplied by how long you expect to write data\. For example, assume that your applications write text data to your gateway at a rate of 40 MB per second for 12 hours a day and your network throughput is 12 MB per second\. Assuming a compression factor of 2:1 for the text data, the formula specifies that you need to allocate approximately 675 GiB of upload buffer space\.
 
 **To size your upload buffer for a stored setup**
-+ Use the formula discussed in [Determining the Size of Upload Buffer to Allocate](ManagingLocalStorage-common.md#CachedLocalDiskUploadBufferSizing-common)\. We strongly recommend that you allocate at least 150 GiB for your upload buffer\. If the upload buffer formula yields a value less than 150 GiB, use 150 GiB as your allocated upload buffer\.
++ Use the formula discussed in [Determining the size of upload buffer to allocate](ManagingLocalStorage-common.md#CachedLocalDiskUploadBufferSizing-common)\. We strongly recommend that you allocate at least 150 GiB for your upload buffer\. If the upload buffer formula yields a value less than 150 GiB, use 150 GiB as your allocated upload buffer\.
 
   The upload buffer formula takes into account the difference between throughput from your application to your gateway and throughput from your gateway to AWS, multiplied by how long you expect to write data\. For example, assume that your applications write text data to your gateway at a rate of 40 MB per second for 12 hours a day and your network throughput is 12 MB per second\. Assuming a compression factor of 2:1 for the text data, the formula specifies that you need to allocate approximately 675 GiB of upload buffer space\.
 
 **To monitor your upload buffer**
 
-1. Open the AWS Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
+1. Open the Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
 
 1. Choose the **Gateway** tab, choose the **Details** tab, and then find the **Upload Buffer Used** field to view your gateway's current upload buffer\.
 
@@ -268,4 +278,4 @@ If you created your gateway as an example exercise or a test, consider cleaning 
 
 1. Unless you plan to continue using the gateway, delete it\. For more information, see [Deleting Your Gateway by Using the AWS Storage Gateway Console and Removing Associated Resources](deleting-gateway-common.md)\.
 
-1. Delete the AWS Storage Gateway VM from your on\-premises host\. If you created your gateway on an Amazon EC2 instance, terminate the instance\. 
+1. Delete the Storage Gateway VM from your on\-premises host\. If you created your gateway on an Amazon EC2 instance, terminate the instance\. 

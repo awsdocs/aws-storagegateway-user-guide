@@ -1,3 +1,9 @@
+--------
+
+Amazon S3 File Gateway documentation has been moved to [What is Amazon S3 File Gateway](https://docs.aws.amazon.com/filegateway/latest/files3/WhatIsStorageGateway.html)
+
+--------
+
 # Testing Your Setup by Using Veritas Backup Exec<a name="backup-BackupExec"></a>
 
 You can back up your data to virtual tapes, archive the tapes, and manage your virtual tape library \(VTL\) devices by using Veritas Backup Exec\. In this topic, you can find basic documentation needed to perform backup and restore operations using the following versions of Backup Exec: 
@@ -6,7 +12,7 @@ You can back up your data to virtual tapes, archive the tapes, and manage your v
 + Veritas Backup Exec 16
 + Veritas Backup Exec 20\.x
 
-The procedure for using these versions of Backup Exec with a tape gateway is the same\. See the [Veritas support website](https://www.veritas.com/support/) for detailed information about how to use Backup Exec, including how to create secure backups with Backup Exec, software and hardware compatibility lists, and administrator guides for Backup Exec\.
+The procedure for using these versions of Backup Exec with a Tape Gateway is the same\. See the [Veritas support website](https://www.veritas.com/support/) for detailed information about how to use Backup Exec, including how to create secure backups with Backup Exec, software and hardware compatibility lists, and administrator guides for Backup Exec\.
 
 For more information about supported backup applications, see [Supported third\-party backup applications for a Tape Gateway](Requirements.md#requirements-backup-sw-for-vtl)\.
 
@@ -65,11 +71,11 @@ Tapes that are imported include empty tapes and tapes that have been retrieved f
 
 ## Writing Data to a Tape in Backup Exec<a name="BE-write-data-to-tape"></a>
 
-You write data to a tape gateway virtual tape by using the same procedure and backup policies you do with physical tapes\. For detailed information, see the *Backup Exec Administrative Guide *in the documentation section in the Backup Exec software\.
+You write data to a Tape Gateway virtual tape by using the same procedure and backup policies you do with physical tapes\. For detailed information, see the *Backup Exec Administrative Guide *in the documentation section in the Backup Exec software\.
 
 ## Archiving a Tape Using Backup Exec<a name="BE-archive-tapes"></a>
 
-When you archive a tape, tape gateway moves the tape from your gateway’s virtual tape library \(VTL\) to the offline storage\. You begin tape archival by exporting the tape using your Backup Exec software\.
+When you archive a tape, Tape Gateway moves the tape from your gateway’s virtual tape library \(VTL\) to the offline storage\. You begin tape archival by exporting the tape using your Backup Exec software\.
 
 **To archive your tape**
 
@@ -78,11 +84,11 @@ When you archive a tape, tape gateway moves the tape from your gateway’s virtu
 
 1. In the **Media Request** pop\-up window, choose **View details**, and then choose **Respond OK** in the **Alert: Media Intervention** window\. 
 
-   In the AWS Storage Gateway console, you can verify the status of the tape you are archiving\. It might take some time to finish uploading data to AWS\. During this time, the exported tape is listed in the tape gateway's VTL with the status **IN TRANSIT TO VTS**\. When the upload is completed and the archiving process begins, the status changes to **ARCHIVING**\. When data archiving has completed, the exported tape is no longer listed in the VTL but is archived in GLACIER or DEEP\_ARCHIVE\.
+   In the Storage Gateway console, you can verify the status of the tape you are archiving\. It might take some time to finish uploading data to AWS\. During this time, the exported tape is listed in the Tape Gateway VTL with the status **IN TRANSIT TO VTS**\. When the upload is completed and the archiving process begins, the status changes to **ARCHIVING**\. When data archiving has completed, the exported tape is no longer listed in the VTL but is archived in S3 Glacier Flexible Retrieval or S3 Glacier Deep Archive\.
 
 1. Choose your gateway, and then choose **VTL Tape Cartridges** and verify that the virtual tape is no longer listed in your gateway\. 
 
-1. On the Navigation pane of the AWS Storage Gateway console, choose **Tapes**\. Verify that your tapes status is ARCHIVED\.
+1. On the Navigation pane of the Storage Gateway console, choose **Tapes**\. Verify that your tape's status is **ARCHIVED**\.
 
 ## Restoring Data from a Tape Archived in Backup Exec<a name="BE-restore-tape"></a>
 
@@ -90,13 +96,13 @@ Restoring your archived data is a two\-step process\.
 
 **To restore data from an archived tape**
 
-1. Retrieve the archived tape to a tape gateway\. For instructions, see [Retrieving Archived Tapes](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
+1. Retrieve the archived tape to a Tape Gateway\. For instructions, see [Retrieving Archived Tapes](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
 
 1. Use Backup Exec to restore the data\. This process is the same as restoring data from physical tapes\. For instructions, see the *Backup Exec Administrative Guide *in the documentation section in the Backup Exec software\.
 
 ## Disabling a Tape Drive in Backup Exec<a name="BE-disable-tape-drive"></a>
 
-A tape gateway provides 10 tape drives, but you might decide to use fewer tape drives\. In that case, you disable the tape drives you don't use\.
+A Tape Gateway provides 10 tape drives, but you might decide to use fewer tape drives\. In that case, you disable the tape drives you don't use\.
 
 1. Open Backup Exec, and choose the **Storage** tab\.
 

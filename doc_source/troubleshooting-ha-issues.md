@@ -1,3 +1,9 @@
+--------
+
+Amazon S3 File Gateway documentation has been moved to [What is Amazon S3 File Gateway](https://docs.aws.amazon.com/filegateway/latest/files3/WhatIsStorageGateway.html)
+
+--------
+
 # Troubleshooting high availability issues<a name="troubleshooting-ha-issues"></a>
 
 You can find information following about actions to take if you experience availability issues\.

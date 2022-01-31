@@ -1,3 +1,9 @@
+--------
+
+Amazon S3 File Gateway documentation has been moved to [What is Amazon S3 File Gateway](https://docs.aws.amazon.com/filegateway/latest/files3/WhatIsStorageGateway.html)
+
+--------
+
 # Performing Tasks on the Amazon EC2 Local Console \(Volume and Tape Gateways\)<a name="ec2-local-console-common"></a>
 
 Some maintenance tasks require that you log in to the local console when running a gateway deployed on an Amazon EC2 instance\. In this section, you can find information about how to log in to the local console and perform maintenance tasks\.
@@ -17,7 +23,9 @@ You can connect to your Amazon EC2 instance by using a Secure Shell \(SSH\) clie
 
 1. Log in to your local console\. If you are connecting to your EC2 instance from a Windows computer, log in as *admin*\.
 
-1. After you log in, you see the **AWS Storage Gateway Configuration** main menu, as shown in the following screenshot\.  
+1. After you log in, you see the **Storage Gateway Configuration** main menu, as shown in the following screenshot\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/EC2_LocalConsole-StartPage.png)    
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/ec2-local-console-common.html)
 
@@ -27,21 +35,25 @@ To exit the configuration session, type **x** to exit the menu\.
 
 ## Routing Your Gateway Deployed on Amazon EC2 Through a Proxy<a name="EC2_MaintenanceRoutingProxy-common"></a>
 
-AWS Storage Gateway supports the configuration of a Socket Secure version 5 \(SOCKS5\) proxy between your gateway deployed on Amazon EC2 and AWS\.
+Storage Gateway supports the configuration of a Socket Secure version 5 \(SOCKS5\) proxy between your gateway deployed on Amazon EC2 and AWS\.
 
 **Note**  
-The only proxy configuration AWS Storage Gateway supports is SOCKS5\.
+The only proxy configuration Storage Gateway supports is SOCKS5\.
 
-If your gateway must use a proxy server to communicate to the internet, then you need to configure the SOCKS proxy settings for your gateway\. You do this by specifying an IP address and port number for the host running your proxy\. After you do so, AWS Storage Gateway will route all HyperText Transfer Protocol Secure \(HTTPS\) traffic through your proxy server\. 
+If your gateway must use a proxy server to communicate to the internet, then you need to configure the SOCKS proxy settings for your gateway\. You do this by specifying an IP address and port number for the host running your proxy\. After you do so, Storage Gateway will route all HyperText Transfer Protocol Secure \(HTTPS\) traffic through your proxy server\. 
 
 **To route your gateway internet traffic through a local proxy server**
 
 1. Log in to your gateway's local console\. For instructions, see [Logging In to Your Amazon EC2 Gateway Local Console](#EC2_MaintenanceConsoleWindow-common)\.
 
-1. On the **AWS Storage Gateway Configuration** main menu, type **1** to begin configuring the SOCKS proxy\.  
+1. On the **Storage Gateway Configuration** main menu, type **1** to begin configuring the SOCKS proxy\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/EC2_LocalConsole-StartPage.png)
 
-1. Choose one of the following options in the **AWS Storage Gateway SOCKS Proxy Configuration** menu:  
+1. Choose one of the following options in the **Storage Gateway SOCKS Proxy Configuration** menu:
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/GatewayMaintenance_77.png)    
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/ec2-local-console-common.html)
 
@@ -53,7 +65,9 @@ You can use your gateway's local console to test your Internet connection\. This
 
 1. Log in to your gateway's local console\. For instructions, see [Logging In to Your Amazon EC2 Gateway Local Console](#EC2_MaintenanceConsoleWindow-common)\.
 
-1. In the **AWS Storage Gateway Configuration** main menu, type **2** to begin testing network connectivity\.  
+1. In the **Storage Gateway Configuration** main menu, type **2** to begin testing network connectivity\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/EC2_LocalConsole-StartPage.png)
 
    The console displays the available regions\. 
@@ -71,13 +85,19 @@ The AWS Storage Gateway console helps provide a secure environment for configuri
 
 1. Log in to your gateway's local console\. For instructions, see [Logging In to Your Amazon EC2 Gateway Local Console](#EC2_MaintenanceConsoleWindow-common)\.
 
-1. In the **AWS Storage Gateway Configuration** main menu, type **3** for **Gateway Console**\.  
+1. In the **Storage Gateway Configuration** main menu, type **3** for **Gateway Console**\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/EC2_LocalConsole-StartPage.png)
 
-1. In the Storage Gateway console, type **h**, and then press the **Return** key\.  
+1. In the Storage Gateway console, type **h**, and then press the **Return** key\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/SGLocalConsole.png)
 
-   The console displays the **Available Commands** menu with the available commands\. After the menu, a **Gateway Console** prompt appears, as shown in the following screenshot\.  
+   The console displays the **Available Commands** menu with the available commands\. After the menu, a **Gateway Console** prompt appears, as shown in the following screenshot\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/EC2_AvailableLocalConsoleCommands.png)
 
 1. To learn about a command, type **man** \+ ***command name*** at the **Gateway Console** prompt\.
@@ -90,7 +110,9 @@ When your gateway starts, it checks its virtual CPU cores, root volume size, and
 
 1. Log in to your gateway's local console\. For instructions, see [Logging In to Your Amazon EC2 Gateway Local Console](#EC2_MaintenanceConsoleWindow-common)\.
 
-1. In the **AWS Storage Gateway Configuration** main menu, type **4** to view the results of a system resource check\.  
+1. In the **Storage Gateway Configuration** main menu, type **4** to view the results of a system resource check\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/EC2_LocalConsole-StartPage.png)
 
    The console displays an **\[OK**\], **\[WARNING\]**, or **\[FAIL\]** message for each resource as described in the table following\.    
@@ -98,5 +120,7 @@ When your gateway starts, it checks its virtual CPU cores, root volume size, and
 
    The console also displays the number of errors and warnings next to the resource check menu option\.
 
-   The following screenshot shows a **\[FAIL\]** message and the accompanying error message\.  
+   The following screenshot shows a **\[FAIL\]** message and the accompanying error message\.
+
+      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/images/EC2_new-gateway-console-error.png)

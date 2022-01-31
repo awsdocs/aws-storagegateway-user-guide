@@ -1,6 +1,12 @@
+--------
+
+Amazon S3 File Gateway documentation has been moved to [What is Amazon S3 File Gateway](https://docs.aws.amazon.com/filegateway/latest/files3/WhatIsStorageGateway.html)
+
+--------
+
 # Using Your Backup Software to Test Your Gateway Setup<a name="GettingStartedTestGatewayVTL"></a>
 
-You test your tape gateway setup by performing the following tasks using your backup application:
+You test your Tape Gateway setup by performing the following tasks using your backup application:
 
 1. Configure the backup application to detect your storage devices\.
 **Note**  

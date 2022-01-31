@@ -1,23 +1,45 @@
+--------
+
+Amazon S3 File Gateway documentation has been moved to [What is Amazon S3 File Gateway](https://docs.aws.amazon.com/filegateway/latest/files3/WhatIsStorageGateway.html)
+
+--------
+
 # Testing Your Setup by Using IBM Spectrum Protect<a name="backup-tsm"></a>
 
-You can back up your data to virtual tapes, archive the tapes, and manage your virtual tape library \(VTL\) devices by using IBM Spectrum Protect\. \(IBM Spectrum Protect was formerly known as Tivoli Storage Manager\.\) In this topic, you can find basic documentation on how to configure the IBM Spectrum Protect version 7\.x backup software for a tape gateway\. You can also find basic documentation on performing backup and restore operations with IBM Spectrum Protect\. For detailed information about how to use IBM Spectrum Protect backup software, see the [IBM Spectrum Protect Administrator's Guide](https://www.ibm.com/support/knowledgecenter/SSTG2D_7.1.0/com.ibm.itsm.srv.doc/b_srv_admin_guide_windows.pdf)\.
+You can back up your data to virtual tapes, archive the tapes, and manage your virtual tape library \(VTL\) devices by using IBM Spectrum Protect with AWS Storage Gateway\. \(IBM Spectrum Protect was formerly known as Tivoli Storage Manager\.\) 
 
-**Note**  
-The IBM Spectrum Protect backup software is supported on both Microsoft Windows and Linux\.
+This topic contains basic information about how to configure the IBM Spectrum Protect version 8\.1\.10 backup software for a Tape Gateway\. It also includes basic information about performing backup and restore operations with IBM Spectrum Protect\. For more information about how to administer IBM Spectrum Protect backup software, see IBM's [Overview of administration tasks](https://www.ibm.com/support/knowledgecenter/en/SSEQVQ_8.1.10/srv.admin/t_administer_solution.html) for IBM Spectrum Protect\.
+
+The IBM Spectrum Protect backup software supports AWS Storage Gateway on the following operating systems\.
++ **Microsoft Windows Server**
++ **Red Hat Linux**
++ **SUSE Linux**
+
+For information about IBM Spectrum Protect supported devices for Windows, see [IBM Spectrum Protect \(formerly Tivoli Storage Manager\) Supported Devices for AIX, HP\-UX, Solaris, and Windows](https://www.ibm.com/support/pages/node/716993)\.
+
+For information about IBM Spectrum Protect supported devices for Linux, see [IBM Spectrum Protect \(formerly Tivoli Storage Manager\) Supported Devices for Linux](https://www.ibm.com/support/pages/node/716987)\.
+
+**Topics**
++ [Setting Up IBM Spectrum Protect](#tsm-setup)
++ [Configuring IBM Spectrum Protect to Work with VTL Devices](#tsm-configure)
++ [Writing Data to a Tape in IBM Spectrum Protect](#tsm-write-data-to-tape)
++ [Restoring Data from a Tape Archived in IBM Spectrum Protect](#tsm-restore-tape)
 
 ## Setting Up IBM Spectrum Protect<a name="tsm-setup"></a>
 
-After you connect your VTL devices to your client, you configure the IBM Spectrum Protect version 7\.x software to recognize them\. For information about how to connect VTL devices to your client, see [Connecting Your VTL Devices](GettingStarted-create-tape-gateway.md#GettingStartedAccessTapesVTL)\.
+After you connect your VTL devices to your client, you configure the IBM Spectrum Protect version 8\.1\.10 software to recognize them\. For more information about connecting VTL devices to your client, see [Connecting Your VTL Devices](GettingStarted-create-tape-gateway.md#GettingStartedAccessTapesVTL)\.
 
 **To set up IBM Spectrum Protect**
 
-1. Get a licensed copy of the IBM Spectrum Protect version 7\.1\.9 software from IBM\.
+1. Get a licensed copy of the IBM Spectrum Protect version 8\.1\.10 software from IBM\.
 
-1.  Install the IBM Spectrum Protect software on your on\-premises environment or in\-cloud Amazon EC2 instance\. For installation instruction, see the [IBM Spectrum Protect Administrator's Guide](https://www.ibm.com/support/knowledgecenter/SSTG2D_7.1.0/com.ibm.itsm.srv.doc/b_srv_admin_guide_windows.pdf)\. For additional installation guidance, see the [IBM Spectrum Protect Tape Solution Guide](https://www.ibm.com/developerworks/community/files/basic/anonymous/api/library/4a5b0e43-b165-49c7-ae33-b1480e6840cb/document/65902d39-4943-46cb-9822-50fb6ecfd2ea/media)\.
+1.  Install the IBM Spectrum Protect software on your on\-premises environment or in\-cloud Amazon EC2 instance\. For more information, see IBM's [Installing and upgrading](https://www.ibm.com/support/knowledgecenter/en/SSEQVQ_8.1.10/srv.common/t_installing_upgrading.html) documentation for IBM Spectrum Protect\. 
+
+   For more information about configuring IBM Spectrum Protect software, see [Configuring AWS Tape Gateway virtual tape libraries for an IBM Spectrum Protect server](https://www.ibm.com/support/pages/node/6326793)\.
 
 ## Configuring IBM Spectrum Protect to Work with VTL Devices<a name="tsm-configure"></a>
 
-Next, configure IBM Spectrum Protect to work with your VTL devices\. You can configure IBM Spectrum Protect to work VTL devices on either Microsoft Windows or Linux\.
+Next, configure IBM Spectrum Protect to work with your VTL devices\. You can configure IBM Spectrum Protect to work with VTL devices on Microsoft Windows Server, Red Hat Linux, or SUSE Linux\.
 
 ### Configuring IBM Spectrum Protect for Windows<a name="tsm-configure-windows"></a>
 
@@ -41,9 +63,9 @@ Following is basic documentation on configuring IBM Spectrum to work with VTL de
 
 **To configure IBM Spectrum Protect for Linux**
 
-1. Go to the [IBM Fix Central](https://www.ibm.com/support/fixcentral/) on the IBM Support Website and choose **Select product**\.
+1. Go to [IBM Fix Central](https://www.ibm.com/support/fixcentral/) on the IBM Support website, and choose **Select product**\.
 
-1. For** Product Group**, choose **System Storage**\.
+1. For **Product Group**, choose **System Storage**\.
 
 1. For **Select from System Storage**, choose **Tape systems**\.
 
@@ -59,7 +81,7 @@ Following is basic documentation on configuring IBM Spectrum to work with VTL de
 
 ## Writing Data to a Tape in IBM Spectrum Protect<a name="tsm-write-data-to-tape"></a>
 
-You write data to a tape gateway virtual tape by using the same procedure and backup policies that you do with physical tapes\. Create the necessary configuration for backup and restore jobs\. For detailed information, see the [IBM Spectrum Protect Administrator's Guide](https://www.ibm.com/support/knowledgecenter/SSTG2D_7.1.0/com.ibm.itsm.srv.doc/b_srv_admin_guide_windows.pdf)\.
+You write data to a Tape Gateway virtual tape by using the same procedure and backup policies that you do with physical tapes\. Create the necessary configuration for backup and restore jobs\. For more information about configuring IBM Spectrum Protect, see [Overview of administration tasks](https://www.ibm.com/support/knowledgecenter/en/SSEQVQ_8.1.10/srv.admin/t_administer_solution.html) for IBM Spectrum Protect\.
 
 ## Restoring Data from a Tape Archived in IBM Spectrum Protect<a name="tsm-restore-tape"></a>
 
@@ -67,9 +89,9 @@ Restoring your archived data is a two\-step process\.
 
 **To restore data from an archived tape**
 
-1. Retrieve the archived tape from archive to a tape gateway\. For instructions, see [Retrieving Archived Tapes](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
+1. Retrieve the archived tape from archive to a Tape Gateway\. For instructions, see [Retrieving Archived Tapes](managing-gateway-vtl.md#retrieving-archived-tapes-vtl)\.
 
-1. Restore the data by using the IBM Spectrum Protect backup software\. You do this by creating a recovery point, as you do when restoring data from physical tapes\. For instructions, see the [IBM Spectrum Protect Administrator's Guide](https://www.ibm.com/support/knowledgecenter/SSTG2D_7.1.0/com.ibm.itsm.srv.doc/b_srv_admin_guide_windows.pdf)\.
+1. Restore the data by using the IBM Spectrum Protect backup software\. You do this by creating a recovery point, as you do when restoring data from physical tapes\. For more information about configuring IBM Spectrum Protect, see [Overview of administration tasks](https://www.ibm.com/support/knowledgecenter/en/SSEQVQ_8.1.10/srv.admin/t_administer_solution.html) for IBM Spectrum Protect\.
 
 **Next Step**
 

@@ -1,3 +1,9 @@
+--------
+
+Amazon S3 File Gateway documentation has been moved to [What is Amazon S3 File Gateway](https://docs.aws.amazon.com/filegateway/latest/files3/WhatIsStorageGateway.html)
+
+--------
+
 # Deploying a file gateway on an Amazon EC2 host<a name="ec2-gateway-file"></a>
 
 You can deploy and activate a file gateway on an Amazon Elastic Compute Cloud \(Amazon EC2\) instance\. The file gateway Amazon Machine Image \(AMI\) is available as a community AMI\.
@@ -8,7 +14,7 @@ You can deploy and activate a file gateway on an Amazon Elastic Compute Cloud \(
 
 1. Choose **Launch instance** to launch a storage gateway EC2 AMI\. You are redirected to the Amazon EC2 console where you can choose an instance type\.
 
-1. On the **Step 2: Choose an Instance Type** page, choose the hardware configuration of your instance\. AWS Storage Gateway is supported on instance types that meet certain minimum requirements\. We recommend starting with the m4\.xlarge instance type, which meets the minimum requirements for your gateway to function properly\. For more information, see [Hardware requirements for on\-premises VMs](Requirements.md#requirements-hardware)\.
+1. On the **Step 2: Choose an Instance Type** page, choose the hardware configuration of your instance\. Storage Gateway is supported on instance types that meet certain minimum requirements\. We recommend starting with the m4\.xlarge instance type, which meets the minimum requirements for your gateway to function properly\. For more information, see [Hardware requirements for on\-premises VMs](Requirements.md#requirements-hardware)\.
 
    You can resize your instance after you launch, if necessary\. For more information, see [Resizing your instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-resize.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 **Note**  
@@ -22,7 +28,7 @@ Certain instance types, particularly i3 EC2, use NVMe SSD disks\. These can caus
 
 1. Choose **Next: Add Storage**\.
 
-1. On the **Step 4: Add Storage** page, choose **Add New Volume** to add storage to your file gateway instance\. You need at least one Amazon EBS volume to configure for cache storage\.
+1. On the **Step 4: Add Storage** page, choose **Add New Volume** to add storage to your file gateway instance\. You need at least one additional Amazon EBS volume to configure for cache storage\.
 
    The following table recommends sizes for local disk storage for your deployed gateway\.     
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/storagegateway/latest/userguide/ec2-gateway-file.html)
@@ -46,13 +52,13 @@ Besides the Storage Gateway activation and Secure Shell \(SSH\) access ports, NF
 
 1.  Choose **View Instances** to close the confirmation page and return to the console\. On the **Instances** screen, you can view the status of your instance\. It takes a short time for an instance to launch\. When you launch an instance, its initial state is **pending**\. After the instance starts, its state changes to **running**, and it receives a public DNS name
 
-1. Select your instance, note the public IP address in the **Description** tag, and return to the [Connect to gateway](create-gateway-file.md#GettingStartedBeginActivateGateway-file) page on the Storage Gateway console to continue your gateway setup\.
+1. Select your instance, note the public IP address in the **Description** tag, and return to the **Connect to AWS** page on the Storage Gateway console to continue your gateway setup\.
 
 You can determine the AMI ID to use for launching a file gateway by using the Storage Gateway console or by querying the AWS Systems Manager parameter store\.
 
 **To determine the AMI ID**
 
-1. Sign in to the AWS Management Console and open the AWS Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
+1. Sign in to the AWS Management Console and open the Storage Gateway console at [https://console\.aws\.amazon\.com/storagegateway/home](https://console.aws.amazon.com/storagegateway/)\.
 
 1. Choose **Create gateway**, choose **File gateway**, and then choose **Next**\.
 

@@ -1,6 +1,12 @@
+--------
+
+Amazon S3 File Gateway documentation has been moved to [What is Amazon S3 File Gateway](https://docs.aws.amazon.com/filegateway/latest/files3/WhatIsStorageGateway.html)
+
+--------
+
 # Backing Up Your Volumes<a name="backing-up-volumes"></a>
 
-By using AWS Storage Gateway, you can help protect your on\-premises business applications that use Storage Gateway volumes for cloud\-backed storage\. You can back up your on\-premises AWS Storage Gateway volumes using the native snapshot scheduler in Storage Gateway or AWS Backup\. In both cases, Storage Gateway volume backups are stored as Amazon EBS snapshots in AWS\. 
+By using Storage Gateway, you can help protect your on\-premises business applications that use Storage Gateway volumes for cloud\-backed storage\. You can back up your on\-premises Storage Gateway volumes using the native snapshot scheduler in Storage Gateway or AWS Backup\. In both cases, Storage Gateway volume backups are stored as Amazon EBS snapshots in Amazon Web Services\. 
 
 **Topics**
 + [Using Storage Gateway to Back Up Your Volumes](#backup-with-sgw)
@@ -8,14 +14,14 @@ By using AWS Storage Gateway, you can help protect your on\-premises business ap
 
 ## Using Storage Gateway to Back Up Your Volumes<a name="backup-with-sgw"></a>
 
-You can use the Storage Gateway Management Console to back up your volumes by taking Amazon EBS snapshots and storing the snapshots in AWS\. You can either take an ad hoc \(one\-time\) snapshot or set up a snapshot schedule that is managed by Storage Gateway\. You can later restore the snapshot to a new volume by using the Storage Gateway console\. For information about how to back up and manage your backup from the Storage Gateway, see the following topics:
+You can use the Storage Gateway Management Console to back up your volumes by taking Amazon EBS snapshots and storing the snapshots in Amazon Web Services\. You can either take an ad hoc \(one\-time\) snapshot or set up a snapshot schedule that is managed by Storage Gateway\. You can later restore the snapshot to a new volume by using the Storage Gateway console\. For information about how to back up and manage your backup from the Storage Gateway, see the following topics:
 + [Testing Your Gateway ](GettingStarted-use-volumes.md#GettingStartedTestGatewayMain) 
 + [Creating a One\-Time Snapshot](managing-volumes.md#CreatingSnapshot) 
 + [Cloning a Volume](managing-volumes.md#clone-volume)
 
 ## Using AWS Backup to Back Up Your Volumes<a name="aws-backup-volumes"></a>
 
-AWS Backup is a centralized backup service that makes it easy and cost\-effective for you to back up your application data across AWS services in both the AWS Cloud and on\-premises\. Doing this helps you meet your business and regulatory backup compliance requirements\. AWS Backup makes protecting your AWS storage volumes, databases, and file systems simple by providing a central place where you can do the following: 
+AWS Backup is a centralized backup service that makes it easy and cost\-effective for you to back up your application data across AWS services in both the Amazon Web Services Cloud and on\-premises\. Doing this helps you meet your business and regulatory backup compliance requirements\. AWS Backup makes protecting your AWS storage volumes, databases, and file systems simple by providing a central place where you can do the following: 
 + Configure and audit the AWS resources that you want to back up\.
 + Automate backup scheduling\.
 + Set retention policies\.
@@ -23,7 +29,7 @@ AWS Backup is a centralized backup service that makes it easy and cost\-effectiv
 
 Because Storage Gateway integrates with AWS Backup, it enables customers to use AWS Backup to back up on\-premises business applications that use Storage Gateway volumes for cloud\-backed storage\. AWS Backup supports backup and restore of both cached and stored volumes\. For information about AWS Backup, see the AWS Backup documentation\. For information about AWS Backup, see [What is AWS Backup?](https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html) in the *AWS Backup User Guide*\. 
 
-You can manage Storage Gateway volumes' backup and recovery operations with AWS Backup and avoid the need to create custom scripts or manually manage point\-in\-time backups\. With AWS Backup, you can also monitor your on\-premises volume backups alongside your in\-cloud AWS resources from a single AWS Backup dashboard\. You can use AWS Backup to either create a one\-time on\-demand backup or define a backup plan that is managed in AWS Backup\. 
+You can manage Storage Gateway volumes' backup and recovery operations with AWS Backup and avoid the need to create custom scripts or manually manage point\-in\-time backups\. With AWS Backup, you can also monitor your on\-premises volume backups alongside your in\-cloud AWS resources from a single AWS Backup dashboard\. You can use AWS Backup to either create a one\-time on\-demand backup or define a backup plan that is managed in AWS Backup\.
 
 Storage Gateway volume backups taken from AWS Backup are stored in Amazon S3 as Amazon EBS snapshots\. You can see the Storage Gateway volume backups from the AWS Backup console or the Amazon EBS console\. 
 
